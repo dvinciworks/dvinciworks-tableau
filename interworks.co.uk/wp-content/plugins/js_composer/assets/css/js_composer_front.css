@@ -344,6 +344,7 @@ span.wpb_btn-large {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
+    background-color: #6e6254;
 }
 button.wpb_btn-large [class^="icon-"],
 span.wpb_btn-large [class^="icon-"] {
