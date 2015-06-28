@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>InterWorks - Tableau Software &#38; Business Intelligence Consulting &#187; Business Intelligence</title>
+	<atom:link href="http://interworks.co.uk/tag/business-intelligence/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 26 Jun 2015 08:09:24 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>Interacting with your trend line in Tableau (Part 2)</title>
+		<link>http://interworks.co.uk/blog/interacting-with-your-trend-line-in-tableau-part-2/</link>
+		<comments>http://interworks.co.uk/blog/interacting-with-your-trend-line-in-tableau-part-2/#comments</comments>
+		<pubDate>Tue, 07 Apr 2015 11:38:47 +0000</pubDate>
+		<dc:creator><![CDATA[Lucie Krennwallner]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Calculated Fields]]></category>
+		<category><![CDATA[Parameters]]></category>
+		<category><![CDATA[visualisation]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=11896</guid>
+		<description><![CDATA[<p>PART 2 In part one we familiarised with Tableau&#8217;s automatic Trend Line, information provided and inferences possible. Now I want to focus on the fun part: how to calculate the trend line ourselves using Tableau-R integration as well as two applied examples &#8220;How much above/below ?&#8221; and &#8220;What if&#8221;. HOW TO CALCULATE A LINEAR TREND LINE USING TABLEAU &#38; R [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/interacting-with-your-trend-line-in-tableau-part-2/">Interacting with your trend line in Tableau (Part 2)</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Finteracting-with-your-trend-line-in-tableau-part-2%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p><span style="color: #ff0000;">PART 2</span></p>
+<p>In <a title="Interacting with your Trend Line in Tableau (Part 1)" href="http://interworks.co.uk/blog/linear-regression-interacting-trend-line/" target="_blank">part one</a> we familiarised with Tableau&#8217;s automatic Trend Line, information provided and inferences possible. Now I want to focus on the fun part: how to calculate the trend line ourselves using Tableau-R integration as well as two applied examples &#8220;How much above/below ?&#8221; and &#8220;What if&#8221;.</p>
+<p><span style="color: #333399;"><b>HOW TO CALCULATE A LINEAR TREND LINE USING TABLEAU &amp; R INTEGRATION? </b></span></p>
+<p>Tableau provides (at least) two main options to calculate a trend line: either you could use Tableau’s R integration or calculated fields.</p>
+<ol>
+<li><span style="color: #0000ff;">TABLEAU-R-INTEGRATION</span></li>
+</ol>
+<p>If you know a bit of R, then you’re spot on – Tableau R integration saves you writing complicated Tableau calculations. Connect to R [1] and create the following calculated field ”R Trend Line”:</p>
+<p><span style="color: #0000ff;">          SCRIPT_REAL</span>(</p>
+<p>&#8221; tl &lt;- <span style="color: #0000ff;">lm</span>( .arg2 ~ .arg1)</p>
+<p>tl$fitted &#8221; ,</p>
+<p><span style="color: #0000ff;">          SUM</span>([<span style="color: #ff6600;">x</span>]), <span style="color: #0000ff;">SUM</span>([<span style="color: #ff6600;">y</span>]))</p>
+<p>A note for Tableau-R beginners: the equation</p>
+<p style="text-align: left;">          <span style="color: #0000ff;">lm</span>( .arg2 ~ .arg1)</p>
+<p>calculates all parts of the Trend Line (slope, intercept, estimated values). Because Tableau can only retrieve a <em>single</em> column from R (but no matrix or table), we need to extract the estimated values to be displayed in the dual axis chart by using „tl$fitted“.</p>
+<p>Now include the calculated trend line into the chart. To do so, drop &#8220;R Trend Line” onto the row shelf – don’t worry if the chart is empty at first! Right click on the Trend Line calculation and adjust ‘Compute Using’ to ID (see Figure 8). Then choose ‘Dual Axis’ – and you’re nearly done.</p>
+<p>The calculated and the automatic trend line do not lie on top of each other quite yet. It needs Axis Synchronisation – only Tableau does not allow this: this option is greyed out.</p>
+<p><strong><strong> <a href="http://interworks.co.uk/wp-content/uploads/2015/04/Fig-9-R-Trendline.jpg"><img class="alignnone  wp-image-11973" src="http://interworks.co.uk/wp-content/uploads/2015/04/Fig-9-R-Trendline-300x248.jpg" alt="Fig 9 R Trendline" width="381" height="315" /></a></strong></strong></p>
+<p>Figure 9: Interactive Menu ‘Axis synchronisation’</p>
+<p>Why is this? The reason is simple: if data types of the two axes differ, Tableau cannot synchronise them. Thus convert the Trend Line with the  <span style="color: #0000ff;">INT</span>() function:</p>
+<p><span style="color: #0000ff;">INT</span>(</p>
+<p><span style="color: #0000ff;">SCRIPT_REAL</span>(</p>
+<p>&#8221; tl &lt;- lm( .arg2 ~ .arg1)</p>
+<p>tl$fitted &#8221; ,</p>
+<p><span style="color: #0000ff;">          SUM</span>([<span style="color: #ff6600;">x</span>]), <span style="color: #0000ff;">SUM</span>([<span style="color: #ff6600;">y</span>]))</p>
+<p>)</p>
+<p>And – voila! &#8211;  there is the synchronisation function back. Now the Trend Lines matches.</p>
+<p>Note: the above calculation can be written in a single line, of course; the spacious presentation is only a way to make it easier for you to understand Tableau spelling.</p>
+<p>However, if your plot looks still strange, because your R Trend Line appears as a dotted line although you have chosen &#8216;Line&#8217; in the marks card, then remove &gt; Measure Names &lt; (see Fig. 10, red circle) from the Trend Line card.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/04/Fig-10-two-dots-plot.png"><img class="alignnone  wp-image-11974" src="http://interworks.co.uk/wp-content/uploads/2015/04/Fig-10-two-dots-plot-300x183.png" alt="Fig 10 two dots plot" width="475" height="290" /></a></p>
+<p>Figure 10: remove &gt;Measure Names&lt; from marks card to see R Trend Line as a line.</p>
+<p>&nbsp;</p>
+<p><span style="color: #0000ff;">PRACTICAL EXAMPLES</span></p>
+<p><span style="color: #3366ff;">Example 1: &#8220;How much above the Line?” </span></p>
+<p>What do you do if you want to quantify and visualise the deviation of an observation (data point)  from the Trend Line?  That’s easy, now; right? Just calculate &#8220;How much above the Line?” in a calculated Field using</p>
+<p><span style="color: #0000ff;">SUM</span>([<span style="color: #ff6600;">y</span>]) – <span style="color: #ff6600;">[Trend Line]</span>.</p>
+<p>Remember: the y-axis in a scatter plot is <span style="color: #0000ff;">SUM</span>([<span style="color: #ff6600;">y</span>]) and NOT just y.</p>
+<p>When you have the trend line on the row shelf with &#8216;Compute Using&#8217; on ID, drop the calculation “How much above the Line?” on to &#8216;Size&#8217; on the marks card (and if you want to see the label, drop a copy on to &#8216;Text&#8217; too). Then create a dual axis chart and choose from the marks card Gantt Bar for the trend line to visualise the deviation from the trend line (Fig.11).</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/04/Fig-11-How-much-abvove-below.png"><img class="alignnone  wp-image-11975" src="http://interworks.co.uk/wp-content/uploads/2015/04/Fig-11-How-much-abvove-below-300x265.png" alt="Fig 11 How much abvove below" width="423" height="374" /></a></p>
+<p>Figure 11: Visualising distance of observation from the trend line</p>
+<p><span style="color: #3366ff;">Example 2: &#8220;What-If?”</span></p>
+<p>Let&#8217;s imagine you would like to analyse the profitability of customers. When your company acquires a new client we&#8217;d like to evaluate what to expect based on the currently known trend. For this ‘what-if&#8217; scenario we need to create an option for the analyst to choose a value within the data set or SLIGHTLY outside (if you want to do go far beyond your own data set, better use a different method of predictive analytics).</p>
+<p>As a reminder to calculate the trend line we used the formula</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/03/LineFormula.jpg"><img class=" size-full wp-image-11655 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/03/LineFormula.jpg" alt="LineFormula" width="122" height="38" /></a></p>
+<p>So to answer your question we need to take three steps:</p>
+<p>a) extract the constants</p>
+<p>Intercept:   <span style="color: #0000ff;">SCRIPT_REAL</span>( &#8220;<span style="color: #0000ff;">lm</span>( .arg2 ~ .arg1) $coefficients[1]&#8221; , <span style="color: #0000ff;">SUM</span>(<span style="color: #ff6600;">[x]</span>), <span style="color: #0000ff;">SUM</span>(<span style="color: #ff6600;">[y]</span>))</p>
+<p>Slope:         <span style="color: #0000ff;">SCRIPT_REAL</span>( &#8220;<span style="color: #0000ff;">lm</span>( .arg2 ~ .arg1) $coefficients[2]&#8221; , <span style="color: #0000ff;">SUM</span>(<span style="color: #ff6600;">[x]</span>), <span style="color: #0000ff;">SUM</span>(<span style="color: #ff6600;">[y]</span>))</p>
+<p>b) we have to replace our known x-values from the data set with values the analyst can choose from. To do so create a parameter (Fig. 12) , which is then called in the trend line calculation replacing <span style="color: #0000ff;">SUM</span>([<span style="color: #ff6600;">x</span>]) with <span style="color: #0000ff;">SUM</span>(<span style="color: #993366;">[Parameter]</span>).</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/04/Fig-12-What-if-x-Value-Parameter.jpg"><img class="alignnone  wp-image-11978" src="http://interworks.co.uk/wp-content/uploads/2015/04/Fig-12-What-if-x-Value-Parameter-300x253.jpg" alt="Fig 12 What if x Value Parameter" width="347" height="293" /></a></p>
+<p>Figure 12: Create Parameter &#8220;What-If x-Value&#8221;</p>
+<p>c) Finally, we want to see only ONE estimated value, not all the possible values. In other words we need to filter the returned y-values and the easiest way is to use the function <span style="color: #0000ff;">First</span>().</p>
+<p>Piecing these three steps together the new &#8220;R What-If Trend Line (What if)&#8221; calculation reads then like</p>
+<p>If <span style="color: #0000ff;">FIRST</span>() = 0 Then <span style="color: #0000ff;">INT</span>((<span style="color: #ff6600;"> [R slope]</span> * <span style="color: #ff6600;">[x(what if)]</span> ) + <span style="color: #ff6600;">[R intercept]</span> ) END.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/04/Fig-13-R-What-If.jpg"><img class="alignnone size-medium wp-image-12044" src="http://interworks.co.uk/wp-content/uploads/2015/04/Fig-13-R-What-If-300x251.jpg" alt="Fig 13 R What If" width="300" height="251" /></a></p>
+<p>Figure 13: What-If Analysis using R in Tableau</p>
+<p>&nbsp;</p>
+<p>HAPPY ANALYSING!</p>
+<p>&nbsp;</p>
+<p>[1] http://www.tableau.com/sites/default/files/media/using-r-and-tableau.pdf</p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/interacting-with-your-trend-line-in-tableau-part-2/">Interacting with your trend line in Tableau (Part 2)</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Finteracting-with-your-trend-line-in-tableau-part-2%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/interacting-with-your-trend-line-in-tableau-part-2/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+		<item>
+		<title>Aus &#8211; my journey to being a BI Consultant with InterWorks</title>
+		<link>http://interworks.co.uk/blog/aus-journey-bi-consultant/</link>
+		<comments>http://interworks.co.uk/blog/aus-journey-bi-consultant/#comments</comments>
+		<pubDate>Thu, 26 Mar 2015 11:09:18 +0000</pubDate>
+		<dc:creator><![CDATA[Aus]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[consultancy]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=10112</guid>
+		<description><![CDATA[<p>So let’s fast forward the early bits. Degree in Mathematics and Computer Science, worked for Fidelity Investments as an out of uni job blah blah. Then things started to get a lot more interesting. I started a fledgling engineering business which quickly warped and twisted its way into a games console repair company. Fun. Anyone [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/aus-journey-bi-consultant/">Aus &#8211; my journey to being a BI Consultant with InterWorks</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Faus-journey-bi-consultant%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p><a href="http://interworks.co.uk/wp-content/uploads/2013/01/polaroid-james-austin.png"><img class="aligncenter size-medium wp-image-4785" src="http://interworks.co.uk/wp-content/uploads/2013/01/polaroid-james-austin-225x300.png" alt="polaroid-james-austin" width="225" height="300" /></a></p>
+<p>So let’s fast forward the early bits. Degree in Mathematics and Computer Science, worked for Fidelity Investments as an out of uni job blah blah. Then things started to get a lot more interesting.</p>
+<p>I started a fledgling engineering business which quickly warped and twisted its way into a games console repair company. Fun. Anyone who has started a first business will know that you spend the first year just finding your feet. Learning about regulations you’ve never heard of before, wondering where the next day’s work is going to come from. I think it takes most people that long just to pop their heads up out the fog and take a look around and for me this was the point where I really started enjoying myself.</p>
+<p>We had probably 6 or so employees, 5 repairers and a Quality Control/warehouse guy by this point. Even then I recognised the benefit to giving back the right information and feedback to staff as near to real time as possible. I had designed a simple data base and logging system and was using excel to query it a graph out the productivity. Nothing gave incentive to accurately log the repair like seeing your little bar in the chart jump above the guy next to you. At this point in the business it wasn’t even financially incentivised just good positive (quick) feedback. And that was the key.</p>
+<p>The business doubled in size year on year and our graphing nudged its way into other areas of the business. Trying to get info out of emails we were receiving, desperately trying to get something better than the standard reporting out of SAGE Line 50 Accounts (reach out to me if you want to hear more about InterWorks solution with SAGE). With a workforce of 70+ we were spending a lot of time on it and had to come up with better quicker solutions.</p>
+<p><strong>Access tables turned into SQL tables. Access forms turned into .NET. Excel graphs turned into Tableau Dashboards. Sold!</strong></p>
+<p>From that point on Tableau has formed a big part of my life. For the remainder of the lifecycle of that business through to becoming a BI consultant and Tableau Trainer with InterWorks. I’m still using it and still enjoying using it.</p>
+<p>So what now? Helping as many people as I can understand that access and insights to data matters. It’s not just for the CEO, not just for directors and managers but for everyone doing every job within an organisation. To even attempt this you have to have a tool which a lot of people can use and you have to open up the available data to many many more people.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/aus-journey-bi-consultant/">Aus &#8211; my journey to being a BI Consultant with InterWorks</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Faus-journey-bi-consultant%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/aus-journey-bi-consultant/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>My Path to InterWorks by Paul Vincent</title>
+		<link>http://interworks.co.uk/blog/my-path-to-interworks-by-paul-vincent/</link>
+		<comments>http://interworks.co.uk/blog/my-path-to-interworks-by-paul-vincent/#comments</comments>
+		<pubDate>Thu, 14 Aug 2014 14:52:56 +0000</pubDate>
+		<dc:creator><![CDATA[Paul Vincent]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Information is Beautiful]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=10636</guid>
+		<description><![CDATA[<p>You have to make an important business trip that involves driving through heavy traffic. You jump into your brand new company car ready to set off, only to discover things are not what you expected. There is no steering wheel in front of you. The familiar pedals have gone too. In their place are some [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/my-path-to-interworks-by-paul-vincent/">My Path to InterWorks by Paul Vincent</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmy-path-to-interworks-by-paul-vincent%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>You have to make an important business trip that involves driving through heavy traffic. You jump into your brand new company car ready to set off, only to discover things are not what you expected. There is no steering wheel in front of you. The familiar pedals have gone too. In their place are some strange buttons and a small screen that can only display four letters. The traffic around you is building up and it&#8217;s time to get moving. Ready?</p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><a href="http://interworks.co.uk/wp-content/uploads/2014/08/UCD-Interior-2-626x421.jpg"><img class="aligncenter wp-image-10667" src="http://interworks.co.uk/wp-content/uploads/2014/08/UCD-Interior-2-626x421-300x201.jpg" alt="UCD-Interior-2-626x421" width="500" height="336" /></a></p>
+<p>As a product manager back in the early 80&#8217;s I used to tell this story to illustrate the huge impact that new digital technology was having on the technicians who depended on their industrial measuring instruments to manage their production processes. Gone were the familiar switches and knobs. In their place, tortuous menus and confusing messages. Faced with the daily telephone calls from users struggling to ge their heads round all this new functionality I realised there had to be a better way to operate this technology and started to experiment. Making the complex simple proved to be a winning formula for this product line, and it&#8217;s a passion that guides me to this day.</p>
+<p>It was exciting to be driving a new technology and good for my career too. As I began to work more closely with the commercial managers I was puzzled at first to find they did not really seem to share my enthusiasm for these wonderful products. Then I was hit by a blinding flash of the obvious. What they wanted to know is how this would help them reach their sales goals. I had to adjust my focus and start talking about the things that would help them achieve success. That was another key insight that sits deep.</p>
+<p>My first experience to carry full P&amp;L responsibility for an organisation was a baptism by fire. I was asked to clean up the mess left by two failed General Managers before me just as Europe headed into a period of recession. Tough decisions were inevitable and I needed dependable data to help guide me. It was challenging to get all the insights that I needed and that&#8217;s when I really discovered the true loneliness of leadership and realised that each discipline within an organisation has its own unique language and way of thinking.</p>
+<p>Hard work and enthusiasm are key to success, but not enough on their own. To reach the top of your game you really need good teamwork. Just like in sports that means each player needs to know what the game is and understand the rules. When I was given an the opportunity to build a new pan European operation for a manufacturer of infrared thermal systems I found we always performed best when we had good processes in place, supported with metrics that the teams owned.</p>
+<p>In subsequent roles I continued to work on good processes, extending from services and operations into the more challenging areas of salesforce management. I found it hugely rewarding to see directly how the efforts of our teams were directly driving the sales successes. We found ways to track the take up of new offerings from the earliest introductions to customers, through lead generation and all the way along the pipeline to order conversion. My focus moved more and more into development of the metrics and tools &#8211; mainly using excel where I had to get my teeth into macro programming to achieve what I we needed.</p>
+<p>My last role in the process automation field involved setting up a new service to help food producers optimise the operation of their production plant. As part of this I needed a way to display key metrics in an online portal. It was during this period I first worked with the team from Interworks and was introduced to Tableau. I fell in love with Tableau. How it took data and made it beautiful but moreover gave it meaning. Meaning that could be used to make decisions rather than the time spent pouring over numbers and a decision hurriedly being made on a best guess.</p>
+<p>Working with InterWorks was an effortless experience. I was impressed by their professionalism and enthusiasm throughout the project, so much so that I joined their ranks in October 2013. Since then I have become the companies 7th Accredited Trainer, delivered training all over Europe and India and had the pleasure of working with a broad range of clients providing consultancy and proof of concepts. I&#8217;ve always enjoyed helping people professionally. To impart knowledge and see that person hit their potential is a great feeling. It&#8217;s one of the reasons I&#8217;m a flying instructor in my free time and why InterWorks is the best place I can imagine being.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/my-path-to-interworks-by-paul-vincent/">My Path to InterWorks by Paul Vincent</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmy-path-to-interworks-by-paul-vincent%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/my-path-to-interworks-by-paul-vincent/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>The Countdown To Tableau on Tour: London</title>
+		<link>http://interworks.co.uk/blog/the-countdown-to-tableau-on-tour-london/</link>
+		<comments>http://interworks.co.uk/blog/the-countdown-to-tableau-on-tour-london/#comments</comments>
+		<pubDate>Thu, 12 Jun 2014 14:00:50 +0000</pubDate>
+		<dc:creator><![CDATA[Phil Spurgeon]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Facebook]]></category>
+		<category><![CDATA[InterWorks]]></category>
+		<category><![CDATA[London]]></category>
+		<category><![CDATA[Power Tools]]></category>
+		<category><![CDATA[Power Tools for Tableau]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[Tableau Customer Conference]]></category>
+		<category><![CDATA[Tableau on Tour]]></category>
+		<category><![CDATA[Tableau Software]]></category>
+		<category><![CDATA[TCC]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=10476</guid>
+		<description><![CDATA[<p>It’s 24 days to go until the biggest Tableau event in Europe &#8211; Tableau on Tour: London. If you’re a seasoned conference veteran you’ll know these events are huge. And this year is special because it was the first time the European event was split into three &#8211; The Hague, Munich and London. This gave [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/the-countdown-to-tableau-on-tour-london/">The Countdown To Tableau on Tour: London</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fthe-countdown-to-tableau-on-tour-london%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p><a title="Tableau on Tour: London" href="http://ontour14.tableauconference.com/london/about" target="_blank"><img class="aligncenter wp-image-10483 " src="http://interworks.co.uk/wp-content/uploads/2014/06/Screen-Shot-2014-06-12-at-13.14.22.png" alt="Screen Shot 2014-06-12 at 13.14.22" width="628" height="179" /></a></p>
+<p>It’s 24 days to go until the biggest Tableau event in Europe &#8211; <a title="Tableau on Tour: London" href="http://ontour14.tableauconference.com/london/about" target="_blank">Tableau on Tour: London</a>. If you’re a seasoned conference veteran you’ll know these events are huge. And this year is special because it was the first time the European event was split into three &#8211; The Hague, Munich and London. This gave the European Tableau community even more opportunity to share in the fun, the learning and the energy.</p>
+<p>It’s by far the biggest and best opportunity for the Tableau community to come together to share their ideas, learn new ways of getting the very best from Tableau and enjoy all the fun that comes from being part of the most vibrant data analytics community in the world. There’s so much to do at the conferences it’s impossible not to come away feeling energised and brimming with new ideas of how to better implement Tableau in your role, getting those valuable insights that benefit your company end to end.</p>
+<p>As a Gold Partner we live and breathe Tableau so the conferences are just as exciting for us as they are for you, so much so we&#8217;ve been working towards the London event since the start of the year.</p>
+<p>As we&#8217;ll be attending as sponsors and Tableau users, we thought we&#8217;d share some of the things we look forward to most about the Tableau Conferences:</p>
+<p><strong>Sharing Knowledge</strong></p>
+<p>As one would expect we use Tableau. A lot. And we&#8217;re lucky enough to work with a wide variety of clients from just about every industry there is so we&#8217;re not short of a few stories and lessons learned over the years. The conferences are the perfect places to share what we&#8217;ve learned, as well as pick up a new trick or two as well which we can then share with our clients.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2014/06/BoFwEp_CAAEAq1S.jpg"><img class="aligncenter wp-image-10481 " src="http://interworks.co.uk/wp-content/uploads/2014/06/BoFwEp_CAAEAq1S.jpg" alt="BoFwEp_CAAEAq1S" width="525" height="397" /></a></p>
+<p><strong>Making Friends</strong></p>
+<p>The Tableau conferences are a great place for new faces as well as old. The sense of shared bond and community is second to none and it’s one of the stand out parts of the event that we look forward to. The volume of new Tableau users each year never fails to amaze us and as some of our team have been to every single conference, we can vouch for how much the events have changed, grown and improved every single year. And that’s largely down to the amazing people we meet year after year.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2014/06/GroupHug.jpg"><img class="aligncenter wp-image-10479 " src="http://interworks.co.uk/wp-content/uploads/2014/06/GroupHug.jpg" alt="GroupHug" width="510" height="487" /></a></p>
+<p><strong>Uplifting Events</strong></p>
+<p>One of the biggest draws for the conferences is the keynote speeches and customer presentations. London this year is no exception with economist and broadcaster Tim Harford, and data editor of The Economist Kenneth Cukier in attendance alongside leading lights at Tableau Software.</p>
+<p><img class="aligncenter wp-image-10480 " src="http://interworks.co.uk/wp-content/uploads/2014/06/Event.jpg" alt="Event" width="509" height="382" /></p>
+<p>Our very own Dan Murray (InterWorks Director of BI Services and author of “<a title="Tableau Your Data" href="http://tableauyourdata.com/" target="_blank">Tableau Your Data!</a>”) will be presenting alongside Facebook’s Andy Kriebel on July 8th at 3pm, delivering a talk on how to set up and run a successful Tableau User Group. Dan and Andy go way back so you can expect a lively presentation that&#8217;ll be as much fun to watch as it will be to deliver. Not to mention hugely useful for the growing number of groups out there. Andy Kriebel is a <a title="Tableau Zen Masters" href="http://www.tableausoftware.com/about/blog/2012/11/masters-teachers-innovators-meet-tableau-zen-masters-19799" target="_blank">Tableau Zen Master</a> and writes the hugely popular blog <a title="VizWiz" href="http://vizwiz.blogspot.com/" target="_blank">VizWiz</a>.</p>
+<p style="text-align: center;"><a href="http://interworks.co.uk/wp-content/uploads/2014/01/DanMurray.jpg"><img class="alignnone  wp-image-9708" src="http://interworks.co.uk/wp-content/uploads/2014/01/DanMurray-274x300.jpg" alt="Andy Kriebel" width="183" height="200" /></a><a href="http://interworks.co.uk/wp-content/uploads/2014/06/AndyKriebel.jpg"><img class="alignnone size-medium wp-image-10491" src="http://interworks.co.uk/wp-content/uploads/2014/06/AndyKriebel-300x200.jpg" alt="AndyKriebel" width="300" height="200" /></a></p>
+<p><a title="Tableau on Tour: London" href="http://ontour14.tableauconference.com/london/about" target="_blank">Tableau on Tour: London </a>is going to be a phenomenal event. With so many opportunities to learn the ways of Tableau, hear how Tableau has changed some of the biggest companies in the world and bond with your fellow users &#8211; the Tableau customer appreciation party is a must &#8211; it’ll no doubt be the first step towards you becoming a Tableau Jedi.</p>
+<p>Make sure you visit our stand and say hi. The team will be there to answer any Tableau questions you may have, swap stories or you can check out a demo of the powerhouse of tools we have created: Power Tools for Tableau.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/the-countdown-to-tableau-on-tour-london/">The Countdown To Tableau on Tour: London</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fthe-countdown-to-tableau-on-tour-london%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/the-countdown-to-tableau-on-tour-london/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>InterWorks on the Road with Tableau</title>
+		<link>http://interworks.co.uk/blog/interworks-on-the-road-with-tableau/</link>
+		<comments>http://interworks.co.uk/blog/interworks-on-the-road-with-tableau/#comments</comments>
+		<pubDate>Fri, 04 Apr 2014 16:11:03 +0000</pubDate>
+		<dc:creator><![CDATA[Phil Spurgeon]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Den Haag]]></category>
+		<category><![CDATA[London]]></category>
+		<category><![CDATA[Munchen]]></category>
+		<category><![CDATA[Munich]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[Tableau Customer Conference]]></category>
+		<category><![CDATA[Tableau on Tour]]></category>
+		<category><![CDATA[Tableau Software]]></category>
+		<category><![CDATA[TCC]]></category>
+		<category><![CDATA[TCC14]]></category>
+		<category><![CDATA[The Hague]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=10352</guid>
+		<description><![CDATA[<p>InterWorks is preparing for the biggest data visualization event in Europe to date: the Tableau Conference on Tour. Many are familiar with the European Tableau Customer Conference, which historically takes place in one location over the course of a week. This year, Tableau is opting to switch things up a bit. They’re taking their European [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/interworks-on-the-road-with-tableau/">InterWorks on the Road with Tableau</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Finterworks-on-the-road-with-tableau%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>InterWorks is preparing for the biggest data visualization event in Europe to date: the Tableau Conference on Tour. Many are familiar with the European Tableau Customer Conference, which historically takes place in one location over the course of a week. This year, Tableau is opting to switch things up a bit. They’re taking their European conference on tour to three of Europe’s finest cities. Like the rabid Tableau fans we are, we’ll soon be packing our bags to join Tableau on this legendary tour.</p>
+<h2><b>When and Where Will the Tour Take Place?</b></h2>
+<p>The European leg of the tour is set for various dates between May and July. By splitting the European tour amongst three different cities, Tableau aims to give attendees a more relatable and focused experience based on the unique environment of each region. Below are the tour stops along with their respective dates:</p>
+<p>19-21 May, 2014 | Den Haag, NL</p>
+<p>26-28 May, 2014 | München, DE</p>
+<p>7-9 July, 2014 | London, UK</p>
+<p>To register, visit the <a href="http://ontour14.tableauconference.com/">official Tableau Conference on Tour website</a>.</p>
+<p>Not able to make it? The Tableau Conference on Tour isn’t the only opportunity to see Tableau and InterWorks in action. We’ll also be at TCC14 in Seattle later this year. If you think the Tableau Conference on Tour is a big deal, just wait until we kick off the biggest Tableau party of the year at TCC14.</p>
+<h2><b>InterWorks a Top Sponsor</b></h2>
+<p>As a leading Tableau Gold Partner, we’re carrying on our tradition of sponsorship for yet another year. This means much more to us than buying a bit of advertising. It means we’ll be well represented at each event stop, standing ready to share our wealth of Tableau wisdom with attendees. We can’t wait to hear about all the exciting things people are doing with their data. We have a few surprises that you&#8217;ll just have to see for yourself.</p>
+<p><img class="aligncenter" alt="InterWorks at TCCEU13" src="http://www.interworks.com/sites/default/files/u143/BMj4eFgCMAAs9lq.jpeg" width="640" height="480" /></p>
+<p style="text-align: center;"><em>Above: InterWorks presenting at TCCEU 2013.</em></p>
+<h2>Get an Exclusive Look into Power Tools for Tableau</h2>
+<p>We’re especially excited for the tour because it gives us the chance to show attendees our revolutionary Power Tools for Tableau. If you haven’t checked them out, head over to <a href="http://powertoolsfortableau.com/" target="_blank">the official Power Tools website</a> to get the down-low. Be sure to download the free demo of the Workbook SDK. We’ll be giving live demos of Power Tools at each event, so you won’t want to miss them!</p>
+<p><strong>About InterWorks</strong></p>
+<p>InterWorks is a full-service, IT consulting firm specializing in data-driven business solutions. As the first Tableau Gold Partner and Tableau’s 2013 North American Partner of the Year, InterWorks boasts one of the largest and most talented teams of Tableau consultants in the world. InterWorks pairs Tableau expertise with the added benefit of being a comprehensive IT services provider. These competencies, combined with years of multi-industry experience, equips InterWorks with the tools needed to meet any data challenge today.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/interworks-on-the-road-with-tableau/">InterWorks on the Road with Tableau</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Finterworks-on-the-road-with-tableau%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/interworks-on-the-road-with-tableau/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>URL Parameters in Tableau</title>
+		<link>http://interworks.co.uk/blog/url-parameters-tableau/</link>
+		<comments>http://interworks.co.uk/blog/url-parameters-tableau/#comments</comments>
+		<pubDate>Mon, 17 Mar 2014 15:36:09 +0000</pubDate>
+		<dc:creator><![CDATA[Rob Austin]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Gantt]]></category>
+		<category><![CDATA[Parameters]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=10159</guid>
+		<description><![CDATA[<p>Why would you need to use URL parameters in Tableau Server? Below is an example of a list of order dates.Thanks to Tableau&#8217;s massive amount of built in date functions we can do just about anything with them but what if we want to find the number of orders that were being processed on a [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/url-parameters-tableau/">URL Parameters in Tableau</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Furl-parameters-tableau%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Why would you need to use URL parameters in Tableau Server?<br />
+Below is an example of a list of order dates.Thanks to Tableau&#8217;s massive amount of built in date functions we can do just about anything with them but what if we want to find the number of orders that were being processed on a specific date, or range of dates from another data source. That becomes tricky because that data isn&#8217;t necessarily there.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2014/03/Screen-Shot-2014-03-17-at-11.51.48.png"><img class="aligncenter size-medium wp-image-10161" src="http://interworks.co.uk/wp-content/uploads/2014/03/Screen-Shot-2014-03-17-at-11.51.48-290x300.png" alt="Orders" width="290" height="300" /></a></p>
+<p>The first step to this is to create some Parameters in Tableau one for the start date called &#8220;Start&#8221;, one for the end date called &#8220;End&#8221;.<br />
+In the visualisation below I have created a calculated field using DATEDIFF to show the duration of each order and then shown them on a gantt chart.<br />
+You can manually change the parameters to see the number of Orders which were being handled within the range of dates. We will later embed this dashboard inside another and pass the parameters automatically from a second data source.</p>
+<p><script type='text/javascript' src='http://public.tableausoftware.com/javascripts/api/viz_v1.js'></script>
+<div class='tableauPlaceholder' style='width: 564px; height: 669px;'><noscript><a href='#'><img alt='Parameter Dashboard ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Pa&#47;ParameterPassing&#47;ParameterDashboard&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='564' height='669' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableausoftware.com%2F' /><param name='site_root' value='' /><param name='name' value='ParameterPassing&#47;ParameterDashboard' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Pa&#47;ParameterPassing&#47;ParameterDashboard&#47;1.png' /><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>
+<div style='width:564px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'>
+<div style='float:right; padding-right:8px;'><a href='http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/views/ParameterPassing/ParameterDashboard' target='_blank'>Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p>Here is the calculated field I used to identify the Orders which were being processed within that date range. As you can see it would not be possible to do this from a single date field so action filters would not be an option.<em><br />
+</em></p>
+<address>IF [Start]&lt;=[Ship Date] AND [Start]&gt;=[Order Date] THEN 1</address>
+<address>ELSEIF [End]&lt;=[Ship Date] AND [End]&gt;=[Order Date] THEN 1</address>
+<address>ELSEIF [Start]&lt;=[Order Date] AND [End]&gt;=[Ship Date] THEN 1</address>
+<address>ELSE 0 END</address>
+<p>The annoyance with the method used in the Dashboard above is that the user must select individual dates whereas we really want to be able to drive the dates from another data source&#8230;&#8230;<br />
+<script type='text/javascript' src='http://public.tableausoftware.com/javascripts/api/viz_v1.js'></script>
+<div class='tableauPlaceholder' style='width: 584px; height: 869px;'><noscript><a href='#'><img alt='Order Analysis Dashboard ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Pa&#47;ParameterPassing&#47;OrderAnalysisDashboard&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='584' height='869' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableausoftware.com%2F' /><param name='site_root' value='' /><param name='name' value='ParameterPassing&#47;OrderAnalysisDashboard' /><param name='tabs' value='no' /><param name='toolbar' value='no' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Pa&#47;ParameterPassing&#47;OrderAnalysisDashboard&#47;1.png' /><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='no' /><param name='display_count' value='yes' /></object></div>
+<div style='width:584px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'>
+<div style='float:right; padding-right:8px;'><a href='http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/views/ParameterPassing/OrderAnalysisDashboard' target='_blank'>Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p>The data source I have picked is just a list of dates, it could just as easily have some values associated. The trick is to restructure date(s) to be passed so that they are in an iso format e.g. 2013-02-31 <em><br />
+</em></p>
+<address>Min Date: STR(YEAR(MIN(Date)))+&#8217;-&#8216;+STR(MONTH(MIN(Date)))+&#8217;-&#8216;+STR(DAY(MIN(Date)))</address>
+<address>Max Date: STR(YEAR(MAX(Date)))+&#8217;-&#8216;+STR(MONTH(MAX(Date)))+&#8217;-&#8216;+STR(DAY(MAX(Date)))</address>
+<p>I have created a min date and max date in ISO format which I pass to my original &#8216;embedded&#8217; dashboard using a url action.</p>
+<p>The final dashboard includes a view from the driving data source (the list of dates) as well as the embedded dashboard from before; this was achieved by putting a web page in my final dashboard and pointing it towards my Tableau Server / Tableau Public URL. I then use a url action to drive the parameters in the embedded view as follows.<em><br />
+</em></p>
+<address> </address>
+<address><span style="color: #0000ff;">http://public.tableau.com/views/ParameterPassing/EmbeddedDashboard</span>?<span style="color: #ff0000;">:showVizHome=no&amp;:embed=yes</span>&amp;<span style="color: #008000;">Start=&lt;AGG(MinDate)&gt;&amp;End=&lt;AGG(MaxDate)&gt;</span></address>
+<p>&nbsp;</p>
+<p>This is made up of <span style="color: #0000ff;">embedded dashboard url <span style="color: #ff0000;">embed commands <span style="color: #008000;">my passed parameter fields</span></span></span></p>
+<p>In Order to test your work you need to publish the dashboard you wish to embed first, then create your final dashboard.</p>
+<p>URL Parameters / Filters open up some really interesting possibilities and I&#8217;d love to hear about it if you are using them or have plans to use them in any other innovative ways.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/url-parameters-tableau/">URL Parameters in Tableau</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Furl-parameters-tableau%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/url-parameters-tableau/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+		<item>
+		<title>When Silence isn&#8217;t Golden</title>
+		<link>http://interworks.co.uk/blog/data-analysis/</link>
+		<comments>http://interworks.co.uk/blog/data-analysis/#comments</comments>
+		<pubDate>Fri, 07 Feb 2014 16:24:35 +0000</pubDate>
+		<dc:creator><![CDATA[Paul Vincent]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=9850</guid>
+		<description><![CDATA[<p>Most data analysis is concerned with understanding what the data tells us &#8211; for example understanding if business is growing or not and discovering how sales are developing in different territories or across product lines. But sometimes the story the data is not telling can be of vital interest. If a customer has stopped ordering [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/data-analysis/">When Silence isn&#8217;t Golden</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fdata-analysis%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Most data analysis is concerned with understanding what the data tells us &#8211; for example understanding if business is growing or not and discovering how sales are developing in different territories or across product lines.</p>
+<p>But sometimes the story the data is <em>not</em> telling can be of vital interest. If a customer has stopped ordering how would you know &#8211; and how long would it take you to find out?</p>
+<p>The chart below is designed to answer this question. It allows the user to see which customers have not placed orders recently and a slider control allows the user to define how many months &#8220;recently&#8221; means.</p>
+<p><script type='text/javascript' src='http://public.tableausoftware.com/javascripts/api/viz_v1.js'></script></p>
+<div class='tableauPlaceholder' style='width: 654px; height: 669px;'>
+<noscript><br />
+<a href='#'><img alt=' ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;No&#47;Non-ActiveCustomer&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><br />
+<object class='tableauViz' width='654' height='669' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableausoftware.com%2F' /><param name='site_root' value='' /><param name='name' value='Non-ActiveCustomer&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;No&#47;Non-ActiveCustomer&#47;Dashboard1&#47;1.png' / ><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>
+<div style='width:654px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'>
+<div style='float:right; padding-right:8px;'>
+<a href='http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/views/Non-ActiveCustomer/Dashboard1' target='_blank'>Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p>&nbsp;</p>
+<p>The customers are sorted by the volume of sales placed before they stopped ordering and the user can select to pick how many to bring into the view by using a second slider control.</p>
+<p>The challenge in designing this lies in the fact that datasets contain information on things that have happened and not on events that did not take place &#8211; in this case the orders a customer no longer placed.</p>
+<p>To extract this information we have to find a work-around that lets us &#8220;read between the lines&#8221;. Here we look for the latest date that an order was placed and use a calculation to check if it falls earlier than our test date.</p>
+<p>This example looks for customers that have stopped ordering, but the same approach can be used to discover other ways that inactivity may be a risk for business. Rather than looking at order dates you could choose to analyse contact activity from your customer relationship data. This could help discover if there are large accounts that have not been contacted recently or significant sales opportunities that need to be followed up.</p>
+<p>How might an approach like this help you recognise trouble while there is still time to act?</p>
+<p>If you have thoughts on this please share them with us in the comments section.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/data-analysis/">When Silence isn&#8217;t Golden</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fdata-analysis%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/data-analysis/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>What every Sales Manager Needs to Know</title>
+		<link>http://interworks.co.uk/blog/sales-funnel-management/</link>
+		<comments>http://interworks.co.uk/blog/sales-funnel-management/#comments</comments>
+		<pubDate>Thu, 30 Jan 2014 14:13:22 +0000</pubDate>
+		<dc:creator><![CDATA[Paul Vincent]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=9418</guid>
+		<description><![CDATA[<p>Do I have a healthy pipeline of sales opportunities? Ensuring a healthy pipeline of opportunities is a key concern of any Sales Manager. In this post I would like to share with you a way of visualizing your pipeline that has proven highly valuable in practice. It is based on the method and terminology that [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/sales-funnel-management/">What every Sales Manager Needs to Know</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fsales-funnel-management%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p><strong>Do I have a healthy pipeline of sales opportunities?</strong></p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2014/01/2014-01-29_09-49-181.png"><img class="size-medium wp-image-9835 alignright" alt="2014-01-29_09-49-18" src="http://interworks.co.uk/wp-content/uploads/2014/01/2014-01-29_09-49-181-300x212.png" width="300" height="212" /></a></p>
+<p>Ensuring a healthy pipeline of opportunities is a key concern of any Sales Manager. In this post I would like to share with you a way of visualizing your pipeline that has proven highly valuable in practice. It is based on the method and terminology that Miller Heiman define in their Strategic Sel<span style="line-height: 1.5em">lin</span><span style="line-height: 1.5em">g approach.</span><span style="line-height: 1.5em">They call this t</span><span style="line-height: 1.5em">he Sales Funnel – and that is the term I will use here.</span></p>
+<p>Simplistically put, a sales funnel models the process of discovering potential sales opportunities, qualifying them to see if further selling effort makes sense and then doing the work needed to develop them into orders.</p>
+<p><span style="line-height: 1.5em">Early prospecting and market research may uncover a wealth of opportunities where there may be potential to sell. These would typically be classified in our Universe until they have been investigated further. The following investigation, known as qualification, aims to find out if there is a real fit between the needs of the customer and the products and/or services on offer. It also aims to ascertain if this is a priority that is likely to be acted on in the short term. While this qualification effort is taking place the opportunity would be  placed Above the Funnel.</span></p>
+<p>If qualification suggests that further sales effort is worthwhile then the opportunity would move In the Funnel. This is where most of the sales activity takes place: to identify the people that will influence the buying decision and seek alignment with their needs. As the selling efforts are concluded and the opportunity is close to order <span style="line-height: 1.5em">then it moves into the final stage: Best Few.</span></p>
+<p><span style="line-height: 1.5em"> A healthy funnel will have enough opportunities at each stage to fuel a steady stream of business that the selling organization can influence. So there are two key factors at play – the overall size of the funnel and its shape.</span>then it moves into the final stage: Best Few.</p>
+<p>Traditional sales funnel charts visualise this as an actual funnel, where the width at each stage reflects the potential business volume. Unless the funnel is grossly out of shape it can be hard to see at a glance if a funnel is healthy or not. To make this possible you need a reference to show what a healthy funnel should look like. Also the visualisation needs to make comparison between the actual and reference funnels very easy to do at a glance.</p>
+<p><script type='text/javascript' src='http://public.tableausoftware.com/javascripts/api/viz_v1.js'></script>
+<div class='tableauPlaceholder' style='width: 604px; height: 469px;'><noscript><a href='#'><img alt='Sales Funnel ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;QX&#47;QXXYGWXMG&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='604' height='469' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableausoftware.com%2F' /><param name='path' value='shared&#47;QXXYGWXMG' / ><param name='toolbar' value='yes' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;QX&#47;QXXYGWXMG&#47;1.png' / ><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>
+<div style='width:604px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'>
+<div style='float:right; padding-right:8px'><a href='http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/shared/QXXYGWXMG' target='_blank'>Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p>&nbsp;</p>
+<p>The visualisation developed using Tableau shows the health of the sales funnel at a glance. The solid colour bars show the actual value of opportunities at each stage of the selling process. The lighter bars show the size and shape of an ideal sales funnel. This ideal funnel is modelled on the opportunity to sales conversion rates and sales cycle times that are typical for the business in question.</p>
+<p>Many users will be familiar with a tapered &#8220;Funnel Shaped&#8221; view. For comparison this type of layout is shown in the picture at the top of this post. Although there may be benefits in familiarity, this design carries two significant drawbacks. Firstly, the shaping does not reflect any meaningful information that might change over time. Secondly, the most valuable section of the funnel, Best Few, is actually shown with the smallest size and lowest position &#8211; hardly reflecting its real value.</p>
+<p>Tableau allows this modelling and visualization to be done quickly and easily without complex programming or manipulation of graphics. Filters make it possible to drill down for higher detail – for example to see how the funnel for a specific product line or region is shaping up.</p>
+<p>Looking at the shape of the funnel and recognizing where there are deviations from ideal allows a sales team to adjust the focus of their sales effort quickly and early to maintain a steady stream of business. This is a great example that shows how seeing the full picture can help you deliver consistently outstanding performance.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/sales-funnel-management/">What every Sales Manager Needs to Know</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fsales-funnel-management%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/sales-funnel-management/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Marimekko Part 5: Totals</title>
+		<link>http://interworks.co.uk/blog/marimekko-part-5-totals/</link>
+		<comments>http://interworks.co.uk/blog/marimekko-part-5-totals/#comments</comments>
+		<pubDate>Mon, 06 Jan 2014 13:55:08 +0000</pubDate>
+		<dc:creator><![CDATA[Rob Austin]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Marimekko]]></category>
+		<category><![CDATA[Table Calculation]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=9608</guid>
+		<description><![CDATA[<p>In Part 4 of the blog we learned how to make a basic Mekko Chart. In this part of the blog we are going to add in some totals, thankfully we can use some of our existing calculations to do this. The first is the Y Dimension (Colours) total. We are going to use quick [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/marimekko-part-5-totals/">Marimekko Part 5: Totals</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmarimekko-part-5-totals%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>In <a href="http://interworks.co.uk/random/marimekko-part-4-basic-marimekko/">Part 4</a> of the blog we learned how to make a basic Mekko Chart.  In this part of the blog we are going to add in some totals, thankfully we can use some of our existing calculations to do this. The first is the Y Dimension (Colours) total. We are going to use quick table calcs to generate the percentage values. Don&#8217;t forget to hide the axis when you are done to maximise the useful space on the dashboard.</p>
+<p>Rows: SUM(Sales) > Quick Table Calculation > Percent of Total<br />
+Color: [Y Dimension] (sorted Ascending by sum of [Sales])<br />
+Text: As Rows</p>
+<p>The next worksheet is going to be the totals bar at the bottom which uses many of the same fields. Please note there are 2 text fields used in this worksheet using Tableau&#8217;s ability to stack labels in the same cell.<br />
+Columns: SUM(Sales) > Quick Table Calculation > Percent of Total<br />
+Text: [X Dimension] (sorted Ascending by sum of [Sales])<br />
+Text: As Rows</p>
+<p>Once that you have the totals in place all that remains is to arrange them on the dashboard.<br />
+<script type='text/javascript' src='http://public.tableausoftware.com/javascripts/api/viz_v1.js'></script>
+<div class='tableauPlaceholder' style='width: 604px; height: 669px;'><noscript><a href='#'><img alt='Marimekko Chart ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;XK&#47;XKYSHFSJ4&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='604' height='669' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableausoftware.com%2F' /><param name='path' value='shared&#47;XKYSHFSJ4' / ><param name='toolbar' value='yes' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;XK&#47;XKYSHFSJ4&#47;1.png' / ><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>
+<div style='width:604px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'>
+<div style='float:right; padding-right:8px;'><a href='http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/shared/XKYSHFSJ4' target='_blank'>Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p>The optional extra with this chart is to get around the data densification issues. This is only a problem with the X Axis as the Y Axis stacks naturally anyway. The following calculations use the Maximum X Axis running along the Y Dimension only.</p>
+<p>[X Axis Complete]<br />
+WINDOW_MAX([X Axis])<br />
+DTC > Compute Using: Y Dimension</p>
+<p>[Label X Complete]<br />
+IF MIN([Point])=3 THEN [X Axis Complete] &#8211; [X%]/2 END</p>
+<p>To use these new calculations simply replace the [X Axis] and [Label X] fields from the previous blog (<a href="http://interworks.co.uk/random/marimekko-part-4-basic-marimekko/">Part 4</a>).</p>
+<p>Another optional extra is to ensure that the charts disappear when the same parameter is selected on both axis. Simply put the following field in to the filter box and filter on False only.<br />
+[Are They The Same?]<br />
+[Parameters].[Y Dimension]=[Parameters].[X Dimension]</p>
+<p>I have expanded on this by telling the audience that they need to select some different options, I&#8217;m sure you can find innovative ways to do this.</p>
+<p>I leave you to apply the chart to your own data, play with the formatting and enjoy this flexible chart type.  I would like to thank Joe Mako for his work on Marimekko in Tableau and for his subsequent interest in my blog.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/marimekko-part-5-totals/">Marimekko Part 5: Totals</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmarimekko-part-5-totals%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/marimekko-part-5-totals/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Marimekko Part 3: Table calculations</title>
+		<link>http://interworks.co.uk/blog/marimekko-part-3-table-calculations/</link>
+		<comments>http://interworks.co.uk/blog/marimekko-part-3-table-calculations/#comments</comments>
+		<pubDate>Mon, 06 Jan 2014 13:46:09 +0000</pubDate>
+		<dc:creator><![CDATA[Rob Austin]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Marimekko]]></category>
+		<category><![CDATA[Table Calculation]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=9541</guid>
+		<description><![CDATA[<p>In Part 2 we simulated a Marimekko using stacked bars but since the boundary for each element / polygon of a Marimekko in Tableau is made up from 4 Cartesian Coordinates we are going to use scales of 0 &#8211; 100 % for both X and Y axis and plot each corner of the polygon [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/marimekko-part-3-table-calculations/">Marimekko Part 3: Table calculations</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmarimekko-part-3-table-calculations%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>In <a href="http://interworks.co.uk/random/marimekko-part-2-parameters-table-calculations/">Part 2</a> we simulated a Marimekko using stacked bars but since the boundary for each element / polygon of a Marimekko in Tableau is made up from 4 Cartesian Coordinates we are going to use scales of 0 &#8211; 100 % for both X and Y axis and plot each corner of the polygon accordingly. This means that we will need a to calculate different values for various Points (1-4) for any given X or Y Dimension. We can use logical IF and CASE statements in our calculated fields to achieve this. Please note that [Point] should be dragged to Dimensions in the data window.</p>
+<p>[X Axis]:<br />
+IF ATTR([Point]) = 3<br />
+THEN PREVIOUS_VALUE(0) + [X%]<br />
+ELSE PREVIOUS_VALUE(0)<br />
+END<br />
+DTC &gt; Compute Using: Advanced &gt; Addressing: X Dimension, Point; Sort: Automatic</p>
+<p>[Y Axis]<br />
+ZN(PREVIOUS_VALUE(0)+<br />
+CASE ATTR([Point])<br />
+WHEN 1 THEN ZN(LOOKUP([% of Y within X],-1))<br />
+WHEN 2 THEN [% of Y within X]<br />
+WHEN 3 THEN 0<br />
+WHEN 4 THEN [% of Y within X]*-1<br />
+END)<br />
+DTC &gt; Compute Using: Advanced &gt; Addressing: Y Dimension, Point; Sort: Sum of Sales Decending.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2014/01/Screen-Shot-2014-01-03-at-14.14.02.png"><img class="alignleft size-medium wp-image-9496" alt="Screen Shot 2014-01-03 at 14.14.02" src="http://interworks.co.uk/wp-content/uploads/2014/01/Screen-Shot-2014-01-03-at-14.14.02-300x298.png" width="250" height="230" /></a>    <a href="http://interworks.co.uk/wp-content/uploads/2014/01/Screen-Shot-2014-01-06-at-09.29.07.png"><img src="http://interworks.co.uk/wp-content/uploads/2014/01/Screen-Shot-2014-01-06-at-09.29.07-300x221.png" alt="Screen Shot 2014-01-06 at 09.29.07" width="325" height="221" class="alignnone size-medium wp-image-9583" /></a></p>
+<p>When dealing with complicated table calculations it is best to start with a table of data, that way you can get a feel for what the calculations are really doing and make sure there are no mistakes before you create your viz. In the Crosstab above I have put [X-Dimension] in to columns, [Y Dimension] and [Point] in to Rows. I then drag [X Axis] in to the workspace followed by [Y Axis] to make use of measure names / measure values. Lastly I sorted the dimensions to make sure that they appeared in the same order as my table calculations.</p>
+<p>In the X Axis calculation above we are putting the previous value in for points 1 and 2 (or Zero if there is no previous value) we are then incrementing the value for point 3, it is behaving as a running sum for each Y Dimension along the X Dimension but only incrementing at point 3 (this means that point 4 will be the same as point 3 for each X Dimension. The value of the increment is calculated using [X%] as described earlier in the blog series.</p>
+<p>The Y Axis calculation is a little more complicated as the values are not common to each Y Dimension but run along the Y Dimension (and Point).  It restarts for each X Dimension calculating the result from the previous value along the Y Dimension and Point.</p>
+<p>If you understood that on your first read then you are doing very well. The table above illustrates how the results should look and may be easier to digest.</p>
+<p>In <a href="http://interworks.co.uk/random/marimekko-part-4-basic-marimekko/">Part 4</a> we will be putting these calculated fields in to a Mekko.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/marimekko-part-3-table-calculations/">Marimekko Part 3: Table calculations</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmarimekko-part-3-table-calculations%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/marimekko-part-3-table-calculations/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+	</channel>
+</rss>

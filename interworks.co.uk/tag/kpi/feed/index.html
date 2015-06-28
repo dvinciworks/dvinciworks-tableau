@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>InterWorks - Tableau Software &#38; Business Intelligence Consulting &#187; KPI</title>
+	<atom:link href="http://interworks.co.uk/tag/kpi/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 26 Jun 2015 08:09:24 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>Menu Navigation within a Tableau Workbook</title>
+		<link>http://interworks.co.uk/blog/menu-navigation-within-a-tableau-workbook/</link>
+		<comments>http://interworks.co.uk/blog/menu-navigation-within-a-tableau-workbook/#comments</comments>
+		<pubDate>Tue, 23 Oct 2012 12:36:02 +0000</pubDate>
+		<dc:creator><![CDATA[Aus]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Actions]]></category>
+		<category><![CDATA[Example]]></category>
+		<category><![CDATA[KPI]]></category>
+		<category><![CDATA[menu]]></category>
+		<category><![CDATA[Navigation]]></category>
+		<category><![CDATA[Splash Page]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[tooltip]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=3249</guid>
+		<description><![CDATA[<p>There has been a conversation floating around on how to successfully navigate around different sheets of a workbook. On the face of it there doesn&#8217;t appear to be an obvious way of doing this in Tableau (perhaps Tableau 8.0 will address this!!). However it is possible and below is an example of a menu system [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/menu-navigation-within-a-tableau-workbook/">Menu Navigation within a Tableau Workbook</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmenu-navigation-within-a-tableau-workbook%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>There has been a conversation floating around on how to successfully navigate around different sheets of a workbook. On the face of it there doesn&#8217;t appear to be an obvious way of doing this in Tableau (perhaps Tableau 8.0 will address this!!).</p>
+<p>However it is possible and below is an example of a menu system within a Tableau workbook which uses actions to navigate from sheet to sheet.<br />
+<script src="https://public.tableausoftware.com/javascripts/api/viz_v1.js" type="text/javascript"></script></p>
+<div class="tableauPlaceholder" style="width: 604px; height: 495px;"><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;publicrevizit.tableausoftware.com&#47;static&#47;images&#47;Me&#47;MenuExample_1&#47;Menu&#47;1_rss.png' style='border: none' /></a></noscript><object class="tableauViz" style="display: none;" width="604" height="495"><param name="host_url" value="https%3A%2F%2Fpublic.tableausoftware.com%2F" /><param name="site_root" value="" /><param name="name" value="MenuExample_1/Menu" /><param name="tabs" value="yes" /><param name="toolbar" value="yes" /><param name="static_image" value="https://publicrevizit.tableausoftware.com/static/images/Me/MenuExample_1/Menu/1.png" /><param name="animate_transition" value="yes" /><param name="display_static_image" value="yes" /><param name="display_spinner" value="yes" /><param name="display_overlay" value="yes" /><param name="display_count" value="yes" /><param name="showVizHome" value="no" /></object></div>
+<div style="width: 604px; height: 22px; padding: 0px 10px 0px 0px; color: black; font: normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float: right; padding-right: 8px;"><a href="http://www.tableausoftware.com/public/about-tableau-products?ref=https://public.tableausoftware.com/views/MenuExample_1/Menu" target="_blank">Learn About Tableau</a></div>
+</div>
+<p>It is definitely a useful trick to know about but is a little bit fiddly to set up.</p>
+<p>It is achieved by creating a series of sheets which will be used for navigation purposes. One will need to be created for each target dashboard plus an extra one for the return to main menu if you want. The example above has 4 dashboards so requires 5 separate sheets to create the navigation. Each sheet will then have its own filter action created from the worksheet menu to target the required dash. This can either be done as a select or menu link (both are used above).</p>
+<p>The text itself is created through a simple calculated field with the string written inside and dropped onto the label shelf.</p>
+<p>Create a menu dashboard to drop all the link worksheets onto, format to taste and you&#8217;re ready to go.</p>
+<p>The example is very simple but there is no reason not to include some sort of metric onto each of the links (they are worksheets after all) then rather than simply a menu list it becomes a KPI overview with links to more detail if some target is reached and flagged.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/menu-navigation-within-a-tableau-workbook/">Menu Navigation within a Tableau Workbook</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmenu-navigation-within-a-tableau-workbook%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/menu-navigation-within-a-tableau-workbook/feed/</wfw:commentRss>
+		<slash:comments>10</slash:comments>
+		</item>
+	</channel>
+</rss>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>InterWorks - Tableau Software &#38; Business Intelligence Consulting &#187; Fomatting</title>
+	<atom:link href="http://interworks.co.uk/tag/fomatting/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 26 Jun 2015 08:09:24 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>Data Connections &#8211; Making life easy for your fellow colleagues</title>
+		<link>http://interworks.co.uk/blog/data-connections-making-life-easy-for-your-fellow-colleagues/</link>
+		<comments>http://interworks.co.uk/blog/data-connections-making-life-easy-for-your-fellow-colleagues/#comments</comments>
+		<pubDate>Mon, 16 Jan 2012 13:49:34 +0000</pubDate>
+		<dc:creator><![CDATA[Kevin Pemberton]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Design]]></category>
+		<category><![CDATA[Fomatting]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=3001</guid>
+		<description><![CDATA[<p>In my experience most technical IT types love to name databases and data fields in weird and wonderful ways. A good example is this gem I encountered recently &#8220;ATV&#8221;, take a guess at what that means. If you create a data field called &#8220;ATV&#8221; and then expect your user base to understand what it means [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/data-connections-making-life-easy-for-your-fellow-colleagues/">Data Connections &#8211; Making life easy for your fellow colleagues</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fdata-connections-making-life-easy-for-your-fellow-colleagues%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>In my experience most technical IT types love to name databases and data fields in weird and wonderful ways. A good example is this gem I encountered recently &#8220;ATV&#8221;, take a guess at what that means. If you create a data field called &#8220;ATV&#8221; and then expect your user base to understand what it means then you do not understand your users, in general even a technical person prefers to read a proper name. (Within reason of course, see this <a title="Wikipedia Acronym Article" href="http://en.wikipedia.org/wiki/Acronym_and_initialism#Extremes" target="_blank">Wikipedia Acronym Article</a>.)<br />
+So have you guessed it yet? &#8220;ATV&#8221; is Average Transaction Value, I suspect you came up with all sorts of possibilities for that&#8230;</p>
+<p>Now you may say that once you know what &#8220;ATV&#8221; means you don&#8217;t need the longer format name, but what happens when we list lots of average fields together:</p>
+<table width="400px">
+<tbody>
+<tr>
+<td width="30%">Field Name</td>
+<td width="70%">Field Description</td>
+</tr>
+<tr>
+<td width="30%">ATF</td>
+<td width="70%">Average transaction per footfall</td>
+</tr>
+<tr>
+<td width="30%">ATV</td>
+<td width="70%">Average transaction value</td>
+</tr>
+<tr>
+<td width="30%">ASV</td>
+<td width="70%">Actual sales value</td>
+</tr>
+<tr>
+<td width="30%">AMV</td>
+<td width="70%">Average Margin Value</td>
+</tr>
+</tbody>
+</table>
+<p>See what I did there? &#8220;ASV&#8221; actually means &#8220;Actual Sales Value&#8221;&#8230; now imagine fifty fields with similar names, which ones are average and which are actual. Now, this is only one example but it applies in many, many situations. So here&#8217;s some tips in how to improve the lives of your Tableau users.</p>
+<p><strong>Naming the data connection</strong></p>
+<p>In Tableau the sixth step after selecting a server, database/file to connect to, logging in and choosing your tables/joins you can name your connection. Tableau by default names this with the name of the database you are connecting to and the primary table in question, for instance the Orders data connection in the Superstores demo data is called &#8220;Orders (Sample &#8211; Superstore Sales (Excel).xls)&#8221;.</p>
+<p><img src="http://www.interworks.co.uk/wp-content/uploads/2012/01/DATACONNBLOGIMAGE1.jpg" alt="" /></p>
+<p>I would recommend that you enter a useful, descriptive, non-cryptic name such as &#8220;Order data from the Superstore Sales Excel File&#8221;, this will then be displayed in the Data pane:</p>
+<p><img src="http://www.interworks.co.uk/wp-content/uploads/2012/01/DATACONNBLOGIMAGE2.jpg" alt="" /></p>
+<p><strong>Renaming fields</strong></p>
+<p>So we&#8217;ve named our connection to make it easier to understand so let&#8217;s rename the fields to make them user friendly. Again unique descriptive names are much better than &#8220;ATV&#8221;. So to rename a field just right-click the field in the Dimensions or Measures pane and choose the menu item &#8220;Rename&#8221;.</p>
+<p><img src="http://www.interworks.co.uk/wp-content/uploads/2012/01/DATACONNBLOGIMAGE3.jpg" alt="" /></p>
+<p>If you want to revert your custom field name to the original as set in the file/database you can use the reset button in the rename field dialog box.</p>
+<p><img src="http://www.interworks.co.uk/wp-content/uploads/2012/01/DATACONNBLOGIMAGE4.jpg" alt="" /></p>
+<p><strong>Hiding fields</strong></p>
+<p>Quite often when connecting to databases using Tableau you will end up with ID fields everywhere, these ID fields are usually numerical so they end up in the Measures pane, but what use are they to the end user of your data connection? So let&#8217;s hide them, right-click on the field in question and click the &#8220;Hide&#8221; option.</p>
+<p><img src="http://www.interworks.co.uk/wp-content/uploads/2012/01/DATACONNBLOGIMAGE5.jpg" alt="" /></p>
+<p>If you would like to see your hidden fields again, click the small down arrow at the top of the Dimensions pane and click &#8220;Show hidden fields&#8221;, your hidden fields will then show again in the panes but be greyed out to denote they are hidden.</p>
+<p><img src="http://www.interworks.co.uk/wp-content/uploads/2012/01/DATACONNBLOGIMAGE6.jpg" alt="" /></p>
+<p>To unhide a field right-click on the name of the field and choose &#8220;Unhide&#8221;.</p>
+<p><img src="http://www.interworks.co.uk/wp-content/uploads/2012/01/DATACONNBLOGIMAGE7.jpg" alt="" /></p>
+<p><strong>Comments</strong></p>
+<p>Tableau has a feature that allows you to comment data fields, this can be used for describing where a field comes from or how a field is calculated for instance.</p>
+<p>To add a comment right-click on the field and choose &#8220;Field Properties&#8221;, then &#8220;Comment&#8221; in the sub-menu.</p>
+<p><img src="http://www.interworks.co.uk/wp-content/uploads/2012/01/DATACONNBLOGIMAGE8.jpg" alt="" /></p>
+<p>Now when hovering over a field you get a popup showing the comment.</p>
+<p><img src="http://www.interworks.co.uk/wp-content/uploads/2012/01/comment_example.png" alt="" /></p>
+<p><strong>Setting defaults</strong></p>
+<p>Another useful user experience tool is setting defaults on measures such as &#8220;formats&#8221; (decimal places etc), &#8220;Aggregations&#8221; (SUM, AVG etc), and &#8220;Sorts&#8221; (Alphabetical, by field etc). Each of these tools saves the end user from doing it themselves and potentially &#8216;getting it wrong&#8217;.</p>
+<p><img src="http://www.interworks.co.uk/wp-content/uploads/2012/01/DATACONNBLOGIMAGE9.jpg" alt="" /></p>
+<p>By using these tools you will save yourself time by not having to answer questions about the data connection, and save the time of your users making them happier, and everyone loves a happy user.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/data-connections-making-life-easy-for-your-fellow-colleagues/">Data Connections &#8211; Making life easy for your fellow colleagues</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fdata-connections-making-life-easy-for-your-fellow-colleagues%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/data-connections-making-life-easy-for-your-fellow-colleagues/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

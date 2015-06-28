@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>InterWorks - Tableau Software &#38; Business Intelligence Consulting &#187; Data Visualisation</title>
+	<atom:link href="http://interworks.co.uk/tag/data-visualisation/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 26 Jun 2015 08:09:24 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>It’s your round at the bar…</title>
+		<link>http://interworks.co.uk/blog/radial-bar-chart/</link>
+		<comments>http://interworks.co.uk/blog/radial-bar-chart/#comments</comments>
+		<pubDate>Thu, 19 Dec 2013 13:33:55 +0000</pubDate>
+		<dc:creator><![CDATA[Dave Hart]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[bar chart]]></category>
+		<category><![CDATA[charts]]></category>
+		<category><![CDATA[Data Visualisation]]></category>
+		<category><![CDATA[Information is Beautiful]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[visualisation]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=9389</guid>
+		<description><![CDATA[<p>In this post, drawing some circular inspiration from the front cover of David McCandless&#8217; Information Is Beautiful, I&#8217;m going to take a simple bar chart and wrap it around a circle, for no other reason than to see if it can be done in Tableau. You can argue amongst yourselves as to whether this is [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/radial-bar-chart/">It’s your round at the bar…</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fradial-bar-chart%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>In this post, drawing some circular inspiration from the front cover of David McCandless&#8217; <em>Information Is Beautiful</em>, I&#8217;m going to take a simple bar chart and wrap it around a circle, for no other reason than to see if it can be done in Tableau. You can argue amongst yourselves as to whether this is a good/meaningful visualisation, but it&#8217;s a pretty little thing and has a few nice tricks in it so read it for its educational value rather than an integral part of your next client&#8217;s dashboard.</p>
+<p><span id="more-9389"></span></p>
+<p><strong>The Chart<br />
+</strong><br />
+We&#8217;re going to end up with something a bit like this. The finished visualisation is at the end of the post, complete with a few parameters to let you alter the appearance.</p>
+<p><img class="aligncenter" src="http://interworks.co.uk/wp-content/uploads/2013/12/radial-graphic.png" alt="" /></p>
+<p><strong>Overview<br />
+</strong></p>
+<p>We will be using Tableau&#8217;s line drawing capabilities to draw our graph, so we will need two points for each bar, one positioned on an inner circle and one extending outwards along the same angle. Once we&#8217;ve worked out an angle for each of our bars we just dig out some school geometry to break that down into an X,Y plot and we&#8217;re pretty much done.</p>
+<p><img class="aligncenter" src="http://interworks.co.uk/wp-content/uploads/2013/12/121913_1334_Itsyourroun1.png" alt="" /></p>
+<p style="text-align: center;"><em>Drawing the green bar requires us to know the two radii and the angle on which the bar is projected.<br />
+</em></p>
+<p><strong>Step 1: The Data</strong></p>
+<p>Normally on a scatter plot you are only plotting individual marks, so you have one row of data per point. However we need two points to define the line so we need to do a bit of work on the data connection. To do this we will use a UNION query to create a second version of the data. In order to keep the field calculations the same the second query will have a few strategically placed zeroes and will introduce a field called PathOrder which will be either a 0 or a 1 depending on whether it represents the start or the end of our lines. We will be using a cut down set of fields from the Sample Superstore (Subset) data source that comes with Tableau.</p>
+<p>Connect to the Superstore Sales Subset excel spreadsheet and then use a Custom SQL connection as follows:</p>
+<p><code>SELECT [Orders$].[Product Category] AS [Category],<br />
+[Orders$].[Product Name] AS [Item],<br />
+[Orders$].[Profit] AS [Profit],<br />
+[Orders$].[Row ID] AS [Row ID],<br />
+[Orders$].[Sales] AS [Sales],<br />
+1 AS PathOrder<br />
+FROM [Orders$]<br />
+UNION ALL<br />
+SELECT [Orders$].[Product Category] AS [Category],<br />
+[Orders$].[Product Name] AS [Item],<br />
+0 AS [Profit],<br />
+[Orders$].[Row ID] AS [Row ID],<br />
+0 AS [Sales],<br />
+0 AS PathOrder<br />
+FROM [Orders$]</code></p>
+<p><strong>Step 2: Table Calcs for Angles and Lengths<br />
+</strong></p>
+<p>The first thing we are going to do is to work out the angle for each bar, and then work out a normalised length for each bar. We used a normalised length to make it easier to specify the size of the internal circle and allow us to fix our axes on the final chart. For the angle we should know that there are <em>2π</em> radians in a full circle (360 degrees if that&#8217;s your thing). For the normalised length we are going to make the outer circle radius for the largest bar in the dataset equal to 1, so that means that each bar is going to be a fraction of the length between the two circles i.e. r2-r1</p>
+<p>In my worksheet I am going to make the size of the internal circle a parameter called RADIAL_INNER set to 0.2 and the outer circle for the largest bar will be set to 1. I&#8217;m from a coding background though and don&#8217;t like &#8220;magic numbers&#8221; in code, so I&#8217;ll use a parameter called RADIAL_OUTER and set that to 1. With good naming conventions you can often get code to self-comment, and it gives you more flexibility if you ever wanted to change the value later.</p>
+<p>Here are the calculated fields we need to create<br />
+<code><br />
+RADIAL_FIELD:<br />
+[Sales]</code></p>
+<p>RADIAL_ANGLE:<br />
+(INDEX()-1) * (1/WINDOW_COUNT(COUNT([RADIAL_FIELD]))) * 2 * PI()</p>
+<p>RADIAL_NORMALISED_LENGTH:<br />
+[RADIAL_INNER]<br />
++ IIF(ATTR([PathOrder]) = 0 , 0 ,<br />
+SUM([RADIAL_FIELD])/WINDOW_MAX(SUM([RADIAL_FIELD])) * ([RADIAL_OUTER]-[RADIAL_INNER]))</p>
+<p>RADIAL_X<br />
+[RADIAL_NORMALISED_LENGTH] * COS([RADIAL_ANGLE])</p>
+<p>RADIAL_Y<br />
+[RADIAL_NORMALISED_LENGTH] * SIN([RADIAL_ANGLE])</p>
+<p>&nbsp;</p>
+<p><strong>Step 3: Plotting the Cartesian Coordinates<br />
+</strong></p>
+<p>We are going to have our chart sorted by Category and then by Item so we need to create a combined field. Click Category then Ctrl+Click Item and right-click and select Combine Fields.</p>
+<ul>
+<li>Add RADIAL_X to Columns</li>
+<li>Add RADIAL_Y to Rows</li>
+<li>Select Line as the mark type on the Marks card</li>
+<li>Add Category to Colour on the Marks card</li>
+<li>Add our Combined Category&amp;Item field to Detail on the Marks card</li>
+<li>Add PathOrder to Path on the Marks card</li>
+<li>For RADIAL_X and RADIAL_Y set the table calc to Compute By Category&amp;Item</li>
+<li>Edit each axis so that its range is fixed from -1 to 1</li>
+<li>Format grid lines and axes as you wish</li>
+</ul>
+<p><strong>Step 4: Labelling and Parameters<br />
+</strong></p>
+<p>Now we have our chart, the values are not as useful to the user as they have been normalised to help us set the inner circle, so we need the field labels on there (both on the chart and on the tooltips). If you drag the RADIAL_FIELD to Label on the marks card you will see that some labels for the 0 points appear inside the circle, to stop this from happening we create a calculated field that only shows labels above a certain threshold, which I will add using a parameter so it can be changed on dashboards as well as making the table calc self-comment<br />
+<code><br />
+RADIAL_SELECTIVE_LABEL:<br />
+IIF(SUM([RADIAL_FIELD])&gt;[RADIAL_SELECTIVE_LABEL_THRESHOLD], SUM([RADIAL_FIELD]), NULL)<br />
+</code></p>
+<p>Now all we need to do is put it on a dashboard and set up our parameters to let the user customise the graph.</p>
+<ul>
+<li>Set the RADIAL_INNER parameter to have a Range of Allowable values from 0 to 1 step 0.1</li>
+<li>Set the RADIAL_SELECTIVE_LABEL_THRESHOLD to 100000</li>
+<li>Create a parameter RADIAL_FIELD_USE with available values &#8216;SALES&#8217;, &#8216;PROFIT&#8217;</li>
+<li>Edit the RADIAL_FIELD calc to:<br />
+<code>CASE [RADIAL_FIELD_USE] WHEN "Sales" THEN [Sales] WHEN "Profit" THEN [Profit] END</code></li>
+</ul>
+<p>&nbsp;</p>
+<p><script type='text/javascript' src='http://public.tableausoftware.com/javascripts/api/viz_v1.js'></script></p>
+<div class='tableauPlaceholder' style='width: 644px; height: 549px;'>
+    <noscript><br />
+    <a href='#'><img alt='Radial Chart ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;ZY&#47;ZY7JSFZKG&#47;1_rss.png' style='border: none' /></a><br />
+    </noscript><br />
+    <object class='tableauViz' width='644' height='549' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableausoftware.com%2F' /><param name='path' value='shared&#47;ZY7JSFZKG' / ><param name='toolbar' value='yes' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;ZY&#47;ZY7JSFZKG&#47;1.png' / ><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object>
+</div>
+<div style='width:644px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'>
+<div style='float:right; padding-right:8px;'>
+<a href='http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/shared/ZY7JSFZKG' target='_blank'>Learn About Tableau</a>
+</div>
+</div>
+<div class="shortcode-manager"></div>
+<p><strong>Conclusion<br />
+</strong></p>
+<p>Whilst it may not be the most informative of views it is a good example of how you can make Tableau draw visualisations that are a little out of the ordinary. Like I said at the beginning, sometimes you do things just to see if you can, so here&#8217;s the viz to prove it can be done! Hope you enjoyed the post, feel free to leave comments / ask questions below.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/radial-bar-chart/">It’s your round at the bar…</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fradial-bar-chart%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/radial-bar-chart/feed/</wfw:commentRss>
+		<slash:comments>12</slash:comments>
+		</item>
+		<item>
+		<title>JISC: how an offensive tweet helped the data viz revolution</title>
+		<link>http://interworks.co.uk/blog/jisc-how-an-offensive-tweet-helped-the-data-viz-revolution/</link>
+		<comments>http://interworks.co.uk/blog/jisc-how-an-offensive-tweet-helped-the-data-viz-revolution/#comments</comments>
+		<pubDate>Fri, 15 Jul 2011 12:26:10 +0000</pubDate>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Andy Cotgreave]]></category>
+		<category><![CDATA[Data Visualisation]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[Twitter]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=2668</guid>
+		<description><![CDATA[<p>Back in November, JISC InfoNet published the results of its survey of BI solutions in Higher- and Further- education. A snaphot is below. Being someone who is passionate about good quality visualisations, I rattled off a couple of less than complimentary tweets about this. Here&#8217;s one: JISC got in touch with me privately and they [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/jisc-how-an-offensive-tweet-helped-the-data-viz-revolution/">JISC: how an offensive tweet helped the data viz revolution</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fjisc-how-an-offensive-tweet-helped-the-data-viz-revolution%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Back in November, JISC InfoNet published the<a href="http://www.jiscinfonet.ac.uk/bi/survey-results/data-quality"> results of its survey of BI solutions in Higher- and Further- education</a>. A snaphot is below.</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/07/jisc-pie.png"><img class="alignnone size-large wp-image-2669" title="jisc pie" src="http://www.interworks.co.uk/wp-content/uploads/2011/07/jisc-pie-1024x638.png" alt="" width="491" height="306" /></a></p>
+<p>Being someone who is passionate about good quality visualisations, I rattled off a couple of less than complimentary tweets about this. Here&#8217;s one:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/07/dodgy-tweetr.png"><img class="alignnone size-full wp-image-2670" title="dodgy tweetr" src="http://www.interworks.co.uk/wp-content/uploads/2011/07/dodgy-tweetr.png" alt="" width="559" height="256" /></a></p>
+<p>JISC got in touch with me privately and they were rather upset at my offensive comments. I <a href="http://twitter.com/#!/acotgreave/status/7090174513123329">apologised on twitter</a> the following day, but behind the scenes, we explained why 3-D exploded pies are not a good idea, pointed them to some books (Stephen Few, Tufte, etc) and suggested that Tableau could achieve better, cleaner results. That cleared the air, and was the last I heard about it.</p>
+<p>Until a couple of days ago.</p>
+<p>JISC got back in touch to say they are now using Tableau for their visualisations (click here to see their first workbooks) I am absolutely delighted about this result. They have come up with some great visualisations, and have even blogged about the experience here. I feel totally relieved, too, that what started with a dodgy tweet has ended up with more converts to the ways of better data visualisation!</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/jisc-how-an-offensive-tweet-helped-the-data-viz-revolution/">JISC: how an offensive tweet helped the data viz revolution</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fjisc-how-an-offensive-tweet-helped-the-data-viz-revolution%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/jisc-how-an-offensive-tweet-helped-the-data-viz-revolution/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+	</channel>
+</rss>

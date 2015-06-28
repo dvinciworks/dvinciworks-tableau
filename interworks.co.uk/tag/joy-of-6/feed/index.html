@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>InterWorks - Tableau Software &#38; Business Intelligence Consulting &#187; Joy of 6</title>
+	<atom:link href="http://interworks.co.uk/tag/joy-of-6/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 26 Jun 2015 08:09:24 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>The joy of six: calculated fields</title>
+		<link>http://interworks.co.uk/blog/the-joy-of-six-calculated-fields/</link>
+		<comments>http://interworks.co.uk/blog/the-joy-of-six-calculated-fields/#comments</comments>
+		<pubDate>Thu, 03 Feb 2011 23:54:20 +0000</pubDate>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Andy Cotgreave]]></category>
+		<category><![CDATA[Calculated Fields]]></category>
+		<category><![CDATA[Joy of 6]]></category>
+		<category><![CDATA[Table Calculation]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[tooltip]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=2116</guid>
+		<description><![CDATA[<p>I couldn&#8217;t resist adding one more post in my Joy of Six series. Even though v6 has been with us a while , I&#8217;m still discovering how to use its great new features. In particular, calculated fields are a huge new addition that require a certain amount of head scratching before it all becomes clear. [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/the-joy-of-six-calculated-fields/">The joy of six: calculated fields</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fthe-joy-of-six-calculated-fields%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>I couldn&#8217;t resist adding one more post in my <a href="http://www.interworks.co.uk/tag/joy-of-6">Joy of Six series</a>. Even though v6 has been with us a while , I&#8217;m still discovering how to use its great new features. In particular, calculated fields are a huge new addition that require a certain amount of head scratching before it all becomes clear. This post describes how I solved a problem with calculated fields.</p>
+<p>In my day job at the University of Oxford, we&#8217;re about to publish our annual student statistics. These have line charts of changing number of students over time, broken down by gender, programme type, nationality, etc. The dashboard doesn&#8217;t have a lot of space on it, so it&#8217;s difficult to add labels to the lines. This means that while the trends are clear, the actual values are hidden. Our users are wary of charts without labels: they are more comfortable being able to easily see the numbers.</p>
+<p>I wanted to stick with my clean, label-free charts, and put all the information in the tooltip instead. Regular readers know I love to muck about with tooltips (whether it&#8217;s <a href="http://www.interworks.co.uk/blog/the-data-studio-blog/andy-cotgreave/tableau-tooltips-conditional-formatting">conditional formatting</a> or <a href="http://www.interworks.co.uk/blog/the-data-studio-blog/andy-cotgreave/charts-in-a-tooltip">putting bar charts in them</a>). The solution that is shown here was a collaboration with <a href="http://twitter.com/#!/joemako">Joe Mako</a> and <a href="http://www.equinox.co.nz/Pages/index.aspx">Richard Leeke</a> &#8211; the two people who know more about calculated fields than anyone else I know. I&#8217;ve recreated the solution using the Superstore samples data below. Hover your mouse over a mark to see all Order values that are on the line you&#8217;re over:</p>
+<p><script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script><object class="tableauViz" width="594" height="789" style="display:none;"><param name="name" value="Tooltipswithhistory/Tooltipswithallvaluesinthem" /><param name="toolbar" value="yes" /><param name="tabs" value="no" /><param name="tabs" value="no" /></object><noscript>Show all pane values in a tooltip Hover your mouse over a mark to see a table of all values in the pane <br /><a href="#"><img alt="Show all pane values in a tooltip Hover your mouse over a mark to see a table of all values in the pane " src="http://public.tableausoftware.com/static/images/To/Tooltipswithhistory/Tooltipswithallvaluesinthem/1_rss.png" height="100%" /></a></noscript></p>
+<div style="width:594px;height:22px;padding:0px 10px 0px 0px; color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float:right; padding-right:8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/Tooltipswithhistory/Tooltipswithallvaluesinthem" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>The viz shows a basic small-multiple of number of orders by Region and Category. Nothing special here, and the default tooltip isn&#8217;t spectacular, either:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/02/default-tooltip.png"><img class="size-full wp-image-2117 alignnone" title="default tooltip" src="http://www.interworks.co.uk/wp-content/uploads/2011/02/default-tooltip.png" alt="" width="212" height="67" /></a></p>
+<p>The key point is that it only shows the value for the mark your mouse is over. I want <strong>all </strong>the values on the line.  Calculated fields allow us to do this. This post can&#8217;t cover the full scope of Table Calculations: one could write a whole book on the subject. I&#8217;ll just cover how this problem was solved.</p>
+<p>Let&#8217;s first see how the tooltip looks in the Edit Tooltip box:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/02/edit-tooltip-box2.png"><img class="alignnone size-full wp-image-2121" style="border: 1px solid black;" title="edit tooltip box2" src="http://www.interworks.co.uk/wp-content/uploads/2011/02/edit-tooltip-box2.png" alt="" width="459" height="46" /></a></p>
+<p>There are two table calculations in there (the <strong>AGG(&#8230;)</strong> fields), and they are both on the Level of Detail shelf:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/02/level-of-detail2.png"><img class="alignnone size-full wp-image-2122" title="level of detail2" src="http://www.interworks.co.uk/wp-content/uploads/2011/02/level-of-detail2.png" alt="" width="142" height="84" /></a></p>
+<p>We build our tooltip around the mark your mouse is over. The highlighted mark is the one that appears in bold, red. It&#8217;s no different than the default tooltip. The magic is in the calculations. Before we look at the calculation, I&#8217;ll summarise what I want to show in the tooltip. Depending on which mark I have selected (is it first in the line, in the middle, or at the end?) I want some values before or after the current mark:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/02/tooltip-which-mark.png"><img class="alignnone size-full wp-image-2124" title="tooltip which mark" src="http://www.interworks.co.uk/wp-content/uploads/2011/02/tooltip-which-mark.png" alt="" width="639" height="170" /></a></p>
+<p>We can&#8217;t avoid it any more, we need to see how the Text Before and Text After fields are written. It&#8217;s not pretty. In fact, it&#8217;s too wide to even fit in the width of the blog. Here&#8217;s a thumbnail of the Text Before field. Click on it to see its full &#8220;beauty&#8221;:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/02/text-before.png"><img class="alignnone size-medium wp-image-2129" title="text before" src="http://www.interworks.co.uk/wp-content/uploads/2011/02/text-before-300x68.png" alt="" width="300" height="68" /></a></p>
+<p>What on earth is going on in there? Here&#8217;s the logic:</p>
+<p>Let&#8217;s say your mouse is over 2009. The calculation iterates through each year in the dataset (using a parameter called Max Year In Dataset). For each year that is less than 2009, it builds up a string with a carriage return, the year, a tab character, and the sales from that year, using LOOKUP, offsetting from 2009.  Yes, it&#8217;s convoluted. You may even think it&#8217;s not worth the effort. But, if you&#8217;ve made it this far in the post, I&#8217;m thinking that you&#8217;re with me! The Text After field does the same thing for years <em>after</em> the year your mouse is over.</p>
+<p>Once you&#8217;ve written the field, you need to think about the addressing and partitioning. I can&#8217;t go into a full description of the principles here (but<a href="http://onlinehelp.tableausoftware.com/v6.0/online/Output/wwhelp/wwhimpl/common/html/wwhelp.htm?context=Tableau_Online_Help&amp;file=Tableau%20Online%20Help-25-19.html"> the online help was good enough for me to get my head round the basics</a>). For this viz, we are only interested in the Year of Order Date field, so, once the calculation is dropped onto the Level of Detail, set it to Compute Using > Year of Order Date:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/02/yr-of-order-date.png"><img class="alignnone size-full wp-image-2133" title="yr of order date" src="http://www.interworks.co.uk/wp-content/uploads/2011/02/yr-of-order-date.png" alt="" width="464" height="426" /></a></p>
+<p>You&#8217;ve now got all your parts in place. You need to build the tooltip and format it as you want. Phew!</p>
+<p>Granted, that was not easy. And, given the complexity, was the juice worth the squeeze? If you had lots of space on your dashboard, a better way to do the same thing would be to have a separate sheet on the dashboard that updates on a Hover Action. If you hover your mouse over a mark, the extra worksheet is updated to show the list of orders for that pane. That would be more visible than the tooltip, and easier to implement. However, it depends on you having plenty of spare space on your dashboard.</p>
+<p>There are several caveats of course. Here&#8217;s two. I&#8217;ve used a parameter to hardcode the maximum year value, which is a maintenance headache as the dataset changes. I&#8217;ve also limited it to show values 4yrs either side of the current year. Writing a table calculation to show anything more than 5yrs before/after the current year is going to be impractical.</p>
+<p>As I am also discovering, there are many ways to create the same solution using table calculations. It&#8217;s also very easy to create table calcs that slow your workbook down. The solution outlined here is possibly the fastest. I certainly came up with much slower ways while developing this solution. For information on optimisation, I&#8217;d really recommend you check out the relevant threads on the forum. Good luck!</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/the-joy-of-six-calculated-fields/">The joy of six: calculated fields</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fthe-joy-of-six-calculated-fields%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/the-joy-of-six-calculated-fields/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+		<item>
+		<title>Joy of six: Gapminder, Tableau style</title>
+		<link>http://interworks.co.uk/blog/joy-of-six-gapminder/</link>
+		<comments>http://interworks.co.uk/blog/joy-of-six-gapminder/#comments</comments>
+		<pubDate>Mon, 06 Dec 2010 23:02:29 +0000</pubDate>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Andy Cotgreave]]></category>
+		<category><![CDATA[Gapminder]]></category>
+		<category><![CDATA[Joy of 6]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1776</guid>
+		<description><![CDATA[<p>As soon as I got my hands on Tableau v6, the first thing that came to mind was Gapminder. Those new shiny features meant it would be possible to recreate the amazing Trendalyzer software in Tableau. Here&#8217;s how I did: Wealth and health of nations: a Gapminder tribute Powered by Tableau To do the viz, [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/joy-of-six-gapminder/">Joy of six: Gapminder, Tableau style</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fjoy-of-six-gapminder%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>As soon as I got my hands on Tableau v6, the first thing that came to mind was Gapminder. Those new shiny features meant it would be possible to recreate the amazing Trendalyzer software in Tableau. Here&#8217;s how I did:</p>
+<p><script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script><object class="tableauViz" width="604" height="895" style="display:none;"><param name="name" value="Gapminder/Gapminder" /><param name="toolbar" value="yes" /><param name="tabs" value="yes" /><param name="tabs" value="yes" /></object><noscript>Wealth and health of nations: a Gapminder tribute <br /><a href="#"><img alt="Wealth and health of nations: a Gapminder tribute " src="http://public.tableausoftware.com/static/images/Ga/Gapminder/Gapminder/1_rss.png" height="100%" /></a></noscript></p>
+<div style="width:604px;height:22px;padding:0px 10px 0px 0px; color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float:right; padding-right:8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/Gapminder/Gapminder" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>To do the viz, I took advantage of lots of the new features, many of which I have already blogged about.</p>
+<h2><strong>Data Blending<br />
+ </strong></h2>
+<p>There are 9 connections required to show the viz above:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/DataConnections.png"><img class="alignnone size-full wp-image-1778" title="DataConnections" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/DataConnections.png" alt="" width="221" height="195" /></a></p>
+<p>Okay, I acknowledge that that is not a shade on Gapminder&#8217;s 250+ datasets. But, hey, I&#8217;m not Google, you know! Tableau coped well with 9 datasets. What was difficult was reshaping the Gapminder data in Excel in order to get the best out of it in Tableau. Don&#8217;t know about Reshaping? Then you need the<a href="http://kb.tableau.com/articles/knowledgebase/addin-reshaping-data-excel"> Tableau Reshaper add-in</a>&#8230;</p>
+<h2><strong>Parameters<br />
+ </strong></h2>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/parameters.png"><img class="size-full wp-image-1782 alignnone" title="parameters" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/parameters.png" alt="" width="215" height="292" /></a></p>
+<p>There are lots of parameters in this viz. Mostly, I used them to enable the user to choose which Dimensions/Measures to display on the viz. You can read about how to do that in my earlier<a href="http://www.interworks.co.uk/blog/the-data-studio-blog/andy-cotgreave/user-built-views"> Joy of 6: user-built views</a> post.</p>
+<h2>Page controls</h2>
+<p>At last, the Page Filter grew up. A valuable but neglected feature in previous versions, it&#8217;s been beefed up enormously this time around. The viz takes full advantage of Page filters and the ability to Show History. Click on a mark in the viz to see how it&#8217;s changed.</p>
+<p>The single, pretty major issue is that on a Server or Public view, you don&#8217;t get a Play button. Given the architecture of the Tableau Server, this makes perfect sense: it is simply not possible to get data from the server to the client quick enough to work. You need to download the workbook to see the playback controls. This is a shame, as it&#8217;s a cool feature.</p>
+<h2><strong>Tabbed views<br />
+ </strong></h2>
+<p>My favourite &#8220;easy-win&#8221; from the new features is the ability to use tabbed views to create an About Box (<a href="http://www.interworks.co.uk/blog/the-data-studio-blog/andy-cotgreave/the-joy-of-six-about-boxes">read the blog post about this</a>). In this viz, it allows me to create links to the source and other places, and add context to the viz. Without the About Box, I would either have to miss those out, or use up valuable screen real estate on the viz itself.</p>
+<h2>Challenges?</h2>
+<p>This project was not without challenges&#8230;</p>
+<h3>Gapminder data interpolates</h3>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/interpolated.png"><img class="size-full wp-image-1780 alignnone" style="margin: 10px;" title="interpolated" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/interpolated.png" alt="" width="248" height="246" /></a></p>
+<p>On the Gapminder site, if a data point is missing, it interpolates the value. That makes for a nice smooth animation on their website. Unfortunately, Tableau cannot invent data in that way. See those lines through the circles in the image above? That&#8217;s where Gapminder interpolated in order to make a smooth interpolation.</p>
+<h3>Log and linear</h3>
+<p>Gapminder automatically switches between log and lin axis scales. This is really nice, as it removes the burden from the user, and makes everything fit properly. Alas, no such feature in Tableau as yet. I wouldn&#8217;t even expect Tableau to implement this &#8211; it&#8217;s a very niche feature.</p>
+<h3>Annotations: two problems.</h3>
+<p>See the light-grey label showing Year that appears on the chart itself? In Gapminder, that label fits the whole chart. in Tableau, area annotations are at the front, so if you try to recreate labels as large as they are in Gapminder, the obscure the data points. But that wasn&#8217;t the biggest issue. Oh no. The area annotation is specific to the Dimension being selected. Therefore, I needed to add a separate annotation for every single X-Y axis combination. That was pretty tedious&#8230;</p>
+<h3>Some Gapminder data is just plain wierd</h3>
+<p>I had to pick and choose the data I used for this viz. In some cases there were too many missing data points. And in others, the values just don&#8217;t seem credible. For example, if you choose the CO2 emissions Dimension, well, I just don&#8217;t believe those values.</p>
+<h2>Conclusions</h2>
+<p>This has been a pretty challenging viz to get right. Having a defined end-goal (Gapminder) to try and hit isn&#8217;t the normal way of developing in Tableau. It&#8217;s better to explore the data, find the story, and tidy things up when you get to wherever you&#8217;ve got to. Forcing Tableau to be like something else is trickier.</p>
+<p>Tableau isn&#8217;t optimized as well as Gapminder. Tableau can&#8217;t match Gapminder for smoothness of animation or flexibility of showing the different data. But that&#8217;s not really what Tableau is trying to do. It does everything it needs to do in this project just fine. Most of your business applications will be simpler than this. I think the end result above is great. It was a great way to explore the new features.</p>
+<p>I hope you enjoyed the project, too. This is the end of my Joy of 6 posts -<a href="http://www.interworks.co.uk/tag/joy-of-6"> click here to read the rest.</a></p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/joy-of-six-gapminder/">Joy of six: Gapminder, Tableau style</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fjoy-of-six-gapminder%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/joy-of-six-gapminder/feed/</wfw:commentRss>
+		<slash:comments>7</slash:comments>
+		</item>
+		<item>
+		<title>Joy of six: dynamic multi-member groups</title>
+		<link>http://interworks.co.uk/blog/joy-of-six-dynamic-multi-member-groups/</link>
+		<comments>http://interworks.co.uk/blog/joy-of-six-dynamic-multi-member-groups/#comments</comments>
+		<pubDate>Mon, 29 Nov 2010 16:14:57 +0000</pubDate>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Andy Cotgreave]]></category>
+		<category><![CDATA[Calculated Fields]]></category>
+		<category><![CDATA[Groups]]></category>
+		<category><![CDATA[Joy of 6]]></category>
+		<category><![CDATA[Parameters]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=3151</guid>
+		<description><![CDATA[<p>First off, let me say that I do not take credit for the contents of this post. Credit is due to Joe Mako and Richard Leeke who responded to my questions on the Tableau Forum. This is a good time to say that if you aren&#8217;t using the forum yet, get over there to ask [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/joy-of-six-dynamic-multi-member-groups/">Joy of six: dynamic multi-member groups</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fjoy-of-six-dynamic-multi-member-groups%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>First off, let me say that I do not take credit for the contents of this post. Credit is due to <a href="http://twitter.com/#!/search/users/joe%20mako">Joe Mako</a> and <a href="http://www.equinox.co.nz/">Richard Leeke</a> who responded to my questions on the Tableau Forum. This is a good time to say that if you aren&#8217;t using the forum yet, get over there to ask or answer all manner of Tableau questions from the trivial to the fiendish.</p>
+<p>I am posting this solution because it is such a sweet use of calculated fields. Here&#8217;s the scenario: &#8220;I want the user to be able to see the top n customers&#8217; average sales. They should be able to control the &#8220;n&#8221; value, and show or hide all the rest of the customers.&#8221; Here&#8217;s the answer:</p>
+<p><script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script><object class="tableauViz" width="594" height="919" style="display:none;"><param name="name" value="JoyOfSixtopNandtherest/Topnandtherest" /><param name="toolbar" value="yes" /><param name="tabs" value="no" /></object><noscript>Let the user compare top n against the restUse the parameters to control the Top n value. Use the &#8220;Show all&#8230;&#8221; parameter to collapse/show all customers ranked outside the top n. <br /><a href="#"><img alt="Let the user compare top n against the restUse the parameters to control the Top n value. Use the "Show all..." parameter to collapse/show all customers ranked outside the top n. " src="http://public.tableausoftware.com/static/images/Jo/JoyOfSixtopNandtherest/Topnandtherest/1_rss.png" height="100%" /></a></noscript></p>
+<div style="width:594px;height:22px;padding:0px 10px 0px 0px; color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float:right; padding-right:8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/JoyOfSixtopNandtherest/Topnandtherest" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>I&#8217;m afraid I am not going to go through the solution. Why? Well, I barely understand it myself, and I don&#8217;t think I&#8217;d be able to explain it properly. I recommend you download the workbook and <a href="http://community.tableau.com/thread/109093">look at the forum thread</a> to work it out. Otherwise, just be in awe at the work of Joe and Richard!</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/joy-of-six-dynamic-multi-member-groups/">Joy of six: dynamic multi-member groups</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fjoy-of-six-dynamic-multi-member-groups%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/joy-of-six-dynamic-multi-member-groups/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>The joy of six: one against the rest</title>
+		<link>http://interworks.co.uk/blog/us-v-the-rest/</link>
+		<comments>http://interworks.co.uk/blog/us-v-the-rest/#comments</comments>
+		<pubDate>Mon, 22 Nov 2010 21:21:04 +0000</pubDate>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Andy Cotgreave]]></category>
+		<category><![CDATA[Calculated Fields]]></category>
+		<category><![CDATA[Groups]]></category>
+		<category><![CDATA[Joy of 6]]></category>
+		<category><![CDATA[Parameters]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1457</guid>
+		<description><![CDATA[<p>This is the third post on simple tricks that are available in version 6. This one represents a common request we get. The client says &#8220;I want to compare the performance of x against everyone else.&#8221; What is x? Well, it could be Customers, Departments, Countries, anything. Parameters once again make this easy: Let the [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/us-v-the-rest/">The joy of six: one against the rest</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fus-v-the-rest%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>This is the third post on simple tricks that are available in version 6. This one represents a common request we get. The client says &#8220;I want to compare the performance of <em><strong>x </strong></em>against everyone else.&#8221; What is <em><strong>x</strong></em>? Well, it could be Customers, Departments, Countries, anything.</p>
+<p>Parameters once again make this easy:</p>
+<p><script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script><object class="tableauViz" width="594" height="919" style="display:none;"><param name="name" value="JoyOfSixcompare1veveryoneelse/onevtherest" /><param name="toolbar" value="yes" /><param name="tabs" value="no" /></object><noscript>Let the user compare one against the restUse the parameter control to choose the state you want! <br /><a href="#"><img alt="Let the user compare one against the restUse the parameter control to choose the state you want! " src="http://public.tableausoftware.com/static/images/Jo/JoyOfSixcompare1veveryoneelse/onevtherest/1_rss.png" height="100%" /></a></noscript></p>
+<div style="width:594px;height:22px;padding:0px 10px 0px 0px; color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float:right; padding-right:8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/JoyOfSixcompare1veveryoneelse/onevtherest" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>The drop-down filter is a parameter control, in this example showing every State in the Coffee Chain connection. The Tableau devs have made it easy to create a parameter containing every member of a Dimension. Right-click on the State Dimension, and choose Create Parameter&#8230;:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/11/Create-parameter-menu.png"><img class="alignnone size-full wp-image-1597" title="Create parameter menu" src="http://www.interworks.co.uk/wp-content/uploads/2010/11/Create-parameter-menu.png" alt="" width="311" height="586" /></a></p>
+<p>That&#8217;s your parameter list created &#8211; show the parameter control on your worksheet by right-clicking on the parameter and choosing <em><strong>Show parameter control</strong></em>.</p>
+<p>Next up we create a calculated field to return either the State selected in the parameter, or all the others. This is essentially a dynamic Group, with one lone member of the Dimension, and everyone lumped together in the &#8220;Other&#8221; category. In this case, you can call the &#8220;Other&#8221; category anything you want. Here&#8217;s the calculated field:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/11/One-state-v-the-rest.png"><img class="alignnone size-full wp-image-1598" title="One state v the rest" src="http://www.interworks.co.uk/wp-content/uploads/2010/11/One-state-v-the-rest.png" alt="" width="348" height="236" /></a></p>
+<p>This is the field you drop onto your worksheet. Whichever shelf it is on, it will only show two members: the State selected in the Parameter, and everyone else lumped together.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/us-v-the-rest/">The joy of six: one against the rest</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fus-v-the-rest%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/us-v-the-rest/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>The joy of six: add an &#8220;About&#8221; box</title>
+		<link>http://interworks.co.uk/blog/the-joy-of-six-about-boxes/</link>
+		<comments>http://interworks.co.uk/blog/the-joy-of-six-about-boxes/#comments</comments>
+		<pubDate>Wed, 17 Nov 2010 22:14:09 +0000</pubDate>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[About box]]></category>
+		<category><![CDATA[Andy Cotgreave]]></category>
+		<category><![CDATA[Joy of 6]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1641</guid>
+		<description><![CDATA[<p>You may have seen my response to an Information is Beautiful post. Here&#8217;s the viz I used in that post: Wikipedia banner testsThe effectiveness of donation appeals on Wikipedia Powered by Tableau This uses sheet tabs to create an &#8220;About this viz&#8221; tab. It is good practise to credit data sources and date your vizualisation. [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/the-joy-of-six-about-boxes/">The joy of six: add an &#8220;About&#8221; box</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fthe-joy-of-six-about-boxes%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>You may have seen <a href="http://www.interworks.co.uk/information-is-beautiful/wikipedia-information-is-beautiful">my response</a> to an Information is Beautiful post. Here&#8217;s the viz I used in that post:</p>
+<p><script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script><object class="tableauViz" width="594" height="815" style="display:none;"><param name="name" value="Wikpediaappeals/Wikipediabanners" /><param name="toolbar" value="yes" /><param name="tabs" value="yes" /></object><noscript>Wikipedia banner testsThe effectiveness of donation appeals on Wikipedia <br /><a href="#"><img alt="Wikipedia banner testsThe effectiveness of donation appeals on Wikipedia " src="http://public.tableausoftware.com/static/images/Wi/Wikpediaappeals/Wikipediabanners/1_rss.png" height="100%" /></a></noscript></p>
+<div style="width:594px;height:22px;padding:0px 10px 0px 0px; color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float:right; padding-right:8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/Wikpediaappeals/Wikipediabanners" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>This uses sheet tabs to create an &#8220;About this viz&#8221; tab. It is good practise to credit data sources and date your vizualisation. The About Box allows you to do this. I&#8217;ve used parameters to store the hyperlinks, and dropped them onto worksheets embedded into the &#8220;About this viz&#8221; dashboard. </p>
+<p>Prior to v6, the choice was either to omit the credits, or squeeze them into your dashboard somehwere. No more!</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/the-joy-of-six-about-boxes/">The joy of six: add an &#8220;About&#8221; box</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fthe-joy-of-six-about-boxes%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/the-joy-of-six-about-boxes/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+		<item>
+		<title>The joy of six: easy error bars</title>
+		<link>http://interworks.co.uk/blog/error-bars/</link>
+		<comments>http://interworks.co.uk/blog/error-bars/#comments</comments>
+		<pubDate>Mon, 15 Nov 2010 21:38:56 +0000</pubDate>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Andy Cotgreave]]></category>
+		<category><![CDATA[Dual Axis]]></category>
+		<category><![CDATA[Error bars]]></category>
+		<category><![CDATA[Joy of 6]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1455</guid>
+		<description><![CDATA[<p>Over on the forum, Hadbar asked a question about Error Bars. He asked the question back in the days of version 5, when it wasn&#8217;t straightforward to make a pleasant error bar. However, now we have the Joy of Six, we can use the new dual axis/multiple mark features to create some visually appealing error [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/error-bars/">The joy of six: easy error bars</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Ferror-bars%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Over on the forum,<a href="http://community.tableau.com/thread/106154" target="_blank"> Hadbar asked a question about Error Bars</a>. He asked the question back in the days of version 5, when it wasn&#8217;t straightforward to make a pleasant error bar. However, now we have the Joy of Six, we can use the new dual axis/multiple mark features to create some visually appealing error bars:</p>
+<p><script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script><object class="tableauViz" width="594" height="569" style="display:none;"><param name="name" value="JoyOfSixErrorbars/EasyErrorBars" /><param name="toolbar" value="yes" /><param name="tabs" value="no" /></object><noscript>Easy error barsUse dual axes to create tidy error bars <br /><a href="#"><img alt="Easy error barsUse dual axes to create tidy error bars " src="http://public.tableausoftware.com/static/images/Jo/JoyOfSixErrorbars/EasyErrorBars/1_rss.png" height="100%" /></a></noscript></p>
+<div style="width:594px;height:22px;padding:0px 10px 0px 0px; color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float:right; padding-right:8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/JoyOfSixErrorbars/EasyErrorBars" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>Tableau won&#8217;t calculate the error values for you, so you need those in your dataset. With this example, you need two measures:</p>
+<ul>
+<li>Error &#8211; the magnitude of the error</li>
+<li>Error lower &#8211; the lower limit of the error bar</li>
+</ul>
+<p>Here&#8217;s how we build the viz. First make a regular bar chart with the relevant Dimension and Measure, as below:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/11/RegularBarChart.png"><img class="alignnone size-full wp-image-1605" title="RegularBarChart" src="http://www.interworks.co.uk/wp-content/uploads/2010/11/RegularBarChart.png" alt="" width="550" height="361" /></a></p>
+<p>To create the error bar, we build a Gantt chart on the second axis. It&#8217;s lower limit is the value of the Error lower measure, and it&#8217;s size (height) is the size of the error. Step one is to put the MIN(Error Lower) pill on the Rows shelf, and set it to use Dual Axis (click the picture to see details):</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/11/Min-Error-dual-axis.png"><img class="alignnone size-full wp-image-1606" title="Min Error dual axis" src="http://www.interworks.co.uk/wp-content/uploads/2010/11/Min-Error-dual-axis.png" alt="" width="578" height="401" /></a></p>
+<p>We&#8217;ve now got a dual axis graph, but there&#8217;s some way to go yet. The Error Bars need to use a different mark type, in this case a Gantt Bar. Right-click on the axis, and choose <em><strong>Mark Type&#8230;Gantt Bar</strong></em>:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/11/Change-to-Gantt-Bar.png"><img class="alignnone size-full wp-image-1613" title="Change to Gantt Bar" src="http://www.interworks.co.uk/wp-content/uploads/2010/11/Change-to-Gantt-Bar.png" alt="" width="493" height="457" /></a></p>
+<p>Set the Size of the Gantt Bar to the size of the error. To do this, make sure the Marks shelf is showing the correct Mark. In this case, it&#8217;s MIN(Error Lower). This is a new feature in v6. In case you&#8217;ve not seen it, you can page through all the Marks:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/11/Marks-scrolling.png"><img class="alignnone size-full wp-image-1614" title="Marks scrolling" src="http://www.interworks.co.uk/wp-content/uploads/2010/11/Marks-scrolling.png" alt="" width="399" height="246" /></a></p>
+<p>Once you have found the correct mark, put the Error measure onto the Size shelf &#8211; that creates the Gantt bar with the height of the error. You&#8217;ll probably now notice that you have error bars, but they&#8217;re wide, and not in the right position relative to the bar. This fat bar problem is easily fixed &#8211; just slide the Size slider on the Mark shelf to be the smallest possible. That creates a nice thin line.</p>
+<p>How to get the error bars to align correctly? Simple &#8211; right-click on the axis and choose <em><strong>Synchronise Axis</strong></em>. While you&#8217;re there, you don&#8217;t need to show the right-hand axis at all. You can&#8217;t properly hide axes in Tableau, but you can format them so they don&#8217;t appear. Right-click on the axis and choose <em><strong>Edit axis</strong></em>. Delete the title on the General tab, and in the Tick Marks tab, set the Minor and Major Tick Marks to <span style="text-decoration: underline;">N</span>one. Click OK and your axis has &#8220;disappeared&#8221;.</p>
+<p>Lo and behold &#8211; you have some error bars. Play around with widths/colours and other settings to make it appear just how you want it. Coming next in the Joy Of Six series&#8230;. using parameters to create dynamic groups.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/error-bars/">The joy of six: easy error bars</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Ferror-bars%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/error-bars/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>The joy of six: user-built views</title>
+		<link>http://interworks.co.uk/blog/user-built-views/</link>
+		<comments>http://interworks.co.uk/blog/user-built-views/#comments</comments>
+		<pubDate>Wed, 10 Nov 2010 15:45:18 +0000</pubDate>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Andy Cotgreave]]></category>
+		<category><![CDATA[Calculated Fields]]></category>
+		<category><![CDATA[Joy of 6]]></category>
+		<category><![CDATA[Parameters]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1579</guid>
+		<description><![CDATA[<p>Today is the Joy of Six day. Tableau v6 is incredible, and I&#8217;ve been lucky to have had my hands on the beta versions for a while. The Tableau site itself is a great resource for learning about the amazing new features and how to use them. I wanted to do a series of posts [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/user-built-views/">The joy of six: user-built views</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fuser-built-views%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Today is the Joy of Six day. Tableau v6 is incredible, and I&#8217;ve been lucky to have had my hands on the beta versions for a while. The Tableau site itself is a great resource for learning about the amazing new features and how to use them. I wanted to do a series of posts about how these new features are already being practically applied to solve our own real world problems.</p>
+<p>A common problem we see is that we build a view for a user, only to have them say, &#8220;Hey, that&#8217;s great, but instead of Profit, can you show Sales? Oh, and also, I&#8217;d like to see it broken down by Container, not State&#8221;. In the old days (pre v6) you had to build a view for each request. Not now. Oh no. Not now. Now you can build in masses more flexibility into your views.</p>
+<p>The dashboard below shows an example using Tableau&#8217;s sample data:</p>
+<p><script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script><object class="tableauViz" width="594" height="919" style="display:none;"><param name="name" value="JoyOfSixbuildyourown/userbuiltviews" /><param name="toolbar" value="yes" /><param name="tabs" value="no" /></object><noscript>Let the user build their own view!Use the filters to show the view you want <br /><a href="#"><img alt="Let the user build their own view!Use the filters to show the view you want " src="http://public.tableausoftware.com/static/images/Jo/JoyOfSixbuildyourown/userbuiltviews/1_rss.png" height="100%" /></a></noscript></p>
+<div style="width:594px;height:22px;padding:0px 10px 0px 0px; color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float:right; padding-right:8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/JoyOfSixbuildyourown/userbuiltviews" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>How do we do this trick? First let&#8217;s look at the pills that build this view.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2010/11/User-built-view-workseet.png"><img class="alignnone size-full wp-image-1583" title="User built view workseet" src="http://interworks.co.uk/wp-content/uploads/2010/11/User-built-view-workseet-e1289397011886.png" alt="" width="590" height="245" /></a></p>
+<p>Instead of using the actual dimensions or measures, each pill is either a parameter, eg &#8220;Choose columns&#8221;, or a calculated field based on a parameter, eg &#8220;Chosen column dim&#8221;.</p>
+<p>There are four parameters in this view (for more on Parameters, <a href="http://www.tableausoftware.com/video/parameters">check out this video</a> on Tableau&#8217;s own site):</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2010/11/The-parameters.png"><img class="alignnone size-full wp-image-1585" title="The parameters" src="http://interworks.co.uk/wp-content/uploads/2010/11/The-parameters.png" alt="" width="123" height="99" /></a></p>
+<p>Each of these is a String List, looking something like this:</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2010/11/StringListParameter.png"><img class="alignnone size-full wp-image-1586" title="StringListParameter" src="http://interworks.co.uk/wp-content/uploads/2010/11/StringListParameter.png" alt="" width="564" height="505" /></a></p>
+<p>Each item in the <em>List of values</em> box should be a Dimension (in the above image) or a Measure (not shown) you want to the user to be able to choose. You need a parameter for each user-editable area of the worksheet.  In my example, that&#8217;s a parameter for Row, Colum, Bar length, and Colour.</p>
+<p>Once you have your parameters, show them all on the worksheet (right-click on the Parameter name and choose <em>Show parameter control</em>).</p>
+<p>Our next step is to connect some calculated fields to each parameter. The &#8220;Bar&#8221; calculated field looks like this:</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2010/11/Calc-field-using-a-parameter1.png"><img class="alignnone size-full wp-image-1592" title="Calc field using a parameter" src="http://interworks.co.uk/wp-content/uploads/2010/11/Calc-field-using-a-parameter1.png" alt="" width="527" height="223" /></a></p>
+<p><br class="spacer_" /></p>
+<p>The IF statement returns a different Measure, depending on the value of the Parameter.  There are four calculated fields &#8211; one for each parameter. I created the following for the viz above:</p>
+<ul>
+<li>Chosen row dim</li>
+<li>Chosen column dim</li>
+<li>Bar</li>
+<li>Colour</li>
+</ul>
+<p>Now you can build your view &#8211; drop the calculated fields onto the relevant shelf, and you should now have a dynamic view where the user gets to choose what they want to see.</p>
+<p>The final thing you should do is format the tooltips, as the default ones will make no sense. <a href="http://interworks.co.uk/blog/the-data-studio-blog/andy-cotgreave/tooltip-tips-pt-1">See my previous posts on tooltips for some tips</a>.</p>
+<p>Download the workbook to explore how it&#8217;s done in more detail.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/user-built-views/">The joy of six: user-built views</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fuser-built-views%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/user-built-views/feed/</wfw:commentRss>
+		<slash:comments>11</slash:comments>
+		</item>
+	</channel>
+</rss>

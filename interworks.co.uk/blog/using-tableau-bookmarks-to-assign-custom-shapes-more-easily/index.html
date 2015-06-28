@@ -1,0 +1,739 @@
+<!DOCTYPE HTML>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<head>
+        <meta charset="utf-8" />
+	<meta name="google-site-verification" content="o-LcfCT3_jYXrNT5Ov5EH8B62M8rrRVIi1OgdWHOyig" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+    <link rel="pingback" href="../../xmlrpc.php" />
+    <link rel="alternate" type="application/rss+xml" title="InterWorks &#8211; Tableau Software &amp; Business Intelligence Consulting" href="../../feed/index.html" />
+
+    
+<!-- This site is optimized with the Yoast WordPress SEO plugin v2.0.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<title>Using Tableau Bookmarks to assign Custom Shapes more easily</title>
+
+<link rel="stylesheet" href="../../wp-content/plugins/sitepress-multilingual-cms/res/css/language-selector.css?v=3.1.9.3" type="text/css" media="all" />
+<link rel="canonical" href="index.html" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Using Tableau Bookmarks to assign Custom Shapes more easily" />
+<meta property="og:description" content="Tableau allows you to create sets of custom shapes but assigning these can sometimes be painful, especially if you have a large list of icons to choose from. Wouldn&#8217;t it be good if you could get Tableau to look up an icon based on the contents of your data? That&#8217;s what I thought, and this &hellip;" />
+<meta property="og:url" content="http://interworks.co.uk/blog/using-tableau-bookmarks-to-assign-custom-shapes-more-easily/" />
+<meta property="og:site_name" content="InterWorks - Tableau Software &amp; Business Intelligence Consulting" />
+<meta property="article:tag" content="Bookmarks,Design,Flags,Icons,Shapes,Tableau" />
+<meta property="article:section" content="Blog" />
+<meta property="article:published_time" content="2013-12-19T12:58:35+00:00" />
+<meta property="article:modified_time" content="2015-03-26T13:11:44+00:00" />
+<meta property="og:updated_time" content="2015-03-26T13:11:44+00:00" />
+<meta property="og:image" content="http://interworks.co.uk/wp-content/uploads/2013/12/121913_1258_UsingTablea2.png" />
+<meta property="og:image" content="http://interworks.co.uk/wp-content/uploads/2013/12/121913_1258_UsingTablea3.png" />
+<meta property="og:image" content="http://interworks.co.uk/wp-content/uploads/2013/12/screenshot1.png" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:description" content="Tableau allows you to create sets of custom shapes but assigning these can sometimes be painful, especially if you have a large list of icons to choose from. Wouldn&#8217;t it be good if you could get Tableau to look up an icon based on the contents of your data? That&#8217;s what I thought, and this [&hellip;]"/>
+<meta name="twitter:title" content="Using Tableau Bookmarks to assign Custom Shapes more easily"/>
+<meta name="twitter:site" content="@interworks"/>
+<meta name="twitter:domain" content="InterWorks - Tableau Software &amp; Business Intelligence Consulting"/>
+<meta name="twitter:image:src" content="http://interworks.co.uk/wp-content/uploads/2013/12/121913_1258_UsingTablea2.png"/>
+<meta name="twitter:creator" content="@interworks"/>
+<!-- / Yoast WordPress SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="InterWorks - Tableau Software &amp; Business Intelligence Consulting &raquo; Feed" href="../../feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="InterWorks - Tableau Software &amp; Business Intelligence Consulting &raquo; Comments Feed" href="../../comments/feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="InterWorks - Tableau Software &amp; Business Intelligence Consulting &raquo; Using Tableau Bookmarks to assign Custom Shapes more easily Comments Feed" href="feed/index.html" />
+<link rel='stylesheet' id='sociablecss-css'  href='../../wp-content/plugins/sociable/css/sociable.css?ver=4.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='layerslider_css-css'  href='../../wp-content/plugins/LayerSlider/css/layerslider.css?ver=3.6.2' type='text/css' media='all' />
+<link rel='stylesheet' id='contact-form-7-css'  href='../../wp-content/plugins/contact-form-7/includes/css/styles.css?ver=4.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='se-link-styles-css'  href='../../wp-content/plugins/search-everything/static/css/se-styles.css?ver=4.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='leadin-subscribe-css-css'  href='../../wp-content/plugins/leadin/assets/css/build/leadin-subscribe.css?ver=4.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='evcal_cal_default-css'  href='../../wp-content/plugins/eventON/assets/css/eventon_styles.css?ver=4.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='evo_dynamic_css-css'  href='http://interworks.co.uk/wp-admin/admin-ajax.php?action=evo_dynamic_css&#038;ver=4.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='evcal_google_fonts-css'  href='http://fonts.googleapis.com/css?family=Oswald%3A400%2C300%7COpen+Sans%3A400%2C300&#038;ver=4.1.5' type='text/css' media='screen' />
+<link rel='stylesheet' id='evo_font_icons-css'  href='../../wp-content/plugins/eventON/assets/fonts/font-awesome.css?ver=4.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='fancybox-css'  href='../../wp-content/plugins/easy-fancybox/fancybox/jquery.fancybox-1.3.7.min.css?ver=1.5.7' type='text/css' media='screen' />
+<link rel='stylesheet' id='jetpack_css-css'  href='../../wp-content/plugins/jetpack/css/jetpack.css?ver=3.4.3' type='text/css' media='all' />
+<link rel='stylesheet' id='wp_dlmp_styles-css'  href='../../wp-content/plugins/download-monitor/page-addon/styles.css?ver=4.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='hubspot-css'  href='../../wp-content/plugins/hubspot/css/hubspot.css?ver=4.1.5' type='text/css' media='all' />
+<!-- This site uses the Google Analytics by Yoast plugin v5.3.3 - Universal disabled - https://yoast.com/wordpress/plugins/google-analytics/ -->
+<script type="text/javascript">
+
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-38237981-1']);
+	_gaq.push(['_gat._forceSSL']);
+	_gaq.push(['_trackPageview']);
+
+	(function () {
+		var ga = document.createElement('script');
+		ga.type = 'text/javascript';
+		ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(ga, s);
+	})();
+
+</script>
+<!-- / Google Analytics by Yoast -->
+<script type='text/javascript' src='../../wp-includes/js/jquery/jquery.js?ver=1.11.1'></script>
+<script type='text/javascript' src='../../wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<script type='text/javascript' src='../../wp-content/plugins/sociable/js/sociable.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/plugins/sociable/js/vuible.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/plugins/sociable/js/addtofavorites.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/plugins/LayerSlider/js/layerslider.kreaturamedia.jquery.js?ver=3.6.2'></script>
+<script type='text/javascript' src='../../wp-content/plugins/LayerSlider/js/jquery-easing-1.3.js?ver=1.3.0'></script>
+<script type='text/javascript' src='../../wp-content/plugins/sitepress-multilingual-cms/res/js/jquery.cookie.js?ver=3.1.9.3'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpml_browser_redirect_params = {"pageLanguage":"en","languageUrls":{"en_US":"http:\/\/interworks.co.uk\/blog\/using-tableau-bookmarks-to-assign-custom-shapes-more-easily\/","en":"http:\/\/interworks.co.uk\/blog\/using-tableau-bookmarks-to-assign-custom-shapes-more-easily\/","US":"http:\/\/interworks.co.uk\/blog\/using-tableau-bookmarks-to-assign-custom-shapes-more-easily\/"},"cookie":{"name":"_icl_visitor_lang_js","domain":"interworks.co.uk","path":"\/","expiration":24}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/sitepress-multilingual-cms/res/js/browser-redirect.js?ver=3.1.9.3'></script>
+<link rel='shortlink' href='http://wp.me/p5CyOF-2rh' />
+	<style type='text/css'>
+	.download-info .download-button {
+		background-image: url(../../wp-content/plugins/download-monitor/page-addon/downloadbutton.gif);
+	}
+	.download-info .more-button {
+		background-image: url(../../wp-content/plugins/download-monitor/page-addon/morebutton.gif);
+	}
+	</style>
+<script type="text/javascript">
+	window._se_plugin_version = '8.1.3';
+</script>
+<meta name="generator" content="WPML ver:3.1.9.3 stt:1,39,4,3;0" />
+<script type='text/javascript'>var base_url_sociable = 'http://interworks.co.uk/wp-content/plugins/sociable/'</script><script type='text/javascript' src='http://apis.google.com/js/plusone.js'></script><link href="../../wp-content/themes/Sterling/style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="../../wp-content/themes/Sterling/css/primary-red.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="../../wp-content/themes/Sterling/css/_mobile.css" rel="stylesheet" type="text/css" media="screen" />
+<link rel="shortcut icon" href="../../wp-content/uploads/2014/03/favicon.png"/>
+
+
+<!-- EventON Version -->
+<meta name="generator" content="EventON 2.2.4" />
+
+<style type="text/css">.broken_link, a.broken_link {
+	text-decoration: line-through;
+}</style><link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600&amp;lang=en-SG" />
+
+<!--styles generated by site options-->
+<style type='text/css'>
+a, a:hover {color: #a41d21;font-weight:bold}
+
+*{font-family:"Open Sans",arial,sans-serif !important;}
+.top-aside .social_icons a {font-weight:600;padding-top:3px;}
+nav a {font-size:14.5px;padding:3px 4px;}
+header .sub-menu a, .sidebar li, input, textarea, select {font-size:12px;}
+div.breadcrumbs {font-size:10px;}
+.metadata, .small_banner .page-banner-description {font-size:12px;}
+.footer-callout-content p {font-size:16px;}
+.social_icons a {padding-bottom:8px;}
+.small_banner .page-banner-heading {font-weight:300;padding-bottom:3px;}
+h3 {font-size: 16px;font-weight: 600;}
+.business-hours .day, strong, .tabs_type_1 dt, .tabs_type_2 dt, .accordion dt, .tt-contentbox-title span, .tt-dropcap-round, .tt-dropcap-square, .tt-dropcap-text {font-weight: 600;}
+.preview h2, .preview h2 a {font-size:22px;}
+.widget-heading {font-size: 15px;font-weight: 600;}
+.tt-button, #content-container p, p.callout-heading, .footer-content p, .banner-slider p{font-family:arial,sans-serif !important;}
+p.callout-heading {letter-spacing:0px;}
+.banner-slider h1, .banner-slider h2, .banner-slider h3, .banner-slider h4, .banner-slider h5, .banner-slider h6 {font-weight: 300;}
+			
+
+body,html{background-image:url(../../wp-content/themes/Sterling/images/body-backgrounds/null.png) !important;background-position:left top !important;background-repeat:repeat !important;}
+#tt-boxed-layout {-moz-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);-webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);}
+footer{background:none !important;background-color:#ededed !important;}
+.top-aside{padding:4px 0;}
+.small_banner {padding:5px 0;}
+.footer-content {padding:0px 0;}
+header {padding:40px 0;}
+</style>
+			<!-- Easy Columns 2.1.1 by Pat Friedl http://www.patrickfriedl.com -->
+			<link rel="stylesheet" href="../../wp-content/plugins/easy-columns/css/easy-columns.css" type="text/css" media="screen, projection" />
+			
+<!-- Easy FancyBox 1.5.7 using FancyBox 1.3.7 - RavanH (http://status301.net/wordpress-plugins/easy-fancybox/) -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var fb_timeout = null;
+var fb_opts = { 'overlayShow' : true, 'hideOnOverlayClick' : true, 'showCloseButton' : true, 'centerOnScroll' : true, 'enableEscapeButton' : true, 'autoScale' : true };
+var easy_fancybox_handler = function(){
+	/* IMG */
+	var fb_IMG_select = 'a[href*=".jpg"]:not(.nofancybox,.pin-it-button), area[href*=".jpg"]:not(.nofancybox), a[href*=".jpeg"]:not(.nofancybox,.pin-it-button), area[href*=".jpeg"]:not(.nofancybox), a[href*=".png"]:not(.nofancybox,.pin-it-button), area[href*=".png"]:not(.nofancybox)';
+	jQuery(fb_IMG_select).addClass('fancybox image');
+	var fb_IMG_sections = jQuery('div.gallery ');
+	fb_IMG_sections.each(function() { jQuery(this).find(fb_IMG_select).attr('rel', 'gallery-' + fb_IMG_sections.index(this)); });
+	jQuery('a.fancybox, area.fancybox, li.fancybox a:not(li.nofancybox a)').fancybox( jQuery.extend({}, fb_opts, { 'transitionIn' : 'elastic', 'easingIn' : 'easeOutBack', 'transitionOut' : 'elastic', 'easingOut' : 'easeInBack', 'opacity' : false, 'hideOnContentClick' : false, 'titleShow' : true, 'titlePosition' : 'over', 'titleFromAlt' : true, 'showNavArrows' : true, 'enableKeyboardNav' : true, 'cyclic' : false }) );
+	/* Auto-click */ 
+	jQuery('#fancybox-auto').trigger('click');
+}
+/* ]]> */
+</script>
+
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" href="http://interworks.co.uk/wp-content/themes/Sterling/css/IE.css" />
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <script type="text/javascript" src="http://interworks.co.uk/wp-content/themes/Sterling/framework/js/IE.js"></script>
+        <script type="text/javascript" src="http://interworks.co.uk/wp-content/themes/Sterling/framework/js/respond.js"></script>
+    <![endif]-->
+
+    <link href="http://interworks.co.uk/wp-content/themes/Sterling/css/" rel="stylesheet" type="text/css" media="screen" />
+<link href="http://interworks.co.uk/wp-content/themes/Sterling/css/" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body class="single single-post postid-9379 single-format-standard wpb-js-composer js-comp-ver-3.6.7 vc_responsive">
+<div id="tt-wide-layout">    <aside class="top-aside clearfix">
+        <div class="center-wrap">
+            <div class="one_half">
+                <div class="sidebar-widget widget_text">			<div class="textwidget"></div>
+		</div>            </div><!-- end .top-toolbar-left -->
+
+            <div class="one_half">
+                <div class="sidebar-widget widget_search"><form method="get" class="searchform" action="../../index.html">
+    <fieldset>
+        <input type="text" name="s" class="s" value="Search..." onfocus="if(this.value=='Search...')this.value='';" onblur="if(this.value=='')this.value='Search...';" />
+    </fieldset>
+<input type='hidden' name='lang' value='en' /></form></div>            </div><!-- end .top-toolbar-right -->
+        </div><!-- end .center-wrap -->
+        <div class="top-aside-shadow"></div>
+    </aside>
+    <header>
+        <div class="center-wrap">
+            <div class="companyIdentity">
+                                                            <a href="../../index.html"><img src="../../wp-content/uploads/2014/03/interworks_external_logo.png" alt="InterWorks &#8211; Tableau Software &amp; Business Intelligence Consulting" /></a>
+                                                </div><!-- end .companyIdentity -->
+            <nav>
+                <ul>
+                    <li id="menu-item-142" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-142"><a href="../../business-intelligence/index.html">Business Intelligence</a>
+<ul class="sub-menu">
+	<li id="menu-item-3852" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3852"><a href="../../business-intelligence/why-use-bi/index.html">Why Use BI?</a></li>
+	<li id="menu-item-3851" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3851"><a href="../../business-intelligence/what-is-bi/index.html">What Is BI?</a></li>
+	<li id="menu-item-6611" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6611"><a href="../../business-intelligence/tableau-tools/index.html">Power Tools for Tableau</a></li>
+</ul>
+</li>
+<li id="menu-item-217" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-217"><a href="../../tableau-services/index.html">Tableau</a>
+<ul class="sub-menu">
+	<li id="menu-item-3850" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3850"><a href="../../business-intelligence/tableau-software/index.html">Tableau Software</a></li>
+	<li id="menu-item-9212" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9212"><a href="../../business-intelligence/why-tableau/index.html">Why Tableau?</a></li>
+	<li id="menu-item-3855" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3855"><a href="../../tableau-services/tableau-consulting/index.html">Tableau Consulting</a></li>
+	<li id="menu-item-3854" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3854"><a href="../../tableau-services/tableau-development/index.html">Tableau Development</a></li>
+	<li id="menu-item-3853" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3853"><a href="../../tableau-services/tableau-bi-infrastructure/index.html">Tableau BI Infrastructure</a></li>
+	<li id="menu-item-11003" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11003"><a href="../../tableau-services/tableau-training/index.html">Tableau Training</a></li>
+	<li id="menu-item-10582" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10582"><a href="../../business-intelligence/tableau-desktop/index.html">Tableau Desktop</a></li>
+	<li id="menu-item-10587" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10587"><a href="../../business-intelligence/tableau-server.1">Tableau Server</a></li>
+</ul>
+</li>
+<li id="menu-item-29" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-29"><a href="../index.html">Blog</a></li>
+<li id="menu-item-9810" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9810"><a href="../../event/index.html">Events</a></li>
+<li id="menu-item-412" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-412"><a href="../../resources/index.html">On Demand Help &#038; Resources</a>
+<ul class="sub-menu">
+	<li id="menu-item-3397" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3397"><a href="../../resources/data-exploration-tools/index.html">Data Exploration Tools</a></li>
+	<li id="menu-item-3400" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3400"><a href="../../resources/videos.1">Videos</a></li>
+	<li id="menu-item-3399" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3399"><a href="../../resources/social-links.1">Social Links</a></li>
+	<li id="menu-item-3395" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3395"><a href="../../resources/blogs.1">Blogs</a></li>
+	<li id="menu-item-11374" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11374"><a href="../../case-studies.1">Case Studies</a></li>
+	<li id="menu-item-3396" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3396"><a href="../../resources/books.1">Books</a></li>
+	<li id="menu-item-3398" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3398"><a href="../../resources/knowledge">Knowledge Base</a></li>
+	<li id="menu-item-11950" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11950"><a href="../../tableau-expert-hotline/index.html">On Demand Help</a></li>
+</ul>
+</li>
+                </ul>
+            </nav>
+            <a class="free-trial-link" target="_blank" href="http://www.tableau.com/partner-trial?id=13372#form">Free Tableau Trial</a>
+        </div><!-- end .center-wrap -->
+    </header>
+    <section class="small_banner">
+            <div class="center-wrap banner-no-crumbs">
+                    <h1>InterWorks EU Blog</h1>
+        
+        
+            </div><!-- end .center-wrap -->
+    <div class="shadow top"></div>
+    <div class="shadow bottom"></div>
+    <div class="tt-overlay"></div>
+    </section>
+
+<section id="content-container" class="clearfix">
+    <div id="main-wrap" class="clearfix">
+        <div class="page_content blog_page_content">
+            
+                    <div id="post-9379" class="post-9379 post type-post status-publish format-standard hentry category-blog tag-bookmarks tag-design tag-flags tag-icons tag-shapes tag-tableau">
+                        <article class="preview blog-main-preview">
+                            <h2 ><a href="index.html" title="Using Tableau Bookmarks to assign Custom Shapes more easily">Using Tableau Bookmarks to assign Custom Shapes more easily</a></h2>
+
+                                                                <span class="metadata postinfo">
+                                        Posted by <a href="../../author/dave-hart/index.html" title="Posts by Dave Hart" rel="author">Dave Hart</a> on 19 December, 2013 &nbsp;                                     </span>
+                            <div class="img-frame blog-frame"><img src='../../wp-content/uploads/2013/12/121913_1258_UsingTablea1-602x161.png' width='620' height='161' alt='Using Tableau Bookmarks to assign Custom Shapes more easily' /></div><p>Tableau allows you to create sets of custom shapes but assigning these can sometimes be painful, especially if you have a large list of icons to choose from. Wouldn&#8217;t it be good if you could get Tableau to look up an icon based on the contents of your data? That&#8217;s what I thought, and this morning I note that tableau <a href="http://www.tableausoftware.com/about/blog/2014/1/icon-encoding-research-acm-sigchi" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.tableausoftware.com/about/blog/2014/1/icon-encoding-research-acm-sigchi', 'think that too']);" >think that too</a> . Admittedly in their case they are discussing a completely automated solution, but I couldn&#8217;t wait so I&#8217;ve put together an example showing you how something similar to this can be done using a bit of careful planning and tableau bookmarks. You&#8217;ll end up with a quick way to load in a complete resource of icons and then use the correct shapes by linking that resource to your primary dataset.</p>
+<p><span id="more-9379"></span></p>
+<p><strong>Why would you do this?<br />
+</strong></p>
+<p>Bookmarks are really good for reusing assets, so if there&#8217;s a set of icons that you like using but you don&#8217;t always need all of them, then this is a good fit for you. The examples I&#8217;m going to use are social network icons and flags. In these cases I can download a large or complete set of resources from somewhere, but in all likelihood my data is going to only access a smaller subset of this data which means the &#8220;Assign Shapes&#8221; option isn&#8217;t going to work and picking through to get the right shapes would be time consuming (or even impossible if you didn&#8217;t know what the icon you needed looked like – could you recognise the flag of Burundi from a 16&#215;16 icon preview?)</p>
+<p><strong>How to do it</strong></p>
+<p>The key here is that just adding your custom icon set to Tableaus Shapes repository isn&#8217;t enough, we need a dataset to go with it. We are going to utilise two features/behaviours of tableau:</p>
+<ul>
+<li>When you load custom shapes into tableau, they are listed alphabetically AND they are assigned alphabetically too.</li>
+<li>When a piece of data has been assigned a shape/colour once, if you re-use that field elsewhere in the workbook tableau will try to use the same shape/colour.</li>
+</ul>
+<p>&nbsp;</p>
+<p>The first thing we need to do is get a set of icons and prepare a dataset that tells us the filename and any other information about the data row that we might need. I&#8217;m going to use two examples showing social network icons and country flags.</p>
+<ul>
+<li>Put all the icons in a folder in the Shapes subfolder of your Tableau repository. (Tableau does a case sensitive sort whereas windows explorer may not, so I&#8217;d advise you to make sure that all your files are consistently cased. I wrote a command line batch script to do this)</li>
+<li>Create a spreadsheet or text file that lists all of the file names. (One way you can do this is by doing a directory listing to a text file from the command line e.g. dir *.* &gt; list.txt and then editing that file in excel)</li>
+<li>Now create a workbook that connects to this data source and create a view by taking the name of the file and positioning it on the Rows shelf. Change the Marks type to &#8220;Shape&#8221;. I personally think it&#8217;s probably better to create a calculated field called &#8220;Image&#8221; and just return the underlying field that you want to use to match to the shapes – in this case the filename.</li>
+<li>On the card that shows all the shapes next to the name double click one item to edit the shapes. Navigate to your folder and click assign palette. As the order of the names matches the order of the filenames then they should match up perfectly. If they don&#8217;t check the case of your filename as tableau does a case-sensitive sort when loading the icons, but doesn&#8217;t when creating the view.</li>
+<li>Now save this view as a bookmark called &#8220;Social Icons&#8221;. Click Window &gt; Bookmarks &gt; Create Bookmark…</li>
+</ul>
+<p>&nbsp;</p>
+<p><img class="aligncenter" src="../../wp-content/uploads/2013/12/121913_1258_UsingTablea2.png" alt="" /></p>
+<p>Now that we&#8217;ve saved it as a bookmark, whenever we have data that contains a column for social network, we can import this sheet quickly and assign the correct icons automatically (via a data relationship) rather than hunting through the lists and assigning them manually. I&#8217;ve created a simple table of data that shows users donating money based on a referral from a social network.</p>
+<div style="text-align: center;">
+<table style="border-collapse: collapse;" border="0">
+<tbody valign="top">
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border: solid 0.5pt;">Name</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: solid 0.5pt; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Network</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: solid 0.5pt; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Donation</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: solid 0.5pt; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Date</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: solid 0.5pt; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Country</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Dave</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Twitter</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">5</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">01/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">GB</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Rich</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Twitter</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">8</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">05/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">GB</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Andrew</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Facebook</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">2</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">13/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">US</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Katherine</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Aol</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">1</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">02/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">GB</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Martha</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Youtube</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">19</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">01/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">FR</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Pete</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Facebook</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">2</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">02/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">US</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Mary</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Facebook</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">3</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">07/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">GB</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">David</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">linkedin</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">8</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">13/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">US</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Arthur</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Youtube</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">24</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">15/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">ES</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Chris</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Twitter</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">2</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">18/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">GB</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Andy</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Twitter</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">10</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">14/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">DE</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Stuart</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Facebook</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">7</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">04/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">GB</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Natasha</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Twitter</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">3</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">02/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">US</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Wendy</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Tumblr</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">20</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">06/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">DE</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Simon</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">linkedin</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">13</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">16/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">US</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Alan</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Twitter</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">10</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">09/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">GB</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Dmitri</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Google</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">5</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">10/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">GR</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Juan</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Facebook</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">12</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">01/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">ES</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Martha</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Twitter</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">15</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">11/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">CH</td>
+</tr>
+</tbody>
+</table>
+<p style="text-align: left;">
+</div>
+<ul>
+<li>Create a new tableau workbook by connecting to the data</li>
+<li>Create a view that shows a bar and a shape summing money spent by network</li>
+<li>Import your social icons bookmark. Window &gt; Bookmarks &gt; Social Icons</li>
+<li>Click Data &gt; Edit Relationships and link the Network column to the Name column</li>
+<li>On your view drag Image from your secondary datasource onto Shape</li>
+<li>Note that the correct icons are assigned to the social network and that the Shape key has an orange tick by it indicating it is from the sheet you imported as a bookmark.</li>
+</ul>
+<p>&nbsp;</p>
+<p><img class="aligncenter" src="../../wp-content/uploads/2013/12/121913_1258_UsingTablea3.png" alt="" /></p>
+<p>&nbsp;</p>
+<p>In the case of the flags dataset I&#8217;ve also created extra columns for name and ISO code. Note that if you are having problems with case and wording etc. and you can&#8217;t edit the data at source, you can use Aliases or calculated fields that correct the errors and join using those. When I did the It&#8217;s also worth noting that the bookmark only contains a reference to the icons path, so you need to have the bookmarks and the shapes installed on the computer you&#8217;re using, you can&#8217;t just copy the bookmark to another computer and get the correct icons. (although when you package the workbook up you&#8217;ll be OK because it will embed the shapes).</p>
+<p><img class="aligncenter" src="../../wp-content/uploads/2013/12/screenshot1.png" alt="" /></p>
+<p>Hope you like the post! Leave me a comment if you&#8217;ve got any questions or just general praise (it&#8217;s one of my first posts and I need the love). And if you want some homework, I&#8217;ve also done this for colours by generating a list of hexadecimal colour values into excel and the tableau preferences file so see if you can do that too, you can use <a href="../../tableau/using-custom-colour-palettes/index.html">Darren Evans post on this blog</a> to help you with custom colour palettes.</p>
+<p>&nbsp;</p>
+<p>Resources:</p>
+<p>Lots of places provide social network icons, but be kind and check the licensing. When writing this article I got some nice icons from social shift <a href="http://www.instantshift.com/2010/12/07/socialshift-icon-set-246-free-social-networking-icons/" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.instantshift.com/2010/12/07/socialshift-icon-set-246-free-social-networking-icons/', 'http://www.instantshift.com/2010/12/07/socialshift-icon-set-246-free-social-networking-icons/']);" >http://www.instantshift.com/2010/12/07/socialshift-icon-set-246-free-social-networking-icons/</a></p>
+<p>The flag Icons I used were from the rather magnificent <a href="http://famfamfam.com/lab/icons/flags/" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://famfamfam.com/lab/icons/flags/', 'http://famfamfam.com/lab/icons/flags/']);" >http://famfamfam.com/lab/icons/flags/</a> (they are listed by ISO, but you need to do some editing as Tunisia&#8217;s filename is wrongly marked as <em>rn.png</em> and not <em>tn.png</em> and the Dutch Antilles <em>an.png </em>is included which wasn&#8217;t in my list of ISO Codes which can be found here <a href="http://en.wikipedia.org/wiki/ISO_3166-1" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://en.wikipedia.org/wiki/ISO_3166-1', 'http://en.wikipedia.org/wiki/ISO_3166-1']);" >http://en.wikipedia.org/wiki/ISO_3166-1</a>)</p>
+<p>&nbsp;</p>
+<p>&nbsp;<!-- Start Sociable -->
+<div class="sociable">
+<div class="sociable_tagline">Share this with your network&#8230;</div>
+<ul class='clearfix'>
+<li><a href="http://twitter.com/intent/tweet?text=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily%20-%20http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F%20  " onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://twitter.com/intent/tweet?text=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily%20-%20http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F%20  ', '']);" title="Twitter" class="option1_32" style="background-position:-288px -32px" rel="nofollow" target="_blank"></a></li>
+<li><a href="http://www.facebook.com/share.php?u=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&amp;t=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.facebook.com/share.php?u=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&amp;t=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily', '']);" title="Facebook" class="option1_32" style="background-position:-96px 0px" rel="nofollow" target="_blank"></a></li>
+<li><a href="https://mail.google.com/mail/?view=cm&#038;fs=1&#038;to&#038;su=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily&#038;body=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&#038;ui=2&#038;tf=1&#038;shva=1" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to&amp;su=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily&amp;body=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&amp;ui=2&amp;tf=1&amp;shva=1', '']);" title="email" class="option1_32" style="background-position:-160px 0px" rel="nofollow" target="_blank"></a></li>
+<li><a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&amp;title=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily&amp;source=InterWorks+-+Tableau+Software+%26amp%3B+Business+Intelligence+Consulting+InterWorks+-+Tableau+Software+%26amp%3B+Business+Intelligence+Consulting&amp;summary=Tableau%20allows%20you%20to%20create%20sets%20of%20custom%20shapes%20but%20assigning%20these%20can%20sometimes%20be%20painful%2C%20especially%20if%20you%20have%20a%20large%20list%20of%20icons%20to%20choose%20from.%20Wouldn%27t%20it%20be%20good%20if%20you%20could%20get%20Tableau%20to%20look%20up%20an%20icon%20based%20on%20the%20contents%20of%20you" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&amp;title=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily&amp;source=InterWorks+-+Tableau+Software+%26amp%3B+Business+Intelligence+Consulting+InterWorks+-+Tableau+Software+%26amp%3B+Business+Intelligence+Consulting&amp;summary=Tableau%20allows%20you%20to%20create%20sets%20of%20custom%20shapes%20but%20assigning%20these%20can%20sometimes%20be%20painful%2C%20especially%20if%20you%20have%20a%20large%20list%20of%20icons%20to%20choose%20from.%20Wouldn%27t%20it%20be%20good%20if%20you%20could%20get%20Tableau%20to%20look%20up%20an%20icon%20based%20on%20the%20contents%20of%20you', '']);" title="LinkedIn" class="option1_32" style="background-position:-288px 0px" rel="nofollow" target="_blank"></a></li>
+</ul>
+<div onMouseout="fixOnMouseOut(this,event,'post-9379')" id="sociable-post-9379" style="display:none;">
+<div style="top: auto; left: auto; display: block;" id="sociable">
+<div class="popup">
+<div class="content">
+<ul>
+<li style="heigth:32px;width:32px"><a href="http://www.myspace.com/Modules/PostTo/Pages/?u=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&amp;t=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.myspace.com/Modules/PostTo/Pages/?u=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&amp;t=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily', '']);" title="Myspace" class="option1_32" style="background-position:0px -32px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://delicious.com/post?url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&amp;title=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily&amp;notes=Tableau%20allows%20you%20to%20create%20sets%20of%20custom%20shapes%20but%20assigning%20these%20can%20sometimes%20be%20painful%2C%20especially%20if%20you%20have%20a%20large%20list%20of%20icons%20to%20choose%20from.%20Wouldn%27t%20it%20be%20good%20if%20you%20could%20get%20Tableau%20to%20look%20up%20an%20icon%20based%20on%20the%20contents%20of%20you" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://delicious.com/post?url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&amp;title=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily&amp;notes=Tableau%20allows%20you%20to%20create%20sets%20of%20custom%20shapes%20but%20assigning%20these%20can%20sometimes%20be%20painful%2C%20especially%20if%20you%20have%20a%20large%20list%20of%20icons%20to%20choose%20from.%20Wouldn%27t%20it%20be%20good%20if%20you%20could%20get%20Tableau%20to%20look%20up%20an%20icon%20based%20on%20the%20contents%20of%20you', '']);" title="Delicious" class="option1_32" style="background-position:-32px 0px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://digg.com/submit?phase=2&amp;url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&amp;title=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily&amp;bodytext=Tableau%20allows%20you%20to%20create%20sets%20of%20custom%20shapes%20but%20assigning%20these%20can%20sometimes%20be%20painful%2C%20especially%20if%20you%20have%20a%20large%20list%20of%20icons%20to%20choose%20from.%20Wouldn%27t%20it%20be%20good%20if%20you%20could%20get%20Tableau%20to%20look%20up%20an%20icon%20based%20on%20the%20contents%20of%20you" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://digg.com/submit?phase=2&amp;url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&amp;title=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily&amp;bodytext=Tableau%20allows%20you%20to%20create%20sets%20of%20custom%20shapes%20but%20assigning%20these%20can%20sometimes%20be%20painful%2C%20especially%20if%20you%20have%20a%20large%20list%20of%20icons%20to%20choose%20from.%20Wouldn%27t%20it%20be%20good%20if%20you%20could%20get%20Tableau%20to%20look%20up%20an%20icon%20based%20on%20the%20contents%20of%20you', '']);" title="Digg" class="option1_32" style="background-position:-64px 0px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://reddit.com/submit?url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&amp;title=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://reddit.com/submit?url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&amp;title=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily', '']);" title="Reddit" class="option1_32" style="background-position:-128px -32px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://www.stumbleupon.com/submit?url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&#038;title=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.stumbleupon.com/submit?url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&amp;title=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily', '']);" title="StumbleUpon" class="option1_32" style="background-position:-224px -32px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://www.google.com/bookmarks/mark?op=edit&amp;bkmk=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&amp;title=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily&amp;annotation=Tableau%20allows%20you%20to%20create%20sets%20of%20custom%20shapes%20but%20assigning%20these%20can%20sometimes%20be%20painful%2C%20especially%20if%20you%20have%20a%20large%20list%20of%20icons%20to%20choose%20from.%20Wouldn%27t%20it%20be%20good%20if%20you%20could%20get%20Tableau%20to%20look%20up%20an%20icon%20based%20on%20the%20contents%20of%20you" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.google.com/bookmarks/mark?op=edit&amp;bkmk=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&amp;title=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily&amp;annotation=Tableau%20allows%20you%20to%20create%20sets%20of%20custom%20shapes%20but%20assigning%20these%20can%20sometimes%20be%20painful%2C%20especially%20if%20you%20have%20a%20large%20list%20of%20icons%20to%20choose%20from.%20Wouldn%27t%20it%20be%20good%20if%20you%20could%20get%20Tableau%20to%20look%20up%20an%20icon%20based%20on%20the%20contents%20of%20you', '']);" title="Google Bookmarks" class="option1_32" style="background-position:-192px 0px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://news.ycombinator.com/submitlink?u=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&amp;t=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://news.ycombinator.com/submitlink?u=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&amp;t=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily', '']);" title="HackerNews" class="option1_32" style="background-position:-256px 0px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://reporter.es.msn.com/?fn=contribute&amp;Title=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily&amp;URL=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&amp;cat_id=6&amp;tag_id=31&amp;Remark=Tableau%20allows%20you%20to%20create%20sets%20of%20custom%20shapes%20but%20assigning%20these%20can%20sometimes%20be%20painful%2C%20especially%20if%20you%20have%20a%20large%20list%20of%20icons%20to%20choose%20from.%20Wouldn%27t%20it%20be%20good%20if%20you%20could%20get%20Tableau%20to%20look%20up%20an%20icon%20based%20on%20the%20contents%20of%20you" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://reporter.es.msn.com/?fn=contribute&amp;Title=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily&amp;URL=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&amp;cat_id=6&amp;tag_id=31&amp;Remark=Tableau%20allows%20you%20to%20create%20sets%20of%20custom%20shapes%20but%20assigning%20these%20can%20sometimes%20be%20painful%2C%20especially%20if%20you%20have%20a%20large%20list%20of%20icons%20to%20choose%20from.%20Wouldn%27t%20it%20be%20good%20if%20you%20could%20get%20Tableau%20to%20look%20up%20an%20icon%20based%20on%20the%20contents%20of%20you', '']);" title="MSNReporter" class="option1_32" style="background-position:-352px 0px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://www.blinklist.com/index.php?Action=Blink/addblink.php&amp;Url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&amp;Title=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.blinklist.com/index.php?Action=Blink/addblink.php&amp;Url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&amp;Title=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily', '']);" title="BlinkList" class="option1_32" style="background-position:0px 0px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://sphinn.com/index.php?c=post&amp;m=submit&amp;link=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://sphinn.com/index.php?c=post&amp;m=submit&amp;link=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F', '']);" title="Sphinn" class="option1_32" style="background-position:-192px -32px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://posterous.com/share?linkto=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&amp;title=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily&amp;selection=Tableau%20allows%20you%20to%20create%20sets%20of%20custom%20shapes%20but%20assigning%20these%20can%20sometimes%20be%20painful%2C%20especially%20if%20you%20have%20a%20large%20list%20of%20icons%20to%20choose%20from.%20Wouldn%27t%20it%20be%20good%20if%20you%20could%20get%20Tableau%20to%20look%20up%20an%20icon%20based%20on%20the%20contents%20of%20you" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://posterous.com/share?linkto=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&amp;title=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily&amp;selection=Tableau%20allows%20you%20to%20create%20sets%20of%20custom%20shapes%20but%20assigning%20these%20can%20sometimes%20be%20painful%2C%20especially%20if%20you%20have%20a%20large%20list%20of%20icons%20to%20choose%20from.%20Wouldn%27t%20it%20be%20good%20if%20you%20could%20get%20Tableau%20to%20look%20up%20an%20icon%20based%20on%20the%20contents%20of%20you', '']);" title="Posterous" class="option1_32" style="background-position:-64px -32px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://www.tumblr.com/share?v=3&amp;u=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&amp;t=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily&amp;s=Tableau%20allows%20you%20to%20create%20sets%20of%20custom%20shapes%20but%20assigning%20these%20can%20sometimes%20be%20painful%2C%20especially%20if%20you%20have%20a%20large%20list%20of%20icons%20to%20choose%20from.%20Wouldn%27t%20it%20be%20good%20if%20you%20could%20get%20Tableau%20to%20look%20up%20an%20icon%20based%20on%20the%20contents%20of%20you" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.tumblr.com/share?v=3&amp;u=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&amp;t=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily&amp;s=Tableau%20allows%20you%20to%20create%20sets%20of%20custom%20shapes%20but%20assigning%20these%20can%20sometimes%20be%20painful%2C%20especially%20if%20you%20have%20a%20large%20list%20of%20icons%20to%20choose%20from.%20Wouldn%27t%20it%20be%20good%20if%20you%20could%20get%20Tableau%20to%20look%20up%20an%20icon%20based%20on%20the%20contents%20of%20you', '']);" title="Tumblr" class="option1_32" style="background-position:-256px -32px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://www.google.com/reader/link?url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&amp;title=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily&amp;srcURL=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&amp;srcTitle=InterWorks+-+Tableau+Software+%26amp%3B+Business+Intelligence+Consulting+InterWorks+-+Tableau+Software+%26amp%3B+Business+Intelligence+Consulting" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.google.com/reader/link?url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&amp;title=Using%20Tableau%20Bookmarks%20to%20assign%20Custom%20Shapes%20more%20easily&amp;srcURL=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&amp;srcTitle=InterWorks+-+Tableau+Software+%26amp%3B+Business+Intelligence+Consulting+InterWorks+-+Tableau+Software+%26amp%3B+Business+Intelligence+Consulting', '']);" title="Google Reader" class="option1_32" style="background-position:-224px 0px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a class="option1_32" style="cursor:pointer;background-position:-128px 0px" rel="nofollow" title="Add to favorites - doesn't work in Chrome"  onClick="javascript:AddToFavorites();"></a></li>
+<li style="heigth:32px;width:32px"><a style="cursor:poainter" rel="nofollow"   onMouseOver="more(this,'post-9379')"><img  src="../../wp-content/plugins/sociable/images/option1/32/more.png" title="LinkedIn" alt="LinkedIn" /></a></li>
+</ul></div>
+<p>		  <a style="cursor:pointer" onclick="hide_sociable('post-9379',true)" class="close"></p>
+<p>		  <img onclick="hide_sociable('post-9379',true)" title="close" src="../../wp-content/plugins/sociable/images/closelabel.png"></p>
+<p>		  </a></p></div>
+</p></div>
+</p></div>
+</div>
+<div class='sociable' style='float:none'>
+<ul class='clearfix'>
+<li id="Twitter_Counter"><a href="https://twitter.com/share" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'https://twitter.com/share', 'Tweet']);"  data-text="Using Tableau Bookmarks to assign Custom Shapes more easily - http://interworks.co.uk/blog/using-tableau-bookmarks-to-assign-custom-shapes-more-easily/" data-url="http://interworks.co.uk/blog/using-tableau-bookmarks-to-assign-custom-shapes-more-easily/" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></li>
+<li id="Facebook_Counter"><iframe src="http://www.facebook.com/plugins/like.php?href=http://interworks.co.uk/blog/using-tableau-bookmarks-to-assign-custom-shapes-more-easily/&#038;send=false&#038;layout=button_count&#038;show_faces=false&#038;action=like&#038;colorscheme=light&#038;font" scrolling="no" frameborder="0" style="border:none; overflow:hidden;height:32px;width:100px" allowTransparency="true"></iframe></li>
+<li id="Google_p"><g:plusone annotation="bubble" href="http://interworks.co.uk/blog/using-tableau-bookmarks-to-assign-custom-shapes-more-easily/" size="medium"></g:plusone></li>
+<li id="LinkedIn_Counter"><script src="http://platform.linkedin.com/in.js" type="text/javascript"></script><script type="IN/Share" data-url="http://interworks.co.uk/blog/using-tableau-bookmarks-to-assign-custom-shapes-more-easily/" data-counter="right"></script></li>
+</ul>
+</div>
+<p><!-- End Sociable --></p>
+<div class="tt-share clearfix">
+    </div><!-- end .tt-share -->
+                            <div class="post-details">
+                                <p class="post-tags">Tags: <a href="../../tag/bookmarks/index.html" rel="tag">Bookmarks</a>, <a href="../../tag/design/index.html" rel="tag">Design</a>, <a href="../../tag/flags/index.html" rel="tag">Flags</a>, <a href="../../tag/icons/index.html" rel="tag">Icons</a>, <a href="../../tag/shapes/index.html" rel="tag">Shapes</a>, <a href="../../tag/tableau/index.html" rel="tag">Tableau</a></p>
+                                <p class="post-categories"><strong>Posted in: </strong> <a href="../../category/blog/index.html" >Blog</a></p>
+                                <a class="post-leave-comment" href="index.html#respond">Leave a Comment (0) &rarr;</a>
+                            </div><!-- end .post-details -->
+                        </article><!-- end .blog-main-preview -->
+                    </div><!-- end #post-ID -->
+
+                    
+        <div id="blog-comment-outer-wrap">
+    
+    <div id="respond">
+        <h3 class="comment-title">
+            Leave a Comment        </h3>
+
+        <div class="comment-cancel"><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Click here to cancel reply.</a></div><!-- end .comment-cancel -->
+
+                            <form action="http://interworks.co.uk/wp-comments-post.php" method="post" id="commentform">
+                                            <p>
+                            <input type="text" name="author" id="author" value="" size="22" tabindex="1" />
+                            <label for="author">Name<span>&#42;</span></label>
+                        </p>
+                        <p>
+                            <input type="text" name="email" id="email" value="" size="22" tabindex="2" />
+                            <label for="email">Email<span>&#42;</span>(will not be published)<small> </small></label>
+                        </p>
+                        <p>
+                            <input type="text" name="url" id="url" value="" size="22" tabindex="3" />
+                            <label for="url">Website</label>
+                        </p>
+                    
+                    <p><textarea name="comment" id="comment" cols="58" rows="10" tabindex="4"></textarea></p>
+
+                    <!-- <p class="allowed-tags"><small><strong>XHTML:</strong> You can use these tags: <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </code></small></p> -->
+
+                    <p>
+                        <input name="submit" type="submit" id="submit-button" tabindex="5" value="Submit" />
+                        <input type='hidden' name='comment_post_ID' value='9379' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+                    </p>
+                    <p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="3d4d4fa073" /></p><!-- BEGIN: subscribe to comments reloaded --><p class='comment-form-subscriptions'><label for='subscribe-reloaded'><input style='width:30px' type='checkbox' name='subscribe-reloaded' id='subscribe-reloaded' value='yes' checked='checked' /> Notify me of comment replies via e-mail. You can also <a href='../../comment-subscriptions/index.html?srp=9379&amp;srk=&amp;sra=s'>subscribe</a> without commenting.</label></p><!-- END: subscribe to comments reloaded --><p class="comment-subscription-form"><input type="checkbox" name="subscribe_comments" id="subscribe_comments" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" /> <label class="subscribe-label" id="subscribe-label" for="subscribe_comments">Notify me of follow-up comments by email.</label></p><p class="comment-subscription-form"><input type="checkbox" name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" /> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog">Notify me of new posts by email.</label></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="43"/></p>        
+        <input type="hidden" name="icl_comment_language" value="en" />
+        
+          
+                        </form><!-- end #commentform -->
+                    </div><!-- end #respond -->
+    </div><!-- end #blog-comment-outer-wrap -->
+
+                    </div><!-- end .page_content -->
+
+        <aside class="sidebar">
+            <div class="sidebar-widget widget_icl_lang_sel_widget">
+            <div id="lang_sel_list" class="lang_sel_list_vertical">
+            <ul>
+                                <li class="icl-en">
+									<a href="index.html" class="lang_sel_sel">
+																					<img  class="iclflag" src="../../wp-content/plugins/sitepress-multilingual-cms/res/flags/en.png" alt="en"
+													 title="English"/>&nbsp;
+										English									</a>
+                </li>
+                            </ul>
+</div>
+</div><div class="sidebar-widget widget_search"><form method="get" class="searchform" action="../../index.html">
+    <fieldset>
+        <input type="text" name="s" class="s" value="Search..." onfocus="if(this.value=='Search...')this.value='';" onblur="if(this.value=='')this.value='Search...';" />
+    </fieldset>
+<input type='hidden' name='lang' value='en' /></form></div>
+        <style>
+            .JPV_list {
+                overflow: hidden;
+            }
+
+            .JPV_thumbnail {
+                width: 45%;
+            }
+
+            .JPV_thumbnail > .JPV_thumbnail_img {
+                max-width: 125px;
+                height: auto;
+            }
+
+            .JPV_thumbnail + .JPV_text {
+                width: 45%;
+                padding-bottom: 10px;
+                text-align: center;
+                margin-top: -5px;
+            }
+
+            .JPV_thumbnail_title {
+                float: left;
+                width: 21.276596%;
+            }
+
+            .JPV_thumbnail_title > .JPV_thumbnail_img {
+                max-width: 40px;
+                height: auto;
+            }
+
+            .JPV_thumbnail_title + .JPV_text {
+                float: right;
+                width: 73.404255%;
+                padding-bottom: 10px;
+            }
+        </style>
+
+        <div class="sidebar-widget jetpack-post-views"><p class="widget-heading">Most Popular</p><ul><li class="JPV_list"><a href="../comparing-performance-tableau-8-3-server-vs-tableau-9-0-server/index.html" title="Comparing Performance on Tableau 8.3 Server vs Tableau 9.0 Server" class="JPV_title">Comparing Performance on Tableau 8.3 Server vs Tableau 9.0 Server</a></li><li class="JPV_list"><a href="../data-reshaping-tableau-9-data-interpreter-data-pivot/index.html" title="Data Reshaping in Tableau 9 &#8211; data interpreter &#038; data pivot" class="JPV_title">Data Reshaping in Tableau 9 &#8211; data interpreter &#038; data pivot</a></li><li class="JPV_list"><a href="../../tableau/tableau-9-0-brings-us-connections/index.html" title="Tableau 9.0 Brings us more connections!" class="JPV_title">Tableau 9.0 Brings us more connections!</a></li><li class="JPV_list"><a href="../radial-bar-chart/index.html" title="It’s your round at the bar…" class="JPV_title">It’s your round at the bar…</a></li><li class="JPV_list"><a href="../whats-new-tableau-server-9-0/index.html" title="What&#8217;s new in Tableau Server 9.0" class="JPV_title">What&#8217;s new in Tableau Server 9.0</a></li></ul></div><div class="sidebar-widget social_widget"><p class="widget-heading">Subscribe to our Networks</p>
+
+
+
+<ul class="social_icons">
+<li><a href="../../feed/index.html" onclick="window.open(this.href);return false;" class="rss">RSS</a></li>
+<li><a href="https://twitter.com/InterWorksEU" class="twitter" onclick="window.open(this.href);return false;">Twitter</a></li>
+<li><a href="https://www.facebook.com/interworkseu" class="facebook" onclick="window.open(this.href);return false;">Facebook</a></li>
+<li><a href="https://www.linkedin.com/company/interworks-uk" class="linkedin" onclick="window.open(this.href);return false;">LinkedIn</a></li>
+<li><a href="https://plus.google.com/108975392261019832708/posts" class="google +" onclick="window.open(this.href);return false;">Google +</a></li>
+</ul>
+
+        </div><div class="sidebar-widget widget_text">			<div class="textwidget"><p><a href="http://www.tableausoftware.com/about/partners" onclick="_gaq.push(['_trackEvent', 'outbound-widget', 'http://www.tableausoftware.com/about/partners', '']);"  target="_blank" alt="Tableau Partners Page" title="Tableau Partners Page"><img class="alignright size-full wp-image-524" title="tableau-partner-logo-3" src="../../wp-content/uploads/2013/02/tableau-gold-partner-logo-1.png" alt="" width="310" height="165" /></a></p>
+</div>
+		</div>        </aside>
+    </div><!-- end #main-wrap -->
+</section><!-- END content-container -->
+
+
+<footer>
+    <div class="center-wrap tt-relative">
+        <div class="footer-content clearfix">
+                                <div class="one_fourth">
+                        <div class="sidebar-widget widget_nav_menu"><ul class="custom-menu"><li id="menu-item-108" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-108"><a href="../../about-interworks/index.html">About InterWorks</a></li>
+<li id="menu-item-11373" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11373"><a href="../../case-studies.1">Case Studies</a></li>
+<li id="menu-item-46" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-46"><a href="../getting-excited-about-tableau-9-0/www.interworks.co.uk/team">Our Team</a></li>
+<li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="../../careers/index.html">Careers</a></li>
+<li id="menu-item-9240" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9240"><a href="../../contact-us/index.html">Contact</a></li>
+</ul></div>                    </div>
+                                        <div class="one_fourth">
+                        <div class="sidebar-widget widget_nav_menu"><ul class="custom-menu"><li id="menu-item-9227" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9227"><a href="../../business-intelligence/download-tableau-desktop-free-trial.1">Free Tableau Desktop Trial</a></li>
+<li id="menu-item-9082" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9082"><a href="../../business-intelligence/tableau-server.1">Free Tableau Server Trial</a></li>
+<li id="menu-item-11272" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11272"><a href="../../business-intelligence/tableau-tools/index.html">Power Tools for Tableau</a></li>
+<li id="menu-item-10872" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10872"><a href="../../tableau-your-data/index.html">Get &#8220;Tableau Your Data&#8221; &#8211; The Ultimate Book on Using Tableau</a></li>
+</ul></div>                    </div>
+                                        <div class="one_fourth">
+                        <div class="sidebar-widget widget_text">			<div class="textwidget"><p><a href="http://www.tableausoftware.com/about/partners" onclick="_gaq.push(['_trackEvent', 'outbound-widget', 'http://www.tableausoftware.com/about/partners', '']);"  target="_blank"><img src="../../wp-content/uploads/2013/02/tableau-gold-partner-logo-1.png" /></a></p>
+</div>
+		</div><div class="sidebar-widget widget_text">			<div class="textwidget"><p><a href="http://www.alteryx.com/" onclick="_gaq.push(['_trackEvent', 'outbound-widget', 'http://www.alteryx.com/', '']);"  target="_blank"><img align="center" src="../../wp-content/uploads/2013/12/alteryx-small-logo.jpg" /></a></p>
+</div>
+		</div>                    </div>
+                                        <div class="one_fourth">
+                        <div class="sidebar-widget widget_nav_menu"><ul class="custom-menu"><li id="menu-item-491" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-491"><a href="../../contact-us/index.html">Email: hello@interworks.co.uk</a></li>
+<li id="menu-item-490" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-490"><a>Call: +44 (0)1202 37 33 33</a></li>
+<li id="menu-item-492" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-492"><a href="https://twitter.com/InterWorksEU" onclick="_gaq.push(['_trackEvent', 'outbound-widget', 'https://twitter.com/InterWorksEU', 'Twitter: @InterWorksEU']);" >Twitter: @InterWorksEU</a></li>
+<li id="menu-item-10377" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10377"><a href="https://www.facebook.com/interworkseu" onclick="_gaq.push(['_trackEvent', 'outbound-widget', 'https://www.facebook.com/interworkseu', 'Facebook: interworkseu']);" >Facebook: interworkseu</a></li>
+</ul></div>                    </div>
+                            </div><!-- end .footer-content -->
+    </div><!-- end .center-wrap -->
+
+    <div class="footer-copyright clearfix">
+        <div class="center-wrap clearfix">
+    	    <div class="foot-copy">
+    	        <p>Copyright © 2015 InterWorks Europe | All Rights Reserved.</p>
+    	    </div><!-- end .foot-copy -->
+
+    	    
+                            <ul class="footer-nav">
+                    <li id="menu-item-385" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-385"><a href="../../cookies/index.html">Cookies</a></li>
+<li id="menu-item-458" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-458"><a href="http://interworks.com" onclick="_gaq.push(['_trackEvent', 'outbound-widget', 'http://interworks.com', 'InterWorks USA']);" >InterWorks USA</a></li>
+                </ul>
+                    </div><!-- end .center-wrap -->
+    </div><!-- end .footer-copyright -->
+
+    <div class="shadow top"></div>
+    <div class="tt-overlay"></div>
+</footer>
+
+</div><!-- end .tt-wide-layout -->
+
+<!-- Start of Async HubSpot Analytics Code for WordPress v1.9.4 -->
+<script type="text/javascript">
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "blog-post"]);
+(function(d,s,i,r) {
+  if (d.getElementById(i)){return;}
+  var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+  n.id=i;n.src = '//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/502772.js';
+  e.parentNode.insertBefore(n, e);
+})(document, "script", "hs-analytics", 300000);
+</script>
+<!-- End of Async HubSpot Analytics Code -->
+<input id="leadin-subscribe-vex-class" value="vex-theme-bottom-right-corner" type="hidden"/><input id="leadin-subscribe-heading" value="Sign up for email updates" type="hidden"/><input id="leadin-subscribe-text" value="" type="hidden"/><input id="leadin-subscribe-btn-label" value="SUBSCRIBE" type="hidden"/><input id="leadin-subscribe-btn-color" value="leadin-popup-color-blue" type="hidden"/><input id="leadin-subscribe-name-fields" value="0" type="hidden"/><input id="leadin-subscribe-phone-field" value="0" type="hidden"/><input id="leadin-subscribe-confirmation" value="0" type="hidden"/><input id="leadin-subscribe-mobile-popup" value="1" type="hidden"/>	<div style="display:none">
+	</div>
+<script type='text/javascript' src='../../wp-content/plugins/akismet/_inc/form.js?ver=3.1.1'></script>
+
+							<div id="lang_sel_footer">
+									<ul>
+									    <li><a href="index.html" class="lang_sel_sel"><img src="../../wp-content/plugins/sitepress-multilingual-cms/res/flags/en.png" alt="English" class="iclflag" title="English"  />&nbsp;English</a></li>
+									</ul>
+							</div><script type='text/javascript' src='../../wp-includes/js/comment-reply.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/themes/Sterling/framework/js/custom-main.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/themes/Sterling/framework/js/jquery.prettyPhoto.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/themes/Sterling/framework/js/jquery.superfish.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/themes/Sterling/framework/js/jquery.cycle.all.min.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/plugins/easy-fancybox/jquery.easing.pack.js?ver=1.3'></script>
+<script type='text/javascript' src='../../wp-content/themes/Sterling/framework/js/jquery.isotope.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.51.0-2014.06.20'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _wpcf7 = {"loaderUrl":"http:\/\/interworks.co.uk\/wp-content\/plugins\/contact-form-7\/images\/ajax-loader.gif","sending":"Sending ..."};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.1.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var li_ajax = {"ajax_url":"http:\/\/interworks.co.uk\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/leadin/assets/js/build/leadin-tracking.min.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/plugins/leadin/assets/js/build/leadin-subscribe.min.js?ver=4.1.5'></script>
+<script type='text/javascript' src='http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201526'></script>
+<script type='text/javascript' src='http://s.gravatar.com/js/gprofiles.js?ver=2015Junaa'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/jetpack/modules/wpgroho.js?ver=4.1.5'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var icl_vars = {"current_language":"en","icl_home":"http:\/\/interworks.co.uk\/"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/sitepress-multilingual-cms/res/js/sitepress.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/plugins/easy-fancybox/fancybox/jquery.fancybox-1.3.7.min.js?ver=1.5.7'></script>
+<script type='text/javascript' src='../../wp-content/plugins/easy-fancybox/jquery.mousewheel.min.js?ver=3.1.12'></script>
+<script type='text/javascript' src='http://stats.wp.com/e-201526.js' async defer></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:3.4.3',blog:'83071981',post:'9379',tz:'1'} ]);
+	_stq.push([ 'clickTrackerInit', '83071981', '9379' ]);
+</script>
+
+<script type="text/javascript">
+jQuery(document).on('ready post-load', easy_fancybox_handler );
+</script>
+
+
+</body>
+</html>

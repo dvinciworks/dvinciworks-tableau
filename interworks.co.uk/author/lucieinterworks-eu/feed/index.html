@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>InterWorks - Tableau Software &#38; Business Intelligence Consulting &#187; Lucie Krennwallner</title>
+	<atom:link href="http://interworks.co.uk/author/lucieinterworks-eu/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 26 Jun 2015 08:09:24 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>Interacting with your trend line in Tableau (Part 2)</title>
+		<link>http://interworks.co.uk/blog/interacting-with-your-trend-line-in-tableau-part-2/</link>
+		<comments>http://interworks.co.uk/blog/interacting-with-your-trend-line-in-tableau-part-2/#comments</comments>
+		<pubDate>Tue, 07 Apr 2015 11:38:47 +0000</pubDate>
+		<dc:creator><![CDATA[Lucie Krennwallner]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Calculated Fields]]></category>
+		<category><![CDATA[Parameters]]></category>
+		<category><![CDATA[visualisation]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=11896</guid>
+		<description><![CDATA[<p>PART 2 In part one we familiarised with Tableau&#8217;s automatic Trend Line, information provided and inferences possible. Now I want to focus on the fun part: how to calculate the trend line ourselves using Tableau-R integration as well as two applied examples &#8220;How much above/below ?&#8221; and &#8220;What if&#8221;. HOW TO CALCULATE A LINEAR TREND LINE USING TABLEAU &#38; R [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/interacting-with-your-trend-line-in-tableau-part-2/">Interacting with your trend line in Tableau (Part 2)</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Finteracting-with-your-trend-line-in-tableau-part-2%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p><span style="color: #ff0000;">PART 2</span></p>
+<p>In <a title="Interacting with your Trend Line in Tableau (Part 1)" href="http://interworks.co.uk/blog/linear-regression-interacting-trend-line/" target="_blank">part one</a> we familiarised with Tableau&#8217;s automatic Trend Line, information provided and inferences possible. Now I want to focus on the fun part: how to calculate the trend line ourselves using Tableau-R integration as well as two applied examples &#8220;How much above/below ?&#8221; and &#8220;What if&#8221;.</p>
+<p><span style="color: #333399;"><b>HOW TO CALCULATE A LINEAR TREND LINE USING TABLEAU &amp; R INTEGRATION? </b></span></p>
+<p>Tableau provides (at least) two main options to calculate a trend line: either you could use Tableau’s R integration or calculated fields.</p>
+<ol>
+<li><span style="color: #0000ff;">TABLEAU-R-INTEGRATION</span></li>
+</ol>
+<p>If you know a bit of R, then you’re spot on – Tableau R integration saves you writing complicated Tableau calculations. Connect to R [1] and create the following calculated field ”R Trend Line”:</p>
+<p><span style="color: #0000ff;">          SCRIPT_REAL</span>(</p>
+<p>&#8221; tl &lt;- <span style="color: #0000ff;">lm</span>( .arg2 ~ .arg1)</p>
+<p>tl$fitted &#8221; ,</p>
+<p><span style="color: #0000ff;">          SUM</span>([<span style="color: #ff6600;">x</span>]), <span style="color: #0000ff;">SUM</span>([<span style="color: #ff6600;">y</span>]))</p>
+<p>A note for Tableau-R beginners: the equation</p>
+<p style="text-align: left;">          <span style="color: #0000ff;">lm</span>( .arg2 ~ .arg1)</p>
+<p>calculates all parts of the Trend Line (slope, intercept, estimated values). Because Tableau can only retrieve a <em>single</em> column from R (but no matrix or table), we need to extract the estimated values to be displayed in the dual axis chart by using „tl$fitted“.</p>
+<p>Now include the calculated trend line into the chart. To do so, drop &#8220;R Trend Line” onto the row shelf – don’t worry if the chart is empty at first! Right click on the Trend Line calculation and adjust ‘Compute Using’ to ID (see Figure 8). Then choose ‘Dual Axis’ – and you’re nearly done.</p>
+<p>The calculated and the automatic trend line do not lie on top of each other quite yet. It needs Axis Synchronisation – only Tableau does not allow this: this option is greyed out.</p>
+<p><strong><strong> <a href="http://interworks.co.uk/wp-content/uploads/2015/04/Fig-9-R-Trendline.jpg"><img class="alignnone  wp-image-11973" src="http://interworks.co.uk/wp-content/uploads/2015/04/Fig-9-R-Trendline-300x248.jpg" alt="Fig 9 R Trendline" width="381" height="315" /></a></strong></strong></p>
+<p>Figure 9: Interactive Menu ‘Axis synchronisation’</p>
+<p>Why is this? The reason is simple: if data types of the two axes differ, Tableau cannot synchronise them. Thus convert the Trend Line with the  <span style="color: #0000ff;">INT</span>() function:</p>
+<p><span style="color: #0000ff;">INT</span>(</p>
+<p><span style="color: #0000ff;">SCRIPT_REAL</span>(</p>
+<p>&#8221; tl &lt;- lm( .arg2 ~ .arg1)</p>
+<p>tl$fitted &#8221; ,</p>
+<p><span style="color: #0000ff;">          SUM</span>([<span style="color: #ff6600;">x</span>]), <span style="color: #0000ff;">SUM</span>([<span style="color: #ff6600;">y</span>]))</p>
+<p>)</p>
+<p>And – voila! &#8211;  there is the synchronisation function back. Now the Trend Lines matches.</p>
+<p>Note: the above calculation can be written in a single line, of course; the spacious presentation is only a way to make it easier for you to understand Tableau spelling.</p>
+<p>However, if your plot looks still strange, because your R Trend Line appears as a dotted line although you have chosen &#8216;Line&#8217; in the marks card, then remove &gt; Measure Names &lt; (see Fig. 10, red circle) from the Trend Line card.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/04/Fig-10-two-dots-plot.png"><img class="alignnone  wp-image-11974" src="http://interworks.co.uk/wp-content/uploads/2015/04/Fig-10-two-dots-plot-300x183.png" alt="Fig 10 two dots plot" width="475" height="290" /></a></p>
+<p>Figure 10: remove &gt;Measure Names&lt; from marks card to see R Trend Line as a line.</p>
+<p>&nbsp;</p>
+<p><span style="color: #0000ff;">PRACTICAL EXAMPLES</span></p>
+<p><span style="color: #3366ff;">Example 1: &#8220;How much above the Line?” </span></p>
+<p>What do you do if you want to quantify and visualise the deviation of an observation (data point)  from the Trend Line?  That’s easy, now; right? Just calculate &#8220;How much above the Line?” in a calculated Field using</p>
+<p><span style="color: #0000ff;">SUM</span>([<span style="color: #ff6600;">y</span>]) – <span style="color: #ff6600;">[Trend Line]</span>.</p>
+<p>Remember: the y-axis in a scatter plot is <span style="color: #0000ff;">SUM</span>([<span style="color: #ff6600;">y</span>]) and NOT just y.</p>
+<p>When you have the trend line on the row shelf with &#8216;Compute Using&#8217; on ID, drop the calculation “How much above the Line?” on to &#8216;Size&#8217; on the marks card (and if you want to see the label, drop a copy on to &#8216;Text&#8217; too). Then create a dual axis chart and choose from the marks card Gantt Bar for the trend line to visualise the deviation from the trend line (Fig.11).</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/04/Fig-11-How-much-abvove-below.png"><img class="alignnone  wp-image-11975" src="http://interworks.co.uk/wp-content/uploads/2015/04/Fig-11-How-much-abvove-below-300x265.png" alt="Fig 11 How much abvove below" width="423" height="374" /></a></p>
+<p>Figure 11: Visualising distance of observation from the trend line</p>
+<p><span style="color: #3366ff;">Example 2: &#8220;What-If?”</span></p>
+<p>Let&#8217;s imagine you would like to analyse the profitability of customers. When your company acquires a new client we&#8217;d like to evaluate what to expect based on the currently known trend. For this ‘what-if&#8217; scenario we need to create an option for the analyst to choose a value within the data set or SLIGHTLY outside (if you want to do go far beyond your own data set, better use a different method of predictive analytics).</p>
+<p>As a reminder to calculate the trend line we used the formula</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/03/LineFormula.jpg"><img class=" size-full wp-image-11655 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/03/LineFormula.jpg" alt="LineFormula" width="122" height="38" /></a></p>
+<p>So to answer your question we need to take three steps:</p>
+<p>a) extract the constants</p>
+<p>Intercept:   <span style="color: #0000ff;">SCRIPT_REAL</span>( &#8220;<span style="color: #0000ff;">lm</span>( .arg2 ~ .arg1) $coefficients[1]&#8221; , <span style="color: #0000ff;">SUM</span>(<span style="color: #ff6600;">[x]</span>), <span style="color: #0000ff;">SUM</span>(<span style="color: #ff6600;">[y]</span>))</p>
+<p>Slope:         <span style="color: #0000ff;">SCRIPT_REAL</span>( &#8220;<span style="color: #0000ff;">lm</span>( .arg2 ~ .arg1) $coefficients[2]&#8221; , <span style="color: #0000ff;">SUM</span>(<span style="color: #ff6600;">[x]</span>), <span style="color: #0000ff;">SUM</span>(<span style="color: #ff6600;">[y]</span>))</p>
+<p>b) we have to replace our known x-values from the data set with values the analyst can choose from. To do so create a parameter (Fig. 12) , which is then called in the trend line calculation replacing <span style="color: #0000ff;">SUM</span>([<span style="color: #ff6600;">x</span>]) with <span style="color: #0000ff;">SUM</span>(<span style="color: #993366;">[Parameter]</span>).</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/04/Fig-12-What-if-x-Value-Parameter.jpg"><img class="alignnone  wp-image-11978" src="http://interworks.co.uk/wp-content/uploads/2015/04/Fig-12-What-if-x-Value-Parameter-300x253.jpg" alt="Fig 12 What if x Value Parameter" width="347" height="293" /></a></p>
+<p>Figure 12: Create Parameter &#8220;What-If x-Value&#8221;</p>
+<p>c) Finally, we want to see only ONE estimated value, not all the possible values. In other words we need to filter the returned y-values and the easiest way is to use the function <span style="color: #0000ff;">First</span>().</p>
+<p>Piecing these three steps together the new &#8220;R What-If Trend Line (What if)&#8221; calculation reads then like</p>
+<p>If <span style="color: #0000ff;">FIRST</span>() = 0 Then <span style="color: #0000ff;">INT</span>((<span style="color: #ff6600;"> [R slope]</span> * <span style="color: #ff6600;">[x(what if)]</span> ) + <span style="color: #ff6600;">[R intercept]</span> ) END.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/04/Fig-13-R-What-If.jpg"><img class="alignnone size-medium wp-image-12044" src="http://interworks.co.uk/wp-content/uploads/2015/04/Fig-13-R-What-If-300x251.jpg" alt="Fig 13 R What If" width="300" height="251" /></a></p>
+<p>Figure 13: What-If Analysis using R in Tableau</p>
+<p>&nbsp;</p>
+<p>HAPPY ANALYSING!</p>
+<p>&nbsp;</p>
+<p>[1] http://www.tableau.com/sites/default/files/media/using-r-and-tableau.pdf</p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/interacting-with-your-trend-line-in-tableau-part-2/">Interacting with your trend line in Tableau (Part 2)</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Finteracting-with-your-trend-line-in-tableau-part-2%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/interacting-with-your-trend-line-in-tableau-part-2/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+		<item>
+		<title>Interacting with your Trend Line in Tableau (Part 1)</title>
+		<link>http://interworks.co.uk/blog/linear-regression-interacting-trend-line/</link>
+		<comments>http://interworks.co.uk/blog/linear-regression-interacting-trend-line/#comments</comments>
+		<pubDate>Fri, 27 Mar 2015 15:06:31 +0000</pubDate>
+		<dc:creator><![CDATA[Lucie Krennwallner]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=11654</guid>
+		<description><![CDATA[<p>Hot topics in the world of Big Data are forecast and trend models, and Tableau has integrated both features. All it takes are two clicks, and a trend line appears &#8211; your viz instantly looks more interesting. The disadvantage of the automatic trend line is the missing interactivity. If an analyst wants to include the [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/linear-regression-interacting-trend-line/">Interacting with your Trend Line in Tableau (Part 1)</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Flinear-regression-interacting-trend-line%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Hot topics in the world of Big Data are forecast and trend models, and Tableau has integrated both features. All it takes are two clicks, and a trend line appears &#8211; your viz instantly looks more interesting.</p>
+<p>The disadvantage of the automatic trend line is the missing interactivity. If an analyst wants to include the trend line in further visualizations, e.g. to quantify and visualise the distance between a data point and the trend line, he/she faces a non-trivial challenge.</p>
+<p>The following post will provide a solution to this challenge. It focuses on <em>linear</em> Trend Lines, and its content can be subdivided into three successive parts:</p>
+<p style="text-align: left;"><span style="color: #000000;"><strong>Part 1 :</strong></span> What is a trend line? How to add trend lines to a Tableau chart? What details do Tableau provide about trend lines? What can we derive from the details provided?</p>
+<p><span style="color: #000000;"><strong>Part 2:</strong> </span> Two ways to calculate a trend line (=linear regression line, =“Line of Best Fit”):</p>
+<ol>
+<li>Tableau-R Integration</li>
+<li>Calculated fields in Tableau</li>
+</ol>
+<p><span style="color: #000000;"><strong>Part 3:</strong></span> Practical Examples:</p>
+<ol>
+<li>Distance between a data point and the trend line</li>
+<li>“What-if” scenario</li>
+</ol>
+<p>&nbsp;</p>
+<p><span style="color: #ff0000;"><strong>PART 1</strong></span></p>
+<p><span style="color: #333399;"><strong>WHAT IS A TREND LINE?</strong></span></p>
+<p>According to the Bavarian High School Curriculum [1], eighth graders (age 12 -13) will say: The trend line is a linear equation that is described by the formula</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/03/LineFormula.jpg"><img class="  wp-image-11655 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/03/LineFormula.jpg" alt="LineFormula" width="122" height="38" /></a></p>
+<p><strong style="line-height: 1.5;">x</strong><span style="line-height: 1.5;"> is a member of the set of real numbers  <a href="http://interworks.co.uk/wp-content/uploads/2015/03/RealNr.png"><img class="alignnone  wp-image-11677" src="http://interworks.co.uk/wp-content/uploads/2015/03/RealNr.png" alt="RealNr" width="18" height="19" /></a> (Unicode </span><span style="line-height: 1.5;">U+211D: ℝ). </span></p>
+<p><strong>β </strong>represents the y-segment, where the line crosses the y-axis; β is also called the ‘Intercept’.</p>
+<p><strong>α </strong>is the ‘slope’ of the trend line; the slope is a measure how the straight line angles away from the horizontal (some might indicate the slope by using ‘m’ instead of <strong>α</strong>). The slope of a line can be calculated from any two points on the line. [2]</p>
+<p>And both <strong>α</strong> and <strong>β</strong> are constants.</p>
+<p>Are your memories coming back &#8230;?</p>
+<p>&nbsp;</p>
+<p><span style="color: #333399;"><strong>HOW TO ADD A TREND LINE IN TABLEAU</strong></span></p>
+<p>First of all, we need a viz. Let’s assume we want to know our profit between January 2010 and December 2013 This viz needs [Order Date] on the Column shelf and Profit as <span style="color: #0000ff;">SUM</span>([<span style="color: #ff6600;">Sales</span>]) on the Row shelf. To obtain a continuous profit line, [Order Date] needs to be changed from <span style="color: #3366ff;">discrete</span> to <span style="color: #339966;">continuous</span><strong>.</strong> To include a trend line, open the Analysis menu, hover over “Trend Lines” and choose “Show All Trend Lines”. Done (see Figure 1).</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/03/Fig-1-Trend-Line-Tableau.jpg"><img class="alignnone  wp-image-11674" src="http://interworks.co.uk/wp-content/uploads/2015/03/Fig-1-Trend-Line-Tableau-300x190.jpg" alt="Fig 1 Trend Line Tableau" width="393" height="249" /></a></p>
+<p>Figure 1: Tableau chart showing profit over time.</p>
+<p>&nbsp;</p>
+<p><span style="color: #333399;"><strong>WHAT STATISTICAL DETAILS ABOUT THE TREND LINE DOES TABLEAU PROVIDE? </strong></span></p>
+<p>Tableau offers three levels of detail. Each level of detail provides the formula used to calculate the trend line as well as an increasing amount of statistical details. Please don’t worry; we’ll discuss only the most important statistics!</p>
+<p><strong>LEVEL 1:</strong></p>
+<p>While hovering above the trend line, a little pop-up window opens (Figure 2). Tableau shows the linear equation, as we have known it since school days. The equation provides the values for the coefficients (slope &amp; intercept).</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/03/Fig2-Level-of-Detail-1.png"><img class="alignnone size-medium wp-image-11659" src="http://interworks.co.uk/wp-content/uploads/2015/03/Fig2-Level-of-Detail-1-300x59.png" alt="Fig2 Level of Detail 1" width="300" height="59" /></a></p>
+<p>Figure 2: Level 1 statistical details describing the trend line.</p>
+<p>In a second line, the analyst is provided with the p-value (probability value). The p-value is a function of the observations in our data set and indicates how likely it is that the observed trend happened by chance or is indeed a reliable trend. In other words, if we collected data again (under the same conditions) how likely – or not –is it that we get a similar trend (for details on the p-value, read [3])?</p>
+<p>The smaller the “p-value”, the more likely it is that the conclusions inferred from the current observation are reliable. Convention has it that the threshold value for accepting or rejecting the outcome as (more or less) random is traditionally 5% or 1% (called the significance level of the test [3]).</p>
+<p>Our p-value is very small (p &lt; 0.0001), which means the upward trend in profit is a reliable result.</p>
+<p><strong>LEVEL 2:</strong></p>
+<p>Tableau offers some more details when we right-click on the Trend Line and choose “Describe Trend Line”. Again, we see the p-value and the linear equation just like before in Figure 2 . Additionally, we see some more statistical indicators (Figure 3).</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/03/Fig3-Level-21.jpg"><img class="alignnone  wp-image-11661" src="http://interworks.co.uk/wp-content/uploads/2015/03/Fig3-Level-21-300x100.jpg" alt="Fig3 Level 2" width="378" height="126" /></a></p>
+<p>Figure 3: Level 2 statistical details describing the trend line.</p>
+<p>Most interesting is the standard error (StdErr). While the p-value is similar to a Boolean (yes/no) – above or below a chosen threshold – the standard error is a kind of accuracy measure for the trend line’s predictions/estimates.</p>
+<p>What does “kind of accuracy measure” actually mean?</p>
+<p>Let’s assume all our observations (= data points) lie on a straight line (Figure 4, A) with the slope = 30.088 and intercept of = -159. This data results in a p-value &lt;&lt; 0.05 (or 0.01), so we can say &#8216;the upward trend is reliable&#8217;. Because the data lie <span style="text-decoration: underline;">ON the line</span>, in other words they do not deviate from it, the standard error StdErr = 0. We call this a “perfect correlation” between two measures.</p>
+<p>In real life, however, data is rarely perfectly aligned, which is why we need to estimate a trend line. This estimate is based on two aspects:</p>
+<ol>
+<li>The trend line should be as close as possible to all observations in the two-variable scatter plot.</li>
+<li>The number of observations above the trend line should be equal to the number of observations below the trend line.</li>
+</ol>
+<p>Due to these requirements, the trend line is also referred to as “Line of Best Fit”, and the mathematical approach to calculate the “Line of Best Fit” is called the “least squared” method [4].</p>
+<p>In Figure 4, graphs B and C have nearly identical trend lines: However, in B, all observations are close to the trend line, while in C, observations are more scattered. In statistical terminology: with identical sample size in Graph B deviations are small compared to deviation deviations from the trend line in Graph C. Neither p-value nor coefficients tell us much, but the StdErr [5a] speaks loudly: C has a StdErr three times the size of B. Hence you might want to check out why observations are so scattered in C and possibly whether there is a better way to analyse the data.</p>
+<p>Note: If you are not sure whether you the difference between standard deviation and standard error you could start with reading James Dean Brown nice overview [5b].</p>
+<table width="395">
+<tbody>
+<tr>
+<td style="text-align: center;" width="140">A</td>
+<td style="text-align: center;" width="126">B</td>
+<td style="text-align: center;" width="129">C</td>
+</tr>
+<tr>
+<td width="140"><a href="http://interworks.co.uk/wp-content/uploads/2015/03/Fig4-A-graph.jpg"><img class="  wp-image-11667 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/03/Fig4-A-graph-300x300.jpg" alt="Fig4 A graph" width="271" height="271" /></a></td>
+<td width="126"><a href="http://interworks.co.uk/wp-content/uploads/2015/03/Fig4-B-graph.png"><img class="  wp-image-11662 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/03/Fig4-B-graph-300x297.png" alt="Fig4 B graph" width="279" height="276" /></a></td>
+<td width="129"><a href="http://interworks.co.uk/wp-content/uploads/2015/03/Fig4-C-gr.png"><img class="  wp-image-11663 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/03/Fig4-C-gr-300x297.png" alt="Fig4 C gr" width="268" height="265" /></a></td>
+</tr>
+<tr>
+<td width="140"><a href="http://interworks.co.uk/wp-content/uploads/2015/03/Fig4-A-nr.png"><img class=" size-medium wp-image-11665 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/03/Fig4-A-nr-300x127.png" alt="Fig4 A nr" width="300" height="127" /></a></td>
+<td width="126"><a href="http://interworks.co.uk/wp-content/uploads/2015/03/Fig4-B-nr.png"><img class=" size-medium wp-image-11664 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/03/Fig4-B-nr-300x133.png" alt="Fig4 B nr" width="300" height="133" /></a></td>
+<td width="129"><a href="http://interworks.co.uk/wp-content/uploads/2015/03/Fig-4-C-nr.jpg"><img class=" size-medium wp-image-11666 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/03/Fig-4-C-nr-300x130.jpg" alt="Fig 4 C nr" width="300" height="130" /></a></td>
+</tr>
+</tbody>
+</table>
+<p>Figure 4: Two-variable scatter plot with Trend Lines and statistical details.</p>
+<p><strong>LEVEL 3:</strong></p>
+<p>Tableau offers still another level of detail. You’ll find it when right-clicking on the trend line and choosing “Describe Trend Model”. Don’t worry; it’s not as bad as it looks.</p>
+<p>First, look at the bottom of Figure 5. There, you’ll find our well-known coefficient values, i.e. the slope = 30.0879 and the intercept = -159.474 as well as the StdErr = 2.8659 and p-value &lt;0.0001. What is confusing for many people is the way the equation is presented:</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/03/Fig-5-Level-3.png"><img class="alignnone  wp-image-11668" src="http://interworks.co.uk/wp-content/uploads/2015/03/Fig-5-Level-3-300x152.png" alt="Fig 5 Level 3" width="430" height="218" /></a></p>
+<p>Figure 5: Level 3 statistical details describing the Trend Line in Fig 4B.</p>
+<p>Mathematically, the formula</p>
+<p style="text-align: center;">y = (x + intercept)</p>
+<p>seems to suggest that when including the slope, the equation looks like:</p>
+<p style="text-align: center;">y = slope * (x + intercept) = slope* x + slope * intercept.</p>
+<p>However, this is not what Tableau wants to say. Do not ask me why the equation is not presented in the same format as in Levels 1 and 2; it’s just the way Tableau decided to build it. But please be assured: All equations on all three levels aim to express the very same [6].</p>
+<p>&nbsp;</p>
+<p>Now go to part 2: <a title="Interacting with your trend line in Tableau (Part 2)" href="http://interworks.co.uk/blog/interacting-with-your-trend-line-in-tableau-part-2/"><strong>Interacting with your trend line in Tableau part 2.</strong></a></p>
+<p>&nbsp;</p>
+<p><strong>References</strong></p>
+<p>[1] <a href="http://www.isb-gym8-lehrplan.de/contentserv/3.1.neu/g8.de/index.php?StoryID=27110">http://www.isb-gym8-lehrplan.de/contentserv/3.1.neu/g8.de/index.php?StoryID=27110</a></p>
+<p>[2] <a href="http://www.schulminator.com/mathematik/lineare-funktion">http://www.schulminator.com/mathematik/lineare-funktion</a></p>
+<p><span style="text-decoration: underline;">[3] </span><a href="http://www.nature.com/news/scientific-method-statistical-errors-1.14700">http://www.nature.com/news/scientific-method-statistical-errors-1.14700</a></p>
+<p>[4] <a href="http://hotmath.com/hotmath_help/topics/line-of-best-fit.html">http://hotmath.com/hotmath_help/topics/line-of-best-fit.html</a></p>
+<p>[5a] <a href="http://onlinestatbook.com/2/regression/accuracy.html">http://onlinestatbook.com/2/regression/accuracy.html</a></p>
+<p>[5b] http://jalt.org/test/PDF/Brown4.pdf</p>
+<p>[6] <a href="http://3danim8.wordpress.com/2013/09/11/how-to-better-understand-and-use-linear-trend-models-in-tableau/">http://3danim8.wordpress.com/2013/09/11/how-to-better-understand-and-use-linear-trend-models-in-tableau/</a></p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/linear-regression-interacting-trend-line/">Interacting with your Trend Line in Tableau (Part 1)</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Flinear-regression-interacting-trend-line%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/linear-regression-interacting-trend-line/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+	</channel>
+</rss>

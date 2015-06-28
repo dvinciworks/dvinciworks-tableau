@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>InterWorks - Tableau Software &#38; Business Intelligence Consulting &#187; Heartbleed</title>
+	<atom:link href="http://interworks.co.uk/tag/heartbleed/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 26 Jun 2015 08:09:24 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>Tableau and the Heartbleed Vulnerability</title>
+		<link>http://interworks.co.uk/blog/tableau-heartbleed-vulnerability/</link>
+		<comments>http://interworks.co.uk/blog/tableau-heartbleed-vulnerability/#comments</comments>
+		<pubDate>Fri, 11 Apr 2014 08:48:50 +0000</pubDate>
+		<dc:creator><![CDATA[Phil Spurgeon]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Heartbleed]]></category>
+		<category><![CDATA[Heartbleed Vulnerability]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[Tableau Software]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=10374</guid>
+		<description><![CDATA[<p>Tableau has published a post on their own site detailing how the Heartbleed Vulnerability affects the Tableau software. Whilst the security updates were released last night we thought it better to share with you the details of the vulnerability with regards to Tableau so you can update passwords within your organisations as needed. This is [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/tableau-heartbleed-vulnerability/">Tableau and the Heartbleed Vulnerability</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Ftableau-heartbleed-vulnerability%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Tableau has published a post on their own site detailing how the Heartbleed Vulnerability affects the Tableau software. Whilst the security updates were released last night we thought it better to share with you the details of the vulnerability with regards to Tableau so you can update passwords within your organisations as needed. This is taken directly from the <a title="Tableau Software" href="http://www.tableausoftware.com" target="_blank">Tableau Software</a> website:</p>
+<blockquote>
+<div>
+<p><strong>Update</strong>: <em>We have made Tableau versions 8.1.6 and 8.0.10 available. These are the maintenance releases which contain the correction for the Heartbleed vulnerability. The releases can be downloaded from either the <a href="http://myaccount.tableausoftware.com/" target="_blank" rel="nofollow">primary customer download center</a> or the <a href="https://licensing.tableausoftware.com/esdalt" target="_blank" rel="nofollow">alternate download site</a>. 8.0.10 is only on the alternate download site. Information and downloads are also available in our <a href="http://www.tableausoftware.com/support/releases" target="_blank" rel="nofollow">Release Notes</a>.<br />
+</em><br />
+By now you might have heard about the <a title="Heartbleed" href="http://heartbleed.com/" target="_blank" rel="nofollow">Heartbleed</a> vulnerability. Heartbleed is a critical security vulnerability in the OpenSSL software project. OpenSSL is an extremely popular open source software component used by a substantial number of applications and services running on the internet. Tableau is one of many products that include the OpenSSL component to manage the secure communication protocol. On April 7th, the OpenSSL Project released news of the vulnerability and an update to address it.</p>
+</div>
+<div>
+<div>
+<p>The vulnerability allows a remote attacker to read client or server application memory. This can allow for encryption keys to be read which can enable the decrypting of data obtained by intercepting traffic. For example, passwords or other sensitive data could be accessed. Tableau’s desktop products use OpenSSL to negotiate the security protocol from the server to the desktop, including both Tableau Servers configured for SSL and Tableau Desktop products which communicate with other servers – for example a dashboard with a web page component embedded in it which may access a remote SSL server.</p>
+<p>The Tableau product versions with this vulnerability are:</p>
+<ul>
+<li>Tableau Server version 8.0.6 thru 8.0.9 which are configured with SSL enabled. (Prior versions of Tableau Server are not vulnerable.)</li>
+<li>Tableau Server version 8.1.0 thru 8.1.5 which are configured with SSL enabled.</li>
+<li>Tableau Desktop versions 8.1.0 thru 8.1.5. All desktop varieties: Personal, Professional, Public Desktop, and Reader are vulnerable. (Prior versions of Tableau Desktop are not vulnerable).</li>
+<li>The initial beta version of Tableau 8.2, both desktop and server.</li>
+</ul>
+<p>We are currently in final testing of updated Tableau versions that correct this vulnerability. We are creating new versions with the latest OpenSSL (version 1.0.1g) embedded. Our target is to have the software released for customers to download Thursday evening (April 10th). We will be releasing Tableau versions 8.0.10 and 8.1.6 to correct this vulnerability.</p>
+<p>The rest of the Tableau properties do not have exposure to the Heartbleed vulnerability. Tableau Online, Tableau Public, the Tableau corporate website, customer portal, community forums, licensing server, map server, training content and other elements that are part of our website are all clear from this vulnerability.</p>
+<p><strong>We strongly encourage updating all affected Tableau product versions as soon as they are available, as this vulnerability poses a significant risk. Once your upgrade is complete, we recommend SSL certificates used on Tableau Server be updated as well as changing passwords on all Tableau Server accounts.</strong></p>
+<p>We will announce availability of our updates via our social media channels, our <a title="Release Notes" href="http://www.tableausoftware.com/support/releases" target="_blank" rel="nofollow">Release Notes forum</a>, and an update to this blog post. With the release we will provide additional information about the changes and notes on performing the upgrade in a Knowledge Base article.</p>
+<p>Please <a href="https://tableau.secure.force.com/casesubmit?subject=OpenSSL+Questions" target="_blank" rel="nofollow">click here</a> to contact our technical support organization if you have more questions or need additional guidance on performing the upgrade.</p>
+</div>
+</div>
+</blockquote>
+<div></div>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/tableau-heartbleed-vulnerability/">Tableau and the Heartbleed Vulnerability</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Ftableau-heartbleed-vulnerability%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/tableau-heartbleed-vulnerability/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>InterWorks - Tableau Software &#38; Business Intelligence Consulting &#187; tooltip</title>
+	<atom:link href="http://interworks.co.uk/tag/tooltip/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 26 Jun 2015 08:09:24 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>Menu Navigation within a Tableau Workbook</title>
+		<link>http://interworks.co.uk/blog/menu-navigation-within-a-tableau-workbook/</link>
+		<comments>http://interworks.co.uk/blog/menu-navigation-within-a-tableau-workbook/#comments</comments>
+		<pubDate>Tue, 23 Oct 2012 12:36:02 +0000</pubDate>
+		<dc:creator><![CDATA[Aus]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Actions]]></category>
+		<category><![CDATA[Example]]></category>
+		<category><![CDATA[KPI]]></category>
+		<category><![CDATA[menu]]></category>
+		<category><![CDATA[Navigation]]></category>
+		<category><![CDATA[Splash Page]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[tooltip]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=3249</guid>
+		<description><![CDATA[<p>There has been a conversation floating around on how to successfully navigate around different sheets of a workbook. On the face of it there doesn&#8217;t appear to be an obvious way of doing this in Tableau (perhaps Tableau 8.0 will address this!!). However it is possible and below is an example of a menu system [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/menu-navigation-within-a-tableau-workbook/">Menu Navigation within a Tableau Workbook</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmenu-navigation-within-a-tableau-workbook%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>There has been a conversation floating around on how to successfully navigate around different sheets of a workbook. On the face of it there doesn&#8217;t appear to be an obvious way of doing this in Tableau (perhaps Tableau 8.0 will address this!!).</p>
+<p>However it is possible and below is an example of a menu system within a Tableau workbook which uses actions to navigate from sheet to sheet.<br />
+<script src="https://public.tableausoftware.com/javascripts/api/viz_v1.js" type="text/javascript"></script></p>
+<div class="tableauPlaceholder" style="width: 604px; height: 495px;"><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;publicrevizit.tableausoftware.com&#47;static&#47;images&#47;Me&#47;MenuExample_1&#47;Menu&#47;1_rss.png' style='border: none' /></a></noscript><object class="tableauViz" style="display: none;" width="604" height="495"><param name="host_url" value="https%3A%2F%2Fpublic.tableausoftware.com%2F" /><param name="site_root" value="" /><param name="name" value="MenuExample_1/Menu" /><param name="tabs" value="yes" /><param name="toolbar" value="yes" /><param name="static_image" value="https://publicrevizit.tableausoftware.com/static/images/Me/MenuExample_1/Menu/1.png" /><param name="animate_transition" value="yes" /><param name="display_static_image" value="yes" /><param name="display_spinner" value="yes" /><param name="display_overlay" value="yes" /><param name="display_count" value="yes" /><param name="showVizHome" value="no" /></object></div>
+<div style="width: 604px; height: 22px; padding: 0px 10px 0px 0px; color: black; font: normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float: right; padding-right: 8px;"><a href="http://www.tableausoftware.com/public/about-tableau-products?ref=https://public.tableausoftware.com/views/MenuExample_1/Menu" target="_blank">Learn About Tableau</a></div>
+</div>
+<p>It is definitely a useful trick to know about but is a little bit fiddly to set up.</p>
+<p>It is achieved by creating a series of sheets which will be used for navigation purposes. One will need to be created for each target dashboard plus an extra one for the return to main menu if you want. The example above has 4 dashboards so requires 5 separate sheets to create the navigation. Each sheet will then have its own filter action created from the worksheet menu to target the required dash. This can either be done as a select or menu link (both are used above).</p>
+<p>The text itself is created through a simple calculated field with the string written inside and dropped onto the label shelf.</p>
+<p>Create a menu dashboard to drop all the link worksheets onto, format to taste and you&#8217;re ready to go.</p>
+<p>The example is very simple but there is no reason not to include some sort of metric onto each of the links (they are worksheets after all) then rather than simply a menu list it becomes a KPI overview with links to more detail if some target is reached and flagged.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/menu-navigation-within-a-tableau-workbook/">Menu Navigation within a Tableau Workbook</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmenu-navigation-within-a-tableau-workbook%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/menu-navigation-within-a-tableau-workbook/feed/</wfw:commentRss>
+		<slash:comments>10</slash:comments>
+		</item>
+		<item>
+		<title>Terrific tooltip tricks: European conference session</title>
+		<link>http://interworks.co.uk/blog/terrific-tooltip-tricks/</link>
+		<comments>http://interworks.co.uk/blog/terrific-tooltip-tricks/#comments</comments>
+		<pubDate>Tue, 10 May 2011 10:00:46 +0000</pubDate>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Andy Cotgreave]]></category>
+		<category><![CDATA[conference]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[tooltip]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=2470</guid>
+		<description><![CDATA[<p>Thanks for visiting the blog &#8211; if you are visiting here as a result of my Tableau European Customer Conference session, welcome along. The best way to keep up to date with new posts is via my twitter feed (@acotgreave). My session was all about tooltips, and ways you can use them to enhance your [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/terrific-tooltip-tricks/">Terrific tooltip tricks: European conference session</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fterrific-tooltip-tricks%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p><a href="http://www.interworks.co.uk/blog/the-data-studio-blog/andy-cotgreave/sparkbar-tooltips"><img class="size-full wp-image-2468 alignnone" title="in cell time series" src="http://www.interworks.co.uk/wp-content/uploads/2011/05/in-cell-time-series.png" alt="" width="595" height="214" /></a></p>
+<p>Thanks for visiting the blog &#8211; if you are visiting here as a result of my Tableau European Customer Conference session, welcome along. The best way to keep up to date with new posts is via my twitter feed (<a href="http://twitter.com/#!/acotgreave">@acotgreave</a>).</p>
+<p>My session was all about tooltips, and ways you can use them to enhance your visualisation and make your audience&#8217;s lives a lot easier. I have posts on various tooltip topics:</p>
+<ul>
+<li><a href="http://www.interworks.co.uk/blog/the-data-studio-blog/andy-cotgreave/sparkbar-tooltips">The time-series tooltip</a></li>
+<li><a href="http://www.interworks.co.uk/blog/the-data-studio-blog/andy-cotgreave/charts-in-a-tooltip">The bar-chart tooltip</a></li>
+<li><a href="http://www.interworks.co.uk/blog/the-data-studio-blog/andy-cotgreave/the-joy-of-six-calculated-fields">Multiple mark values inside a tooltip</a></li>
+<li><a href="http://www.interworks.co.uk/blog/the-data-studio-blog/andy-cotgreave/tableau-tooltips-conditional-formatting">Conditional formatting</a></li>
+<li><a href="http://www.interworks.co.uk/blog/the-data-studio-blog/andy-cotgreave/tooltip-tips-pt-1">A general good-practice guide to tooltips</a></li>
+</ul>
+<p>If tooltips aren&#8217;t your thing, then have a browse of the blog for other Tableau tips and tricks.</p>
+<p>At the time of writing, the conference workbook I used isn&#8217;t yet available for download. <a href="http://twitter.com/#!/acotgreave">Follow me on twitter</a> where I will update everyone when it is put onto the Tableau Conference website. There will also be a video recording of the session should you wish to revisit some of the specific content.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/terrific-tooltip-tricks/">Terrific tooltip tricks: European conference session</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fterrific-tooltip-tricks%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/terrific-tooltip-tricks/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+		<item>
+		<title>Sparkbars in tooltips</title>
+		<link>http://interworks.co.uk/blog/sparkbar-tooltips/</link>
+		<comments>http://interworks.co.uk/blog/sparkbar-tooltips/#comments</comments>
+		<pubDate>Tue, 10 May 2011 10:00:22 +0000</pubDate>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Andy Cotgreave]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[tooltip]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=2475</guid>
+		<description><![CDATA[<p>You may have read my post on the bar-chart tooltip, or seen it on the Tableau Knowledge Base. That was always something I was proud of. When Tableau released v6, and with it Table Calculations, I suspected there was a way to extend it. Once I had my Tableau European Conference tooltip session approved, I [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/sparkbar-tooltips/">Sparkbars in tooltips</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fsparkbar-tooltips%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>You may have read my post on the <a href="http://www.interworks.co.uk/blog/the-data-studio-blog/andy-cotgreave/charts-in-a-tooltip">bar-chart tooltip</a>, or seen it on the <a href="http://www.tableausoftware.com/community/support/kb/barsintooltips">Tableau Knowledge Base</a>. That was always something I was proud of. When Tableau released v6, and with it Table Calculations, I suspected there was a way to extend it. Once I had my Tableau European Conference tooltip session approved, I knew it was time to go the extra mile and see what table calcs could do to enhance the tooltip charts.</p>
+<p>What could make them better? Tooltip sparkbars showing the month-by-month sales of each product type:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/05/in-cell-time-series.png"><img class="alignnone size-full wp-image-2468" title="in cell time series" src="http://www.interworks.co.uk/wp-content/uploads/2011/05/in-cell-time-series.png" alt="" width="595" height="214" /></a></p>
+<p><em>[Why is there no Tableau Public embedded view here? Because my solution, inspired by <a href="http://chandoo.org/wp/2008/05/13/creating-in-cell-bar-charts-histograms-in-excel/">Chandoo&#8217;s excellent Excel blog post</a>, uses custom fonts. These need to be installed on the client machine, so it&#8217;s unlikely it&#8217;ll work for you without them] </em></p>
+<p><a href="http://public.tableausoftware.com/download/workbooks/sparkbartooltips?format=html">Download the example workbook here</a>. You also need some custom fonts installed. These can be downloaded from Fontstruct.com<em> (<a href="http://fontstruct.com/fontstructions/show/37128">bargraph</a>, <a href="http://fontstruct.com/fontstructions/show/473652">bargraphs lifted</a> and <a href="http://fontstruct.com/fontstructions/show/bargraph2_3">bargraph2</a>)<br />
+</em></p>
+<p>The sparkbar tooltip is a way of breaking the detail of one mark (for example, annual sales by state) into the monthly trend. This is a free way of drilling down into the data without requiring another view on the screen simultarneously. The same technique can be used to create a single worksheet view with multiple sparkbars in it. This would be very useful if you are printing executive dashboards, for example:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/05/sparkbar-dashboard.png"><img class="alignnone size-full wp-image-2481" title="sparkbar dashboard" src="http://www.interworks.co.uk/wp-content/uploads/2011/05/sparkbar-dashboard.png" alt="" width="514" height="590" /></a></p>
+<p>Want to do this yourself? I&#8217;m going to describe my solution. I am not sure my table calculations are the optimal way of doing this, and there are some issues with this technique. If you know a way of improving the technique, please let me know.</p>
+<p>We need a calculation the returns a value  for each month&#8217;s sales value, normalised so that the highest value is 9 (the highest bar) and the lowest is 0. Sounds simple, sure, but the table calculation is far from pretty:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/05/sparkbar-table-calc.png"><img class="alignnone size-full wp-image-2483" title="sparkbar table calc" src="http://www.interworks.co.uk/wp-content/uploads/2011/05/sparkbar-table-calc.png" alt="" width="675" height="272" /></a></p>
+<p>Ouch. And you need a separate calculation for each member of your Dimension!</p>
+<p>It&#8217;s got 12 rows, one for each month. The <span style="color: #3366ff;">LOOKUP()</span> calc finds the Sales value from the first row in the partition (January) and normalises it by comparing it to the maximum sales value for all months. The <span style="color: #3366ff;">STR(ZN(ROUND&#8230;</span> stuff tidies things up for display. The end result is a value from 0-9 for each month of the year, if there are 12 values. One big flaw of this calculation is that if some months had no sales, they are not returned as zero: they are simply not there, and your string does not have 12 characters. This could lead to misleading sparkbars. It&#8217;s also the reason that the last few rows of the calculation have the <span style="color: #008080;">if not(isnull(&#8230;</span> additional steps.</p>
+<p>Once you&#8217;ve got there, all you need to do is drop the Measure onto the worksheet, and format it using the bargraph fonts. You&#8217;ll notice that they don&#8217;t appear in the font list. That&#8217;s okay &#8211; Tableau only lists the fonts it thinks are useful to you. But sometimes we know better than Tableau, so just type the name of the font instead of picking it from the drop list, and you&#8217;ll be fine.</p>
+<p>Okay, this is great &#8211; are you free to go forth and put this in all your vizzes? Well, not quite. The tooltips will work only if the fonts are installed on the client machine. This applies to Tableau Public, Server, Desktop and Reader. Putting them into the view itself will not work on Tableau Server or Public, but it will work in Desktop and Reader, again only if the fonts are installed locally. These are pretty major caveats. However, if you&#8217;re in the business of printing dashboards for people via PDFs, this is a great way to pack a huge amount of into in a tiny space.</p>
+<p>Is there an alternative way? Possibly. Alex Kerin (<a href="http://www.datadrivenconsulting.com/" class="broken_link">www.datadrivenconsulting.com</a>) has been enhancing his rather excellent<a href="http://www.datadrivenconsulting.com/2010/06/twitter-sparkline-generator/" class="broken_link"> twitter sparkbar generator </a>to work in Tableau. This uses Unicode block characters. He&#8217;ll be blogging about this soon, so keep an eye on his blog. His method can be used on any machine, but the sparkbars aren&#8217;t as pretty as my method. There are trade-offs either way. Here&#8217;s a comparison of the methods:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/05/alternatives.png"><img class="alignnone size-full wp-image-2487" title="alternatives" src="http://www.interworks.co.uk/wp-content/uploads/2011/05/alternatives.png" alt="" width="558" height="338" /></a></p>
+<p>Please let me know what you think &#8211; can you see any ways to do this differently or more efficiently?</p>
+<p>Keep up with my Tableau updates via my twitter feed (<a href="http://twitter.com/#!/acotgreave">@acotgreave</a>)</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/sparkbar-tooltips/">Sparkbars in tooltips</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fsparkbar-tooltips%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/sparkbar-tooltips/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>The joy of six: calculated fields</title>
+		<link>http://interworks.co.uk/blog/the-joy-of-six-calculated-fields/</link>
+		<comments>http://interworks.co.uk/blog/the-joy-of-six-calculated-fields/#comments</comments>
+		<pubDate>Thu, 03 Feb 2011 23:54:20 +0000</pubDate>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Andy Cotgreave]]></category>
+		<category><![CDATA[Calculated Fields]]></category>
+		<category><![CDATA[Joy of 6]]></category>
+		<category><![CDATA[Table Calculation]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[tooltip]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=2116</guid>
+		<description><![CDATA[<p>I couldn&#8217;t resist adding one more post in my Joy of Six series. Even though v6 has been with us a while , I&#8217;m still discovering how to use its great new features. In particular, calculated fields are a huge new addition that require a certain amount of head scratching before it all becomes clear. [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/the-joy-of-six-calculated-fields/">The joy of six: calculated fields</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fthe-joy-of-six-calculated-fields%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>I couldn&#8217;t resist adding one more post in my <a href="http://www.interworks.co.uk/tag/joy-of-6">Joy of Six series</a>. Even though v6 has been with us a while , I&#8217;m still discovering how to use its great new features. In particular, calculated fields are a huge new addition that require a certain amount of head scratching before it all becomes clear. This post describes how I solved a problem with calculated fields.</p>
+<p>In my day job at the University of Oxford, we&#8217;re about to publish our annual student statistics. These have line charts of changing number of students over time, broken down by gender, programme type, nationality, etc. The dashboard doesn&#8217;t have a lot of space on it, so it&#8217;s difficult to add labels to the lines. This means that while the trends are clear, the actual values are hidden. Our users are wary of charts without labels: they are more comfortable being able to easily see the numbers.</p>
+<p>I wanted to stick with my clean, label-free charts, and put all the information in the tooltip instead. Regular readers know I love to muck about with tooltips (whether it&#8217;s <a href="http://www.interworks.co.uk/blog/the-data-studio-blog/andy-cotgreave/tableau-tooltips-conditional-formatting">conditional formatting</a> or <a href="http://www.interworks.co.uk/blog/the-data-studio-blog/andy-cotgreave/charts-in-a-tooltip">putting bar charts in them</a>). The solution that is shown here was a collaboration with <a href="http://twitter.com/#!/joemako">Joe Mako</a> and <a href="http://www.equinox.co.nz/Pages/index.aspx">Richard Leeke</a> &#8211; the two people who know more about calculated fields than anyone else I know. I&#8217;ve recreated the solution using the Superstore samples data below. Hover your mouse over a mark to see all Order values that are on the line you&#8217;re over:</p>
+<p><script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script><object class="tableauViz" width="594" height="789" style="display:none;"><param name="name" value="Tooltipswithhistory/Tooltipswithallvaluesinthem" /><param name="toolbar" value="yes" /><param name="tabs" value="no" /><param name="tabs" value="no" /></object><noscript>Show all pane values in a tooltip Hover your mouse over a mark to see a table of all values in the pane <br /><a href="#"><img alt="Show all pane values in a tooltip Hover your mouse over a mark to see a table of all values in the pane " src="http://public.tableausoftware.com/static/images/To/Tooltipswithhistory/Tooltipswithallvaluesinthem/1_rss.png" height="100%" /></a></noscript></p>
+<div style="width:594px;height:22px;padding:0px 10px 0px 0px; color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float:right; padding-right:8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/Tooltipswithhistory/Tooltipswithallvaluesinthem" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>The viz shows a basic small-multiple of number of orders by Region and Category. Nothing special here, and the default tooltip isn&#8217;t spectacular, either:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/02/default-tooltip.png"><img class="size-full wp-image-2117 alignnone" title="default tooltip" src="http://www.interworks.co.uk/wp-content/uploads/2011/02/default-tooltip.png" alt="" width="212" height="67" /></a></p>
+<p>The key point is that it only shows the value for the mark your mouse is over. I want <strong>all </strong>the values on the line.  Calculated fields allow us to do this. This post can&#8217;t cover the full scope of Table Calculations: one could write a whole book on the subject. I&#8217;ll just cover how this problem was solved.</p>
+<p>Let&#8217;s first see how the tooltip looks in the Edit Tooltip box:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/02/edit-tooltip-box2.png"><img class="alignnone size-full wp-image-2121" style="border: 1px solid black;" title="edit tooltip box2" src="http://www.interworks.co.uk/wp-content/uploads/2011/02/edit-tooltip-box2.png" alt="" width="459" height="46" /></a></p>
+<p>There are two table calculations in there (the <strong>AGG(&#8230;)</strong> fields), and they are both on the Level of Detail shelf:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/02/level-of-detail2.png"><img class="alignnone size-full wp-image-2122" title="level of detail2" src="http://www.interworks.co.uk/wp-content/uploads/2011/02/level-of-detail2.png" alt="" width="142" height="84" /></a></p>
+<p>We build our tooltip around the mark your mouse is over. The highlighted mark is the one that appears in bold, red. It&#8217;s no different than the default tooltip. The magic is in the calculations. Before we look at the calculation, I&#8217;ll summarise what I want to show in the tooltip. Depending on which mark I have selected (is it first in the line, in the middle, or at the end?) I want some values before or after the current mark:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/02/tooltip-which-mark.png"><img class="alignnone size-full wp-image-2124" title="tooltip which mark" src="http://www.interworks.co.uk/wp-content/uploads/2011/02/tooltip-which-mark.png" alt="" width="639" height="170" /></a></p>
+<p>We can&#8217;t avoid it any more, we need to see how the Text Before and Text After fields are written. It&#8217;s not pretty. In fact, it&#8217;s too wide to even fit in the width of the blog. Here&#8217;s a thumbnail of the Text Before field. Click on it to see its full &#8220;beauty&#8221;:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/02/text-before.png"><img class="alignnone size-medium wp-image-2129" title="text before" src="http://www.interworks.co.uk/wp-content/uploads/2011/02/text-before-300x68.png" alt="" width="300" height="68" /></a></p>
+<p>What on earth is going on in there? Here&#8217;s the logic:</p>
+<p>Let&#8217;s say your mouse is over 2009. The calculation iterates through each year in the dataset (using a parameter called Max Year In Dataset). For each year that is less than 2009, it builds up a string with a carriage return, the year, a tab character, and the sales from that year, using LOOKUP, offsetting from 2009.  Yes, it&#8217;s convoluted. You may even think it&#8217;s not worth the effort. But, if you&#8217;ve made it this far in the post, I&#8217;m thinking that you&#8217;re with me! The Text After field does the same thing for years <em>after</em> the year your mouse is over.</p>
+<p>Once you&#8217;ve written the field, you need to think about the addressing and partitioning. I can&#8217;t go into a full description of the principles here (but<a href="http://onlinehelp.tableausoftware.com/v6.0/online/Output/wwhelp/wwhimpl/common/html/wwhelp.htm?context=Tableau_Online_Help&amp;file=Tableau%20Online%20Help-25-19.html"> the online help was good enough for me to get my head round the basics</a>). For this viz, we are only interested in the Year of Order Date field, so, once the calculation is dropped onto the Level of Detail, set it to Compute Using > Year of Order Date:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/02/yr-of-order-date.png"><img class="alignnone size-full wp-image-2133" title="yr of order date" src="http://www.interworks.co.uk/wp-content/uploads/2011/02/yr-of-order-date.png" alt="" width="464" height="426" /></a></p>
+<p>You&#8217;ve now got all your parts in place. You need to build the tooltip and format it as you want. Phew!</p>
+<p>Granted, that was not easy. And, given the complexity, was the juice worth the squeeze? If you had lots of space on your dashboard, a better way to do the same thing would be to have a separate sheet on the dashboard that updates on a Hover Action. If you hover your mouse over a mark, the extra worksheet is updated to show the list of orders for that pane. That would be more visible than the tooltip, and easier to implement. However, it depends on you having plenty of spare space on your dashboard.</p>
+<p>There are several caveats of course. Here&#8217;s two. I&#8217;ve used a parameter to hardcode the maximum year value, which is a maintenance headache as the dataset changes. I&#8217;ve also limited it to show values 4yrs either side of the current year. Writing a table calculation to show anything more than 5yrs before/after the current year is going to be impractical.</p>
+<p>As I am also discovering, there are many ways to create the same solution using table calculations. It&#8217;s also very easy to create table calcs that slow your workbook down. The solution outlined here is possibly the fastest. I certainly came up with much slower ways while developing this solution. For information on optimisation, I&#8217;d really recommend you check out the relevant threads on the forum. Good luck!</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/the-joy-of-six-calculated-fields/">The joy of six: calculated fields</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fthe-joy-of-six-calculated-fields%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/the-joy-of-six-calculated-fields/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+		<item>
+		<title>Charts inside a tooltip? Yes, we can.</title>
+		<link>http://interworks.co.uk/blog/charts-in-a-tooltip/</link>
+		<comments>http://interworks.co.uk/blog/charts-in-a-tooltip/#comments</comments>
+		<pubDate>Wed, 29 Sep 2010 18:53:28 +0000</pubDate>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Andy Cotgreave]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[tooltip]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1297</guid>
+		<description><![CDATA[<p>[Update: in theory, v6.1.1 has made it easier to create the bars described in this post by using REPLACE() and SPACE(). However, at time of writing (19 Aug 2011) there is a problem: while the solution works fine in Tableau Desktop, the view won&#8217;t display on Tableau Public &#8211; have a look at the &#8220;Using [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/charts-in-a-tooltip/">Charts inside a tooltip? Yes, we can.</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcharts-in-a-tooltip%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p><strong>[Update: in theory, v6.1.1 has made it easier to create the bars described in this post by using REPLACE() and SPACE(). However, at time of writing (19 Aug 2011) there is a problem: while the solution works fine in Tableau Desktop, the view won&#8217;t display on Tableau Public &#8211; have a look at the &#8220;Using REPLACE and SPACE() tab in the embedded workbook below. The calculations have also been optimised using parameters.]</strong></p>
+<p>Consider this map:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/09/Pie_Problem.png"><img class="alignnone size-full wp-image-1402" title="Pie_Problem" src="http://www.interworks.co.uk/wp-content/uploads/2010/09/Pie_Problem.png" alt="" width="600" height="366" /></a></p>
+<p>It highlights one of many situations when pie charts don&#8217;t work. The smallest pies are so small you have no chance of making out the size of the slices.  And what if I wanted to show Profits on the viz, as well as Sales and Product Type?</p>
+<p><a href="http://www.tableausoftware.com/public/blog/2010/09/bar-charts-map" target="_blank">The Tableau guys have come up with a way of using Gantt Bars to emulate a bar chart and maybe solve some of these problems</a>. This works okay, but has its own flaws; mainly that it&#8217;s still hard to make out the individual bar segments.</p>
+<p>Well, how about using a bar chart <em>inside</em> a tooltip? Surely you can&#8217;t do that? Well, yes you can:</p>
+<p>&nbsp;</p>
+<p><script src="http://public.tableausoftware.com/javascripts/api/viz_v1.js" type="text/javascript"></script></p>
+<div class="tableauPlaceholder" style="width: 604px; height: 545px;"><noscript><a href="#"><img alt=" " src="http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;To&#47;Tooltipcharts&#47;Tooltipcharts&#47;1_rss.png" style="height: 100%; width: 100%; border: none" /></a></noscript><object class="tableauViz" style="display: none;" width="604" height="545"><param name="host_url" value="http%3A%2F%2Fpublic.tableausoftware.com%2F" /><param name="name" value="Tooltipcharts/Tooltipcharts" /><param name="tabs" value="yes" /><param name="toolbar" value="yes" /><param name="static_image" value="http://public.tableausoftware.com/static/images/To/Tooltipcharts/Tooltipcharts/1.png" /><param name="animate_transition" value="yes" /><param name="display_static_image" value="yes" /><param name="display_spinner" value="yes" /><param name="display_overlay" value="yes" /></object></div>
+<div style="width: 604px; height: 22px; padding: 0px 10px 0px 0px; color: black; font: normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float: right; padding-right: 8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/Tooltipcharts/Tooltipcharts" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>The viz above solves several problems. The circle size is based on Sales, and Profit by colour. And the tooltip shows the proportion of sales of each Product Type. With just a mouse-hover, you&#8217;ve revealed a new dimension on the data. Three dimensions on one map viz &#8211; bingo!</p>
+<p>How do we do this? Well, first we need to decide if our dataset is suitable. First of all, you need a known number of values in your tooltip-chart dimension, because we&#8217;ll be creating a calculated field each one. In the above, we only have four Product Types, so that&#8217;s a suitable candidate. Secondly, there is a maximum length that the bar can be. Too long and it will wrap around in the tooltip. As we&#8217;ll see, the bar is built using a text string, so we can&#8217;t just have an unlimited bar with a value in the 100s. Percentages work best as they are going to have a maximum value of 100.</p>
+<p>For each Product Type, we need two calculated fields. One works out the percentage of sales of that product type:</p>
+<p><img src="http://www.interworks.co.uk/wp-content/uploads/2010/09/PercentCoffeeSalesCalcField.png" alt="Coffee Sales Percentage" width="339" height="169" /></p>
+<p>and the other works out the length of the bar. How do you build a bar out of text? Simple: use the ALT+219 ASCII character. That&#8217;s this one: █. You create it by pressing the ALT key and then 219 on the Number Pad (using a laptop? Copy and paste the one in this blog instead!). We need to create a parameter &#8211; [Bar] &#8211; which is one loooong string of 100 █ characters, and then create a calculated field that is a subset of that, based upon the % value in your other calculated field. Here&#8217;s the text of that field:</p>
+<pre>LEFT([Bar],ROUND([% coffee sales]))</pre>
+<p>Now we have two calculated fields for each Product Type. Drop them all onto the ever-so-useful Level of Detail shelf, and now you can build your tooltip as follows:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/09/tooltip_text.png"><img class="alignnone size-medium wp-image-1340" title="tooltip_text" src="http://www.interworks.co.uk/wp-content/uploads/2010/09/tooltip_text-300x180.png" alt="" width="300" height="180" /></a></p>
+<p>You&#8217;ve done it! You&#8217;ve now become a tooltip genius. Using the skills we&#8217;ve learned in our other tooltip posts (<a href="http://interworks.co.uk/blog/tooltip-tips-pt-1/">basics </a>here, and <a href="http://interworks.co.uk/blog/tableau-tooltips-conditional-formatting/">conditional formatting</a> here), your tooltips can be as jazzy as your vizzes themselves!</p>
+<p>Those of you who are big Excel users may know where the inspiration comes from. This post gives a huge Tip o&#8217; The Hat to the posts from <a href="http://www.juiceanalytics.com/writing/more-on-excel-in-cell-graphing/">Juice Analytics</a>, <a href="http://www.dailydoseofexcel.com/archives/2006/02/05/in-cell-charting/">Daily Dose of Excel</a>, <a href="http://peltiertech.com/Excel/Charts/InCellFormulaCharts.html">Jon Peltier</a>, and <a href="http://chandoo.org/wp/tag/in-cell-charting/">Chandoo </a>that showed us all how to do in-cell charts in Excel in the last few years. Also, thanks to <a href="http://chandoo.org/wp/tag/in-cell-charting/">Richard Leeke on the Tableau forum</a> for giving me the last piece in the jigsaw for this idea: Excel has a REPT function that can be used to create the long string. Tableau doesn&#8217;t. Richard pointed out that the only way round this is to type the string out manually and take a substring of it. Nice!</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/charts-in-a-tooltip/">Charts inside a tooltip? Yes, we can.</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcharts-in-a-tooltip%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/charts-in-a-tooltip/feed/</wfw:commentRss>
+		<slash:comments>13</slash:comments>
+		</item>
+		<item>
+		<title>Tableau Tooltips: Conditional Formatting</title>
+		<link>http://interworks.co.uk/blog/tableau-tooltips-conditional-formatting/</link>
+		<comments>http://interworks.co.uk/blog/tableau-tooltips-conditional-formatting/#comments</comments>
+		<pubDate>Fri, 03 Sep 2010 20:46:29 +0000</pubDate>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Andy Cotgreave]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[tooltip]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1169</guid>
+		<description><![CDATA[<p>This is the second post about tooltips. In this post, I will describe a technique to add conditional formatting, of a sort, to your viz. This isn&#8217;t a natively supported feature in Tableau (although it would be lovely if it was!), so you have to do a bit of extra work to do it. I&#8217;ve [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/tableau-tooltips-conditional-formatting/">Tableau Tooltips: Conditional Formatting</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Ftableau-tooltips-conditional-formatting%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>This is the second post about tooltips. In this post, I will describe a technique to add conditional formatting, of a sort, to your viz. This isn&#8217;t a natively supported feature in Tableau (although it would be lovely if it was!), so you have to do a bit of extra work to do it.</p>
+<p>I&#8217;ve implemented colour-based conditional formatting in a few Tableau Public dashboards. My <a href="http://public.tableausoftware.com/views/BDGATour_1/BDGAHotlist" target="_blank">disc golf analysis dashboards</a> use colour to emphasise the good/bad performance of players. Click here to go to the viz; the tooltips are below.</p>
+<p>If the player played better than their rating, they&#8217;d get this tooltip:</p>
+<p><strong><img title="More" src="http://www.interworks.co.uk/wp-content/uploads/2010/08/CondFormatMore.png" alt="More" width="567" height="240" /></strong></p>
+<p>If they played worse, they&#8217;d see this tooltip:</p>
+<p><strong><img title="less" src="http://www.interworks.co.uk/wp-content/uploads/2010/08/CondFormatLess.png" alt="Less" width="565" height="187" /><br />
+ </strong></p>
+<p>I&#8217;ve also used colour to represent a political party&#8217;s colour, as shown in my UK General Election viz. <a href="http://public.tableausoftware.com/views/GeneralElection2010results/Overviewblog?:embed=yes&amp;:toolbar=yes" target="_blank">The main dashboard is here</a>, but I&#8217;ve embedded one of the worksheets below. Hover over the different parties (Labour, Conservative, etc) to see the different colours in the tooltips:</p>
+<p><script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script><object class="tableauViz" width="454" height="519" style="display:none;"><param name="name" value="GeneralElection2010results/Seatswon" /><param name="toolbar" value="yes" /></object><noscript>Seats won <br /><a href="#"><img alt="Seats won " src="http://public.tableausoftware.com/static/images/GeneralElection2010results-Seatswon_rss.png" height="100%" /></a></noscript></p>
+<div style="width:454px;height:22px;padding:0px 10px 0px 0px; color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float:right; padding-right:8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/GeneralElection2010results/Seatswon" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>There are a few limitations to using colour. Essentially, this boils down to having a Dimension or Group where the possible values are known ahead of time and are relatively small. Why&#8217;s this? Because to take advantage of conditional tooltips, you need to create a specific calculated field for each Dimension value.</p>
+<p>Here&#8217;s the steps to create the coloured Party tooltip in the General Election dashboard.</p>
+<ol>
+<li>Determine the list of items that will need their own colour. For our general election, there are <strong>four</strong>. One for each of the three main parties: <strong>Labour</strong>, <strong>Conservative </strong>and <strong>Liberal Democrats</strong>, and one  for everyone else (<strong>Other</strong>)</li>
+<li>We need one calculated field for each of the four values. It is a basic IIF function that either returns the Dimension value as a string, or an empty string (note &#8211; it <strong>must </strong>be an empty string, not Null). <br />
+ In my dataset, the underlying party column was a single letter, so the calculated field for Conservatives was this:<br />
+ <strong><img title="Cond format calc field" src="http://www.interworks.co.uk/wp-content/uploads/2010/08/CondFormatCalcField.png" alt="Cond format calc field" width="309" height="148" /><br />
+ </strong></li>
+<li>Duplicate that calculated field for each Dimension value, until you have all the ones you need:<br />
+ <strong><img title="Calc fields in dim list" src="http://www.interworks.co.uk/wp-content/uploads/2010/08/FourCalculatedFields.png" alt="Calc fields in dim list" width="196" height="232" /></strong></li>
+<li>Now put all four of those fields onto the <em><strong>Level of Detail</strong></em> shelf:<br />
+ <strong><img title="level of detail" src="http://www.interworks.co.uk/wp-content/uploads/2010/08/FourCalculatedFieldsOnLevelOfDetail.png" alt="Level of detail" width="156" height="311" /></strong></li>
+<li>The final step is to edit the tooltip. This is quite straightforward, but looks a bit messy. Order the calculated fields so that they are all adjacent in the tooltip text. Format each calculated field with the colour that you want. For the election tooltip, this looks like:<br />
+ <strong><img title="The tooltip" src="http://www.interworks.co.uk/wp-content/uploads/2010/08/CondFormatTooltipEditor.png" alt="The tooltip" width="598" height="247" /></strong></li>
+</ol>
+<p>That&#8217;s it! All but one of the calculated fields will be Null at any one time (since you can&#8217;t hover your mouse over more than one mark at a time). Therefore, despite there being four items in the tooltip, the viewer only ever sees one. And it just happens to be in the correct colour. Bingo!</p>
+<p><br class="spacer_" /></p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/tableau-tooltips-conditional-formatting/">Tableau Tooltips: Conditional Formatting</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Ftableau-tooltips-conditional-formatting%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/tableau-tooltips-conditional-formatting/feed/</wfw:commentRss>
+		<slash:comments>5</slash:comments>
+		</item>
+		<item>
+		<title>Tableau tooltip tips (pt.1)</title>
+		<link>http://interworks.co.uk/blog/tooltip-tips-pt-1/</link>
+		<comments>http://interworks.co.uk/blog/tooltip-tips-pt-1/#comments</comments>
+		<pubDate>Sun, 29 Aug 2010 18:55:14 +0000</pubDate>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Andy Cotgreave]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[tooltip]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1143</guid>
+		<description><![CDATA[<p>Tooltips are the missing link between a mark and its underlying data. They provide a valuable opportunity to explain more about the chart without requiring the user to examine the underlying data. The motivation for these posts was seeing so many vizzes on great charts on Tableau Public being let down by the publisher leaving [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/tooltip-tips-pt-1/">Tableau tooltip tips (pt.1)</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Ftooltip-tips-pt-1%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Tooltips are the missing link between a mark and its underlying data. They provide a valuable opportunity to explain more about the chart without requiring the user to examine the underlying data.</p>
+<p>The motivation for these posts was seeing so many vizzes on great charts on Tableau Public being let down by the publisher leaving the tooltips in their default state. It’s easy to think this okay, but the tooltip is an eager beaver: even viewers with hyperactive mouse movements are guaranteed to hover long enough for the tooltip to appear. Given that’s the case, you want to make sure you’re showing the user something pretty!</p>
+<p>I&#8217;ll start off with basic good practise tips; later posts will look at advanced techniques to make your tooltips shine.</p>
+<h2>1 Make a header</h2>
+<p>My first rule when publishing a viz, is to put a “Header” into the Tooltip. The header should be the mark’s primary dimension, or a summary. For example, consider the default tooltip on the <strong>Sales Outliers</strong> sheet in the Wow Workbook:</p>
+<p><em><strong><img title="Tooltip default" src="http://www.interworks.co.uk/wp-content/uploads/2010/08/TTDefault.png" alt="Tooltip default" width="459" height="270" /></strong></em></p>
+<p>I can&#8217;t deny that the tooltip has all the info and, yes, the tooltip is an elaboration of the mark. But it doesn&#8217;t really draw the eye, or encourage fast interpretation. Now let&#8217;s see what the Tableau staff actually did to the tooltip when they released the workbook:</p>
+<p><em><strong><img title="Tooltip with header" src="http://www.interworks.co.uk/wp-content/uploads/2010/08/TTWithDescriptiveHeader.png" alt="Tooltip with header" width="377" height="272" /></strong></em></p>
+<p>See what they did? They moved the two main dimensions, <Product Category> and <Region>, into a header, and gave it a bolder style. Here&#8217;s how it&#8217;s done in the Tooltip editor:</p>
+<p><em><strong><img title="Tooltip editor" src="http://www.interworks.co.uk/wp-content/uploads/2010/08/TTWithDescriptiveHeaderEditScreen.png" alt="Tooltip editor" width="321" height="189" /></strong></em></p>
+<h2>2. Less is more</h2>
+<p>When building your viz, some of the dimensions/measures you add to the worksheet might be necessary for the viz itself, but have no meaning for the viewer. For example, here&#8217;s the default tooltip from <a href="http://public.tableausoftware.com/views/PubClosures/PubClosures?:embed=yes&amp;:toolbar=yes" target="_blank">my visualisation of Pub Closures in the UK</a>: <em><strong></strong></em></p>
+<p><em><strong><img title="Pub closures defaults" src="http://www.interworks.co.uk/wp-content/uploads/2010/08/PubClosuresDefaultTooltip.png" alt="Pub closures defaults" width="498" height="275" /></strong></em></p>
+<p>As you can see, the are two dates, <strong>yr</strong> and <strong>Year</strong>. One is a year, and the other is a date. The latter is necessary in the viz to use a continuous scale on the x-axis, but meaningless for the viewer; all they care about is the year. Delete the unnecessary data from the tooltip.</p>
+<h2>3. Make sure the labels are meaningful</h2>
+<p>If you’re using aggregations or table calculations in your view, the default label might be something crazy like <strong>&#8220;% of Total Count of Rate:&#8221; </strong>This isn’t always too intuitive. Look again at the default tooltip from the <a href="http://public.tableausoftware.com/views/PubClosures/PubClosures?:embed=yes&amp;:toolbar=yes" target="_blank">Pub Closures viz</a> (above).</p>
+<p><strong>&#8220;Difference in Min. year_number&#8221;</strong>? What? Well, it&#8217;s a nice description of the table calculation, but it&#8217;s a terrible description of the information. In this viz, it really represents <strong>&#8220;Years since party came into power&#8221;</strong>. By making all the labels meaningful, you can end up with this:</p>
+<p><em><strong><img title="Tooltip meaningful names" src="http://www.interworks.co.uk/wp-content/uploads/2010/08/PubClosuresWithMeaningfulNames.png" alt="Tooltip meaningful names" width="426" height="191" /></strong></em></p>
+<h2>4. Order! Order!</h2>
+<p>Make sure the most important information is at the top of the list, if that’s relevant.      Continuing the work on our pub closures tooltip, we should improve the tooltip like this:</p>
+<p><strong><em><img title="Tooltip ordered" src="http://www.interworks.co.uk/wp-content/uploads/2010/08/PubClosuresWithMeaningfulNamesOrdered.png" alt="Tooltip ordered" width="441" height="201" /></em></strong></p>
+<h2>5. A sentence can say more than a label</h2>
+<p>If the tooltip has quite a lot of information in it, it can be better to turn the fields into a complete sentence that fully explains the mark. A long list of labels, colons and values can be confusing. Here&#8217;s how the final tooltip for the Pub Closures viz looked:</p>
+<p><em><strong><img title="published tooltip" src="http://www.interworks.co.uk/wp-content/uploads/2010/08/PubClosuresPublishedTooltip.png" alt="published tooltip" width="646" height="145" /></strong></em></p>
+<p>That&#8217;s it for this first post. Next time, we&#8217;ll look at a couple of advanced tooltip tips.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/tooltip-tips-pt-1/">Tableau tooltip tips (pt.1)</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Ftooltip-tips-pt-1%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/tooltip-tips-pt-1/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+	</channel>
+</rss>

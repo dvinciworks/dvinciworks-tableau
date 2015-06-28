@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>InterWorks - Tableau Software &#38; Business Intelligence Consulting &#187; Venn Diagram</title>
+	<atom:link href="http://interworks.co.uk/tag/venn-diagram/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 26 Jun 2015 08:09:24 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>3 Way Venn</title>
+		<link>http://interworks.co.uk/blog/3-way-venn/</link>
+		<comments>http://interworks.co.uk/blog/3-way-venn/#comments</comments>
+		<pubDate>Fri, 29 Nov 2013 15:44:44 +0000</pubDate>
+		<dc:creator><![CDATA[Rob Austin]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[Tableau 8.2]]></category>
+		<category><![CDATA[Venn Diagram]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=9274</guid>
+		<description><![CDATA[<p>I have upgraded the &#8216;ideal&#8217; method for creating a 3 way venn to be more performant and mathematically improved. Check it out here. I have left this original blog post in as it demonstrates how to use sets in calculations and give you the choice. The 3 way Venn is an upgrade from my previous post on [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/3-way-venn/">3 Way Venn</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2F3-way-venn%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>I have upgraded the &#8216;ideal&#8217; method for creating a 3 way venn to be more performant and mathematically improved. Check it out <a title="here" href="http://interworks.co.uk/random/3-way-venn-tableau-upgrade/">here.</a></p>
+<p>I have left this original blog post in as it demonstrates how to use sets in calculations and give you the choice.</p>
+<p>The 3 way Venn is an upgrade from my previous post on the <a title="2 way venn" href="http://interworks.co.uk/business-intelligence/venn-use-tableau/" target="_blank">2 way venn</a>. This chart type shows exclusive members of a group (or cohort) and also the overlap where members are shared between groups. The example below, built from Tableau&#8217;s demo data, shows customers who have received goods packaged in one or more types of container. This type of &#8216;cohort based&#8217; visualisation uses sets and compares the members of those sets. As a result the visualisation can take a while to compute. (yes, I&#8217;m English and that is how I spell visualisation). Tableau is being very clever so please be patient! <script type='text/javascript' src='http://public.tableausoftware.com/javascripts/api/viz_v1.js'></script>
+<div class='tableauPlaceholder' style='width: 584px; height: 649px;'><noscript><a href='#'><img alt='3-way Venn ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Ve&#47;Venn&#47;3-wayVenn&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='584' height='649' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableausoftware.com%2F' /><param name='site_root' value='' /><param name='name' value='Venn&#47;3-wayVenn' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Ve&#47;Venn&#47;3-wayVenn&#47;1.png' / ><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>
+<div style='width:584px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'>
+<div style='float:right; padding-right:8px;'><a href='http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/views/Venn/3-wayVenn' target='_blank'>Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p> Steps to Build:</p>
+<ol>
+<ol>
+<li>Create numeric calculated fields (1 or null) for each container type (MB,JD,JB).</li>
+<li>Create a set for each <em>exclusive</em> cohort based on the calculated fields from the previous step. Although Tableau can create combined sets, we are going to do this by using set based calculated fields instead.</li>
+<li>Create a set based calculated field for each of the 9 variations. The output should be a dimension e.g. &#8216;JB&#8217; or &#8216;JBJD&#8217;</li>
+<li>This visualisation is a dual axis with all the combined cohorts being in the background so we are going to create 2 layers. Layer 2 contains your 3 exclusive sets (MB,JD,JB) whilst layer 1 contains all the JBJD&#8217;s etc.</li>
+<li>The placement is based on cartesian coordinates and is static (it is my intention to create dynamic text placement at some stage).</li>
+<li>Y position is simply 0, 0.5 or 1 depending on the cohort.</li>
+<li>X position Layer 1 is 0.25, 0.5 or 0.75 again depending on the cohort</li>
+<li>X position Layer 2 is 0, 0.5 or 1</li>
+<li>Now we have built all the calculations simply add the fields to the worksheet not forgetting to synchronise your dual axis.</li>
+<li>Make the mark type &#8216;circles&#8217;, add some transparency and a border to layer 2, make all the circles white on layer 1. Set the size to max (depending on your data)</li>
+<li>On your dashboard be sure to size the worksheet appropriately</li>
+<li>You&#8217;re done!</li>
+</ol>
+</ol>
+<p>Don&#8217;t forget you can download this workbook to see my calculations using the &#8216;Download&#8217; button at the bottom of the visualisation.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/3-way-venn/">3 Way Venn</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2F3-way-venn%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/3-way-venn/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+		<item>
+		<title>Venn, would you use this in Tableau?</title>
+		<link>http://interworks.co.uk/blog/venn-use-tableau/</link>
+		<comments>http://interworks.co.uk/blog/venn-use-tableau/#comments</comments>
+		<pubDate>Sun, 29 Sep 2013 09:24:25 +0000</pubDate>
+		<dc:creator><![CDATA[Rob Austin]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[Venn Diagram]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=9024</guid>
+		<description><![CDATA[<p>The 2-way venn diagram is an incredibly popular way of visualising overlapping groups of data and it is something we are often asked about in Tableau so I thought it was about time to create one. The method I have used below utilises Tableau&#8217;s combined sets functionality in order to calculate the middle ground. Scaling [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/venn-use-tableau/">Venn, would you use this in Tableau?</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fvenn-use-tableau%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>The 2-way venn diagram is an incredibly popular way of visualising overlapping groups of data and it is something we are often asked about in Tableau so I thought it was about time to create one.</p>
+<p>The method I have used below utilises Tableau&#8217;s combined sets functionality in order to calculate the middle ground.<br />
+Scaling is a real problem and is not geometrically accurate, a slight adjustment of the size slider and it all changes. This shouldn&#8217;t matter with a venn diagram however as the purpose is to give an overview, not delve in to the detail.</p>
+<p><script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script>
+<div class="tableauPlaceholder" style="width:604px; height:469px;"><noscript><a href="#"><img alt="2 Way Venn " src="http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Ve&#47;Venn&#47;2WayVenn&#47;1_rss.png" style="border: none" /></a></noscript><object class="tableauViz" width="604" height="469" style="display:none;"><param name="host_url" value="http%3A%2F%2Fpublic.tableausoftware.com%2F" /><param name="site_root" value="" /><param name="name" value="Venn&#47;2WayVenn" /><param name="tabs" value="no" /><param name="toolbar" value="yes" /><param name="static_image" value="http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Ve&#47;Venn&#47;2WayVenn&#47;1.png" /><param name="animate_transition" value="yes" /><param name="display_static_image" value="yes" /><param name="display_spinner" value="yes" /><param name="display_overlay" value="yes" /><param name="display_count" value="yes" /></object></div>
+<div style="width:604px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float:right; padding-right:8px;"><a href="http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/views/Venn/2WayVenn" target="_blank">Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/venn-use-tableau/">Venn, would you use this in Tableau?</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fvenn-use-tableau%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/venn-use-tableau/feed/</wfw:commentRss>
+		<slash:comments>7</slash:comments>
+		</item>
+	</channel>
+</rss>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Joy of six: Gapminder, Tableau style</title>
+	<atom:link href="http://interworks.co.uk/blog/joy-of-six-gapminder/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/blog/joy-of-six-gapminder/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 05 Jun 2015 09:45:31 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>By: Ross Bunker</title>
+		<link>http://interworks.co.uk/blog/joy-of-six-gapminder/#comment-296</link>
+		<dc:creator><![CDATA[Ross Bunker]]></dc:creator>
+		<pubDate>Wed, 08 Dec 2010 06:38:52 +0000</pubDate>
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1776#comment-296</guid>
+		<description><![CDATA[@Tom
+Yes, we spent a lot of time thinking about how to animate, but given our current architecture it would be prohibitively expensive from a bandwidth perspective.  We&#039;re continuing to work on the problem though.
+Gapminder and others render on the client instead of server (often using flash).
+:)ross]]></description>
+		<content:encoded><![CDATA[<p>@Tom<br />
+Yes, we spent a lot of time thinking about how to animate, but given our current architecture it would be prohibitively expensive from a bandwidth perspective.  We&#8217;re continuing to work on the problem though.<br />
+Gapminder and others render on the client instead of server (often using flash).<br />
+:)ross</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Andy Cotgreave</title>
+		<link>http://interworks.co.uk/blog/joy-of-six-gapminder/#comment-295</link>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+		<pubDate>Tue, 07 Dec 2010 22:31:33 +0000</pubDate>
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1776#comment-295</guid>
+		<description><![CDATA[Hi Tom
+No, the play buttons don&#039;t appear on Tableau Server either. It&#039;s annoying, but given the architecture of Tableau Server/Public, it&#039;s fairly reasonable. The data lives on the server. If you are going to animate a viz, the data has to get sent from the server for each &quot;frame&quot;. Maybe that&#039;s possible for a view with only a few data points. 
+
+But what if we tried it on the Gapminder view above? There&#039;s about 100 data points on there, not including the trails, if you&#039;ve got them on. There&#039;s no way Tableau Server/Public could get the data down to the browser quickly enough. 
+
+How do other online viz applications solve this? Well, the &quot;real&quot; Gapminder seems to load the data in the browser. 
+
+Andy]]></description>
+		<content:encoded><![CDATA[<p>Hi Tom<br />
+No, the play buttons don&#8217;t appear on Tableau Server either. It&#8217;s annoying, but given the architecture of Tableau Server/Public, it&#8217;s fairly reasonable. The data lives on the server. If you are going to animate a viz, the data has to get sent from the server for each &#8220;frame&#8221;. Maybe that&#8217;s possible for a view with only a few data points. </p>
+<p>But what if we tried it on the Gapminder view above? There&#8217;s about 100 data points on there, not including the trails, if you&#8217;ve got them on. There&#8217;s no way Tableau Server/Public could get the data down to the browser quickly enough. </p>
+<p>How do other online viz applications solve this? Well, the &#8220;real&#8221; Gapminder seems to load the data in the browser. </p>
+<p>Andy</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Tom Brown</title>
+		<link>http://interworks.co.uk/blog/joy-of-six-gapminder/#comment-294</link>
+		<dc:creator><![CDATA[Tom Brown]]></dc:creator>
+		<pubDate>Tue, 07 Dec 2010 21:38:56 +0000</pubDate>
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1776#comment-294</guid>
+		<description><![CDATA[Great job Andy.  As we discussed a few weeks ago, the absence of the play buttons on Tableau Public is annoying in this case.  Perhaps Ross can explain why this is?  It works in the normal version of server right?
+
+Cheers
+
+Tom]]></description>
+		<content:encoded><![CDATA[<p>Great job Andy.  As we discussed a few weeks ago, the absence of the play buttons on Tableau Public is annoying in this case.  Perhaps Ross can explain why this is?  It works in the normal version of server right?</p>
+<p>Cheers</p>
+<p>Tom</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Andy Cotgreave</title>
+		<link>http://interworks.co.uk/blog/joy-of-six-gapminder/#comment-293</link>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+		<pubDate>Tue, 07 Dec 2010 09:13:54 +0000</pubDate>
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1776#comment-293</guid>
+		<description><![CDATA[@Dan
+Thanks for the comments. Yes, you&#039;re absolutely right about the size problem. That&#039;s why I also made the full-screen version (http://public.tableausoftware.com/views/GapminderFullScreen/Gapminder?:embed=yes&amp;:toolbar=yes&amp;:tabs=yes). 
+
+Fitting the viz into a blog certainly required compromises. I probably should have mentioned this in the post itself - it&#039;s a real point to consider: sometimes things just can&#039;t be made small enough. I tried all sorts of layouts to keep things in the small size, but every option compromised something else. The one above was the best I figured I could get to.
+
+@Ross
+The trails work really nicely. I think (but have no real figures) that this viz is slower on Tableau Public than others. Certainly in Tableau Desktop, it takes a while to refresh the views. Do you think this is because of the multiple connections, the pages, or simply the complexity of the views?]]></description>
+		<content:encoded><![CDATA[<p>@Dan<br />
+Thanks for the comments. Yes, you&#8217;re absolutely right about the size problem. That&#8217;s why I also made the full-screen version (<a href="http://public.tableausoftware.com/views/GapminderFullScreen/Gapminder" rel="nofollow">http://public.tableausoftware.com/views/GapminderFullScreen/Gapminder</a>?:embed=yes&#038;:toolbar=yes&#038;:tabs=yes). </p>
+<p>Fitting the viz into a blog certainly required compromises. I probably should have mentioned this in the post itself &#8211; it&#8217;s a real point to consider: sometimes things just can&#8217;t be made small enough. I tried all sorts of layouts to keep things in the small size, but every option compromised something else. The one above was the best I figured I could get to.</p>
+<p>@Ross<br />
+The trails work really nicely. I think (but have no real figures) that this viz is slower on Tableau Public than others. Certainly in Tableau Desktop, it takes a while to refresh the views. Do you think this is because of the multiple connections, the pages, or simply the complexity of the views?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Ross Bunker</title>
+		<link>http://interworks.co.uk/blog/joy-of-six-gapminder/#comment-292</link>
+		<dc:creator><![CDATA[Ross Bunker]]></dc:creator>
+		<pubDate>Tue, 07 Dec 2010 04:26:48 +0000</pubDate>
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1776#comment-292</guid>
+		<description><![CDATA[Doh!  should have read closer.  I see that you did that.  Nice!
+:)ross]]></description>
+		<content:encoded><![CDATA[<p>Doh!  should have read closer.  I see that you did that.  Nice!<br />
+:)ross</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Ross Bunker</title>
+		<link>http://interworks.co.uk/blog/joy-of-six-gapminder/#comment-291</link>
+		<dc:creator><![CDATA[Ross Bunker]]></dc:creator>
+		<pubDate>Tue, 07 Dec 2010 04:25:52 +0000</pubDate>
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1776#comment-291</guid>
+		<description><![CDATA[Nice work Andy!  Did you consider using the page shelf for years and turning on trails?  That makes a really nice view.
+
+:)ross]]></description>
+		<content:encoded><![CDATA[<p>Nice work Andy!  Did you consider using the page shelf for years and turning on trails?  That makes a really nice view.</p>
+<p>:)ross</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Dan Murray</title>
+		<link>http://interworks.co.uk/blog/joy-of-six-gapminder/#comment-290</link>
+		<dc:creator><![CDATA[Dan Murray]]></dc:creator>
+		<pubDate>Tue, 07 Dec 2010 02:26:32 +0000</pubDate>
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1776#comment-290</guid>
+		<description><![CDATA[Once again Andy....very nice work!  However, in this case the space constraints of a web-embedded view actually detract somewhat from the visuals.  The data needs a little more horizontal breathing room.  However, I understand that you have to fit in the constraints presented.]]></description>
+		<content:encoded><![CDATA[<p>Once again Andy&#8230;.very nice work!  However, in this case the space constraints of a web-embedded view actually detract somewhat from the visuals.  The data needs a little more horizontal breathing room.  However, I understand that you have to fit in the constraints presented.</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

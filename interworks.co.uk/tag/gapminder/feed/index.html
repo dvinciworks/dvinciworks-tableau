@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>InterWorks - Tableau Software &#38; Business Intelligence Consulting &#187; Gapminder</title>
+	<atom:link href="http://interworks.co.uk/tag/gapminder/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 26 Jun 2015 08:09:24 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>Joy of six: Gapminder, Tableau style</title>
+		<link>http://interworks.co.uk/blog/joy-of-six-gapminder/</link>
+		<comments>http://interworks.co.uk/blog/joy-of-six-gapminder/#comments</comments>
+		<pubDate>Mon, 06 Dec 2010 23:02:29 +0000</pubDate>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Andy Cotgreave]]></category>
+		<category><![CDATA[Gapminder]]></category>
+		<category><![CDATA[Joy of 6]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1776</guid>
+		<description><![CDATA[<p>As soon as I got my hands on Tableau v6, the first thing that came to mind was Gapminder. Those new shiny features meant it would be possible to recreate the amazing Trendalyzer software in Tableau. Here&#8217;s how I did: Wealth and health of nations: a Gapminder tribute Powered by Tableau To do the viz, [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/joy-of-six-gapminder/">Joy of six: Gapminder, Tableau style</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fjoy-of-six-gapminder%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>As soon as I got my hands on Tableau v6, the first thing that came to mind was Gapminder. Those new shiny features meant it would be possible to recreate the amazing Trendalyzer software in Tableau. Here&#8217;s how I did:</p>
+<p><script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script><object class="tableauViz" width="604" height="895" style="display:none;"><param name="name" value="Gapminder/Gapminder" /><param name="toolbar" value="yes" /><param name="tabs" value="yes" /><param name="tabs" value="yes" /></object><noscript>Wealth and health of nations: a Gapminder tribute <br /><a href="#"><img alt="Wealth and health of nations: a Gapminder tribute " src="http://public.tableausoftware.com/static/images/Ga/Gapminder/Gapminder/1_rss.png" height="100%" /></a></noscript></p>
+<div style="width:604px;height:22px;padding:0px 10px 0px 0px; color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float:right; padding-right:8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/Gapminder/Gapminder" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>To do the viz, I took advantage of lots of the new features, many of which I have already blogged about.</p>
+<h2><strong>Data Blending<br />
+ </strong></h2>
+<p>There are 9 connections required to show the viz above:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/DataConnections.png"><img class="alignnone size-full wp-image-1778" title="DataConnections" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/DataConnections.png" alt="" width="221" height="195" /></a></p>
+<p>Okay, I acknowledge that that is not a shade on Gapminder&#8217;s 250+ datasets. But, hey, I&#8217;m not Google, you know! Tableau coped well with 9 datasets. What was difficult was reshaping the Gapminder data in Excel in order to get the best out of it in Tableau. Don&#8217;t know about Reshaping? Then you need the<a href="http://kb.tableau.com/articles/knowledgebase/addin-reshaping-data-excel"> Tableau Reshaper add-in</a>&#8230;</p>
+<h2><strong>Parameters<br />
+ </strong></h2>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/parameters.png"><img class="size-full wp-image-1782 alignnone" title="parameters" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/parameters.png" alt="" width="215" height="292" /></a></p>
+<p>There are lots of parameters in this viz. Mostly, I used them to enable the user to choose which Dimensions/Measures to display on the viz. You can read about how to do that in my earlier<a href="http://www.interworks.co.uk/blog/the-data-studio-blog/andy-cotgreave/user-built-views"> Joy of 6: user-built views</a> post.</p>
+<h2>Page controls</h2>
+<p>At last, the Page Filter grew up. A valuable but neglected feature in previous versions, it&#8217;s been beefed up enormously this time around. The viz takes full advantage of Page filters and the ability to Show History. Click on a mark in the viz to see how it&#8217;s changed.</p>
+<p>The single, pretty major issue is that on a Server or Public view, you don&#8217;t get a Play button. Given the architecture of the Tableau Server, this makes perfect sense: it is simply not possible to get data from the server to the client quick enough to work. You need to download the workbook to see the playback controls. This is a shame, as it&#8217;s a cool feature.</p>
+<h2><strong>Tabbed views<br />
+ </strong></h2>
+<p>My favourite &#8220;easy-win&#8221; from the new features is the ability to use tabbed views to create an About Box (<a href="http://www.interworks.co.uk/blog/the-data-studio-blog/andy-cotgreave/the-joy-of-six-about-boxes">read the blog post about this</a>). In this viz, it allows me to create links to the source and other places, and add context to the viz. Without the About Box, I would either have to miss those out, or use up valuable screen real estate on the viz itself.</p>
+<h2>Challenges?</h2>
+<p>This project was not without challenges&#8230;</p>
+<h3>Gapminder data interpolates</h3>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/interpolated.png"><img class="size-full wp-image-1780 alignnone" style="margin: 10px;" title="interpolated" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/interpolated.png" alt="" width="248" height="246" /></a></p>
+<p>On the Gapminder site, if a data point is missing, it interpolates the value. That makes for a nice smooth animation on their website. Unfortunately, Tableau cannot invent data in that way. See those lines through the circles in the image above? That&#8217;s where Gapminder interpolated in order to make a smooth interpolation.</p>
+<h3>Log and linear</h3>
+<p>Gapminder automatically switches between log and lin axis scales. This is really nice, as it removes the burden from the user, and makes everything fit properly. Alas, no such feature in Tableau as yet. I wouldn&#8217;t even expect Tableau to implement this &#8211; it&#8217;s a very niche feature.</p>
+<h3>Annotations: two problems.</h3>
+<p>See the light-grey label showing Year that appears on the chart itself? In Gapminder, that label fits the whole chart. in Tableau, area annotations are at the front, so if you try to recreate labels as large as they are in Gapminder, the obscure the data points. But that wasn&#8217;t the biggest issue. Oh no. The area annotation is specific to the Dimension being selected. Therefore, I needed to add a separate annotation for every single X-Y axis combination. That was pretty tedious&#8230;</p>
+<h3>Some Gapminder data is just plain wierd</h3>
+<p>I had to pick and choose the data I used for this viz. In some cases there were too many missing data points. And in others, the values just don&#8217;t seem credible. For example, if you choose the CO2 emissions Dimension, well, I just don&#8217;t believe those values.</p>
+<h2>Conclusions</h2>
+<p>This has been a pretty challenging viz to get right. Having a defined end-goal (Gapminder) to try and hit isn&#8217;t the normal way of developing in Tableau. It&#8217;s better to explore the data, find the story, and tidy things up when you get to wherever you&#8217;ve got to. Forcing Tableau to be like something else is trickier.</p>
+<p>Tableau isn&#8217;t optimized as well as Gapminder. Tableau can&#8217;t match Gapminder for smoothness of animation or flexibility of showing the different data. But that&#8217;s not really what Tableau is trying to do. It does everything it needs to do in this project just fine. Most of your business applications will be simpler than this. I think the end result above is great. It was a great way to explore the new features.</p>
+<p>I hope you enjoyed the project, too. This is the end of my Joy of 6 posts -<a href="http://www.interworks.co.uk/tag/joy-of-6"> click here to read the rest.</a></p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/joy-of-six-gapminder/">Joy of six: Gapminder, Tableau style</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fjoy-of-six-gapminder%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/joy-of-six-gapminder/feed/</wfw:commentRss>
+		<slash:comments>7</slash:comments>
+		</item>
+	</channel>
+</rss>

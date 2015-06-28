@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Sparkbars in tooltips</title>
+	<atom:link href="http://interworks.co.uk/blog/sparkbar-tooltips/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/blog/sparkbar-tooltips/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 05 Jun 2015 09:45:31 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>By: Ujval Gandhi</title>
+		<link>http://interworks.co.uk/blog/sparkbar-tooltips/#comment-369</link>
+		<dc:creator><![CDATA[Ujval Gandhi]]></dc:creator>
+		<pubDate>Thu, 12 May 2011 13:00:13 +0000</pubDate>
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=2475#comment-369</guid>
+		<description><![CDATA[Andy, great article !!
+
+If we have corporate guidelines against installing custom fonts, is there a way to replicate the bars using an existing Windows font ?
+
+Regards,
+Ujval]]></description>
+		<content:encoded><![CDATA[<p>Andy, great article !!</p>
+<p>If we have corporate guidelines against installing custom fonts, is there a way to replicate the bars using an existing Windows font ?</p>
+<p>Regards,<br />
+Ujval</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Joe Mako</title>
+		<link>http://interworks.co.uk/blog/sparkbar-tooltips/#comment-368</link>
+		<dc:creator><![CDATA[Joe Mako]]></dc:creator>
+		<pubDate>Tue, 10 May 2011 15:54:24 +0000</pubDate>
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=2475#comment-368</guid>
+		<description><![CDATA[Andy, this is great stuff.
+
+Here is another approach to your formula for creating the spark values:
+
+PREVIOUS_VALUE(&quot;&quot;)+STR(ZN(ROUND((SUM([Sales])/WINDOW_MAX(SUM([Sales])))*9)))
+
+This will do what all your lookup functions do, concatenating a spark value for each month. The issue you describe of missing months in the data can be resolved with worksheet layout, partitioning and a helper calcs for filtering the display and/or repeating this calculated value for every mark.]]></description>
+		<content:encoded><![CDATA[<p>Andy, this is great stuff.</p>
+<p>Here is another approach to your formula for creating the spark values:</p>
+<p>PREVIOUS_VALUE(&#8220;&#8221;)+STR(ZN(ROUND((SUM([Sales])/WINDOW_MAX(SUM([Sales])))*9)))</p>
+<p>This will do what all your lookup functions do, concatenating a spark value for each month. The issue you describe of missing months in the data can be resolved with worksheet layout, partitioning and a helper calcs for filtering the display and/or repeating this calculated value for every mark.</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

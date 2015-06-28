@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>InterWorks - Tableau Software &#38; Business Intelligence Consulting &#187; Gantt</title>
+	<atom:link href="http://interworks.co.uk/tag/gantt/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 26 Jun 2015 08:09:24 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>URL Parameters in Tableau</title>
+		<link>http://interworks.co.uk/blog/url-parameters-tableau/</link>
+		<comments>http://interworks.co.uk/blog/url-parameters-tableau/#comments</comments>
+		<pubDate>Mon, 17 Mar 2014 15:36:09 +0000</pubDate>
+		<dc:creator><![CDATA[Rob Austin]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Gantt]]></category>
+		<category><![CDATA[Parameters]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=10159</guid>
+		<description><![CDATA[<p>Why would you need to use URL parameters in Tableau Server? Below is an example of a list of order dates.Thanks to Tableau&#8217;s massive amount of built in date functions we can do just about anything with them but what if we want to find the number of orders that were being processed on a [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/url-parameters-tableau/">URL Parameters in Tableau</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Furl-parameters-tableau%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Why would you need to use URL parameters in Tableau Server?<br />
+Below is an example of a list of order dates.Thanks to Tableau&#8217;s massive amount of built in date functions we can do just about anything with them but what if we want to find the number of orders that were being processed on a specific date, or range of dates from another data source. That becomes tricky because that data isn&#8217;t necessarily there.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2014/03/Screen-Shot-2014-03-17-at-11.51.48.png"><img class="aligncenter size-medium wp-image-10161" src="http://interworks.co.uk/wp-content/uploads/2014/03/Screen-Shot-2014-03-17-at-11.51.48-290x300.png" alt="Orders" width="290" height="300" /></a></p>
+<p>The first step to this is to create some Parameters in Tableau one for the start date called &#8220;Start&#8221;, one for the end date called &#8220;End&#8221;.<br />
+In the visualisation below I have created a calculated field using DATEDIFF to show the duration of each order and then shown them on a gantt chart.<br />
+You can manually change the parameters to see the number of Orders which were being handled within the range of dates. We will later embed this dashboard inside another and pass the parameters automatically from a second data source.</p>
+<p><script type='text/javascript' src='http://public.tableausoftware.com/javascripts/api/viz_v1.js'></script>
+<div class='tableauPlaceholder' style='width: 564px; height: 669px;'><noscript><a href='#'><img alt='Parameter Dashboard ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Pa&#47;ParameterPassing&#47;ParameterDashboard&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='564' height='669' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableausoftware.com%2F' /><param name='site_root' value='' /><param name='name' value='ParameterPassing&#47;ParameterDashboard' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Pa&#47;ParameterPassing&#47;ParameterDashboard&#47;1.png' /><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>
+<div style='width:564px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'>
+<div style='float:right; padding-right:8px;'><a href='http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/views/ParameterPassing/ParameterDashboard' target='_blank'>Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p>Here is the calculated field I used to identify the Orders which were being processed within that date range. As you can see it would not be possible to do this from a single date field so action filters would not be an option.<em><br />
+</em></p>
+<address>IF [Start]&lt;=[Ship Date] AND [Start]&gt;=[Order Date] THEN 1</address>
+<address>ELSEIF [End]&lt;=[Ship Date] AND [End]&gt;=[Order Date] THEN 1</address>
+<address>ELSEIF [Start]&lt;=[Order Date] AND [End]&gt;=[Ship Date] THEN 1</address>
+<address>ELSE 0 END</address>
+<p>The annoyance with the method used in the Dashboard above is that the user must select individual dates whereas we really want to be able to drive the dates from another data source&#8230;&#8230;<br />
+<script type='text/javascript' src='http://public.tableausoftware.com/javascripts/api/viz_v1.js'></script>
+<div class='tableauPlaceholder' style='width: 584px; height: 869px;'><noscript><a href='#'><img alt='Order Analysis Dashboard ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Pa&#47;ParameterPassing&#47;OrderAnalysisDashboard&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='584' height='869' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableausoftware.com%2F' /><param name='site_root' value='' /><param name='name' value='ParameterPassing&#47;OrderAnalysisDashboard' /><param name='tabs' value='no' /><param name='toolbar' value='no' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Pa&#47;ParameterPassing&#47;OrderAnalysisDashboard&#47;1.png' /><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='no' /><param name='display_count' value='yes' /></object></div>
+<div style='width:584px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'>
+<div style='float:right; padding-right:8px;'><a href='http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/views/ParameterPassing/OrderAnalysisDashboard' target='_blank'>Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p>The data source I have picked is just a list of dates, it could just as easily have some values associated. The trick is to restructure date(s) to be passed so that they are in an iso format e.g. 2013-02-31 <em><br />
+</em></p>
+<address>Min Date: STR(YEAR(MIN(Date)))+&#8217;-&#8216;+STR(MONTH(MIN(Date)))+&#8217;-&#8216;+STR(DAY(MIN(Date)))</address>
+<address>Max Date: STR(YEAR(MAX(Date)))+&#8217;-&#8216;+STR(MONTH(MAX(Date)))+&#8217;-&#8216;+STR(DAY(MAX(Date)))</address>
+<p>I have created a min date and max date in ISO format which I pass to my original &#8216;embedded&#8217; dashboard using a url action.</p>
+<p>The final dashboard includes a view from the driving data source (the list of dates) as well as the embedded dashboard from before; this was achieved by putting a web page in my final dashboard and pointing it towards my Tableau Server / Tableau Public URL. I then use a url action to drive the parameters in the embedded view as follows.<em><br />
+</em></p>
+<address> </address>
+<address><span style="color: #0000ff;">http://public.tableau.com/views/ParameterPassing/EmbeddedDashboard</span>?<span style="color: #ff0000;">:showVizHome=no&amp;:embed=yes</span>&amp;<span style="color: #008000;">Start=&lt;AGG(MinDate)&gt;&amp;End=&lt;AGG(MaxDate)&gt;</span></address>
+<p>&nbsp;</p>
+<p>This is made up of <span style="color: #0000ff;">embedded dashboard url <span style="color: #ff0000;">embed commands <span style="color: #008000;">my passed parameter fields</span></span></span></p>
+<p>In Order to test your work you need to publish the dashboard you wish to embed first, then create your final dashboard.</p>
+<p>URL Parameters / Filters open up some really interesting possibilities and I&#8217;d love to hear about it if you are using them or have plans to use them in any other innovative ways.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/url-parameters-tableau/">URL Parameters in Tableau</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Furl-parameters-tableau%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/url-parameters-tableau/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+	</channel>
+</rss>

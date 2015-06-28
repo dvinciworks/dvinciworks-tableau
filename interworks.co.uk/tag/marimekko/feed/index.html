@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>InterWorks - Tableau Software &#38; Business Intelligence Consulting &#187; Marimekko</title>
+	<atom:link href="http://interworks.co.uk/tag/marimekko/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 26 Jun 2015 08:09:24 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>Marimekko Part 5: Totals</title>
+		<link>http://interworks.co.uk/blog/marimekko-part-5-totals/</link>
+		<comments>http://interworks.co.uk/blog/marimekko-part-5-totals/#comments</comments>
+		<pubDate>Mon, 06 Jan 2014 13:55:08 +0000</pubDate>
+		<dc:creator><![CDATA[Rob Austin]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Marimekko]]></category>
+		<category><![CDATA[Table Calculation]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=9608</guid>
+		<description><![CDATA[<p>In Part 4 of the blog we learned how to make a basic Mekko Chart. In this part of the blog we are going to add in some totals, thankfully we can use some of our existing calculations to do this. The first is the Y Dimension (Colours) total. We are going to use quick [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/marimekko-part-5-totals/">Marimekko Part 5: Totals</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmarimekko-part-5-totals%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>In <a href="http://interworks.co.uk/random/marimekko-part-4-basic-marimekko/">Part 4</a> of the blog we learned how to make a basic Mekko Chart.  In this part of the blog we are going to add in some totals, thankfully we can use some of our existing calculations to do this. The first is the Y Dimension (Colours) total. We are going to use quick table calcs to generate the percentage values. Don&#8217;t forget to hide the axis when you are done to maximise the useful space on the dashboard.</p>
+<p>Rows: SUM(Sales) > Quick Table Calculation > Percent of Total<br />
+Color: [Y Dimension] (sorted Ascending by sum of [Sales])<br />
+Text: As Rows</p>
+<p>The next worksheet is going to be the totals bar at the bottom which uses many of the same fields. Please note there are 2 text fields used in this worksheet using Tableau&#8217;s ability to stack labels in the same cell.<br />
+Columns: SUM(Sales) > Quick Table Calculation > Percent of Total<br />
+Text: [X Dimension] (sorted Ascending by sum of [Sales])<br />
+Text: As Rows</p>
+<p>Once that you have the totals in place all that remains is to arrange them on the dashboard.<br />
+<script type='text/javascript' src='http://public.tableausoftware.com/javascripts/api/viz_v1.js'></script>
+<div class='tableauPlaceholder' style='width: 604px; height: 669px;'><noscript><a href='#'><img alt='Marimekko Chart ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;XK&#47;XKYSHFSJ4&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='604' height='669' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableausoftware.com%2F' /><param name='path' value='shared&#47;XKYSHFSJ4' / ><param name='toolbar' value='yes' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;XK&#47;XKYSHFSJ4&#47;1.png' / ><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>
+<div style='width:604px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'>
+<div style='float:right; padding-right:8px;'><a href='http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/shared/XKYSHFSJ4' target='_blank'>Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p>The optional extra with this chart is to get around the data densification issues. This is only a problem with the X Axis as the Y Axis stacks naturally anyway. The following calculations use the Maximum X Axis running along the Y Dimension only.</p>
+<p>[X Axis Complete]<br />
+WINDOW_MAX([X Axis])<br />
+DTC > Compute Using: Y Dimension</p>
+<p>[Label X Complete]<br />
+IF MIN([Point])=3 THEN [X Axis Complete] &#8211; [X%]/2 END</p>
+<p>To use these new calculations simply replace the [X Axis] and [Label X] fields from the previous blog (<a href="http://interworks.co.uk/random/marimekko-part-4-basic-marimekko/">Part 4</a>).</p>
+<p>Another optional extra is to ensure that the charts disappear when the same parameter is selected on both axis. Simply put the following field in to the filter box and filter on False only.<br />
+[Are They The Same?]<br />
+[Parameters].[Y Dimension]=[Parameters].[X Dimension]</p>
+<p>I have expanded on this by telling the audience that they need to select some different options, I&#8217;m sure you can find innovative ways to do this.</p>
+<p>I leave you to apply the chart to your own data, play with the formatting and enjoy this flexible chart type.  I would like to thank Joe Mako for his work on Marimekko in Tableau and for his subsequent interest in my blog.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/marimekko-part-5-totals/">Marimekko Part 5: Totals</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmarimekko-part-5-totals%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/marimekko-part-5-totals/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Marimekko Part 4: Basic Marimekko</title>
+		<link>http://interworks.co.uk/blog/marimekko-part-4-basic-marimekko/</link>
+		<comments>http://interworks.co.uk/blog/marimekko-part-4-basic-marimekko/#comments</comments>
+		<pubDate>Mon, 06 Jan 2014 13:54:56 +0000</pubDate>
+		<dc:creator><![CDATA[Rob Austin]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Marimekko]]></category>
+		<category><![CDATA[Table Calculation]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=9592</guid>
+		<description><![CDATA[<p>In Part 3 we created all the calculated fields necessary for our basic Mekko. Because we have preset the DTC (Direction of Table Calculation) for each calculated field we can simply drag them on to the view to create the mekko and be confident that the values will match our table. Mark Type: Polygon Color: [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/marimekko-part-4-basic-marimekko/">Marimekko Part 4: Basic Marimekko</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmarimekko-part-4-basic-marimekko%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>In <a href="http://interworks.co.uk/random/marimekko-part-3-table-calculations/">Part 3</a> we created all the calculated fields necessary for our basic Mekko.  Because we have preset the DTC (Direction of Table Calculation) for each calculated field we can simply drag them on to the view to create the mekko and be confident that the values will match our table.<br />
+Mark Type: Polygon<br />
+Color: [Y Dimension] (sorted ascending along sum of sales to align the ledgend)<br />
+Path: [Point]<br />
+Detail: [X Dimension] (sorted descending along sum of sales to show the biggest first)<br />
+Columns: [X Axis]<br />
+Rows: [Y Axis]</p>
+<p><script type='text/javascript' src='http://public.tableausoftware.com/javascripts/api/viz_v1.js'></script>
+<div class='tableauPlaceholder' style='width: 604px; height: 669px;'><noscript><a href='#'><img alt='Basic Marimekko ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Me&#47;MekkoDemo&#47;BasicMarimekko&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='604' height='669' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableausoftware.com%2F' /><param name='site_root' value='' /><param name='name' value='MekkoDemo&#47;BasicMarimekko' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Me&#47;MekkoDemo&#47;BasicMarimekko&#47;1.png' / ><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>
+<div style='width:604px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'>
+<div style='float:right; padding-right:8px;'><a href='http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/views/MekkoDemo/BasicMarimekko' target='_blank'>Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p>The figures / labels on the Mekko are the next step. We are going to have to create another 3 calculated fields to get them in the correct position. </p>
+<p>[Label X]<br />
+IF ATTR([Point])=3 THEN [X Axis] &#8211; [X%]/2 END<br />
+This field creates another cartesian point between points 2 &#038; 3.</p>
+<p>[Text]<br />
+&#8216;<br />
+&#8216;+<br />
+LEFT(STR(ROUND([% of Y within X],3)*100),4) + &#8216;%&#8217;<br />
+This field ensures that the label displays below the line for each element.</p>
+<p>[Text (Hidden)]<br />
+IF [X%] > 0.05 THEN [Text] END<br />
+This is an optional field depending on your data which hides labels where space is limited.</p>
+<p>To display the labels in the same view we are going to make use of Dual Axis and then synchronize and hide the second axis. For the 2nd Axis we should have the following settings:<br />
+Columns: add Label X to the right of the existing X Axis<br />
+Mark Type: Text<br />
+Text: [Text] or [Text (Hidden)]<br />
+Detail: [Y Dimension], [X Dimension], [Point], [% of Y within X]</p>
+<p>This version of the Marimekko chart requires full data densification (i.e. you need to have a row of data for each combination of X Dimension &#038; Y Dimension). If you are missing a row of data then the running calculations will not compute correctly and will not add up to 100%. Try Selecting Y Dimension > Department and X Dimension > Container to see the issue in the viz above. </p>
+<p>We will solve this issue in <a href="http://interworks.co.uk/random/marimekko-part-5-totals/">Part 5</a> of the blog and add some totals.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/marimekko-part-4-basic-marimekko/">Marimekko Part 4: Basic Marimekko</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmarimekko-part-4-basic-marimekko%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/marimekko-part-4-basic-marimekko/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Marimekko Part 3: Table calculations</title>
+		<link>http://interworks.co.uk/blog/marimekko-part-3-table-calculations/</link>
+		<comments>http://interworks.co.uk/blog/marimekko-part-3-table-calculations/#comments</comments>
+		<pubDate>Mon, 06 Jan 2014 13:46:09 +0000</pubDate>
+		<dc:creator><![CDATA[Rob Austin]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Marimekko]]></category>
+		<category><![CDATA[Table Calculation]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=9541</guid>
+		<description><![CDATA[<p>In Part 2 we simulated a Marimekko using stacked bars but since the boundary for each element / polygon of a Marimekko in Tableau is made up from 4 Cartesian Coordinates we are going to use scales of 0 &#8211; 100 % for both X and Y axis and plot each corner of the polygon [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/marimekko-part-3-table-calculations/">Marimekko Part 3: Table calculations</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmarimekko-part-3-table-calculations%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>In <a href="http://interworks.co.uk/random/marimekko-part-2-parameters-table-calculations/">Part 2</a> we simulated a Marimekko using stacked bars but since the boundary for each element / polygon of a Marimekko in Tableau is made up from 4 Cartesian Coordinates we are going to use scales of 0 &#8211; 100 % for both X and Y axis and plot each corner of the polygon accordingly. This means that we will need a to calculate different values for various Points (1-4) for any given X or Y Dimension. We can use logical IF and CASE statements in our calculated fields to achieve this. Please note that [Point] should be dragged to Dimensions in the data window.</p>
+<p>[X Axis]:<br />
+IF ATTR([Point]) = 3<br />
+THEN PREVIOUS_VALUE(0) + [X%]<br />
+ELSE PREVIOUS_VALUE(0)<br />
+END<br />
+DTC &gt; Compute Using: Advanced &gt; Addressing: X Dimension, Point; Sort: Automatic</p>
+<p>[Y Axis]<br />
+ZN(PREVIOUS_VALUE(0)+<br />
+CASE ATTR([Point])<br />
+WHEN 1 THEN ZN(LOOKUP([% of Y within X],-1))<br />
+WHEN 2 THEN [% of Y within X]<br />
+WHEN 3 THEN 0<br />
+WHEN 4 THEN [% of Y within X]*-1<br />
+END)<br />
+DTC &gt; Compute Using: Advanced &gt; Addressing: Y Dimension, Point; Sort: Sum of Sales Decending.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2014/01/Screen-Shot-2014-01-03-at-14.14.02.png"><img class="alignleft size-medium wp-image-9496" alt="Screen Shot 2014-01-03 at 14.14.02" src="http://interworks.co.uk/wp-content/uploads/2014/01/Screen-Shot-2014-01-03-at-14.14.02-300x298.png" width="250" height="230" /></a>    <a href="http://interworks.co.uk/wp-content/uploads/2014/01/Screen-Shot-2014-01-06-at-09.29.07.png"><img src="http://interworks.co.uk/wp-content/uploads/2014/01/Screen-Shot-2014-01-06-at-09.29.07-300x221.png" alt="Screen Shot 2014-01-06 at 09.29.07" width="325" height="221" class="alignnone size-medium wp-image-9583" /></a></p>
+<p>When dealing with complicated table calculations it is best to start with a table of data, that way you can get a feel for what the calculations are really doing and make sure there are no mistakes before you create your viz. In the Crosstab above I have put [X-Dimension] in to columns, [Y Dimension] and [Point] in to Rows. I then drag [X Axis] in to the workspace followed by [Y Axis] to make use of measure names / measure values. Lastly I sorted the dimensions to make sure that they appeared in the same order as my table calculations.</p>
+<p>In the X Axis calculation above we are putting the previous value in for points 1 and 2 (or Zero if there is no previous value) we are then incrementing the value for point 3, it is behaving as a running sum for each Y Dimension along the X Dimension but only incrementing at point 3 (this means that point 4 will be the same as point 3 for each X Dimension. The value of the increment is calculated using [X%] as described earlier in the blog series.</p>
+<p>The Y Axis calculation is a little more complicated as the values are not common to each Y Dimension but run along the Y Dimension (and Point).  It restarts for each X Dimension calculating the result from the previous value along the Y Dimension and Point.</p>
+<p>If you understood that on your first read then you are doing very well. The table above illustrates how the results should look and may be easier to digest.</p>
+<p>In <a href="http://interworks.co.uk/random/marimekko-part-4-basic-marimekko/">Part 4</a> we will be putting these calculated fields in to a Mekko.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/marimekko-part-3-table-calculations/">Marimekko Part 3: Table calculations</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmarimekko-part-3-table-calculations%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/marimekko-part-3-table-calculations/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+		<item>
+		<title>Marimekko Part 2: Parameters and Table Calculations</title>
+		<link>http://interworks.co.uk/blog/marimekko-part-2-parameters-table-calculations/</link>
+		<comments>http://interworks.co.uk/blog/marimekko-part-2-parameters-table-calculations/#comments</comments>
+		<pubDate>Mon, 06 Jan 2014 13:41:30 +0000</pubDate>
+		<dc:creator><![CDATA[Rob Austin]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Marimekko]]></category>
+		<category><![CDATA[Table Calculation]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=9527</guid>
+		<description><![CDATA[<p>In Part 1 we learned how to use custom SQL to shape our data ready for use later on in polygons. In this part we will use parameters to allow dashboard viewers to exchange dimensions. This methodology can be applied to any chart type which is sliced by a dimension and is a great alternative [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/marimekko-part-2-parameters-table-calculations/">Marimekko Part 2: Parameters and Table Calculations</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmarimekko-part-2-parameters-table-calculations%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>In <a href="http://interworks.co.uk/random/marimekko-part-1-polygons-paths-custom-sql/">Part 1</a> we learned how to use custom SQL to shape our data ready for use later on in polygons. In this part we will use parameters to allow dashboard viewers to exchange dimensions. This methodology can be applied to any chart type which is sliced by a dimension and is a great alternative to replicating many similar dashboards.</p>
+<p>Although Tableau doesn&#8217;t have a Marimekko built in, a great adaptation is a Variable width bar chart, this will enable us to set up the parameters and to start creating some of the table calculations ready for our Mekko later. Much like a Marimekko, the variable width bar chart represents the % of total for each X Dimension as the width of the bar; it then shows the % of the Y dimension within each X dimension to give an impression of the overall % of any one element.<br />
+<script type='text/javascript' src='http://public.tableausoftware.com/javascripts/api/viz_v1.js'></script>
+<div class='tableauPlaceholder' style='width: 604px; height: 669px;'><noscript><a href='#'><img alt='Variable Bar ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Me&#47;MekkoDemo&#47;VariableBar&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='604' height='669' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableausoftware.com%2F' /><param name='site_root' value='' /><param name='name' value='MekkoDemo&#47;VariableBar' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Me&#47;MekkoDemo&#47;VariableBar&#47;1.png' / ><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>
+<div style='width:604px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'>
+<div style='float:right; padding-right:8px;'><a href='http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/views/MekkoDemo/VariableBar' target='_blank'>Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p>A parameter only works in conjunction with something else (in this case a calculated field) We shall therefore create 2 parameters called &#8220;X Dimension&#8221; and &#8220;Y Dimension&#8221; and 2 calculated fields also called [X Dimension] and [Y Dimension]. Each parameter will refer to the names of the Dimensions to be selected between.<br />
+<a href="http://interworks.co.uk/wp-content/uploads/2014/01/Screen-Shot-2014-01-03-at-15.57.12.png"><img class="aligncenter size-medium wp-image-9530" alt="Screen Shot 2014-01-03 at 15.57.12" src="http://interworks.co.uk/wp-content/uploads/2014/01/Screen-Shot-2014-01-03-at-15.57.12-300x251.png" width="300" height="251" /></a></p>
+<p>Each calculated field will refer to the corresponding parameter.<br />
+<a href="http://interworks.co.uk/wp-content/uploads/2014/01/Screen-Shot-2014-01-03-at-15.58.11.png"><img class="alignnone size-large wp-image-9534" alt="Screen Shot 2014-01-03 at 15.58.11" src="http://interworks.co.uk/wp-content/uploads/2014/01/Screen-Shot-2014-01-03-at-15.58.11-1024x223.png" width="904" height="196" /></a></p>
+<p>We will also create 2 calculated fields for the width of the bars [X%] and the percentage share within each bar [% of Y within X]. The 2 calculated fields are table calculations rather than standard calculated fields. The important thing about these table-calculated fields is that they run in a certain direction; this can be pre-defined in the blue &#8216;Define Table Calculation&#8217; text (DTC) which appears in the top right of the calculated field window. Although Tableau will default to the appropriate dimensions for us we are going to define these now for ease of use later.</p>
+<p>[% of Y within X] = SUM([Sales])/TOTAL(SUM([Sales]))<br />
+DTC &gt; Compute Using: Advanced &gt; Addressing: Y Dimension, Sort: Sales Ascending</p>
+<p>[X%] = [Total of Y]/[Total Overall]<br />
+Where:<br />
+[Total of Y] = TOTAL(SUM([Sales]))<br />
+DTC &gt; Compute Using: Y Dimension<br />
+&amp;:<br />
+[Total Overall] = TOTAL(SUM([Sales]))<br />
+DTC &gt; Compute Using: Advanced &gt; Addressing: X Dimension,Y Dimension, Sort: Automatic</p>
+<p>Although the last two calculations are identical, the direction of table calculation yields a very different result. This difference means that when we divide one by the other we get the percentage of each X Dimension compared to the Grand Total.</p>
+<p>To complete this viz Add the Calculated fields as follows:<br />
+Columns: X Dimension<br />
+Rows: % of Y within X<br />
+Color: Y Dimension<br />
+Size X%<br />
+Don&#8217;t forget to &#8216;Show Parameter Control&#8217; to play around with your dimensions on the fly.</p>
+<p>In <a href="http://interworks.co.uk/random/marimekko-part-3-table-calculations/">Part 3</a> we will delve a little deeper in to table calculations as we begin to make our real Mekko using our progress so far.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/marimekko-part-2-parameters-table-calculations/">Marimekko Part 2: Parameters and Table Calculations</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmarimekko-part-2-parameters-table-calculations%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/marimekko-part-2-parameters-table-calculations/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Marimekko Part 1: Polygons, Paths and Custom SQL</title>
+		<link>http://interworks.co.uk/blog/marimekko-part-1-polygons-paths-custom-sql/</link>
+		<comments>http://interworks.co.uk/blog/marimekko-part-1-polygons-paths-custom-sql/#comments</comments>
+		<pubDate>Mon, 06 Jan 2014 13:37:58 +0000</pubDate>
+		<dc:creator><![CDATA[Rob Austin]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Marimekko]]></category>
+		<category><![CDATA[Table Calculation]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=9493</guid>
+		<description><![CDATA[<p>Before we can attempt a Marimekko, we need to understand a few of Tableau&#8217;s lesser used tools. The first of these is the Polygon mark type which can be selected from the dropdown on the marks card. Since the Marimekko is actually made up of lots of x-y (Cartesian) coordinates we need to join the [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/marimekko-part-1-polygons-paths-custom-sql/">Marimekko Part 1: Polygons, Paths and Custom SQL</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmarimekko-part-1-polygons-paths-custom-sql%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Before we can attempt a <a href="http://interworks.co.uk/filters/marimekko-in-tableau/">Marimekko</a>, we need to understand a few of Tableau&#8217;s lesser used tools.</p>
+<p>The first of these is the Polygon mark type which can be selected from the dropdown on the marks card. Since the Marimekko is actually made up of lots of x-y (Cartesian) coordinates we need to join the dots and colour in the middle, this is what the polygon tool does.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2014/01/Screen-Shot-2014-01-03-at-14.14.02.png"><img class="aligncenter size-medium wp-image-9496" src="http://interworks.co.uk/wp-content/uploads/2014/01/Screen-Shot-2014-01-03-at-14.14.02-300x298.png" alt="Screen Shot 2014-01-03 at 14.14.02" width="300" height="298" /></a></p>
+<p>Usually when using polygons you have all the data that is necessary e.g. lat/long points on a map which define a boundary. In our case we want to use a single measure value and represent it as a polygon. This will involve replicating the line 4 times (once for each corner). To do this we must use the UNION ALL command in Custom SQL to generate the extra rows of data, we will also be adding a new column called &#8216;Point&#8217; which we will use to define the corners of the polygons.</p>
+<p>New Custom SQL; This is found in the data source tab for applicable databases or for files opened with the legacy Connection.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2014/01/Screen-Shot-2015-05-22-at-12.10.20.png"><img class="alignnone  wp-image-12343" src="http://interworks.co.uk/wp-content/uploads/2014/01/Screen-Shot-2015-05-22-at-12.10.20-300x166.png" alt="Screen Shot 2015-05-22 at 12.10.20" width="178" height="99" /></a></p>
+<p style="font-size: 10px;">SELECT [Orders$].[City] AS [City],<br />
+[Orders$].[Customer Segment] AS [Customer Segment],<br />
+[Orders$].[Product Category] AS [Product Category],<br />
+[Orders$].[Product Container] AS [Product Container],<br />
+[Orders$].[Sales] AS [Sales],<br />
+[Orders$].[Unit Price] AS [Unit Price],<br />
+1 AS [Point]<br />
+FROM [Orders$]<br />
+UNION ALL</p>
+<p style="font-size: 10px;">SELECT [Orders$].[City] AS [City],<br />
+[Orders$].[Customer Segment] AS [Customer Segment],<br />
+[Orders$].[Product Category] AS [Product Category],<br />
+[Orders$].[Product Container] AS [Product Container],<br />
+[Orders$].[Sales] AS [Sales],<br />
+[Orders$].[Unit Price] AS [Unit Price],<br />
+2 AS [Point]<br />
+FROM [Orders$]<br />
+UNION ALL</p>
+<p style="font-size: 10px;">SELECT [Orders$].[City] AS [City],<br />
+[Orders$].[Customer Segment] AS [Customer Segment],<br />
+[Orders$].[Product Category] AS [Product Category],<br />
+[Orders$].[Product Container] AS [Product Container],<br />
+[Orders$].[Sales] AS [Sales],<br />
+[Orders$].[Unit Price] AS [Unit Price],<br />
+3 AS [Point]<br />
+FROM [Orders$]<br />
+UNION ALL</p>
+<p style="font-size: 10px;">SELECT [Orders$].[City] AS [City],<br />
+[Orders$].[Customer Segment] AS [Customer Segment],<br />
+[Orders$].[Product Category] AS [Product Category],<br />
+[Orders$].[Product Container] AS [Product Container],<br />
+[Orders$].[Sales] AS [Sales],<br />
+[Orders$].[Unit Price] AS [Unit Price],<br />
+4 AS [Point]<br />
+FROM [Orders$]<br />
+Once we have our data we will need to make sure that it as we expect. We should have 4 lines of data now for each line in our original dataset. Each of these replicated lines should have a unique point:</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2014/01/Screen-Shot-2014-01-03-at-14.45.141.png"><img class="alignnone size-large wp-image-9524" src="http://interworks.co.uk/wp-content/uploads/2014/01/Screen-Shot-2014-01-03-at-14.45.141-881x1024.png" alt="Screen Shot 2014-01-03 at 14.45.14" width="881" height="1024" /></a></p>
+<p>In &#8216;<a href="http://interworks.co.uk/random/marimekko-part-2-parameters-table-calculations/">Marimekko Part 2</a>&#8216; we will look at Parameters and Table Calculations.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/marimekko-part-1-polygons-paths-custom-sql/">Marimekko Part 1: Polygons, Paths and Custom SQL</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmarimekko-part-1-polygons-paths-custom-sql%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/marimekko-part-1-polygons-paths-custom-sql/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>Marimekko in Tableau</title>
+		<link>http://interworks.co.uk/blog/marimekko-in-tableau/</link>
+		<comments>http://interworks.co.uk/blog/marimekko-in-tableau/#comments</comments>
+		<pubDate>Mon, 01 Jul 2013 15:03:38 +0000</pubDate>
+		<dc:creator><![CDATA[Rob Austin]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Dual Axis]]></category>
+		<category><![CDATA[Filters]]></category>
+		<category><![CDATA[Marimekko]]></category>
+		<category><![CDATA[Table Calculation]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=8664</guid>
+		<description><![CDATA[<p>This Marimekko chart was fun to get right. There are some great examples of complex table calculations built in to it. The use case is similar to that of a series of stacked bars. It has graphical similarities to a treemap but it lacks the visual superiority when dealing with large numbers of members; however [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/marimekko-in-tableau/">Marimekko in Tableau</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmarimekko-in-tableau%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>This Marimekko chart was fun to get right. There are some great examples of complex table calculations built in to it.</p>
+<p>The use case is similar to that of a series of stacked bars. It has graphical similarities to a treemap but it lacks the visual superiority when dealing with large numbers of members; however it does have the advantage of defining the positions on the x-axis, hence it is more structured and can be more useful than a treemap or stacked bars in this respect.</p>
+<p><script type='text/javascript' src='http://public.tableausoftware.com/javascripts/api/viz_v1.js'></script>
+<div class='tableauPlaceholder' style='width: 604px; height: 669px;'><noscript><a href='#'><img alt='Marimekko Chart ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;XK&#47;XKYSHFSJ4&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='604' height='669' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableausoftware.com%2F' /><param name='path' value='shared&#47;XKYSHFSJ4' / ><param name='toolbar' value='yes' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;XK&#47;XKYSHFSJ4&#47;1.png' / ><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>
+<div style='width:604px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'>
+<div style='float:right; padding-right:8px;'><a href='http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/shared/XKYSHFSJ4' target='_blank'>Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p>To read the chart think of it as being a stacked bar chart where the colours (y dimensions) show the split within each of the vertical bars. The width of the bars represents the overall share of the x dimension. Try Changing the x and y dimensions to see what happens.</p>
+<p>One would typically use this type of chart when dealing with data which has 3-12 different members in a few different dimensions. It is great for seeing where the overlaps are. When trying to to this type of analysis with other chart types you will either get an impression of the results without easy detail (e.g. stacked bar / heat map) or you will get the detail without a real overview (e.g. scatter plot). The Marimekko chart gives a really nice compromise in the middle.</p>
+<p>I have added a 5 part blog on the building of this useful chart type in Tableau:</p>
+<p><a href="http://interworks.co.uk/random/marimekko-part-1-polygons-paths-custom-sql/">Part 1: Polygons, Paths and Custom SQL</a> contains information on data preparation and the methods used to build.<br />
+<a href="http://interworks.co.uk/random/marimekko-part-2-parameters-table-calculations/">Part 2: Parameters and Table Calculations</a> introduces some good ideas for flexible charting and the use of table calculated fields. Here we use a variable width stacked bar chart as a simple kind of Mekko.<br />
+<a href="http://interworks.co.uk/random/marimekko-part-3-table-calculations/">Part 3: Table calculations</a> delves deeper in to the table calcs needed to create a Mekko and shows what the data looks like.<br />
+<a href="http://interworks.co.uk/random/marimekko-part-4-basic-marimekko/">Part 4: Basic Marimekko</a> is our first go at creating the Marimekko.<br />
+<a href="http://interworks.co.uk/random/marimekko-part-5-totals/">Part 5: Totals</a> is where we add in the optional extras such as total bars which help the viewer understand the visualisation. We also look at a method to avoid the need for data densification.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/marimekko-in-tableau/">Marimekko in Tableau</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmarimekko-in-tableau%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/marimekko-in-tableau/feed/</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+		</item>
+	</channel>
+</rss>

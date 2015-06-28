@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>InterWorks - Tableau Software &#38; Business Intelligence Consulting &#187; Parameters</title>
+	<atom:link href="http://interworks.co.uk/tag/parameters/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 26 Jun 2015 08:09:24 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>Interacting with your trend line in Tableau (Part 2)</title>
+		<link>http://interworks.co.uk/blog/interacting-with-your-trend-line-in-tableau-part-2/</link>
+		<comments>http://interworks.co.uk/blog/interacting-with-your-trend-line-in-tableau-part-2/#comments</comments>
+		<pubDate>Tue, 07 Apr 2015 11:38:47 +0000</pubDate>
+		<dc:creator><![CDATA[Lucie Krennwallner]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Calculated Fields]]></category>
+		<category><![CDATA[Parameters]]></category>
+		<category><![CDATA[visualisation]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=11896</guid>
+		<description><![CDATA[<p>PART 2 In part one we familiarised with Tableau&#8217;s automatic Trend Line, information provided and inferences possible. Now I want to focus on the fun part: how to calculate the trend line ourselves using Tableau-R integration as well as two applied examples &#8220;How much above/below ?&#8221; and &#8220;What if&#8221;. HOW TO CALCULATE A LINEAR TREND LINE USING TABLEAU &#38; R [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/interacting-with-your-trend-line-in-tableau-part-2/">Interacting with your trend line in Tableau (Part 2)</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Finteracting-with-your-trend-line-in-tableau-part-2%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p><span style="color: #ff0000;">PART 2</span></p>
+<p>In <a title="Interacting with your Trend Line in Tableau (Part 1)" href="http://interworks.co.uk/blog/linear-regression-interacting-trend-line/" target="_blank">part one</a> we familiarised with Tableau&#8217;s automatic Trend Line, information provided and inferences possible. Now I want to focus on the fun part: how to calculate the trend line ourselves using Tableau-R integration as well as two applied examples &#8220;How much above/below ?&#8221; and &#8220;What if&#8221;.</p>
+<p><span style="color: #333399;"><b>HOW TO CALCULATE A LINEAR TREND LINE USING TABLEAU &amp; R INTEGRATION? </b></span></p>
+<p>Tableau provides (at least) two main options to calculate a trend line: either you could use Tableau’s R integration or calculated fields.</p>
+<ol>
+<li><span style="color: #0000ff;">TABLEAU-R-INTEGRATION</span></li>
+</ol>
+<p>If you know a bit of R, then you’re spot on – Tableau R integration saves you writing complicated Tableau calculations. Connect to R [1] and create the following calculated field ”R Trend Line”:</p>
+<p><span style="color: #0000ff;">          SCRIPT_REAL</span>(</p>
+<p>&#8221; tl &lt;- <span style="color: #0000ff;">lm</span>( .arg2 ~ .arg1)</p>
+<p>tl$fitted &#8221; ,</p>
+<p><span style="color: #0000ff;">          SUM</span>([<span style="color: #ff6600;">x</span>]), <span style="color: #0000ff;">SUM</span>([<span style="color: #ff6600;">y</span>]))</p>
+<p>A note for Tableau-R beginners: the equation</p>
+<p style="text-align: left;">          <span style="color: #0000ff;">lm</span>( .arg2 ~ .arg1)</p>
+<p>calculates all parts of the Trend Line (slope, intercept, estimated values). Because Tableau can only retrieve a <em>single</em> column from R (but no matrix or table), we need to extract the estimated values to be displayed in the dual axis chart by using „tl$fitted“.</p>
+<p>Now include the calculated trend line into the chart. To do so, drop &#8220;R Trend Line” onto the row shelf – don’t worry if the chart is empty at first! Right click on the Trend Line calculation and adjust ‘Compute Using’ to ID (see Figure 8). Then choose ‘Dual Axis’ – and you’re nearly done.</p>
+<p>The calculated and the automatic trend line do not lie on top of each other quite yet. It needs Axis Synchronisation – only Tableau does not allow this: this option is greyed out.</p>
+<p><strong><strong> <a href="http://interworks.co.uk/wp-content/uploads/2015/04/Fig-9-R-Trendline.jpg"><img class="alignnone  wp-image-11973" src="http://interworks.co.uk/wp-content/uploads/2015/04/Fig-9-R-Trendline-300x248.jpg" alt="Fig 9 R Trendline" width="381" height="315" /></a></strong></strong></p>
+<p>Figure 9: Interactive Menu ‘Axis synchronisation’</p>
+<p>Why is this? The reason is simple: if data types of the two axes differ, Tableau cannot synchronise them. Thus convert the Trend Line with the  <span style="color: #0000ff;">INT</span>() function:</p>
+<p><span style="color: #0000ff;">INT</span>(</p>
+<p><span style="color: #0000ff;">SCRIPT_REAL</span>(</p>
+<p>&#8221; tl &lt;- lm( .arg2 ~ .arg1)</p>
+<p>tl$fitted &#8221; ,</p>
+<p><span style="color: #0000ff;">          SUM</span>([<span style="color: #ff6600;">x</span>]), <span style="color: #0000ff;">SUM</span>([<span style="color: #ff6600;">y</span>]))</p>
+<p>)</p>
+<p>And – voila! &#8211;  there is the synchronisation function back. Now the Trend Lines matches.</p>
+<p>Note: the above calculation can be written in a single line, of course; the spacious presentation is only a way to make it easier for you to understand Tableau spelling.</p>
+<p>However, if your plot looks still strange, because your R Trend Line appears as a dotted line although you have chosen &#8216;Line&#8217; in the marks card, then remove &gt; Measure Names &lt; (see Fig. 10, red circle) from the Trend Line card.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/04/Fig-10-two-dots-plot.png"><img class="alignnone  wp-image-11974" src="http://interworks.co.uk/wp-content/uploads/2015/04/Fig-10-two-dots-plot-300x183.png" alt="Fig 10 two dots plot" width="475" height="290" /></a></p>
+<p>Figure 10: remove &gt;Measure Names&lt; from marks card to see R Trend Line as a line.</p>
+<p>&nbsp;</p>
+<p><span style="color: #0000ff;">PRACTICAL EXAMPLES</span></p>
+<p><span style="color: #3366ff;">Example 1: &#8220;How much above the Line?” </span></p>
+<p>What do you do if you want to quantify and visualise the deviation of an observation (data point)  from the Trend Line?  That’s easy, now; right? Just calculate &#8220;How much above the Line?” in a calculated Field using</p>
+<p><span style="color: #0000ff;">SUM</span>([<span style="color: #ff6600;">y</span>]) – <span style="color: #ff6600;">[Trend Line]</span>.</p>
+<p>Remember: the y-axis in a scatter plot is <span style="color: #0000ff;">SUM</span>([<span style="color: #ff6600;">y</span>]) and NOT just y.</p>
+<p>When you have the trend line on the row shelf with &#8216;Compute Using&#8217; on ID, drop the calculation “How much above the Line?” on to &#8216;Size&#8217; on the marks card (and if you want to see the label, drop a copy on to &#8216;Text&#8217; too). Then create a dual axis chart and choose from the marks card Gantt Bar for the trend line to visualise the deviation from the trend line (Fig.11).</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/04/Fig-11-How-much-abvove-below.png"><img class="alignnone  wp-image-11975" src="http://interworks.co.uk/wp-content/uploads/2015/04/Fig-11-How-much-abvove-below-300x265.png" alt="Fig 11 How much abvove below" width="423" height="374" /></a></p>
+<p>Figure 11: Visualising distance of observation from the trend line</p>
+<p><span style="color: #3366ff;">Example 2: &#8220;What-If?”</span></p>
+<p>Let&#8217;s imagine you would like to analyse the profitability of customers. When your company acquires a new client we&#8217;d like to evaluate what to expect based on the currently known trend. For this ‘what-if&#8217; scenario we need to create an option for the analyst to choose a value within the data set or SLIGHTLY outside (if you want to do go far beyond your own data set, better use a different method of predictive analytics).</p>
+<p>As a reminder to calculate the trend line we used the formula</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/03/LineFormula.jpg"><img class=" size-full wp-image-11655 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/03/LineFormula.jpg" alt="LineFormula" width="122" height="38" /></a></p>
+<p>So to answer your question we need to take three steps:</p>
+<p>a) extract the constants</p>
+<p>Intercept:   <span style="color: #0000ff;">SCRIPT_REAL</span>( &#8220;<span style="color: #0000ff;">lm</span>( .arg2 ~ .arg1) $coefficients[1]&#8221; , <span style="color: #0000ff;">SUM</span>(<span style="color: #ff6600;">[x]</span>), <span style="color: #0000ff;">SUM</span>(<span style="color: #ff6600;">[y]</span>))</p>
+<p>Slope:         <span style="color: #0000ff;">SCRIPT_REAL</span>( &#8220;<span style="color: #0000ff;">lm</span>( .arg2 ~ .arg1) $coefficients[2]&#8221; , <span style="color: #0000ff;">SUM</span>(<span style="color: #ff6600;">[x]</span>), <span style="color: #0000ff;">SUM</span>(<span style="color: #ff6600;">[y]</span>))</p>
+<p>b) we have to replace our known x-values from the data set with values the analyst can choose from. To do so create a parameter (Fig. 12) , which is then called in the trend line calculation replacing <span style="color: #0000ff;">SUM</span>([<span style="color: #ff6600;">x</span>]) with <span style="color: #0000ff;">SUM</span>(<span style="color: #993366;">[Parameter]</span>).</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/04/Fig-12-What-if-x-Value-Parameter.jpg"><img class="alignnone  wp-image-11978" src="http://interworks.co.uk/wp-content/uploads/2015/04/Fig-12-What-if-x-Value-Parameter-300x253.jpg" alt="Fig 12 What if x Value Parameter" width="347" height="293" /></a></p>
+<p>Figure 12: Create Parameter &#8220;What-If x-Value&#8221;</p>
+<p>c) Finally, we want to see only ONE estimated value, not all the possible values. In other words we need to filter the returned y-values and the easiest way is to use the function <span style="color: #0000ff;">First</span>().</p>
+<p>Piecing these three steps together the new &#8220;R What-If Trend Line (What if)&#8221; calculation reads then like</p>
+<p>If <span style="color: #0000ff;">FIRST</span>() = 0 Then <span style="color: #0000ff;">INT</span>((<span style="color: #ff6600;"> [R slope]</span> * <span style="color: #ff6600;">[x(what if)]</span> ) + <span style="color: #ff6600;">[R intercept]</span> ) END.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/04/Fig-13-R-What-If.jpg"><img class="alignnone size-medium wp-image-12044" src="http://interworks.co.uk/wp-content/uploads/2015/04/Fig-13-R-What-If-300x251.jpg" alt="Fig 13 R What If" width="300" height="251" /></a></p>
+<p>Figure 13: What-If Analysis using R in Tableau</p>
+<p>&nbsp;</p>
+<p>HAPPY ANALYSING!</p>
+<p>&nbsp;</p>
+<p>[1] http://www.tableau.com/sites/default/files/media/using-r-and-tableau.pdf</p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/interacting-with-your-trend-line-in-tableau-part-2/">Interacting with your trend line in Tableau (Part 2)</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Finteracting-with-your-trend-line-in-tableau-part-2%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/interacting-with-your-trend-line-in-tableau-part-2/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+		<item>
+		<title>URL Parameters in Tableau</title>
+		<link>http://interworks.co.uk/blog/url-parameters-tableau/</link>
+		<comments>http://interworks.co.uk/blog/url-parameters-tableau/#comments</comments>
+		<pubDate>Mon, 17 Mar 2014 15:36:09 +0000</pubDate>
+		<dc:creator><![CDATA[Rob Austin]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Gantt]]></category>
+		<category><![CDATA[Parameters]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=10159</guid>
+		<description><![CDATA[<p>Why would you need to use URL parameters in Tableau Server? Below is an example of a list of order dates.Thanks to Tableau&#8217;s massive amount of built in date functions we can do just about anything with them but what if we want to find the number of orders that were being processed on a [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/url-parameters-tableau/">URL Parameters in Tableau</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Furl-parameters-tableau%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Why would you need to use URL parameters in Tableau Server?<br />
+Below is an example of a list of order dates.Thanks to Tableau&#8217;s massive amount of built in date functions we can do just about anything with them but what if we want to find the number of orders that were being processed on a specific date, or range of dates from another data source. That becomes tricky because that data isn&#8217;t necessarily there.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2014/03/Screen-Shot-2014-03-17-at-11.51.48.png"><img class="aligncenter size-medium wp-image-10161" src="http://interworks.co.uk/wp-content/uploads/2014/03/Screen-Shot-2014-03-17-at-11.51.48-290x300.png" alt="Orders" width="290" height="300" /></a></p>
+<p>The first step to this is to create some Parameters in Tableau one for the start date called &#8220;Start&#8221;, one for the end date called &#8220;End&#8221;.<br />
+In the visualisation below I have created a calculated field using DATEDIFF to show the duration of each order and then shown them on a gantt chart.<br />
+You can manually change the parameters to see the number of Orders which were being handled within the range of dates. We will later embed this dashboard inside another and pass the parameters automatically from a second data source.</p>
+<p><script type='text/javascript' src='http://public.tableausoftware.com/javascripts/api/viz_v1.js'></script>
+<div class='tableauPlaceholder' style='width: 564px; height: 669px;'><noscript><a href='#'><img alt='Parameter Dashboard ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Pa&#47;ParameterPassing&#47;ParameterDashboard&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='564' height='669' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableausoftware.com%2F' /><param name='site_root' value='' /><param name='name' value='ParameterPassing&#47;ParameterDashboard' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Pa&#47;ParameterPassing&#47;ParameterDashboard&#47;1.png' /><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>
+<div style='width:564px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'>
+<div style='float:right; padding-right:8px;'><a href='http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/views/ParameterPassing/ParameterDashboard' target='_blank'>Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p>Here is the calculated field I used to identify the Orders which were being processed within that date range. As you can see it would not be possible to do this from a single date field so action filters would not be an option.<em><br />
+</em></p>
+<address>IF [Start]&lt;=[Ship Date] AND [Start]&gt;=[Order Date] THEN 1</address>
+<address>ELSEIF [End]&lt;=[Ship Date] AND [End]&gt;=[Order Date] THEN 1</address>
+<address>ELSEIF [Start]&lt;=[Order Date] AND [End]&gt;=[Ship Date] THEN 1</address>
+<address>ELSE 0 END</address>
+<p>The annoyance with the method used in the Dashboard above is that the user must select individual dates whereas we really want to be able to drive the dates from another data source&#8230;&#8230;<br />
+<script type='text/javascript' src='http://public.tableausoftware.com/javascripts/api/viz_v1.js'></script>
+<div class='tableauPlaceholder' style='width: 584px; height: 869px;'><noscript><a href='#'><img alt='Order Analysis Dashboard ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Pa&#47;ParameterPassing&#47;OrderAnalysisDashboard&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='584' height='869' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableausoftware.com%2F' /><param name='site_root' value='' /><param name='name' value='ParameterPassing&#47;OrderAnalysisDashboard' /><param name='tabs' value='no' /><param name='toolbar' value='no' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Pa&#47;ParameterPassing&#47;OrderAnalysisDashboard&#47;1.png' /><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='no' /><param name='display_count' value='yes' /></object></div>
+<div style='width:584px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'>
+<div style='float:right; padding-right:8px;'><a href='http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/views/ParameterPassing/OrderAnalysisDashboard' target='_blank'>Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p>The data source I have picked is just a list of dates, it could just as easily have some values associated. The trick is to restructure date(s) to be passed so that they are in an iso format e.g. 2013-02-31 <em><br />
+</em></p>
+<address>Min Date: STR(YEAR(MIN(Date)))+&#8217;-&#8216;+STR(MONTH(MIN(Date)))+&#8217;-&#8216;+STR(DAY(MIN(Date)))</address>
+<address>Max Date: STR(YEAR(MAX(Date)))+&#8217;-&#8216;+STR(MONTH(MAX(Date)))+&#8217;-&#8216;+STR(DAY(MAX(Date)))</address>
+<p>I have created a min date and max date in ISO format which I pass to my original &#8216;embedded&#8217; dashboard using a url action.</p>
+<p>The final dashboard includes a view from the driving data source (the list of dates) as well as the embedded dashboard from before; this was achieved by putting a web page in my final dashboard and pointing it towards my Tableau Server / Tableau Public URL. I then use a url action to drive the parameters in the embedded view as follows.<em><br />
+</em></p>
+<address> </address>
+<address><span style="color: #0000ff;">http://public.tableau.com/views/ParameterPassing/EmbeddedDashboard</span>?<span style="color: #ff0000;">:showVizHome=no&amp;:embed=yes</span>&amp;<span style="color: #008000;">Start=&lt;AGG(MinDate)&gt;&amp;End=&lt;AGG(MaxDate)&gt;</span></address>
+<p>&nbsp;</p>
+<p>This is made up of <span style="color: #0000ff;">embedded dashboard url <span style="color: #ff0000;">embed commands <span style="color: #008000;">my passed parameter fields</span></span></span></p>
+<p>In Order to test your work you need to publish the dashboard you wish to embed first, then create your final dashboard.</p>
+<p>URL Parameters / Filters open up some really interesting possibilities and I&#8217;d love to hear about it if you are using them or have plans to use them in any other innovative ways.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/url-parameters-tableau/">URL Parameters in Tableau</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Furl-parameters-tableau%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/url-parameters-tableau/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+		<item>
+		<title>Finally, I can &#8216;do things&#8217; with my Tableau Trendline</title>
+		<link>http://interworks.co.uk/blog/linear-regression-trend-lines/</link>
+		<comments>http://interworks.co.uk/blog/linear-regression-trend-lines/#comments</comments>
+		<pubDate>Thu, 06 Mar 2014 15:32:34 +0000</pubDate>
+		<dc:creator><![CDATA[Aus]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Dual Axis]]></category>
+		<category><![CDATA[Parameters]]></category>
+		<category><![CDATA[Table Calculation]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=10093</guid>
+		<description><![CDATA[<p>Have you ever wanted to know&#8230; “How far above the trend is that?” or “If I have a new client, what can I expect based on the current trend?” I have. InterWorks has clients who want to know and it crops up in many of my Tableau training classes.  I finally had some time to [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/linear-regression-trend-lines/">Finally, I can &#8216;do things&#8217; with my Tableau Trendline</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Flinear-regression-trend-lines%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p><strong>Have you ever wanted to know&#8230;</strong></p>
+<p><strong>“How far above the trend is that?”</strong></p>
+<p>or</p>
+<p><strong>“If I have a new client, what can I expect based on the current trend?”</strong></p>
+<p>I have. InterWorks has clients who want to know and it crops up in many of my Tableau training classes.  I finally had some time to figure it out and thought I would share it so you too can do &#8216;What If&#8217; analysis based on the trend, or show how far above or below the trend a data point is (like in the view below).  It doesn&#8217;t look much but it hasn&#8217;t been possible before, it&#8217;s tough but <strong>REALLY</strong> useful.  Ready?</p>
+<p><script type='text/javascript' src='http://public.tableausoftware.com/javascripts/api/viz_v1.js'></script>
+<div class='tableauPlaceholder' style='width: 604px; height: 695px;'><noscript><a href='#'><img alt=' ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Tr&#47;TrendLine&#47;Application-DifferencetoTrend&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='604' height='695' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableausoftware.com%2F' /><param name='site_root' value='' /><param name='name' value='TrendLine&#47;Application-DifferencetoTrend' /><param name='tabs' value='yes' /><param name='toolbar' value='yes' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Tr&#47;TrendLine&#47;Application-DifferencetoTrend&#47;1.png' /><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>
+<div style='width:604px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'>
+<div style='float:right; padding-right:8px;'><a href='http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/views/TrendLine/Application-DifferencetoTrend' target='_blank'>Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p>&nbsp;</p>
+<p><span style="line-height: 1.5em;">Tableau makes trend lines really easy to add (that&#8217;s the grey dotted line above).  It’s just a right click away. Most of the time simply visualising the trend line is the end goal so job done.  But if you want to &#8216;use&#8217; the trend line, interact with it and get real answers out you&#8217;re pretty stuck.  Hovering your mouse over the correct bit of the line and getting a confusing P value is not exactly useful, user friendly or slick. But there is a solution&#8230;</span></p>
+<p>&nbsp;</p>
+<p>OK this can get a little bit mathematical so I’ll keep it as light as I can.</p>
+<p><strong>Step 1 – The Nasty Bit &#8211; Calculate the trend line in Tableau</strong></p>
+<p>A linear progression (linear trend line) is based on the calculation:</p>
+<p>y = αx + β            (Hover your mouse over the trend line above and you&#8217;ll see Tableau doing this calculation)</p>
+<p>Where        α = (n∑(xy) -∑x ∑y) / (n∑x^2 -(∑x)^2 )        and              β = (∑y-α∑x) / n</p>
+<p>&nbsp;</p>
+<p><strong>Sorry about that bit.</strong> An example of this calculation is in the workbook but below is a brief explanation of how the annotation above can be written in Tableau calculated fields.</p>
+<p>Generally speaking when you create a scatter plot in Tableau you are plotting SUM(X) against SUM(Y) rather than x against y. Just look at the Columns and Rows shelves to see this. So if we start to break the formula down then everywhere you see an x you are going to be using SUM(X) and y as SUM(Y). Hopefully you are with me so far.</p>
+<p>The next step is to get the ∑x part which means the sum of x. This would be SUM( SUM(X) ) but this will throw up an error so for Tableau it can be written as WINDOW_SUM( SUM(X) ). This does bring us into table calc territory I’m afraid so later on we are going to have to consider what the ‘compute using’ is going to be or in other words what is the WINDOW that we are summing.</p>
+<p>So parts like ∑x ∑y would be calculated in Tableau with</p>
+<p>WINDOW_SUM( SUM(X) ) * WINDOW_SUM( SUM(Y) )</p>
+<p>The other piece to the puzzle is what to use for the n in this equation. n stands for the number of data points which in Tableau becomes the calculated field SIZE(). So n∑(xy) becomes</p>
+<p>SIZE() * WINDOW_SUM( SUM(X) * SUM(Y) )</p>
+<p>Easy eh!!! I did say this is the nasty bit.</p>
+<p>The way I have gone about this is by using a different calculation for each of the little elements of this equation.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2014/03/CalculatedField.png"><img class="alignnone size-medium wp-image-10095" src="http://interworks.co.uk/wp-content/uploads/2014/03/CalculatedField-300x113.png" alt="CalculatedField" width="300" height="113" /></a></p>
+<p>The only other thing to do which may be new to you is to set the Default Table Calculation. In my case to Country/Region but the important thing is to keep this consistent in all the calculations.  If you are going to be plotting customers then put in customers, if plotting products then compute using products etc. I have a data point for each Country/Region so that&#8217;s what I&#8217;m using. This is far more solid than &#8216;Compute using Table Across&#8217;.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2014/03/ComputeUsing.png"><img class="alignnone size-medium wp-image-10096" src="http://interworks.co.uk/wp-content/uploads/2014/03/ComputeUsing-300x213.png" alt="ComputeUsing" width="300" height="213" /></a></p>
+<p>This is a really good habit to get into when writing table calculations in Tableau.</p>
+<p>And here’s how it looks &#8211; Red line is my bit, dotted grey is Tableau&#8217;s. Snap.</p>
+<p><script type='text/javascript' src='http://public.tableausoftware.com/javascripts/api/viz_v1.js'></script>
+<div class='tableauPlaceholder' style='width: 604px; height: 695px;'><noscript><a href='#'><img alt=' ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Tr&#47;TrendLine&#47;CalculatedTrendLine&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='604' height='695' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableausoftware.com%2F' /><param name='site_root' value='' /><param name='name' value='TrendLine&#47;CalculatedTrendLine' /><param name='tabs' value='yes' /><param name='toolbar' value='yes' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Tr&#47;TrendLine&#47;CalculatedTrendLine&#47;1.png' /><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>
+<div style='width:604px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'>
+<div style='float:right; padding-right:8px;'><a href='http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/views/TrendLine/CalculatedTrendLine' target='_blank'>Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p>This has been created with a Dual axis chart of SUM(y) and Trend Line on the rows shelf. The only real purpose of this graph is to show that the figures match Tableau’s. No practical use as you could just turn on Tableau’s own trend line.</p>
+<p><strong>Step 2 – Practical applications</strong></p>
+<p>Answering the question <strong>“how far above the trend is that”</strong></p>
+<p>Now we’ve done the hard bit, calculating the difference is a pretty simple calculation of SUM(Y) – [Trend Line].</p>
+<p>I’ve plotted this again as a dual axis using a Gantt bar to get the red line.  See chart at the top of this blog.</p>
+<p>&nbsp;</p>
+<p>Answering the question <strong>“If I have a new client, what can I expect based on the current trend?”</strong></p>
+<p>If you&#8217;ve got this far then well done as this is the most useful bit!</p>
+<p>To get a single figure for this question is not too hard, unfortunately visualising it is a bit tougher. The calculation works by using a parameter to allow the user to enter their own x value. Then we use a version of the trend line calculation to output the value for the y. Tableau doesn’t make it easy to add an imaginary data point to a viz so this view is a bit awkward to build. However, play around with the slider below and you&#8217;ll see that the square moves up and down the trend line.</p>
+<p><script type='text/javascript' src='http://public.tableausoftware.com/javascripts/api/viz_v1.js'></script>
+<div class='tableauPlaceholder' style='width: 604px; height: 695px;'><noscript><a href='#'><img alt=' ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Tr&#47;TrendLine&#47;Application-WhatIf&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='604' height='695' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableausoftware.com%2F' /><param name='site_root' value='' /><param name='name' value='TrendLine&#47;Application-WhatIf' /><param name='tabs' value='yes' /><param name='toolbar' value='yes' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Tr&#47;TrendLine&#47;Application-WhatIf&#47;1.png' /><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>
+<div style='width:604px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'>
+<div style='float:right; padding-right:8px;'><a href='http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/views/TrendLine/Application-WhatIf' target='_blank'>Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p>And&#8230;.relax! Feel free to reach out to me if you need a fuller explanation on any of these elements.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/linear-regression-trend-lines/">Finally, I can &#8216;do things&#8217; with my Tableau Trendline</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Flinear-regression-trend-lines%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/linear-regression-trend-lines/feed/</wfw:commentRss>
+		<slash:comments>8</slash:comments>
+		</item>
+		<item>
+		<title>Select A Chart</title>
+		<link>http://interworks.co.uk/blog/select-a-chart/</link>
+		<comments>http://interworks.co.uk/blog/select-a-chart/#comments</comments>
+		<pubDate>Tue, 23 Oct 2012 10:07:27 +0000</pubDate>
+		<dc:creator><![CDATA[Darren Evans]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Filters]]></category>
+		<category><![CDATA[Parameters]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=3238</guid>
+		<description><![CDATA[<p>One of the requests we get quite often is can you set Tableau to have interchangeable charts on a dashboard so that when the user can select which chart to show in a particular place on a dashboard. Whilst not out of the box this is something that is very much possible using parameters and [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/select-a-chart/">Select A Chart</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fselect-a-chart%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>One of the requests we get quite often is can you set Tableau to have interchangeable charts on a dashboard so that when the user can select which chart to show in a particular place on a dashboard.</p>
+<p>Whilst not out of the box this is something that is very much possible using parameters and virtual layout containers.</p>
+<p>Take a look at this example:</p>
+<p><script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script>
+<div class="tableauPlaceholder" style="width:604px; height:580px;"><noscript><a href="#"><img alt="Choose A Chart Example " src="http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Ch&#47;ChooseAChart&#47;ChooseAChart&#47;1_rss.png" style="border: none" /></a></noscript><object class="tableauViz" width="604" height="580" style="display:none;"><param name="host_url" value="http%3A%2F%2Fpublic.tableausoftware.com%2F" /><param name="site_root" value="" /><param name="name" value="ChooseAChart&#47;ChooseAChart" /><param name="tabs" value="yes" /><param name="toolbar" value="yes" /><param name="static_image" value="http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Ch&#47;ChooseAChart&#47;ChooseAChart&#47;1.png" /><param name="animate_transition" value="yes" /><param name="display_static_image" value="yes" /><param name="display_spinner" value="yes" /><param name="display_overlay" value="yes" /><param name="display_count" value="yes" /></object></div>
+<div style="width:604px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float:right; padding-right:8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/ChooseAChart/ChooseAChart" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>The front page visualisation is a dashboard with a single chart on display.</p>
+<p>By selecting a chart in the drop down the chart on display is changed.</p>
+<p>How is this achieved?</p>
+<p>The technique for achieving this is actually quite straight forward.</p>
+<p>You will notice there are four other tabs. Three of these are for the charts that are shown on the dashboard.</p>
+<p>You will also notice that only the chart selected on the front page is shown the other tabs are blank.</p>
+<p>This is because each graph/tab has a filter linked to the parameter that allows the user to select the chart.</p>
+<p>The filter on the bar chart is a calculated field that is only true (and therefore only shows data) when the parameter is set to &#8216;Sales By Customer&#8217;. If the calculated field returns a false no data is returned and the visualisation is not rendered.</p>
+<p>When I created the dashboard I used a vertical layout container and dropped all three charts into it. A layout container automatically resizes the charts within it based on the amount of data returned. As for two of the charts there is no data they are compressed down and not shown.</p>
+<p>When the parameter selected is &#8216;Sales By Customer&#8217; the bar chart filter is true and that chart is returned, the line chart and map filters are false and those charts do not render and are compressed in the layout container.</p>
+<p>I removed the titles for the two bottom charts in the container and amended the title in the top chart to read the same parameter as the drop down menu so that the title is correct for the chart on display.</p>
+<p>Feel free to download this file and have a play, if you have any questions drop them in the comments.</p>
+<p>Darren</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/select-a-chart/">Select A Chart</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fselect-a-chart%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/select-a-chart/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+		<item>
+		<title>Dynamically choose a chart type</title>
+		<link>http://interworks.co.uk/blog/dynamic-chart-type/</link>
+		<comments>http://interworks.co.uk/blog/dynamic-chart-type/#comments</comments>
+		<pubDate>Tue, 29 Mar 2011 12:12:52 +0000</pubDate>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Andy Cotgreave]]></category>
+		<category><![CDATA[Calculated Fields]]></category>
+		<category><![CDATA[Dual Axis]]></category>
+		<category><![CDATA[Parameters]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=2270</guid>
+		<description><![CDATA[<p>Ujval Gandhi commented on my post about dual axis formatting. He asked if you could use dual axes/parameters to choose between showing a bar and a line chart. Turns out that, yes, you can: It&#8217;s quite a simple trick: Choose to show a bar or line chart Powered by Tableau 1. Create a Boolean parameter. [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/dynamic-chart-type/">Dynamically choose a chart type</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fdynamic-chart-type%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Ujval Gandhi commented on <a href="http://www.interworks.co.uk/blog/the-data-studio-blog/andy-cotgreave/dual-axes-nice-formatting">my post about dual axis formatting</a>. He asked if you could use dual axes/parameters to choose between showing a bar and a line chart. Turns out that, yes, you can:</p>
+<p>It&#8217;s quite a simple trick:</p>
+<p><script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script></p>
+<p><object class="tableauViz" width="544" height="789" style="display:none;"><param name="host_url" value="http%3A%2F%2Fpublic.tableausoftware.com%2F" /><param name="name" value="Barorline&#47;Barorline" /><param name="tabs" value="no" /><param name="toolbar" value="yes" /><param name="animate_transition" value="yes" /><param name="display_static_image" value="yes" /><param name="display_spinner" value="yes" /><param name="display_overlay" value="yes" /><param name="host_url" value="http%3A%2F%2Fpublic.tableausoftware.com%2F" /><param name="animate_transition" value="yes" /><param name="display_static_image" value="yes" /><param name="display_spinner" value="yes" /><param name="display_overlay" value="yes" /></object><noscript>Choose to show a bar or line chart <br /><a href="#"><img alt="Choose to show a bar or line chart " src="http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Ba&#47;Barorline&#47;Barorline&#47;1_rss.png" height="100%" /></a></noscript></p>
+<div style="width:500px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float:right; padding-right:8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/Barorline/Barorline" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>1. Create a Boolean parameter. I called my &#8220;Bar or Line&#8221;</p>
+<p>2. For each measure you are displaying, create 2 calculated fields: one for the bar and one for the line. Here&#8217;s the Sales field for the bar:<a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/sales_bar.png"></a></p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/sales_bar.png"><img class="alignnone size-full wp-image-2271" title="sales_bar" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/sales_bar.png" alt="" width="295" height="164" /></a></p>
+<p>3. Drop both calculated fields onto the Rows shelf, choose Dual Axes, and Synchronise them.</p>
+<p>4. Change the Marks card to show Multiple Mark Types:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/multiple-makrs1.png"><img class="alignnone size-full wp-image-2218" title="multiple makrs" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/multiple-makrs1.png" alt="" width="208" height="218" /></a></p>
+<p>5. Set one mark to Bar and one to Line</p>
+<p>6. Show the parameter control.</p>
+<p>You&#8217;re done!</p>
+<p>This is quite a nice trick, but I&#8217;m not sure why you&#8217;d want to do it. I can&#8217;t see a way it could be extended to cover other functionality. There are other ways to allow users to show multiple chart types; for example, <a href="http://www.alansmitheepresents.org/2011/03/changing-viz-types-with-dashboard.html">Alan Smithee has an excellent example of this here</a>. It&#8217;s possible that with lots of parameters and calculated fields, you could give the end user more control over what they show.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/dynamic-chart-type/">Dynamically choose a chart type</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fdynamic-chart-type%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/dynamic-chart-type/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+		<item>
+		<title>Pareto Graphs in Tableau Part 4 of 4 &#8211; Flexible Reference Lines and Parameters</title>
+		<link>http://interworks.co.uk/blog/pareto-blog-4-flexible-reference-lines-and-parameters/</link>
+		<comments>http://interworks.co.uk/blog/pareto-blog-4-flexible-reference-lines-and-parameters/#comments</comments>
+		<pubDate>Wed, 05 Jan 2011 12:05:22 +0000</pubDate>
+		<dc:creator><![CDATA[Darren Evans]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Parameters]]></category>
+		<category><![CDATA[pareto]]></category>
+		<category><![CDATA[Table Calculation]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1927</guid>
+		<description><![CDATA[<p>This final blog in the Pareto series will look at how to use parameters and advanced table calculations to give this Pareto chart a ‘flexible’ reference line. To explain why the ‘flexible’ reference line is important consider the images below. This image is the Pareto we have created in the previous blog with two reference [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/pareto-blog-4-flexible-reference-lines-and-parameters/">Pareto Graphs in Tableau Part 4 of 4 &#8211; Flexible Reference Lines and Parameters</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fpareto-blog-4-flexible-reference-lines-and-parameters%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>This final blog in the Pareto series will look at how to use parameters and advanced table calculations to give this Pareto chart a ‘flexible’ reference line. To explain why the ‘flexible’ reference line is important consider the images below.</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/Par12.png"><img class="alignnone size-full wp-image-1933" title="Par1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/Par12.png" alt="" width="408" height="276" /></a></p>
+<p>This image is the Pareto we have created in the previous blog with two reference lines added forming a crosshair. One reference line is set to 80% profit and the other 7.55% Customer base. To create this I simply added the 80% profit reference line and then hovered the mouse pointer over the point on the line at which the reference lines intercept one another. This displayed the % Customer base in the tool tip allowing me to create the second reference line.</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/Par2.png"><img class="alignnone size-full wp-image-1931" title="Par2" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/Par2.png" alt="" width="408" height="276" /></a></p>
+<p>This second image shows the Pareto filtered to just show one year as I needed to simulate a change in the underlying data. As the reference lines are manual they no longer intercept at the correct point on the graph.</p>
+<p>So whilst this technique is fine for performing this analysis as a one off it would be much more beneficial if the reference line would self adjust itself whenever new data was added to the back end system or a filter applied. Using Table Calculations in Tableau we can achieve this.</p>
+<p>Step 1 &#8211; Using the Pareto created in blogs 2 and 3 set up a reference line on the % Profit Axis. Right click on the Axis and select Add Reference Line.</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png" alt="" width="408" height="276" /></a></p>
+<p>Step 2 – In the pop up box use the settings below.</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/2.png" alt="" width="408" height="359" /></a></p>
+<p>Step 3 – You should now see the reference line below:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/3.png" alt="" width="408" height="276" /></a></p>
+<p>Step 4 – Now we are going to create a calculated field that plots the ‘intercept’ line. This calculated field will use the following logic:</p>
+<p>IF % Profit is less than or equal to 80% THEN</p>
+<p>% Customer Base</p>
+<p>ELSE</p>
+<p>Null</p>
+<p>END IF</p>
+<p>Step 5 &#8211; Right click on the measures shelf and click on ‘Add Calculated Field’. Copy and paste the following into the pop up window. Save the calculated field as ‘Intercept’.</p>
+<p>If [% Profit] &lt;= 0.8 then</p>
+<p>[% Customer Base]</p>
+<p>else</p>
+<p>null</p>
+<p>end</p>
+<p>If you are new to calculated fields please consider the meaning of this code.</p>
+<p>Right click on the calculated field on the measures shelf and set the number format to Percentage.</p>
+<p>Step 6 – Add Intercept to the level of detail. First ensure that you have the Marks Shelf set to ‘All’ marks. Drag the ‘Intercept’ calculated field from the Measures shelf onto the level of detail shelf.</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/4.png" alt="" width="408" height="276" /></a></p>
+<p>Step 7 – Set the Intercept calculated field to calculate along Customer Name. Click on the Intercept pill in the level of detail shelf. On the pop up menu scroll to ‘Compute Using’ and select ‘% Customer Base’</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/5.png" alt="" width="408" height="276" /></a></p>
+<p>Step 8 – Add the Intercept reference line to the % Customer Base axis. Right Click on the axis and select ‘Add Reference Line’.</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/6.png" alt="" width="408" height="276" /></a></p>
+<p>Step 9 – Set up the reference line with the values below. This will display the line at the customer with the highest Intercept value. As the calculated field was set to only give values to the customers underneath the % Profit Reference line this will perfectly intercept the two values.</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/7.png" alt="" width="408" height="377" /></a></p>
+<p>Step 10 &#8211; This reference line will self adjust to show the correct % Customer base that corresponds to 80% of the profit whenever new data is added or filters applied. Try this out on the visualisation below to see how the viz updates when you change the year filter.</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/16.png" alt="" width="536" height="276" /></a></p>
+<p>This completes the Pareto chart. The reference line cross hairs should update with the parameter.</p>
+<p><script src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script><object class="tableauViz" style="display: none;" width="600" height="520"><param name="name" value="ParetoBlog/Pareto" /><param name="toolbar" value="yes" /><param name="tabs" value="yes" /></object><br />
+<noscript>Pareto<br />
+<a href="#"><img alt="Pareto  " src="http://public.tableausoftware.com/static/images/Pa/ParetoBlog/Pareto/1_rss.png" height="100%" /></a></noscript></p>
+<div style="width: 600px; height: 22px; padding: 0px 10px 0px 0px; color: black; font: normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float: right; padding-right: 8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/ParetoBlog/Pareto" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>Step 11 – Another great addition to this visualisation would be if the user could specify the % Profit that they want to analyse on the visualisation without having to amend the calculate field. We can achieve this using another Tableau 6 feature – parameters. Right click on the measures shelf and select ‘Create Parameter’</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/9.png" alt="" width="408" height="276" /></a></p>
+<p>Step 12 – Set the Parameter up with the attributes below and call it ‘Select % Profit’</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/10.png" alt="" width="489" height="276" /></a></p>
+<p>Step 13 – The Parameter now appears in a new Parameters shelf below the measures shelf. Right Click on the Parameter and change its default number format to percentage.</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/11.png" alt="" width="408" height="276" /></a></p>
+<p>Step 14 – Amend the % Profit reference line to look at the parameter. Drag the parameter onto the level of detail shelf and then right click on the % Profit axis. Select Edit Reference Line.</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/12.png" alt="" width="408" height="276" /></a></p>
+<p>Step 15 – Change the attributes of the reference line to the values below. This will now drive the reference line using the &#8216;Select % Profit&#8217; parameter.</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/13.png" alt="" width="408" height="354" /></a></p>
+<p>Step 16 – Right click on the parameter and choose display parameter control. Using the parameter control that appears adjust the values and you will see the reference line move in line with the parameter value. Test this and then set the value to 60%.</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/14.png" alt="" width="408" height="276" /></a></p>
+<p>Step 17 – This has worked as the Y Axis adjusts to the value selected in the parameter but the crosshair no longer intercepts the graph. To achieve this we need to amend our intercept calculated field. Right click on intercept on the measures shelf and choose edit.</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/15.png" alt="" width="408" height="276" /></a></p>
+<p>Step 18 – Delete the value &#8216;0.8&#8217; from the first line of the statement and replace it with our parameter by double clicking on the parameter name in the parameter window within the calculated field pop up. Check that your calculated field matches the syntax below.</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/16.png" alt="" width="408" height="276" /></a></p>
+<p>The Pareto Chart is now complete with all the enhancements I published back in the first blog. The completed chart should look something similar to the chart below:</p>
+<p><script src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script><object class="tableauViz" style="display: none;" width="675" height="516"><param name="name" value="ParetoWParameter/Paretowithparameter" /><param name="toolbar" value="yes" /><param name="tabs" value="no" /></object><br />
+<noscript>Pareto with parameter<br />
+<a href="#"><img alt="Pareto with parameter " src="http://public.tableausoftware.com/static/images/Pa/ParetoWParameter/Paretowithparameter/1_rss.png" height="100%" /></a></noscript></p>
+<div style="width: 675px; height: 22px; padding: 0px 10px 0px 0px; color: black; font: normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float: right; padding-right: 8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/ParetoWParameter/Paretowithparameter" target="_blank">Powered by Tableau</a></div>
+<p>I hope you have enjoyed these blogs and can apply this powerful visualisation to your business data with good effect. We would love to hear back with any comments or examples of further enhancements you have made!</p>
+</div>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/pareto-blog-4-flexible-reference-lines-and-parameters/">Pareto Graphs in Tableau Part 4 of 4 &#8211; Flexible Reference Lines and Parameters</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fpareto-blog-4-flexible-reference-lines-and-parameters%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/pareto-blog-4-flexible-reference-lines-and-parameters/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>Pareto Graphs In Tableau &#8211; Part 1 of 4</title>
+		<link>http://interworks.co.uk/blog/pareto-graphs-in-tableau/</link>
+		<comments>http://interworks.co.uk/blog/pareto-graphs-in-tableau/#comments</comments>
+		<pubDate>Tue, 07 Dec 2010 10:29:11 +0000</pubDate>
+		<dc:creator><![CDATA[Darren Evans]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Dual Axis]]></category>
+		<category><![CDATA[Parameters]]></category>
+		<category><![CDATA[pareto]]></category>
+		<category><![CDATA[Table Calculation]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1755</guid>
+		<description><![CDATA[<p>At InterWorks we love communicating information back to our clients using Pareto charts. Showing decision makers the results of 80/20 analysis in their organisation is a often a real eye-opener, helping to identify and resolve previously hidden problems leading to gains in both profitability and productivity. Using some of the new features found in the brilliant  [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/pareto-graphs-in-tableau/">Pareto Graphs In Tableau &#8211; Part 1 of 4</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fpareto-graphs-in-tableau%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>At InterWorks we love communicating information back to our clients using Pareto charts. Showing decision makers the results of 80/20 analysis in their organisation is a often a real eye-opener, helping to identify and resolve previously hidden problems leading to gains in both profitability and productivity.</p>
+<p>Using some of the new features found in the brilliant  Tableau 6 it is now possible to create fully functional Pareto Charts. Below is a Pareto Chart I created using the sample &#8216;Superstore&#8217; dataset that ships with Tableau desktop:</p>
+<p><script src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script><object class="tableauViz" style="display: none;" width="600" height="520"><param name="name" value="ParetoBlog/Pareto" /><param name="toolbar" value="yes" /><param name="tabs" value="yes" /></object><br />
+<noscript>Pareto<br />
+<a href="#"><img alt="Pareto " src="http://public.tableausoftware.com/static/images/Pa/ParetoBlog/Pareto/1_rss.png" height="100%" /></a></noscript></p>
+<div style="width: 600px; height: 22px; padding: 0px 10px 0px 0px; color: black; font: normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float: right; padding-right: 8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/ParetoBlog/Pareto" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>Represented in blue is the bar element of the chart. There are 795 customers in the superstore data and each bar represents that customer&#8217;s total profit. The Orange line represents the running total of the % contribution to the overall profit that the customer is making. I have highlighted an area in red to the top of the chart, this area represents losses &#8211; notice how the line peaks at 144.6% and then descends when it reaches the loss making customers until it finishes at 100%. If the superstore had not traded with these loss makers then total profits would have been 44.6% higher.</p>
+<p>The ‘cross hair’ style reference lines are set to show the percentage of the customer base that generates 80% of the profit. We can see that for the superstore 80% of the profit is being generated by just 7.55% of the customer base. Using the parameter control at the top of the graph the user can specify the % profit being displayed on the cross hair.</p>
+<p>In just a few seconds of viewing this chart has communicated that the superstore is reliant on a small % of their customer base to support their business whilst they are also carrying 34% of their customer base at a cost of $135m to the company in Gross Profit. This information would definitely be of interest to the owners, senior management and shareholders of the superstore company!</p>
+<p>Creating the Pareto graph is quite an advanced use of Tableau and is a great opportunity for me to demonstrate some of the powerful new features in Tableau version 6 including dual axis and parameters as well as the enhancements to both table calculations and calculated fields. Over the next week I shall be publishing a series of blogs building up to producing the main Pareto chart in this diagram.</p>
+<p>For Part 2 <a href="http://www.interworks.co.uk/blog/pareto-blog-2-creating-a-basic-pareto-curve">Click Here</a></p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/pareto-graphs-in-tableau/">Pareto Graphs In Tableau &#8211; Part 1 of 4</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fpareto-graphs-in-tableau%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/pareto-graphs-in-tableau/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>Joy of six: dynamic multi-member groups</title>
+		<link>http://interworks.co.uk/blog/joy-of-six-dynamic-multi-member-groups/</link>
+		<comments>http://interworks.co.uk/blog/joy-of-six-dynamic-multi-member-groups/#comments</comments>
+		<pubDate>Mon, 29 Nov 2010 16:14:57 +0000</pubDate>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Andy Cotgreave]]></category>
+		<category><![CDATA[Calculated Fields]]></category>
+		<category><![CDATA[Groups]]></category>
+		<category><![CDATA[Joy of 6]]></category>
+		<category><![CDATA[Parameters]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=3151</guid>
+		<description><![CDATA[<p>First off, let me say that I do not take credit for the contents of this post. Credit is due to Joe Mako and Richard Leeke who responded to my questions on the Tableau Forum. This is a good time to say that if you aren&#8217;t using the forum yet, get over there to ask [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/joy-of-six-dynamic-multi-member-groups/">Joy of six: dynamic multi-member groups</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fjoy-of-six-dynamic-multi-member-groups%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>First off, let me say that I do not take credit for the contents of this post. Credit is due to <a href="http://twitter.com/#!/search/users/joe%20mako">Joe Mako</a> and <a href="http://www.equinox.co.nz/">Richard Leeke</a> who responded to my questions on the Tableau Forum. This is a good time to say that if you aren&#8217;t using the forum yet, get over there to ask or answer all manner of Tableau questions from the trivial to the fiendish.</p>
+<p>I am posting this solution because it is such a sweet use of calculated fields. Here&#8217;s the scenario: &#8220;I want the user to be able to see the top n customers&#8217; average sales. They should be able to control the &#8220;n&#8221; value, and show or hide all the rest of the customers.&#8221; Here&#8217;s the answer:</p>
+<p><script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script><object class="tableauViz" width="594" height="919" style="display:none;"><param name="name" value="JoyOfSixtopNandtherest/Topnandtherest" /><param name="toolbar" value="yes" /><param name="tabs" value="no" /></object><noscript>Let the user compare top n against the restUse the parameters to control the Top n value. Use the &#8220;Show all&#8230;&#8221; parameter to collapse/show all customers ranked outside the top n. <br /><a href="#"><img alt="Let the user compare top n against the restUse the parameters to control the Top n value. Use the "Show all..." parameter to collapse/show all customers ranked outside the top n. " src="http://public.tableausoftware.com/static/images/Jo/JoyOfSixtopNandtherest/Topnandtherest/1_rss.png" height="100%" /></a></noscript></p>
+<div style="width:594px;height:22px;padding:0px 10px 0px 0px; color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float:right; padding-right:8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/JoyOfSixtopNandtherest/Topnandtherest" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>I&#8217;m afraid I am not going to go through the solution. Why? Well, I barely understand it myself, and I don&#8217;t think I&#8217;d be able to explain it properly. I recommend you download the workbook and <a href="http://community.tableau.com/thread/109093">look at the forum thread</a> to work it out. Otherwise, just be in awe at the work of Joe and Richard!</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/joy-of-six-dynamic-multi-member-groups/">Joy of six: dynamic multi-member groups</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fjoy-of-six-dynamic-multi-member-groups%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/joy-of-six-dynamic-multi-member-groups/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Range Filter on a text dimension</title>
+		<link>http://interworks.co.uk/blog/range-filtering-of-non-numerical-or-non-standard-date-dimensions/</link>
+		<comments>http://interworks.co.uk/blog/range-filtering-of-non-numerical-or-non-standard-date-dimensions/#comments</comments>
+		<pubDate>Mon, 29 Nov 2010 09:00:31 +0000</pubDate>
+		<dc:creator><![CDATA[Kevin Pemberton]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Calculated Fields]]></category>
+		<category><![CDATA[Filters]]></category>
+		<category><![CDATA[Kevin Pemberton]]></category>
+		<category><![CDATA[Parameters]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[The Data Studio]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1673</guid>
+		<description><![CDATA[<p>Tableau provides many types of filter including range filters for dates and numerical data, but what of textual dimensions? For instance lets say we have a dimension with data in the following format, 3-digit months with a 2-digit year and a period used by the client to adjust the year end balance: Period Sales Jan-10 [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/range-filtering-of-non-numerical-or-non-standard-date-dimensions/">Range Filter on a text dimension</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Frange-filtering-of-non-numerical-or-non-standard-date-dimensions%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Tableau provides many types of filter including range filters for dates and numerical data, but what of textual dimensions? For instance lets say we have a dimension with data in the following format, 3-digit months with a 2-digit year and a period used by the client to adjust the year end balance:</p>
+<table width="150px">
+<tbody>
+<tr>
+<td>Period</td>
+<td>Sales</td>
+</tr>
+<tr>
+<td>Jan-10</td>
+<td>129</td>
+</tr>
+<tr>
+<td>Feb-10</td>
+<td>185</td>
+</tr>
+<tr>
+<td>Mar-10</td>
+<td>89</td>
+</tr>
+<tr>
+<td>Apr-10</td>
+<td>124</td>
+</tr>
+<tr>
+<td>Adj-10</td>
+<td>23</td>
+</tr>
+<tr>
+<td>May-10</td>
+<td>156</td>
+</tr>
+</tbody>
+</table>
+<p>This is a date based range of values, however the dates do not conform to any of the built-in date formats Tableau uses. The below visualisation demonstrates the result that we want:</p>
+<p><script src="http://public.tableausoftware.com/javascripts/api/viz_v1.js" type="text/javascript"></script><object class="tableauViz" style="display: none;" width="604" height="400"><param name="name" value="Rangefilteronstrings/Rangefilteronstrings" /><param name="toolbar" value="no" /><param name="tabs" value="no" /></object><noscript>Range filter on strings<br />
+<a href="#"><img alt="Range filter on strings " src="http://public.tableausoftware.com/static/images/Ra/Rangefilteronstrings/Rangefilteronstrings/1_rss.png" height="100%" /></a></noscript></p>
+<div style="width: 604px; height: 22px; padding: 0px 10px 0px 0px; color: black; font: normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float: right; padding-right: 8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/Rangefilteronstrings/Rangefilteronstrings" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>&nbsp;</p>
+<p>So how do this work? The first requirement is Tableau version 6 as we are using parameters to select the start and end of the range.</p>
+<p><strong>Step 1) Download the data file and create a new workbook in Tableau connected to this data</strong></p>
+<p>Download from here <a href="http://www.interworks.co.uk/wp-content/uploads/2010/11/RangeData.xlsx" target="_blank">Range Data</a></p>
+<p><strong>Step 2) Add two parameters to the sheet</strong></p>
+<p>Right-click the dimension you want to provide a range filter on (in this case Period) and select Create Parameter. Call these &#8220;StartPeriod&#8221; and &#8220;EndPeriod&#8221;<br />
+<strong><br />
+<img class="aligncenter size-full wp-image-1708" title="Create_parameter" src="http://www.interworks.co.uk/wp-content/uploads/2010/11/Create_parameter.png" alt="" width="269" height="343" /></strong></p>
+<p>Step 3) Create a calculated field</p>
+<p><img class="aligncenter size-full wp-image-1707" title="Create_calculated_field" src="http://www.interworks.co.uk/wp-content/uploads/2010/11/Create_calculated_field.png" alt="" width="264" height="311" /></p>
+<p>This field is a string containing all of the values that the dimension will contain (this bit is the long-winded bit, and if your dimension data changes you need to update this field also.) In this example the string would read:</p>
+<p>&#8220;Jan-10Feb-10Mar-10Apr-10Adj-10May-10Jun-10Jul-10Aug-10Sep-10Oct-10Nov-10Dec-10&#8243;</p>
+<p>call the field &#8220;Range_Periods&#8221;.</p>
+<p><strong>Step 4) Add another calculated field</strong></p>
+<p>Call it &#8220;Range_Filtered_Period&#8221;. This generates the field we will use on the filter shelf. The syntax for this field is:</p>
+<p><em>CONTAINS(MID([Range_Periods],FIND([Range_Periods],[StartPeriod]),ABS(FIND([Range_Periods],[EndPeriod])-FIND([Range_Periods],[StartPeriod]))+6),[Period])</em></p>
+<p>This line of code searches the Range_Periods string (using the FIND function) for the [StartPeriod] selected, for instance &#8220;Feb-10&#8243; would return the number 6.<br />
+It then uses the FIND function again to find the [EndPeriod],  e.g. &#8220;Adj-10&#8243; would return 24, we then add 6 (the length of each data item in the dimension) to this to find the end of the selected [EndPeriod].</p>
+<p>We can then use these two numbers to remove all of the periods we don&#8217;t want from the [Range_Periods] string, to do this we use MID by providing the [Range_Periods] string and the two number from the FIND functions.</p>
+<p>This gives us the string &#8220;Feb-10Mar-10Apr-10Adj-10&#8243;</p>
+<p>Lastly we use CONTAINS, this function takes a string to search through, in this case our new [Range_Periods] string, and a substring to search for, our [Period] dimension.</p>
+<p><strong>Step 5) Add this new calculated field to the filter shelf</strong></p>
+<p><img class="aligncenter size-full wp-image-1710" title="Add_to_filter_shelf" src="http://www.interworks.co.uk/wp-content/uploads/2010/11/Add_to_filter_shelf.png" alt="" width="185" height="77" /></p>
+<p>Add [Range_Filtered_Period] to the filter shelf and select &#8220;True&#8221; when the filter dialog box pops up.</p>
+<p><strong>Step 6) Have a play with the StartPeriod and EndPeriod parameters </strong></p>
+<p>See how it filters the visualisation.</p>
+<p><strong>Bonus point</strong></p>
+<p>The only issue with our current code is that it does not take into account that a user may select a [StartPeriod] that is later than the [EndPeriod], so edit the calculated field and replace the code with the below:</p>
+<p><em>CONTAINS(</em></p>
+<p><em> IF FIND([Range_Periods],[EndPeriod])&gt;FIND([Range_Periods],[StartPeriod]) THEN<br />
+MID([Range_Periods],FIND([Range_Periods],[StartPeriod]),ABS(FIND([Range_Periods],[EndPeriod])-FIND([Range_Periods],[StartPeriod]))+6)<br />
+ELSE<br />
+MID([Range_Periods],FIND([Range_Periods],[EndPeriod]),ABS(FIND([Range_Periods],[EndPeriod])-FIND([Range_Periods],[StartPeriod]))+6)<br />
+END<br />
+,[Period])</em></p>
+<p>This adds in logic to check for this situation.</p>
+<p><strong>Summary</strong></p>
+<p>This range filter works well on any data that is sequential, it could be date periods, letters in the alphabet or any string. You just have to ensure that the data is sequential and that there are no breaks or out of sequence data items. You also need to have a dimension field where the data items are all of the same length, in the above example 6 characters long.</p>
+<p>Check back soon where I will be building in AND, OR, BETWEEN, NOT and other types of operators to this concept.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/range-filtering-of-non-numerical-or-non-standard-date-dimensions/">Range Filter on a text dimension</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Frange-filtering-of-non-numerical-or-non-standard-date-dimensions%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/range-filtering-of-non-numerical-or-non-standard-date-dimensions/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>The joy of six: one against the rest</title>
+		<link>http://interworks.co.uk/blog/us-v-the-rest/</link>
+		<comments>http://interworks.co.uk/blog/us-v-the-rest/#comments</comments>
+		<pubDate>Mon, 22 Nov 2010 21:21:04 +0000</pubDate>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Andy Cotgreave]]></category>
+		<category><![CDATA[Calculated Fields]]></category>
+		<category><![CDATA[Groups]]></category>
+		<category><![CDATA[Joy of 6]]></category>
+		<category><![CDATA[Parameters]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1457</guid>
+		<description><![CDATA[<p>This is the third post on simple tricks that are available in version 6. This one represents a common request we get. The client says &#8220;I want to compare the performance of x against everyone else.&#8221; What is x? Well, it could be Customers, Departments, Countries, anything. Parameters once again make this easy: Let the [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/us-v-the-rest/">The joy of six: one against the rest</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fus-v-the-rest%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>This is the third post on simple tricks that are available in version 6. This one represents a common request we get. The client says &#8220;I want to compare the performance of <em><strong>x </strong></em>against everyone else.&#8221; What is <em><strong>x</strong></em>? Well, it could be Customers, Departments, Countries, anything.</p>
+<p>Parameters once again make this easy:</p>
+<p><script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script><object class="tableauViz" width="594" height="919" style="display:none;"><param name="name" value="JoyOfSixcompare1veveryoneelse/onevtherest" /><param name="toolbar" value="yes" /><param name="tabs" value="no" /></object><noscript>Let the user compare one against the restUse the parameter control to choose the state you want! <br /><a href="#"><img alt="Let the user compare one against the restUse the parameter control to choose the state you want! " src="http://public.tableausoftware.com/static/images/Jo/JoyOfSixcompare1veveryoneelse/onevtherest/1_rss.png" height="100%" /></a></noscript></p>
+<div style="width:594px;height:22px;padding:0px 10px 0px 0px; color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float:right; padding-right:8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/JoyOfSixcompare1veveryoneelse/onevtherest" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>The drop-down filter is a parameter control, in this example showing every State in the Coffee Chain connection. The Tableau devs have made it easy to create a parameter containing every member of a Dimension. Right-click on the State Dimension, and choose Create Parameter&#8230;:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/11/Create-parameter-menu.png"><img class="alignnone size-full wp-image-1597" title="Create parameter menu" src="http://www.interworks.co.uk/wp-content/uploads/2010/11/Create-parameter-menu.png" alt="" width="311" height="586" /></a></p>
+<p>That&#8217;s your parameter list created &#8211; show the parameter control on your worksheet by right-clicking on the parameter and choosing <em><strong>Show parameter control</strong></em>.</p>
+<p>Next up we create a calculated field to return either the State selected in the parameter, or all the others. This is essentially a dynamic Group, with one lone member of the Dimension, and everyone lumped together in the &#8220;Other&#8221; category. In this case, you can call the &#8220;Other&#8221; category anything you want. Here&#8217;s the calculated field:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/11/One-state-v-the-rest.png"><img class="alignnone size-full wp-image-1598" title="One state v the rest" src="http://www.interworks.co.uk/wp-content/uploads/2010/11/One-state-v-the-rest.png" alt="" width="348" height="236" /></a></p>
+<p>This is the field you drop onto your worksheet. Whichever shelf it is on, it will only show two members: the State selected in the Parameter, and everyone else lumped together.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/us-v-the-rest/">The joy of six: one against the rest</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fus-v-the-rest%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/us-v-the-rest/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>InterWorks - Tableau Software &#38; Business Intelligence Consulting &#187; Glen Robinson</title>
+	<atom:link href="http://interworks.co.uk/author/glen-robinson/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 26 Jun 2015 08:09:24 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>What’s new in Tableau Server 9.0 for the Administrator</title>
+		<link>http://interworks.co.uk/blog/whats-new-in-tableau-server-9-0-for-the-administrator/</link>
+		<comments>http://interworks.co.uk/blog/whats-new-in-tableau-server-9-0-for-the-administrator/#comments</comments>
+		<pubDate>Wed, 22 Apr 2015 15:53:53 +0000</pubDate>
+		<dc:creator><![CDATA[Glen Robinson]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Tableau 9.0]]></category>
+		<category><![CDATA[Tableau Server]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=12121</guid>
+		<description><![CDATA[<p>Today I&#8217;m going to give you a quick run through of the updates and changes you will see in Tableau Server 9.0 from an administrator’s perspective, and what has changed since Tableau Server 8.3 Visual Differences Firstly and most obviously are the visual changes. Tableau has completely redesigned the GUI, so we now have  the [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/whats-new-in-tableau-server-9-0-for-the-administrator/">What’s new in Tableau Server 9.0 for the Administrator</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fwhats-new-in-tableau-server-9-0-for-the-administrator%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Today I&#8217;m going to give you a quick run through of the updates and changes you will see in Tableau Server 9.0 from an administrator’s perspective, and what has changed since Tableau Server 8.3</p>
+<h2><span style="color: #ff0000;"><b>Visual Differences</b></span></h2>
+<p>Firstly and most obviously are the visual changes. Tableau has completely redesigned the GUI, so we now have  the options across the bar at the top of the screen instead of down the right hand side…</p>
+<p>Overall the changes that have been made are a great improvement, which in general means you require fewer clicks to do what you want to do compared to the previous version.</p>
+<p>So, what looks like this in Tableau v8:</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/04/Tableau-8-Menu.png"><img class="alignnone  wp-image-12139" src="http://interworks.co.uk/wp-content/uploads/2015/04/Tableau-8-Menu-145x300.png" alt="Tableau 8 Menu" width="113" height="234" /></a></p>
+<p>Now looks like this in Tableau v9:</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/04/Tableau-9-Menu-Bar.png"><img class="alignnone  wp-image-12140" src="http://interworks.co.uk/wp-content/uploads/2015/04/Tableau-9-Menu-Bar-1024x77.png" alt="Tableau 9 Menu Bar" width="638" height="48" /></a></p>
+<p>Windows Server 2003 is no longer supported, and the minimum hardware requirements for 64-bit Tableau Server are now set at 4 core, 8GB RAM and 15GB free disk space. Tableau server will <strong><span style="text-decoration: underline;">not</span></strong> install if these requirements aren&#8217;t met.</p>
+<h2><span style="color: #ff0000;"><b>Tableau Server Activity Analysis </b></span></h2>
+<p>The built in Analysis dashboards have been redesigned so that  they now answer direct questions like;</p>
+<p style="padding-left: 30px;"><span style="color: #0000ff;"><b>What Is the Total View Count by Day?</b></span></p>
+<p style="padding-left: 30px;"><span style="color: #0000ff;"><b>What Views Are Seen the Most?</b></span></p>
+<p style="padding-left: 30px;"><span style="color: #0000ff;"><b>Who Accesses Views Most Often?</b></span></p>
+<p> <a href="http://interworks.co.uk/wp-content/uploads/2015/04/Tableau-9-Analysis-Menu.png"><img class="alignnone  wp-image-12142" src="http://interworks.co.uk/wp-content/uploads/2015/04/Tableau-9-Analysis-Menu.png" alt="Tableau 9 Analysis Menu" width="491" height="226" /></a></p>
+<p>&nbsp;</p>
+<p>This makes finding out how your Tableau Server Environment a little bit easier as it&#8217;s now a little bit more intuitive.</p>
+<h2><span style="color: #ff0000;"><b>Tableau Server Processes</b></span></h2>
+<p>There have been a number of redesigns to how Tableau works, which have increased the number of processes that are being run on the server which you will need to get your head around.</p>
+<p>Below is the list of new processes and their function</p>
+<table style="border-color: #000000;" border="1">
+<tbody>
+<tr>
+<td>
+<h3>Process</h3>
+</td>
+<td>
+<h3>File Name</h3>
+</td>
+<td>
+<h3>Description</h3>
+</td>
+</tr>
+<tr>
+<td>API Server</td>
+<td>wgserver.exe</td>
+<td>Handles REST API calls</td>
+</tr>
+<tr>
+<td>Application Server</td>
+<td>vizportal.exe</td>
+<td>Handles the web application, supports browsing and searching.</td>
+</tr>
+<tr>
+<td>Cache Server</td>
+<td>redis-server.exe</td>
+<td>Query cache which is distributed and shared across the cluster. Improvement in caching over v8 and reduces the number of query requests made.</td>
+</tr>
+<tr>
+<td>Cluster Controller</td>
+<td>clustercontroller.exe</td>
+<td>Responsible for monitoring the various server components, detecting failures, and executing failover when needed.</td>
+</tr>
+<tr>
+<td>Coordination Service</td>
+<td>zookeeper.exe</td>
+<td>In distributed installations it is responsible for ensuring there is a quorum for making decisions during failover.</td>
+</tr>
+<tr>
+<td>File Store</td>
+<td>filestore.exe</td>
+<td>Replicates data extracts across nodes running Data Engine.</td>
+</tr>
+<tr>
+<td>Search &amp; Browse</td>
+<td>searchserver.exe</td>
+<td>Handles fast search, filtering, retrieval, and display of content metadata on the server.</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h2><span style="color: #ff0000;"><b>Cluster Management</b></span></h2>
+<p>Tableau have improved the management of how clustering works within Server.</p>
+<p>Firstly, the concept of 2-node High Availability cluster has been changed. You can still run Tableau across 2 servers (and spread the load between these two servers), but the loss of one of the servers will bring your Tableau environment down. Therefore the minimum requirement for a true cluster is now 3 servers.</p>
+<p>You are now able to set the preferred server for the Active Repository, which for instance, is good in the case where the hardware specification is different for each of the servers in the cluster, and you want to ensure that the Active Repository runs on the most powerful server in your cluster.</p>
+<p><span style="line-height: 1.5;"><a href="http://interworks.co.uk/wp-content/uploads/2015/04/Tableau-9-Failover-Options.png"><img class="alignnone  wp-image-12143" src="http://interworks.co.uk/wp-content/uploads/2015/04/Tableau-9-Failover-Options.png" alt="Tableau 9 Failover Options" width="433" height="99" /></a></span></p>
+<p><span style="line-height: 1.5;">You can also initiate a failover of the Active Repository to Standby Repository. This is done using a <strong>tabadmin</strong> command line interface (See later in the article). This is useful during server maintenance, if you have a requirement to take one of the servers in cluster offline, but want the cluster to remain available.</span></p>
+<p>Also, there is no longer the concept of an Active and Standby Data Engine. All Data Engines in the cluster are now active, and there is no longer the limitation of having a maximum of 2 servers running Data Engines. All servers in your cluster can now be Active Data Engine Servers if you require.</p>
+<p><strong><strong><a href="http://interworks.co.uk/wp-content/uploads/2015/04/Screen-Shot-2015-04-20-at-11.56.52.png"><img class="alignnone  wp-image-12145" src="http://interworks.co.uk/wp-content/uploads/2015/04/Screen-Shot-2015-04-20-at-11.56.52.png" alt="Tableau 9 Cluster" width="481" height="290" /></a> </strong></strong></p>
+<h2><span style="color: #ff0000;"><b>Command line updates</b></span></h2>
+<p>A few additions have been made to the command line interfaces.</p>
+<h3>Tabadmin</h3>
+<p><span style="color: #0000ff;"><strong>tabadmin decommission &lt;node1 node2 &#8230; &gt;</strong></span></p>
+<p style="padding-left: 30px;">Used to prepare Tableau File Store nodes for removal from the distributed environment.</p>
+<p><span style="color: #0000ff;"><strong>tabadmin failoverrepository &#8211;target &lt;node&gt; | &#8211;preferred</strong></span></p>
+<p style="padding-left: 30px;">Used to failover the active repository to the secondary repository.</p>
+<p><span style="color: #0000ff;"><strong>tabadmin recommission &lt;node1 node2 &#8230; &gt;</strong></span></p>
+<p style="padding-left: 30px;">Used to revert a decommissioned file store into an active state.</p>
+<p><span style="color: #0000ff;"><strong>tabadmin reindex</strong></span></p>
+<p style="padding-left: 30px;">Rebuilds the search index for Tableau Server, if it becomes corrupt or shows incomplete results.</p>
+<h3>Tabcmd</h3>
+<p><strong><span style="color: #0000ff;">tabcmd editdomain &#8211;id 2 &#8211;nickname &#8220;new-nickname&#8221;</span></strong></p>
+<p style="padding-left: 30px;">Used to modify the nickname for any domain the server is using.</p>
+<p><strong><span style="color: #0000ff;">tabcmd listdomains</span></strong></p>
+<p style="padding-left: 30px;">Used to display a list of domains used by the server.</p>
+<h3>REST API</h3>
+<p>There are 34 new REST API Commands to really fill out this functionality. New commands includes assigning and removing permissions, adding and removing membership, and the ability to publish &amp; download workbooks and datasources.</p>
+<p>Below is the full list of commands</p>
+<table dir="ltr" style="height: 1572px;" border="1" width="587" cellspacing="0" cellpadding="0">
+<colgroup>
+<col width="234" />
+<col width="234" /></colgroup>
+<tbody>
+<tr>
+<td data-sheets-value="[null,2,&quot;Tableau 8.3 REST API Commands&quot;]">
+<h4><strong>Tableau 8.3 REST API Commands</strong></h4>
+</td>
+<td data-sheets-value="[null,2,&quot;Tableau 9.0 REST API Commands&quot;]">
+<h4><strong>Tableau 9.0 REST API Commands</strong></h4>
+</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Add Datasource Permissions&quot;]">Add Datasource Permissions</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Add Project Permissions&quot;]">Add Project Permissions</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Add Tags to Workbook&quot;]">Add Tags to Workbook</td>
+<td data-sheets-value="[null,2,&quot;Add Tags to Workbook&quot;]">Add Tags to Workbook</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Add User to Group&quot;]">Add User to Group</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Add User to Site&quot;]">Add User to Site</td>
+<td data-sheets-value="[null,2,&quot;Add User to Site&quot;]">Add User to Site</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Add View to Favorites&quot;]">Add View to Favorites</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Add Workbook Permissions&quot;]">Add Workbook Permissions</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Add Workbook to Favorites&quot;]">Add Workbook to Favorites</td>
+<td data-sheets-value="[null,2,&quot;Add Workbook to Favorites&quot;]">Add Workbook to Favorites</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Append to File Upload&quot;]">Append to File Upload</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Create Group&quot;]">Create Group</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Create Project&quot;]">Create Project</td>
+<td data-sheets-value="[null,2,&quot;Create Project&quot;]">Create Project</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Create Site&quot;]">Create Site</td>
+<td data-sheets-value="[null,2,&quot;Create Site&quot;]">Create Site</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Delete Datasource&quot;]">Delete Datasource</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Delete Datasource Permissions&quot;]">Delete Datasource Permissions</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Delete Project&quot;]">Delete Project</td>
+<td data-sheets-value="[null,2,&quot;Delete Project&quot;]">Delete Project</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Delete Project Permission&quot;]">Delete Project Permission</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Delete Site&quot;]">Delete Site</td>
+<td data-sheets-value="[null,2,&quot;Delete Site&quot;]">Delete Site</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Delete Tag from Workbook&quot;]">Delete Tag from Workbook</td>
+<td data-sheets-value="[null,2,&quot;Delete Tag from Workbook&quot;]">Delete Tag from Workbook</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Delete View from Favorites&quot;]">Delete View from Favorites</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Delete Workbook&quot;]">Delete Workbook</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Delete Workbook from Favorites&quot;]">Delete Workbook from Favorites</td>
+<td data-sheets-value="[null,2,&quot;Delete Workbook from Favorites&quot;]">Delete Workbook from Favorites</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Delete Workbook Permissions&quot;]">Delete Workbook Permissions</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Download Datasource&quot;]">Download Datasource</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Download Workbook&quot;]">Download Workbook</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Get Users in Group&quot;]">Get Users in Group</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Get Users on Site&quot;]">Get Users on Site</td>
+<td data-sheets-value="[null,2,&quot;Get Users on Site&quot;]">Get Users on Site</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Initiate File Upload&quot;]">Initiate File Upload</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Publish Datasource&quot;]">Publish Datasource</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Publish Workbook&quot;]">Publish Workbook</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Query Datasource&quot;]">Query Datasource</td>
+<td data-sheets-value="[null,2,&quot;Query Datasource&quot;]">Query Datasource</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Query Datasource Permissions&quot;]">Query Datasource Permissions</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Query Datasources&quot;]">Query Datasources</td>
+<td data-sheets-value="[null,2,&quot;Query Datasources&quot;]">Query Datasources</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Query Groups&quot;]">Query Groups</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Query Job&quot;]">Query Job</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Query Project Permissions&quot;]">Query Project Permissions</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Query Projects&quot;]">Query Projects</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Query Site&quot;]">Query Site</td>
+<td data-sheets-value="[null,2,&quot;Query Site&quot;]">Query Site</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Query Sites&quot;]">Query Sites</td>
+<td data-sheets-value="[null,2,&quot;Query Sites&quot;]">Query Sites</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Query User On Site&quot;]">Query User On Site</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Query View with a Preview Image&quot;]">Query View with a Preview Image</td>
+<td data-sheets-value="[null,2,&quot;Query View with a Preview Image&quot;]">Query View with a Preview Image</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Query Views for Workbook&quot;]">Query Views for Workbook</td>
+<td data-sheets-value="[null,2,&quot;Query Views for Workbook&quot;]">Query Views for Workbook</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Query Workbook&quot;]">Query Workbook</td>
+<td data-sheets-value="[null,2,&quot;Query Workbook&quot;]">Query Workbook</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Query Workbook Connections&quot;]">Query Workbook Connections</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Query Workbook Permissions&quot;]">Query Workbook Permissions</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Query Workbook Preview Image&quot;]">Query Workbook Preview Image</td>
+<td data-sheets-value="[null,2,&quot;Query Workbook Preview Image&quot;]">Query Workbook Preview Image</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Query Workbooks for User&quot;]">Query Workbooks for User</td>
+<td data-sheets-value="[null,2,&quot;Query Workbooks for User&quot;]">Query Workbooks for User</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Remove User from Group&quot;]">Remove User from Group</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Remove User from Site&quot;]">Remove User from Site</td>
+<td data-sheets-value="[null,2,&quot;Remove User from Site&quot;]">Remove User from Site</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Sign In&quot;]">Sign In</td>
+<td data-sheets-value="[null,2,&quot;Sign In&quot;]">Sign In</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Sign Out&quot;]">Sign Out</td>
+<td data-sheets-value="[null,2,&quot;Sign Out&quot;]">Sign Out</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Update Datasource&quot;]">Update Datasource</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Update Datasource Connection&quot;]">Update Datasource Connection</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Update Group&quot;]">Update Group</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Update Project&quot;]">Update Project</td>
+<td data-sheets-value="[null,2,&quot;Update Project&quot;]">Update Project</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Update Site&quot;]">Update Site</td>
+<td data-sheets-value="[null,2,&quot;Update Site&quot;]">Update Site</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Update User&quot;]">Update User</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Update Workbook&quot;]">Update Workbook</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Update Workbook Connection&quot;]">Update Workbook Connection</td>
+</tr>
+</tbody>
+</table>
+<p>The Tableau Server Administrator Guide can be found <a title="Tableau Server 9.0 Admin Guide" href="http://downloads.tableau.com/quickstart/server-guides/en-us/server_admin90.pdf" target="_blank">here</a>, and the REST API Documentation can be found <a title="Tableau REST API" href="http://onlinehelp.tableau.com/current/api/rest_api/en-us/help.htm" target="_blank">here</a>.</p>
+<p>I hope that you have enjoyed this brief walkthrough of the high level differences between Tableau Server 8 and 9.</p>
+<p>Please don&#8217;t hesitate to get in touch with any comments or suggestions.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/whats-new-in-tableau-server-9-0-for-the-administrator/">What’s new in Tableau Server 9.0 for the Administrator</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fwhats-new-in-tableau-server-9-0-for-the-administrator%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/whats-new-in-tableau-server-9-0-for-the-administrator/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>Comparing Performance on Tableau 8.3 Server vs Tableau 9.0 Server</title>
+		<link>http://interworks.co.uk/blog/comparing-performance-tableau-8-3-server-vs-tableau-9-0-server/</link>
+		<comments>http://interworks.co.uk/blog/comparing-performance-tableau-8-3-server-vs-tableau-9-0-server/#comments</comments>
+		<pubDate>Thu, 12 Feb 2015 13:51:53 +0000</pubDate>
+		<dc:creator><![CDATA[Glen Robinson]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[blog]]></category>
+		<category><![CDATA[Server]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[Tableau 9.0]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=11300</guid>
+		<description><![CDATA[<p>Here in InterWorks we are getting a little bit over-excited about Tableau 9. Especially, when this blog post came out from the Tableau mothership. Individual Query time improved by 10x Dashboard Query times improved by 9x Query Fusion improving times by 2x And Query Caching improving times by 50x Those are some pretty bold figures [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/comparing-performance-tableau-8-3-server-vs-tableau-9-0-server/">Comparing Performance on Tableau 8.3 Server vs Tableau 9.0 Server</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Here in InterWorks we are getting a little bit over-excited about Tableau 9.</p>
+<p>Especially, when this <a title="http://www.tableau.com/about/blog/2015/1/90-preview-query-performance-improvements-36406" href="http://www.tableau.com/about/blog/2015/1/90-preview-query-performance-improvements-36406" target="_blank">blog</a> post came out from the Tableau mothership.</p>
+<p style="padding-left: 30px;"><span style="color: #3366ff;">Individual Query time improved by <strong>10x</strong></span><br />
+<span style="color: #3366ff;">Dashboard Query times improved by <strong>9x</strong></span><br />
+<span style="color: #3366ff;">Query Fusion improving times by <strong>2x</strong></span><br />
+<span style="color: #3366ff;">And Query Caching improving times by <strong>50x</strong></span></p>
+<p>Those are some pretty bold figures to put out there..<br />
+Not being one to believe everything that I’m told, I thought that maybe it would be great for someone to do their own independent testing to check on those numbers.</p>
+<p>So…… I waited, and as no one did, it was left to me to do my own testing.<br />
+So here we go….</p>
+<h2>Testing</h2>
+<p><strong>Step 1:</strong> Build out 2 identical servers in Amazon Web Services EC2 (<a title="http://aws.amazon.com/ec2/" href="http://aws.amazon.com/ec2/" target="_blank">http://aws.amazon.com/ec2/</a>)<br />
+I went for an <strong>m3.2xlarge</strong> server which has 8 vCPU (Intel Xeon E5-2670 v2) and 30 GB of RAM. (A pretty standard server setup.)</p>
+<p><strong>Step 2:</strong> Install Tableau 8.3 64bit Server on the first server, and Tableau 9 Beta 4 64-bit Server on the other.<br />
+<strong>Step 3:</strong> Upload my 150 million row Data extract to both servers.<br />
+<strong>Step 4:</strong> Create a dashboard to query the Data Source. (if you click on the image it will expand)</p>
+<div id="attachment_11308" style="width: 310px" class="wp-caption alignnone"><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image001.png"><img class="size-medium wp-image-11308" src="http://interworks.co.uk/wp-content/uploads/2015/02/image001-300x246.png" alt="Tableau Server Performance Testing Dashboard" width="300" height="246" /></a>
+<p class="wp-caption-text">Tableau Server Performance Testing Dashboard</p>
+</div>
+<p><strong>Step 5:</strong> Test dashboard, record the timings and compare.</p>
+<h2>Results</h2>
+<p><strong>First let’s look at the Tableau 8.3 performance recording.</strong></p>
+<div id="attachment_11309" style="width: 357px" class="wp-caption alignnone"><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image003.png"><img class=" wp-image-11309" src="http://interworks.co.uk/wp-content/uploads/2015/02/image003-300x154.png" alt="Tableau 8.3 8 vCPU Performance Recording" width="347" height="178" /></a>
+<p class="wp-caption-text">Tableau 8.3 8vCPU Performance Recording</p>
+</div>
+<p>So what we have here is a pretty standard Tableau 8 dashboard performance recording, with each query happening sequentially, one after the other.<br />
+The duration of the longest query came in at 10.78 seconds, with the overall duration from start to finish of around 22 seconds.</p>
+<p><strong>Now, let’s take a look at the same query on Tableau 9 Server</strong></p>
+<div id="attachment_11310" style="width: 355px" class="wp-caption alignnone"><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image005.png"><img class=" wp-image-11310" src="http://interworks.co.uk/wp-content/uploads/2015/02/image005-300x153.png" alt="Tableau 9 8vCPU Performance Recording" width="345" height="176" /></a>
+<p class="wp-caption-text">Tableau 9 8vCPU Performance Recording</p>
+</div>
+<p>Whoa!!! So what’s happening here then?</p>
+<p>To start with, we have much shorter query durations, with the longest query length down from 10.78 to 5.4 seconds, and we also have parallel query executions to bring the overall time down from 22 seconds to 7.5 seconds</p>
+<p>That’s not bad at all…<br />
+Now, let’s take a look at the underlying server performance, to see what’s happening</p>
+<p><strong>First the Tableau 8.3 server</strong></p>
+<div id="attachment_11302" style="width: 310px" class="wp-caption alignnone"><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image007.png"><img class="size-medium wp-image-11302" src="http://interworks.co.uk/wp-content/uploads/2015/02/image007-300x231.png" alt="Tableau 8.3 8vCPU CPU Performance" width="300" height="231" /></a>
+<p class="wp-caption-text">Tableau 8.3 8vCPU CPU Performance</p>
+</div>
+<p>There are 2 points to notice here.</p>
+<p>Firstly, the total processor usage never gets above 27% <span style="color: #0000ff;">[blue]</span> of what the server is capable of for the duration of the query.<br />
+Secondly, both the VizQL (vizqlserver <span style="color: #800080;">[purple]</span>) and Data Engine (tdeserver64<span style="color: #339966;"> [green]</span>) processes max out at one vCPU each.</p>
+<p><strong>Now let&#8217;s take a look at the Tableau 9 server..</strong></p>
+<div id="attachment_11303" style="width: 310px" class="wp-caption alignnone"><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image009.png"><img class="size-medium wp-image-11303" src="http://interworks.co.uk/wp-content/uploads/2015/02/image009-300x232.png" alt="Tableau 9 8vCPU CPU performance" width="300" height="232" /></a>
+<p class="wp-caption-text">Tableau 9 8vCPU CPU performance</p>
+</div>
+<p>We see that again the VizQL process continues to use 1 vCPU, but now the Data Engine is multi-core, with the result that the total processor usage peaked at around 96%, and a much much shorter overall query time.</p>
+<p>Now, I know what you’re thinking; what effect does increasing the number of cores in a server have on the overall query times?</p>
+<p>As you’ve asked so nicely, let’s find out…</p>
+<p>I changed the underlying image on AWS from a m3.2xlarge to a c4.4xlarge for both the Tableau 8.3 and Tableau 9 Servers.</p>
+<p>A <strong>c4.4xlarge</strong> server has 16 vCPU (Intel Xeon E5-2666 v3) with 30GB of RAM (effectively doubling the core count for this test)</p>
+<p><strong>The same query run on Tableau 8.3 Server.</strong></p>
+<table style="height: 27px; border-color: #fcfcfc;" border="0" width="431" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td style="border-color: #ffffff;">
+<div id="attachment_11304" style="width: 310px" class="wp-caption alignnone"><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image011.png"><img class="size-medium wp-image-11304" src="http://interworks.co.uk/wp-content/uploads/2015/02/image011-300x160.png" alt="Tableau 8.3 16vCPU Performance Recording" width="300" height="160" /></a>
+<p class="wp-caption-text">Tableau 8.3 16vCPU Performance Recording</p>
+</div>
+</td>
+<td style="border-color: #ffffff;">
+<div id="attachment_11305" style="width: 310px" class="wp-caption alignnone"><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image013.png"><img class="size-medium wp-image-11305" src="http://interworks.co.uk/wp-content/uploads/2015/02/image013-300x238.png" alt="Tableau 8.3 16vCPU Processor Performance" width="300" height="238" /></a>
+<p class="wp-caption-text">Tableau 8.3 16vCPU Processor Performance</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>We <em>do</em> see a shorter overall query time (down from 22 seconds to around 16 seconds).</p>
+<p>But, we see the same process &amp; processor usage profile as Tableau 8.3 running on 8 vCPU, with only one core being used for each of the VizQL and Data Engine processes.<br />
+(Note that the improved query times moving from 8 to 16 vCPU may well be due to the changes in the underlying hardware, including the use of a faster Processor.</p>
+<p><strong>Now, on to Tableau 9 running on 16 vCPU</strong></p>
+<table style="height: 259px; border-color: #fcfcfc;" border="0" width="641" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td style="border-color: #ffffff;" scope="row">
+<div id="attachment_11306" style="width: 310px" class="wp-caption alignnone"><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image015.png"><img class="size-medium wp-image-11306" src="http://interworks.co.uk/wp-content/uploads/2015/02/image015-300x150.png" alt="Tableau 9 16vCPU Performance Recording" width="300" height="150" /></a>
+<p class="wp-caption-text">Tableau 9 16vCPU Performance Recording</p>
+</div>
+</td>
+<td style="border-color: #ffffff;">
+<div id="attachment_11307" style="width: 310px" class="wp-caption alignnone"><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image017.png"><img class="size-medium wp-image-11307" src="http://interworks.co.uk/wp-content/uploads/2015/02/image017-300x235.png" alt="Tableau 9 16vCPU Processor Performance" width="300" height="235" /></a>
+<p class="wp-caption-text">Tableau 9 16vCPU Processor Performance</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Again, we see the parallel querying and also, and an improvement in query times, with the longest query now taking 3.34 seconds, and the overall query time down to a sparkling 4.5 seconds.</p>
+<p>This is reflected in the performance chart, where again we see the multi-core in action. (This time peaking at just under 60% utilisation)</p>
+<h2>Summary and Conclusions</h2>
+<p>&nbsp;</p>
+<table style="height: 102px;" width="865">
+<tbody>
+<tr>
+<td><strong><span style="color: #000080;">Server Type and Tableau Version</span></strong></td>
+<td><strong><span style="color: #000080;">Time Taken for Longest Query (secs)</span></strong></td>
+<td><strong><span style="color: #000080;">Overall Dashboard Duration (secs)</span></strong></td>
+</tr>
+<tr>
+<td>Tableau 8.3 (8vCPU)</td>
+<td><strong>10.78 secs</strong></td>
+<td><strong>22 secs</strong></td>
+</tr>
+<tr>
+<td>Tableau 8.3 (16vCPU)</td>
+<td><strong>8.19 secs</strong></td>
+<td><strong>16 secs</strong></td>
+</tr>
+<tr>
+<td>Tableau 9 Beta 4 (8vCPU)</td>
+<td><strong>5.4 secs</strong></td>
+<td><strong>7.5 secs</strong></td>
+</tr>
+<tr>
+<td>Tableau 9 Beta 4 (16vCPU)</td>
+<td><strong>3.34 secs</strong></td>
+<td><strong>4.5 secs</strong></td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p><strong>So what to make of all those figures…</strong></p>
+<ol>
+<li>In my test, moving from 8 vCPU to 16 vCPU give me a speed increase of around 30% for Tableau 8.3 and around 60% for Tableau 9. As I said earlier, this may well be due to the underlying hardware being better on the c4.4xlarge than on the m3.2xlarge, and nothing to do with Tableau itself. (Investigating this thoroughly is beyond the remit of this piece.)</li>
+<li>However, upgrading from Tableau 8.3 to 9.0 on 8 vCPU server boosted performance by <span style="color: #000080;"><strong>just under 3 times</strong></span>, and for the 16 vCPU server, by <span style="color: #000080;"><strong>just</strong> <strong>over 3.5 times.</strong></span></li>
+</ol>
+<p>Those are some pretty thrilling figures. They&#8217;re not quite in the same league as the Tableau Blog figures, but still interesting enough..</p>
+<p>I guess it&#8217;s going to depend on your own dashboards, your datasets and the overall load on your Servers, as to what performance improvements you will see.<br />
+Also, in this testing I don’t take into account the other features offered in Tableau 9 such as Query Caching or Query Fusion (which I haven’t gone into here, and if no-one else writes about these features, I may have to do so myself)</p>
+<p>So overall, you are going to see great improvements in the times taken to render dashboards. This is going to make your customers happier which is going to make you happier.<br />
+However, what I’m not so sure about is what effect this upgrade is going to have on your servers.<br />
+There are a few unknowns out there such as;</p>
+<ul>
+<li>Are you going to see more user load on your Tableau server, as they now are more readily gain access to their reports?</li>
+<li>Are you going to be publishing dashboards which you would never have done on Tableau 8 because their performance wasn’t acceptable, but is now (additional load)?</li>
+<li>Is having a more ‘peaky’ CPU performance profile going to cause you issues, which may necessitate additional Hardware purchases?</li>
+<li>Or will having Query Caching and Query Fusion save the day, and actually result in less load on the server?</li>
+</ul>
+<p>All these are questions and more are what makes this server upgrade extremely exciting and takes Tableau 9.0 to a #WholeNewLevel. If you&#8217;re yet to download Tableau Server, or would like more information on it, please <a href="http://interworks.co.uk/business-intelligence/tableau-server/">click here </a>or feel free to shoot me a <a href="http://interworks.co.uk/team/glen-robinson/">message.</a></p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/comparing-performance-tableau-8-3-server-vs-tableau-9-0-server/">Comparing Performance on Tableau 8.3 Server vs Tableau 9.0 Server</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/comparing-performance-tableau-8-3-server-vs-tableau-9-0-server/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+		<item>
+		<title>What&#8217;s new in Tableau Server 9.0</title>
+		<link>http://interworks.co.uk/blog/whats-new-tableau-server-9-0/</link>
+		<comments>http://interworks.co.uk/blog/whats-new-tableau-server-9-0/#comments</comments>
+		<pubDate>Mon, 02 Feb 2015 09:20:33 +0000</pubDate>
+		<dc:creator><![CDATA[Glen Robinson]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Tableau 9.0]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=11217</guid>
+		<description><![CDATA[<p>Firstly, for all those still on Windows Server 2003 (you know who you are), it’s time to finally upgrade as Tableau Server 9.0 won’t run on this OS. New User Interface The first thing that you will notice when connecting to the Tableau 9.0 server is the new user interface. The login screen now has [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/whats-new-tableau-server-9-0/">What&#8217;s new in Tableau Server 9.0</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fwhats-new-tableau-server-9-0%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Firstly, for all those still on Windows Server 2003 (you know who you are), it’s time to finally upgrade as Tableau Server 9.0 won’t run on this OS.</p>
+<p><strong><span style="color: red;">New User Interface</span></strong></p>
+<p>The first thing that you will notice when connecting to the Tableau 9.0 server is the new user interface. The login screen now has a clean minimal new look</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image01.png"><img class=" wp-image-11221 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/02/image01-300x142.png" alt="Login Screen" width="370" height="175" /></a></p>
+<p>and the overall user experience has been completely redesigned with a new sleek black theme to it, at a glance looking like the InterWorks site ;).</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image09.png"><img class=" wp-image-11224 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/02/image09-300x197.png" alt="MainScreen" width="369" height="242" /></a></p>
+<p>Instead of having to page through your Workbooks (or your Views, etc) they are now all on the same page, with infinite scrolling.</p>
+<p>Also, searching has been improved with the facility to search all projects, workbooks, views or data sources in one filter.</p>
+<p><strong><strong> <a href="http://interworks.co.uk/wp-content/uploads/2015/02/image10.png"><img class="size-full wp-image-11226 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/02/image10.png" alt="Search" width="260" height="249" /></a></strong></strong></p>
+<p>All of these design changes are also reflected in the Administrator View.</p>
+<p><strong><span style="color: red;">Security Permissioning</span></strong></p>
+<p>User and Group Permissioning has been improved with a new layout which makes changing permissions easier to understand. You can now instantly see the effects of changing group permissions, and what rights the individual users have.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image06.png"><img class=" wp-image-11225 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/02/image06-300x188.png" alt="Permissions" width="379" height="238" /></a></p>
+<p><strong><span style="color: red;">Command Line</span></strong></p>
+<p>For all you scripters out there, Tabcmd is now more responsive for faster batch line programming. The REST API has also been expanded with a number of new functions.</p>
+<p><strong><span style="color: red;">High Availability</span></strong></p>
+<p>Cluster management has improved greatly, so that now you can manage and control fail-overs, and set preferred hosts. This is great news for all those who were frustrated with the rudimentary nature of the previous version.</p>
+<p>Also, the restrictions on the number of data engine nodes in a cluster and which were passive has been removed, with all data engine nodes now being active, resulting in the cluster being more scalable.</p>
+<p><strong><span style="color: red;">Performance Enhancements</span></strong></p>
+<p>All the above points are great, but let’s now dive into the most important improvements, and enhancements that I’m most excited about. These are all about performance. Having Dashboards that render quickly is key for Tableau Server.</p>
+<p>The improvements break down into two main areas:</p>
+<p><b>Getting more out of the Server processor cores by;</b></p>
+<ul>
+<li>Running multiple queries in parallel on Dashboards, instead of sequentially.</li>
+</ul>
+<ul>
+<li>Rewriting the underlying code to take advantage of modern CPU design and architecture.</li>
+</ul>
+<ul>
+<li>Using multiple processor cores for tasks to return results more quickly.</li>
+</ul>
+<p><b>Getting more out of the Server Cache by;</b></p>
+<ul>
+<li>Saving and reusing query results for Tableau Extracts, instead of re-running each time a workbook is opened.</li>
+</ul>
+<ul>
+<li>Recognising related queries in a Dashboard, and optimising the query execution order to increase the number of time cache is being used.</li>
+</ul>
+<ul>
+<li>Creating ‘shadow’ extracts of Text and Excel Data sources, so that they are optimised.</li>
+</ul>
+<p>So, all in all, a number of excellent improvements from Tableau with this new release. There is so much more to go into, but I’ll leave this for another blog. But, what are your thoughts on 9.0’s Server enhancements? Let us know in the comments section as we’d love to hear your views. If you have any questions, please feel free to send me an email or, if you’re ready to download Tableau, <a href="http://interworks.co.uk/business-intelligence/download-tableau-desktop-free-trial/">click here</a> to get started on a free 14 day trial.</p>
+[contact-form]<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/whats-new-tableau-server-9-0/">What&#8217;s new in Tableau Server 9.0</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fwhats-new-tableau-server-9-0%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/whats-new-tableau-server-9-0/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

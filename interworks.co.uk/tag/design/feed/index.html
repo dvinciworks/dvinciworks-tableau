@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>InterWorks - Tableau Software &#38; Business Intelligence Consulting &#187; Design</title>
+	<atom:link href="http://interworks.co.uk/tag/design/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 26 Jun 2015 08:09:24 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>Using Tableau Bookmarks to assign Custom Shapes more easily</title>
+		<link>http://interworks.co.uk/blog/using-tableau-bookmarks-to-assign-custom-shapes-more-easily/</link>
+		<comments>http://interworks.co.uk/blog/using-tableau-bookmarks-to-assign-custom-shapes-more-easily/#comments</comments>
+		<pubDate>Thu, 19 Dec 2013 12:58:35 +0000</pubDate>
+		<dc:creator><![CDATA[Dave Hart]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Bookmarks]]></category>
+		<category><![CDATA[Design]]></category>
+		<category><![CDATA[Flags]]></category>
+		<category><![CDATA[Icons]]></category>
+		<category><![CDATA[Shapes]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=9379</guid>
+		<description><![CDATA[<p>Tableau allows you to create sets of custom shapes but assigning these can sometimes be painful, especially if you have a large list of icons to choose from. Wouldn&#8217;t it be good if you could get Tableau to look up an icon based on the contents of your data? That&#8217;s what I thought, and this [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/using-tableau-bookmarks-to-assign-custom-shapes-more-easily/">Using Tableau Bookmarks to assign Custom Shapes more easily</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Tableau allows you to create sets of custom shapes but assigning these can sometimes be painful, especially if you have a large list of icons to choose from. Wouldn&#8217;t it be good if you could get Tableau to look up an icon based on the contents of your data? That&#8217;s what I thought, and this morning I note that tableau <a href="http://www.tableausoftware.com/about/blog/2014/1/icon-encoding-research-acm-sigchi">think that too</a> . Admittedly in their case they are discussing a completely automated solution, but I couldn&#8217;t wait so I&#8217;ve put together an example showing you how something similar to this can be done using a bit of careful planning and tableau bookmarks. You&#8217;ll end up with a quick way to load in a complete resource of icons and then use the correct shapes by linking that resource to your primary dataset.</p>
+<p><span id="more-9379"></span></p>
+<p><strong>Why would you do this?<br />
+</strong></p>
+<p>Bookmarks are really good for reusing assets, so if there&#8217;s a set of icons that you like using but you don&#8217;t always need all of them, then this is a good fit for you. The examples I&#8217;m going to use are social network icons and flags. In these cases I can download a large or complete set of resources from somewhere, but in all likelihood my data is going to only access a smaller subset of this data which means the &#8220;Assign Shapes&#8221; option isn&#8217;t going to work and picking through to get the right shapes would be time consuming (or even impossible if you didn&#8217;t know what the icon you needed looked like – could you recognise the flag of Burundi from a 16&#215;16 icon preview?)</p>
+<p><strong>How to do it</strong></p>
+<p>The key here is that just adding your custom icon set to Tableaus Shapes repository isn&#8217;t enough, we need a dataset to go with it. We are going to utilise two features/behaviours of tableau:</p>
+<ul>
+<li>When you load custom shapes into tableau, they are listed alphabetically AND they are assigned alphabetically too.</li>
+<li>When a piece of data has been assigned a shape/colour once, if you re-use that field elsewhere in the workbook tableau will try to use the same shape/colour.</li>
+</ul>
+<p>&nbsp;</p>
+<p>The first thing we need to do is get a set of icons and prepare a dataset that tells us the filename and any other information about the data row that we might need. I&#8217;m going to use two examples showing social network icons and country flags.</p>
+<ul>
+<li>Put all the icons in a folder in the Shapes subfolder of your Tableau repository. (Tableau does a case sensitive sort whereas windows explorer may not, so I&#8217;d advise you to make sure that all your files are consistently cased. I wrote a command line batch script to do this)</li>
+<li>Create a spreadsheet or text file that lists all of the file names. (One way you can do this is by doing a directory listing to a text file from the command line e.g. dir *.* &gt; list.txt and then editing that file in excel)</li>
+<li>Now create a workbook that connects to this data source and create a view by taking the name of the file and positioning it on the Rows shelf. Change the Marks type to &#8220;Shape&#8221;. I personally think it&#8217;s probably better to create a calculated field called &#8220;Image&#8221; and just return the underlying field that you want to use to match to the shapes – in this case the filename.</li>
+<li>On the card that shows all the shapes next to the name double click one item to edit the shapes. Navigate to your folder and click assign palette. As the order of the names matches the order of the filenames then they should match up perfectly. If they don&#8217;t check the case of your filename as tableau does a case-sensitive sort when loading the icons, but doesn&#8217;t when creating the view.</li>
+<li>Now save this view as a bookmark called &#8220;Social Icons&#8221;. Click Window &gt; Bookmarks &gt; Create Bookmark…</li>
+</ul>
+<p>&nbsp;</p>
+<p><img class="aligncenter" src="http://interworks.co.uk/wp-content/uploads/2013/12/121913_1258_UsingTablea2.png" alt="" /></p>
+<p>Now that we&#8217;ve saved it as a bookmark, whenever we have data that contains a column for social network, we can import this sheet quickly and assign the correct icons automatically (via a data relationship) rather than hunting through the lists and assigning them manually. I&#8217;ve created a simple table of data that shows users donating money based on a referral from a social network.</p>
+<div style="text-align: center;">
+<table style="border-collapse: collapse;" border="0">
+<tbody valign="top">
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border: solid 0.5pt;">Name</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: solid 0.5pt; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Network</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: solid 0.5pt; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Donation</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: solid 0.5pt; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Date</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: solid 0.5pt; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Country</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Dave</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Twitter</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">5</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">01/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">GB</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Rich</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Twitter</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">8</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">05/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">GB</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Andrew</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Facebook</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">2</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">13/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">US</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Katherine</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Aol</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">1</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">02/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">GB</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Martha</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Youtube</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">19</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">01/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">FR</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Pete</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Facebook</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">2</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">02/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">US</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Mary</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Facebook</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">3</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">07/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">GB</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">David</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">linkedin</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">8</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">13/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">US</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Arthur</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Youtube</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">24</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">15/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">ES</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Chris</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Twitter</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">2</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">18/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">GB</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Andy</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Twitter</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">10</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">14/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">DE</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Stuart</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Facebook</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">7</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">04/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">GB</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Natasha</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Twitter</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">3</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">02/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">US</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Wendy</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Tumblr</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">20</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">06/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">DE</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Simon</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">linkedin</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">13</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">16/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">US</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Alan</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Twitter</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">10</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">09/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">GB</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Dmitri</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Google</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">5</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">10/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">GR</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Juan</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Facebook</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">12</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">01/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">ES</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Martha</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Twitter</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">15</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">11/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">CH</td>
+</tr>
+</tbody>
+</table>
+<p style="text-align: left;">
+</div>
+<ul>
+<li>Create a new tableau workbook by connecting to the data</li>
+<li>Create a view that shows a bar and a shape summing money spent by network</li>
+<li>Import your social icons bookmark. Window &gt; Bookmarks &gt; Social Icons</li>
+<li>Click Data &gt; Edit Relationships and link the Network column to the Name column</li>
+<li>On your view drag Image from your secondary datasource onto Shape</li>
+<li>Note that the correct icons are assigned to the social network and that the Shape key has an orange tick by it indicating it is from the sheet you imported as a bookmark.</li>
+</ul>
+<p>&nbsp;</p>
+<p><img class="aligncenter" src="http://interworks.co.uk/wp-content/uploads/2013/12/121913_1258_UsingTablea3.png" alt="" /></p>
+<p>&nbsp;</p>
+<p>In the case of the flags dataset I&#8217;ve also created extra columns for name and ISO code. Note that if you are having problems with case and wording etc. and you can&#8217;t edit the data at source, you can use Aliases or calculated fields that correct the errors and join using those. When I did the It&#8217;s also worth noting that the bookmark only contains a reference to the icons path, so you need to have the bookmarks and the shapes installed on the computer you&#8217;re using, you can&#8217;t just copy the bookmark to another computer and get the correct icons. (although when you package the workbook up you&#8217;ll be OK because it will embed the shapes).</p>
+<p><img class="aligncenter" src="http://interworks.co.uk/wp-content/uploads/2013/12/screenshot1.png" alt="" /></p>
+<p>Hope you like the post! Leave me a comment if you&#8217;ve got any questions or just general praise (it&#8217;s one of my first posts and I need the love). And if you want some homework, I&#8217;ve also done this for colours by generating a list of hexadecimal colour values into excel and the tableau preferences file so see if you can do that too, you can use <a href="http://interworks.co.uk/tableau/using-custom-colour-palettes/">Darren Evans post on this blog</a> to help you with custom colour palettes.</p>
+<p>&nbsp;</p>
+<p>Resources:</p>
+<p>Lots of places provide social network icons, but be kind and check the licensing. When writing this article I got some nice icons from social shift <a href="http://www.instantshift.com/2010/12/07/socialshift-icon-set-246-free-social-networking-icons/">http://www.instantshift.com/2010/12/07/socialshift-icon-set-246-free-social-networking-icons/</a></p>
+<p>The flag Icons I used were from the rather magnificent <a href="http://famfamfam.com/lab/icons/flags/">http://famfamfam.com/lab/icons/flags/</a> (they are listed by ISO, but you need to do some editing as Tunisia&#8217;s filename is wrongly marked as <em>rn.png</em> and not <em>tn.png</em> and the Dutch Antilles <em>an.png </em>is included which wasn&#8217;t in my list of ISO Codes which can be found here <a href="http://en.wikipedia.org/wiki/ISO_3166-1">http://en.wikipedia.org/wiki/ISO_3166-1</a>)</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/using-tableau-bookmarks-to-assign-custom-shapes-more-easily/">Using Tableau Bookmarks to assign Custom Shapes more easily</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/using-tableau-bookmarks-to-assign-custom-shapes-more-easily/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Using Custom Colour Palettes</title>
+		<link>http://interworks.co.uk/blog/using-custom-colour-palettes/</link>
+		<comments>http://interworks.co.uk/blog/using-custom-colour-palettes/#comments</comments>
+		<pubDate>Thu, 04 Jul 2013 14:20:33 +0000</pubDate>
+		<dc:creator><![CDATA[Darren Evans]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Colour Palette]]></category>
+		<category><![CDATA[Cusomisation]]></category>
+		<category><![CDATA[Darren Evans]]></category>
+		<category><![CDATA[Design]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[Tableau 8.0]]></category>
+		<category><![CDATA[visualisation]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=8679</guid>
+		<description><![CDATA[<p>Tableau has the ability to recreate any colour by using the RGB colour model. By using this you can customise your charts and dashboards to match your corporate branding guidelines. The chart below shows the top 5 BBC Television Channels by expenditure in 2012. It is using the default Tableau Colour Palette To amend a [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/using-custom-colour-palettes/">Using Custom Colour Palettes</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-custom-colour-palettes%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p dir="ltr">Tableau has the ability to recreate any colour by using the <a title="RGB Colour Model" href=" https://en.wikipedia.org/wiki/RGB_color_model" target="_blank">RGB colour model</a>. By using this you can customise your charts and dashboards to match your corporate branding guidelines.</p>
+<p dir="ltr">The chart below shows the top 5 BBC Television Channels by expenditure in 2012. It is using the default Tableau Colour Palette</p>
+<p><script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script>
+<div class="tableauPlaceholder" style="width:600px; height:550px;"><noscript><a href="#"><img alt=" " src="http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Co&#47;ColourBlog&#47;BBCTVSpendStandard&#47;1_rss.png" style="border: none" /></a></noscript><object class="tableauViz" width="600" height="550" style="display:none;"><param name="host_url" value="http%3A%2F%2Fpublic.tableausoftware.com%2F" /><param name="site_root" value="" /><param name="name" value="ColourBlog&#47;BBCTVSpendStandard" /><param name="tabs" value="no" /><param name="toolbar" value="yes" /><param name="static_image" value="http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Co&#47;ColourBlog&#47;BBCTVSpendStandard&#47;1.png" /><param name="animate_transition" value="yes" /><param name="display_static_image" value="yes" /><param name="display_spinner" value="yes" /><param name="display_overlay" value="yes" /><param name="display_count" value="yes" /></object></div>
+<div style="width:600px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float:right; padding-right:8px;"><a href="http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/views/ColourBlog/BBCTVSpendStandard" target="_blank">Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p dir="ltr">To amend a colour in Tableau Desktop you can double click on a colour on the colour legend itself. This pops up the standard select a colour menu. If you now double click on the blue square next to a category, BBC 1 in this example, you can customise the colour by choosing a different colour, amending the gradient or by specifying an RGB code.</p>
+<p dir="ltr"><a href="http://interworks.co.uk/wp-content/uploads/2013/07/BBC2.png"><img class="alignnone size-medium wp-image-8695" src="http://interworks.co.uk/wp-content/uploads/2013/07/BBC2-300x235.png" alt="BBC2" width="300" height="235" /></a></p>
+<p dir="ltr">The website <a title="Colour Lovers" href="http://www.colourlovers.com/palette/410981/BBC_World" target="_blank">colourlovers.com</a> allows users to store custom colour palettes. I am using the BBC Worldwide Colour Palette in this example.</p>
+<p>If we look at the colour we can see it has an RGB of 184, 31, 30.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2013/07/BBC6.png"><img src="http://interworks.co.uk/wp-content/uploads/2013/07/BBC6-300x152.png" alt="BBC6" width="300" height="152" /></a></p>
+<p dir="ltr">If we enter this into the cusom colour menu on Tableau and click OK we can assign this shade of red to BBC. Repeating this for each channel will give it a BBC ‘branded’ look.</p>
+<p><script src="http://public.tableausoftware.com/javascripts/api/viz_v1.js" type="text/javascript"></script></p>
+<div class="tableauPlaceholder" style="width: 550px; height: 550px;"><noscript><a href="#"><img alt="BBC TV Spend Bespoke Palette " src="http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Co&#47;ColourBlogBespoke&#47;BBCTVSpendBespokePalette&#47;1_rss.png" style="border: none" /></a></noscript><object class="tableauViz" style="display: none;" width="550" height="550"><param name="host_url" value="http%3A%2F%2Fpublic.tableausoftware.com%2F" /><param name="site_root" value="" /><param name="name" value="ColourBlogBespoke/BBCTVSpendBespokePalette" /><param name="tabs" value="no" /><param name="toolbar" value="yes" /><param name="static_image" value="http://public.tableausoftware.com/static/images/Co/ColourBlogBespoke/BBCTVSpendBespokePalette/1.png" /><param name="animate_transition" value="yes" /><param name="display_static_image" value="yes" /><param name="display_spinner" value="yes" /><param name="display_overlay" value="yes" /><param name="display_count" value="yes" /></object></div>
+<div style="width: 550px; height: 22px; padding: 0px 10px 0px 0px; color: black; font: normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float: right; padding-right: 8px;"><a href="http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/views/ColourBlogBespoke/BBCTVSpendBespokePalette" target="_blank">Learn About Tableau</a></div>
+</div>
+<p dir="ltr">This works fine for a one off chart, however it would be a laborious task if it were carried out on every visualisation built at the company. Whilst not available through the front end, Tableau does allow for the creation of additional custom colour palettes.</p>
+<p dir="ltr">To do this you need to amend the Preferences.tps file which can be located in the ‘My Tableau Repository Folder’. The repository is by default found within the My Documents folder on a Tableau Desktop user&#8217;s machine.</p>
+<p dir="ltr">Navigate to the Repository and right click on the preferences file. You can open the file in Notepad or any other text editor.</p>
+<p dir="ltr">The file uses a standard xml format. To add a colour palette you can use the following syntax:</p>
+<p dir="ltr"><em>&lt;preferences&gt;</em></p>
+<p dir="ltr"><em>       &lt;color-palette name=&#8221;BBC Colour Scheme&#8221; type=&#8221;regular&#8221; &gt;</em></p>
+<p dir="ltr"><em>               &lt;color&gt;#B81F1E&lt;/color&gt;</em></p>
+<p dir="ltr"><em>          &lt;/color-palette&gt;</em></p>
+<p dir="ltr"><em>&lt;/preferences&gt;</em></p>
+<p dir="ltr">Each color needs to be entered within the &#8216;Color-palette&#8217; section. Unlike Desktop this uses HTML Hex Codes. Each code needs to be prefixed with a #.</p>
+<p dir="ltr">The completed file for the BBC palette looks like this:</p>
+<p dir="ltr"><a href="http://interworks.co.uk/wp-content/uploads/2013/07/BBC13.png"><img class="alignnone size-medium wp-image-8684" src="http://interworks.co.uk/wp-content/uploads/2013/07/BBC13-300x114.png" alt="BBC13" width="300" height="114" /></a></p>
+<p dir="ltr">Once you have entered each of your colours you can save the preferences file. You will need to close and reopen Tableau for the new preferences to load.<br />
+Now if you go to edit colours you will see a new colour palette listed in the dropdown with the colours you have just specified.</p>
+<p dir="ltr"><a href="http://interworks.co.uk/wp-content/uploads/2013/07/BBC9.png"><img class="alignnone size-full wp-image-8688" src="http://interworks.co.uk/wp-content/uploads/2013/07/BBC9.png" alt="BBC9" width="192" height="190" /></a></p>
+<p dir="ltr">The preferences file will need to be installed on all local machines for users to be able to use the palette during design. The colours will still appear on the visualisation if loaded on another machine but the palette will not be available.</p>
+<p dir="ltr">Did you know that Microsoft Paint allows you to get the RGB for any pixel on an image? Simply load or paste an image in MS Paint and use the Colour picker (it looks like an eye dropper) to select a pixel and then choose &#8216;Edit colors&#8217; which is right most on the toolbar to reveal the RGB codes for the selected colour.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/using-custom-colour-palettes/">Using Custom Colour Palettes</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-custom-colour-palettes%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/using-custom-colour-palettes/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Tableau 8 Beta &#8211; The Kraken</title>
+		<link>http://interworks.co.uk/blog/tableau-8-beta-the-kraken/</link>
+		<comments>http://interworks.co.uk/blog/tableau-8-beta-the-kraken/#comments</comments>
+		<pubDate>Mon, 19 Nov 2012 12:23:53 +0000</pubDate>
+		<dc:creator><![CDATA[Kevin Pemberton]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[conference]]></category>
+		<category><![CDATA[Design]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[Tableau Customer Conference]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=3275</guid>
+		<description><![CDATA[<p>The Tableau 8 Beta was released to conference attendees last week, the beta program gets the software out to real world content producers and gives Tableau feedback on any bugs or last minute feature requests. Tableau do a great job with their releases, as each year they jump the competition in features and usability. Just [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/tableau-8-beta-the-kraken/">Tableau 8 Beta &#8211; The Kraken</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Ftableau-8-beta-the-kraken%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>The Tableau 8 Beta was released to conference attendees last week, the beta program gets the software out to real world content producers and gives Tableau feedback on any bugs or last minute feature requests. Tableau do a great job with their releases, as each year they jump the competition in features and usability.</p>
+<p>Just a few of the great new features include:</p>
+<ul>
+<li>Treemaps</li>
+<li>Wordclouds</li>
+<li>Data blending without needing the joining field in the viz (this is great by the way!)</li>
+<li>Greater control over the content and formatting of tooltips including adding dimensions and measures that are not used in the viz</li>
+<li>Floating panels allowing unlimited arrangement of worksheets on a dashboard</li>
+<li>Quick Filters can now be set to affect select worksheets, rather all or one.</li>
+</ul>
+<p>The list is far longer than this and we&#8217;ll be demonstrating some of the new features in our blog over the coming few weeks, keep an eye out.</p>
+<p>Here&#8217;s a viz that demonstrates a few of the features detailed above (not live unfortunately as Tableau Public is still v7):</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2012/11/Dashboard-v8-demo.jpg"><img class="aligncenter size-full wp-image-3280" title="Tableau 8 beta Dashboard demo" src="http://www.interworks.co.uk/wp-content/uploads/2012/11/Dashboard-v8-demo.jpg" alt="Tableau 8 beta Dashboard demo" width="584" height="784" /></a></p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/tableau-8-beta-the-kraken/">Tableau 8 Beta &#8211; The Kraken</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Ftableau-8-beta-the-kraken%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/tableau-8-beta-the-kraken/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Data Connections &#8211; Making life easy for your fellow colleagues</title>
+		<link>http://interworks.co.uk/blog/data-connections-making-life-easy-for-your-fellow-colleagues/</link>
+		<comments>http://interworks.co.uk/blog/data-connections-making-life-easy-for-your-fellow-colleagues/#comments</comments>
+		<pubDate>Mon, 16 Jan 2012 13:49:34 +0000</pubDate>
+		<dc:creator><![CDATA[Kevin Pemberton]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Design]]></category>
+		<category><![CDATA[Fomatting]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=3001</guid>
+		<description><![CDATA[<p>In my experience most technical IT types love to name databases and data fields in weird and wonderful ways. A good example is this gem I encountered recently &#8220;ATV&#8221;, take a guess at what that means. If you create a data field called &#8220;ATV&#8221; and then expect your user base to understand what it means [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/data-connections-making-life-easy-for-your-fellow-colleagues/">Data Connections &#8211; Making life easy for your fellow colleagues</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fdata-connections-making-life-easy-for-your-fellow-colleagues%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>In my experience most technical IT types love to name databases and data fields in weird and wonderful ways. A good example is this gem I encountered recently &#8220;ATV&#8221;, take a guess at what that means. If you create a data field called &#8220;ATV&#8221; and then expect your user base to understand what it means then you do not understand your users, in general even a technical person prefers to read a proper name. (Within reason of course, see this <a title="Wikipedia Acronym Article" href="http://en.wikipedia.org/wiki/Acronym_and_initialism#Extremes" target="_blank">Wikipedia Acronym Article</a>.)<br />
+So have you guessed it yet? &#8220;ATV&#8221; is Average Transaction Value, I suspect you came up with all sorts of possibilities for that&#8230;</p>
+<p>Now you may say that once you know what &#8220;ATV&#8221; means you don&#8217;t need the longer format name, but what happens when we list lots of average fields together:</p>
+<table width="400px">
+<tbody>
+<tr>
+<td width="30%">Field Name</td>
+<td width="70%">Field Description</td>
+</tr>
+<tr>
+<td width="30%">ATF</td>
+<td width="70%">Average transaction per footfall</td>
+</tr>
+<tr>
+<td width="30%">ATV</td>
+<td width="70%">Average transaction value</td>
+</tr>
+<tr>
+<td width="30%">ASV</td>
+<td width="70%">Actual sales value</td>
+</tr>
+<tr>
+<td width="30%">AMV</td>
+<td width="70%">Average Margin Value</td>
+</tr>
+</tbody>
+</table>
+<p>See what I did there? &#8220;ASV&#8221; actually means &#8220;Actual Sales Value&#8221;&#8230; now imagine fifty fields with similar names, which ones are average and which are actual. Now, this is only one example but it applies in many, many situations. So here&#8217;s some tips in how to improve the lives of your Tableau users.</p>
+<p><strong>Naming the data connection</strong></p>
+<p>In Tableau the sixth step after selecting a server, database/file to connect to, logging in and choosing your tables/joins you can name your connection. Tableau by default names this with the name of the database you are connecting to and the primary table in question, for instance the Orders data connection in the Superstores demo data is called &#8220;Orders (Sample &#8211; Superstore Sales (Excel).xls)&#8221;.</p>
+<p><img src="http://www.interworks.co.uk/wp-content/uploads/2012/01/DATACONNBLOGIMAGE1.jpg" alt="" /></p>
+<p>I would recommend that you enter a useful, descriptive, non-cryptic name such as &#8220;Order data from the Superstore Sales Excel File&#8221;, this will then be displayed in the Data pane:</p>
+<p><img src="http://www.interworks.co.uk/wp-content/uploads/2012/01/DATACONNBLOGIMAGE2.jpg" alt="" /></p>
+<p><strong>Renaming fields</strong></p>
+<p>So we&#8217;ve named our connection to make it easier to understand so let&#8217;s rename the fields to make them user friendly. Again unique descriptive names are much better than &#8220;ATV&#8221;. So to rename a field just right-click the field in the Dimensions or Measures pane and choose the menu item &#8220;Rename&#8221;.</p>
+<p><img src="http://www.interworks.co.uk/wp-content/uploads/2012/01/DATACONNBLOGIMAGE3.jpg" alt="" /></p>
+<p>If you want to revert your custom field name to the original as set in the file/database you can use the reset button in the rename field dialog box.</p>
+<p><img src="http://www.interworks.co.uk/wp-content/uploads/2012/01/DATACONNBLOGIMAGE4.jpg" alt="" /></p>
+<p><strong>Hiding fields</strong></p>
+<p>Quite often when connecting to databases using Tableau you will end up with ID fields everywhere, these ID fields are usually numerical so they end up in the Measures pane, but what use are they to the end user of your data connection? So let&#8217;s hide them, right-click on the field in question and click the &#8220;Hide&#8221; option.</p>
+<p><img src="http://www.interworks.co.uk/wp-content/uploads/2012/01/DATACONNBLOGIMAGE5.jpg" alt="" /></p>
+<p>If you would like to see your hidden fields again, click the small down arrow at the top of the Dimensions pane and click &#8220;Show hidden fields&#8221;, your hidden fields will then show again in the panes but be greyed out to denote they are hidden.</p>
+<p><img src="http://www.interworks.co.uk/wp-content/uploads/2012/01/DATACONNBLOGIMAGE6.jpg" alt="" /></p>
+<p>To unhide a field right-click on the name of the field and choose &#8220;Unhide&#8221;.</p>
+<p><img src="http://www.interworks.co.uk/wp-content/uploads/2012/01/DATACONNBLOGIMAGE7.jpg" alt="" /></p>
+<p><strong>Comments</strong></p>
+<p>Tableau has a feature that allows you to comment data fields, this can be used for describing where a field comes from or how a field is calculated for instance.</p>
+<p>To add a comment right-click on the field and choose &#8220;Field Properties&#8221;, then &#8220;Comment&#8221; in the sub-menu.</p>
+<p><img src="http://www.interworks.co.uk/wp-content/uploads/2012/01/DATACONNBLOGIMAGE8.jpg" alt="" /></p>
+<p>Now when hovering over a field you get a popup showing the comment.</p>
+<p><img src="http://www.interworks.co.uk/wp-content/uploads/2012/01/comment_example.png" alt="" /></p>
+<p><strong>Setting defaults</strong></p>
+<p>Another useful user experience tool is setting defaults on measures such as &#8220;formats&#8221; (decimal places etc), &#8220;Aggregations&#8221; (SUM, AVG etc), and &#8220;Sorts&#8221; (Alphabetical, by field etc). Each of these tools saves the end user from doing it themselves and potentially &#8216;getting it wrong&#8217;.</p>
+<p><img src="http://www.interworks.co.uk/wp-content/uploads/2012/01/DATACONNBLOGIMAGE9.jpg" alt="" /></p>
+<p>By using these tools you will save yourself time by not having to answer questions about the data connection, and save the time of your users making them happier, and everyone loves a happy user.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/data-connections-making-life-easy-for-your-fellow-colleagues/">Data Connections &#8211; Making life easy for your fellow colleagues</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fdata-connections-making-life-easy-for-your-fellow-colleagues%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/data-connections-making-life-easy-for-your-fellow-colleagues/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Dashboard Failure</title>
+		<link>http://interworks.co.uk/blog/dashboard-failure-success/</link>
+		<comments>http://interworks.co.uk/blog/dashboard-failure-success/#comments</comments>
+		<pubDate>Thu, 08 Dec 2011 20:46:31 +0000</pubDate>
+		<dc:creator><![CDATA[Mel Stephenson]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Design]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=2969</guid>
+		<description><![CDATA[<p>Nobody blogs about failure, right? In meetings and during training sessions I often talk about both failure and success. Specifically, I often mention my definition of dashboard failure which is if the user asks: &#8220;Can I download this data into Excel?&#8221; This will, of course, happen but your role as a designer is to identify what [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/dashboard-failure-success/">Dashboard Failure</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fdashboard-failure-success%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Nobody blogs about failure, right? In meetings and during training sessions I often talk about both failure and success. Specifically, I often mention my definition of dashboard failure which is if the user asks:</p>
+<p>&#8220;Can I download this data into Excel?&#8221;</p>
+<p>This will, of course, happen but your role as a designer is to identify what the question is that the dashboard has provoked (good) but left unanswered (baaaaad). By coaxing out of the user(s) of the dashboard what it is that they would want to do with that data in Excel you take yourself a step closer to a complete, rounded dashboard that:<br />
+<span style="color: #ff6600;">+</span> gives insight into a clearly defined question,<br />
+<span style="color: #ff6600;">+</span> has a flow that mirrors the likely flow of questions, and (critically)<br />
+<span style="color: #ff6600;">+</span> provides the data that allows the user to answer any questions that the dashboard has itself raised without any subsequent rework.</p>
+<p>Keep going until no-one asks for or needs Excel. Keep succeeding.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/dashboard-failure-success/">Dashboard Failure</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fdashboard-failure-success%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/dashboard-failure-success/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+		<item>
+		<title>Tableau T-Shirt Designs &#8211; Our least productive hours &#8230;..</title>
+		<link>http://interworks.co.uk/blog/tableau-t-shirt-designs-our-least-productive-hours-at-the-data-studio/</link>
+		<comments>http://interworks.co.uk/blog/tableau-t-shirt-designs-our-least-productive-hours-at-the-data-studio/#comments</comments>
+		<pubDate>Fri, 16 Sep 2011 15:54:14 +0000</pubDate>
+		<dc:creator><![CDATA[Kevin Pemberton]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Design]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[Tableau Customer Conference]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=2823</guid>
+		<description><![CDATA[<p>&#160; Tableau are running a competition to design a t-shirt for their 2011 conference (do try and go if you can &#8211; they are amazing). So we had a little fun this afternoon making some suggestions for a t-shirt and here&#8217;s one that we came up with. If you&#8217;d like to enter, tweet your suggestion with [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/tableau-t-shirt-designs-our-least-productive-hours-at-the-data-studio/">Tableau T-Shirt Designs &#8211; Our least productive hours &#8230;..</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Ftableau-t-shirt-designs-our-least-productive-hours-at-the-data-studio%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/09/statwars-logo-on-shirt-yoda1.jpg"><img class="aligncenter size-medium wp-image-2824" title="statwars-logo-on-shirt-yoda" src="http://www.interworks.co.uk/wp-content/uploads/2011/09/statwars-logo-on-shirt-yoda1-300x300.jpg" alt="" width="300" height="300" /></a></p>
+<p>&nbsp;</p>
+<p>Tableau are running a <a href="http://www.interworks.co.uk/wp-content/uploads/2011/09/Tableau-Tagline.png" target="_blank">competition</a> to design a t-shirt for their 2011 conference (do try and go if you can &#8211; they are amazing). So we had a little fun this afternoon making some suggestions for a t-shirt and here&#8217;s one that we came up with.</p>
+<p>If you&#8217;d like to enter, tweet your suggestion with the hashtag #tableautagline to @Tableau</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/tableau-t-shirt-designs-our-least-productive-hours-at-the-data-studio/">Tableau T-Shirt Designs &#8211; Our least productive hours &#8230;..</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Ftableau-t-shirt-designs-our-least-productive-hours-at-the-data-studio%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/tableau-t-shirt-designs-our-least-productive-hours-at-the-data-studio/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

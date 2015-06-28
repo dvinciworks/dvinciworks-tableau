@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>InterWorks - Tableau Software &#38; Business Intelligence Consulting &#187; panel</title>
+	<atom:link href="http://interworks.co.uk/tag/panel/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 26 Jun 2015 08:09:24 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>Panel charts in Tableau</title>
+		<link>http://interworks.co.uk/blog/panel-charts-in-tableau/</link>
+		<comments>http://interworks.co.uk/blog/panel-charts-in-tableau/#comments</comments>
+		<pubDate>Wed, 31 Aug 2011 11:18:31 +0000</pubDate>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Andy Cotgreave]]></category>
+		<category><![CDATA[forum]]></category>
+		<category><![CDATA[panel]]></category>
+		<category><![CDATA[Table Calculation]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[trellis]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=2761</guid>
+		<description><![CDATA[<p>Over on the forum, Jeremy asked about making trellis charts. For more info on trellis/panel charts, John Peltier has a great article about them. Consider a case where you want to visualise two measures (eg sales and time) for a Dimension with many members, such as State. There&#8217;s no pretty way to do this in [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/panel-charts-in-tableau/">Panel charts in Tableau</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fpanel-charts-in-tableau%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Over on the forum, <a href="http://www.tableausoftware.com/support/forum/topic/trellis-plots">Jeremy asked about making trellis charts</a>. For more info on trellis/panel charts, John Peltier has a <a href="http://peltiertech.com/Excel/ChartsHowTo/PanelChart1.html">great article about them</a>. Consider a case where you want to visualise two measures (eg sales and time) for a Dimension with many members, such as State. There&#8217;s no pretty way to do this in Tableau by default. Because there are lots of members in the State dimension (up to 50), you&#8217;ll end up with one of four things:</p>
+<ol>
+<li>A crowded line chart</li>
+<li>A very wide chart</li>
+<li>A very tall chart</li>
+<li>Something using filters to show just a few states at a time.</li>
+</ol>
+<p>None of the above are ideal. Instead, you can use the principles of small multiples to arrange your dimension members into a grid.  The workbook below shows the results.</p>
+<p><script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script></p>
+<div class="tableauPlaceholder" style="width:604px; height:895px;"><noscript><a href="#"><img alt="Panel chartThis demonstrates how to create an arbitrary grid for a multi-member Dimension " src="http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Pa&#47;Panelcharts&#47;Panelchart&#47;1_rss.png" style="height: 100%; width: 100%; border: none" /></a></noscript><object class="tableauViz" width="604" height="895" style="display:none;"><param name="host_url" value="http%3A%2F%2Fpublic.tableausoftware.com%2F" /><param name="name" value="Panelcharts&#47;Panelchart" /><param name="tabs" value="yes" /><param name="toolbar" value="yes" /><param name="static_image" value="http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Pa&#47;Panelcharts&#47;Panelchart&#47;1.png" /><param name="animate_transition" value="yes" /><param name="display_static_image" value="yes" /><param name="display_spinner" value="yes" /><param name="display_overlay" value="yes" /></object></div>
+<div style="width:604px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float:right; padding-right:8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/Panelcharts/Panelchart" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>Tableau loves small multiples. <a href="http://www.interworks.co.uk/blog/the-data-studio-blog/andy-cotgreave/the-journey-is-the-destination">I&#8217;ve blogged previously about my most satisfying creation</a>, which used small multiples. Tableau likes small multiples that are arranged with separate dimensions on the Rows and Columns. What we&#8217;re trying to do here, though, is arrange one dimension&#8217;s members arbitrarily on a grid. The data itself contains no information that tells Tableau which row or column it should appear in. Fortunately, we can use table calculations to create that information.</p>
+<p><strong>1. Create an index on the Dimension that you are arranging into panels</strong></p>
+<p>This is nothing more than an INDEX() function, set to compute using [Customer State]. It gives each State a numerical value, rising alphabetically.</p>
+<p><strong>2. Create a parameter to determin the number of columns</strong></p>
+<p>In the view above, you can change the number of column via the Parameter slider.</p>
+<p><strong>3. Create a calc for the Column value</strong></p>
+<p><strong></strong>To work out the correct column for each State, the calculation uses <a href="http://www.tableausoftware.com/support/knowledge-base/modulo-function-tableau-software">modular arithmetic</a>.</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/08/Panel-chart-column-calc.png"><img class="alignnone size-full wp-image-2765" title="Panel chart column calc" src="http://www.interworks.co.uk/wp-content/uploads/2011/08/Panel-chart-column-calc.png" alt="" width="607" height="158" /></a></p>
+<p>The calculation has to check if the modular result is zero &#8211; if it is, then that member actually needs to be in the right-most column.</p>
+<p><strong>4. Create a calc for the Row value</strong></p>
+<p>For this calculation, we don&#8217;t use modular arithmetic, but use a ceiling function based on the [index]/[columns count]. Tableau doesn&#8217;t have a native CEILING function but <a href="http://www.tableausoftware.com/support/forum/topic/floor-and-ceiling-calculations">Alex Kerin and Joe Mako came up with some on the Forum</a>.<br />
+That&#8217;s all we need. You can then build the worksheet as follows:<a href="http://www.interworks.co.uk/wp-content/uploads/2011/08/Panel-chart-layout.png"><img class="alignnone size-full wp-image-2770" title="Panel chart layout" src="http://www.interworks.co.uk/wp-content/uploads/2011/08/Panel-chart-layout.png" alt="" width="589" height="489" /></a></p>
+<p>I&#8217;ve done a bit of tweaking by hiding the Row/Col value headers &#8211; they are relevant to you as the report writer, but not the viewer. I also labelled the line ends to enable identification of each panel.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/panel-charts-in-tableau/">Panel charts in Tableau</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fpanel-charts-in-tableau%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/panel-charts-in-tableau/feed/</wfw:commentRss>
+		<slash:comments>17</slash:comments>
+		</item>
+	</channel>
+</rss>

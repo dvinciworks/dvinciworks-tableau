@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>InterWorks - Tableau Software &#38; Business Intelligence Consulting &#187; Server</title>
+	<atom:link href="http://interworks.co.uk/tag/server/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 26 Jun 2015 08:09:24 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>Comparing Performance on Tableau 8.3 Server vs Tableau 9.0 Server</title>
+		<link>http://interworks.co.uk/blog/comparing-performance-tableau-8-3-server-vs-tableau-9-0-server/</link>
+		<comments>http://interworks.co.uk/blog/comparing-performance-tableau-8-3-server-vs-tableau-9-0-server/#comments</comments>
+		<pubDate>Thu, 12 Feb 2015 13:51:53 +0000</pubDate>
+		<dc:creator><![CDATA[Glen Robinson]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[blog]]></category>
+		<category><![CDATA[Server]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[Tableau 9.0]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=11300</guid>
+		<description><![CDATA[<p>Here in InterWorks we are getting a little bit over-excited about Tableau 9. Especially, when this blog post came out from the Tableau mothership. Individual Query time improved by 10x Dashboard Query times improved by 9x Query Fusion improving times by 2x And Query Caching improving times by 50x Those are some pretty bold figures [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/comparing-performance-tableau-8-3-server-vs-tableau-9-0-server/">Comparing Performance on Tableau 8.3 Server vs Tableau 9.0 Server</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Here in InterWorks we are getting a little bit over-excited about Tableau 9.</p>
+<p>Especially, when this <a title="http://www.tableau.com/about/blog/2015/1/90-preview-query-performance-improvements-36406" href="http://www.tableau.com/about/blog/2015/1/90-preview-query-performance-improvements-36406" target="_blank">blog</a> post came out from the Tableau mothership.</p>
+<p style="padding-left: 30px;"><span style="color: #3366ff;">Individual Query time improved by <strong>10x</strong></span><br />
+<span style="color: #3366ff;">Dashboard Query times improved by <strong>9x</strong></span><br />
+<span style="color: #3366ff;">Query Fusion improving times by <strong>2x</strong></span><br />
+<span style="color: #3366ff;">And Query Caching improving times by <strong>50x</strong></span></p>
+<p>Those are some pretty bold figures to put out there..<br />
+Not being one to believe everything that I’m told, I thought that maybe it would be great for someone to do their own independent testing to check on those numbers.</p>
+<p>So…… I waited, and as no one did, it was left to me to do my own testing.<br />
+So here we go….</p>
+<h2>Testing</h2>
+<p><strong>Step 1:</strong> Build out 2 identical servers in Amazon Web Services EC2 (<a title="http://aws.amazon.com/ec2/" href="http://aws.amazon.com/ec2/" target="_blank">http://aws.amazon.com/ec2/</a>)<br />
+I went for an <strong>m3.2xlarge</strong> server which has 8 vCPU (Intel Xeon E5-2670 v2) and 30 GB of RAM. (A pretty standard server setup.)</p>
+<p><strong>Step 2:</strong> Install Tableau 8.3 64bit Server on the first server, and Tableau 9 Beta 4 64-bit Server on the other.<br />
+<strong>Step 3:</strong> Upload my 150 million row Data extract to both servers.<br />
+<strong>Step 4:</strong> Create a dashboard to query the Data Source. (if you click on the image it will expand)</p>
+<div id="attachment_11308" style="width: 310px" class="wp-caption alignnone"><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image001.png"><img class="size-medium wp-image-11308" src="http://interworks.co.uk/wp-content/uploads/2015/02/image001-300x246.png" alt="Tableau Server Performance Testing Dashboard" width="300" height="246" /></a>
+<p class="wp-caption-text">Tableau Server Performance Testing Dashboard</p>
+</div>
+<p><strong>Step 5:</strong> Test dashboard, record the timings and compare.</p>
+<h2>Results</h2>
+<p><strong>First let’s look at the Tableau 8.3 performance recording.</strong></p>
+<div id="attachment_11309" style="width: 357px" class="wp-caption alignnone"><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image003.png"><img class=" wp-image-11309" src="http://interworks.co.uk/wp-content/uploads/2015/02/image003-300x154.png" alt="Tableau 8.3 8 vCPU Performance Recording" width="347" height="178" /></a>
+<p class="wp-caption-text">Tableau 8.3 8vCPU Performance Recording</p>
+</div>
+<p>So what we have here is a pretty standard Tableau 8 dashboard performance recording, with each query happening sequentially, one after the other.<br />
+The duration of the longest query came in at 10.78 seconds, with the overall duration from start to finish of around 22 seconds.</p>
+<p><strong>Now, let’s take a look at the same query on Tableau 9 Server</strong></p>
+<div id="attachment_11310" style="width: 355px" class="wp-caption alignnone"><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image005.png"><img class=" wp-image-11310" src="http://interworks.co.uk/wp-content/uploads/2015/02/image005-300x153.png" alt="Tableau 9 8vCPU Performance Recording" width="345" height="176" /></a>
+<p class="wp-caption-text">Tableau 9 8vCPU Performance Recording</p>
+</div>
+<p>Whoa!!! So what’s happening here then?</p>
+<p>To start with, we have much shorter query durations, with the longest query length down from 10.78 to 5.4 seconds, and we also have parallel query executions to bring the overall time down from 22 seconds to 7.5 seconds</p>
+<p>That’s not bad at all…<br />
+Now, let’s take a look at the underlying server performance, to see what’s happening</p>
+<p><strong>First the Tableau 8.3 server</strong></p>
+<div id="attachment_11302" style="width: 310px" class="wp-caption alignnone"><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image007.png"><img class="size-medium wp-image-11302" src="http://interworks.co.uk/wp-content/uploads/2015/02/image007-300x231.png" alt="Tableau 8.3 8vCPU CPU Performance" width="300" height="231" /></a>
+<p class="wp-caption-text">Tableau 8.3 8vCPU CPU Performance</p>
+</div>
+<p>There are 2 points to notice here.</p>
+<p>Firstly, the total processor usage never gets above 27% <span style="color: #0000ff;">[blue]</span> of what the server is capable of for the duration of the query.<br />
+Secondly, both the VizQL (vizqlserver <span style="color: #800080;">[purple]</span>) and Data Engine (tdeserver64<span style="color: #339966;"> [green]</span>) processes max out at one vCPU each.</p>
+<p><strong>Now let&#8217;s take a look at the Tableau 9 server..</strong></p>
+<div id="attachment_11303" style="width: 310px" class="wp-caption alignnone"><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image009.png"><img class="size-medium wp-image-11303" src="http://interworks.co.uk/wp-content/uploads/2015/02/image009-300x232.png" alt="Tableau 9 8vCPU CPU performance" width="300" height="232" /></a>
+<p class="wp-caption-text">Tableau 9 8vCPU CPU performance</p>
+</div>
+<p>We see that again the VizQL process continues to use 1 vCPU, but now the Data Engine is multi-core, with the result that the total processor usage peaked at around 96%, and a much much shorter overall query time.</p>
+<p>Now, I know what you’re thinking; what effect does increasing the number of cores in a server have on the overall query times?</p>
+<p>As you’ve asked so nicely, let’s find out…</p>
+<p>I changed the underlying image on AWS from a m3.2xlarge to a c4.4xlarge for both the Tableau 8.3 and Tableau 9 Servers.</p>
+<p>A <strong>c4.4xlarge</strong> server has 16 vCPU (Intel Xeon E5-2666 v3) with 30GB of RAM (effectively doubling the core count for this test)</p>
+<p><strong>The same query run on Tableau 8.3 Server.</strong></p>
+<table style="height: 27px; border-color: #fcfcfc;" border="0" width="431" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td style="border-color: #ffffff;">
+<div id="attachment_11304" style="width: 310px" class="wp-caption alignnone"><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image011.png"><img class="size-medium wp-image-11304" src="http://interworks.co.uk/wp-content/uploads/2015/02/image011-300x160.png" alt="Tableau 8.3 16vCPU Performance Recording" width="300" height="160" /></a>
+<p class="wp-caption-text">Tableau 8.3 16vCPU Performance Recording</p>
+</div>
+</td>
+<td style="border-color: #ffffff;">
+<div id="attachment_11305" style="width: 310px" class="wp-caption alignnone"><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image013.png"><img class="size-medium wp-image-11305" src="http://interworks.co.uk/wp-content/uploads/2015/02/image013-300x238.png" alt="Tableau 8.3 16vCPU Processor Performance" width="300" height="238" /></a>
+<p class="wp-caption-text">Tableau 8.3 16vCPU Processor Performance</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>We <em>do</em> see a shorter overall query time (down from 22 seconds to around 16 seconds).</p>
+<p>But, we see the same process &amp; processor usage profile as Tableau 8.3 running on 8 vCPU, with only one core being used for each of the VizQL and Data Engine processes.<br />
+(Note that the improved query times moving from 8 to 16 vCPU may well be due to the changes in the underlying hardware, including the use of a faster Processor.</p>
+<p><strong>Now, on to Tableau 9 running on 16 vCPU</strong></p>
+<table style="height: 259px; border-color: #fcfcfc;" border="0" width="641" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td style="border-color: #ffffff;" scope="row">
+<div id="attachment_11306" style="width: 310px" class="wp-caption alignnone"><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image015.png"><img class="size-medium wp-image-11306" src="http://interworks.co.uk/wp-content/uploads/2015/02/image015-300x150.png" alt="Tableau 9 16vCPU Performance Recording" width="300" height="150" /></a>
+<p class="wp-caption-text">Tableau 9 16vCPU Performance Recording</p>
+</div>
+</td>
+<td style="border-color: #ffffff;">
+<div id="attachment_11307" style="width: 310px" class="wp-caption alignnone"><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image017.png"><img class="size-medium wp-image-11307" src="http://interworks.co.uk/wp-content/uploads/2015/02/image017-300x235.png" alt="Tableau 9 16vCPU Processor Performance" width="300" height="235" /></a>
+<p class="wp-caption-text">Tableau 9 16vCPU Processor Performance</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Again, we see the parallel querying and also, and an improvement in query times, with the longest query now taking 3.34 seconds, and the overall query time down to a sparkling 4.5 seconds.</p>
+<p>This is reflected in the performance chart, where again we see the multi-core in action. (This time peaking at just under 60% utilisation)</p>
+<h2>Summary and Conclusions</h2>
+<p>&nbsp;</p>
+<table style="height: 102px;" width="865">
+<tbody>
+<tr>
+<td><strong><span style="color: #000080;">Server Type and Tableau Version</span></strong></td>
+<td><strong><span style="color: #000080;">Time Taken for Longest Query (secs)</span></strong></td>
+<td><strong><span style="color: #000080;">Overall Dashboard Duration (secs)</span></strong></td>
+</tr>
+<tr>
+<td>Tableau 8.3 (8vCPU)</td>
+<td><strong>10.78 secs</strong></td>
+<td><strong>22 secs</strong></td>
+</tr>
+<tr>
+<td>Tableau 8.3 (16vCPU)</td>
+<td><strong>8.19 secs</strong></td>
+<td><strong>16 secs</strong></td>
+</tr>
+<tr>
+<td>Tableau 9 Beta 4 (8vCPU)</td>
+<td><strong>5.4 secs</strong></td>
+<td><strong>7.5 secs</strong></td>
+</tr>
+<tr>
+<td>Tableau 9 Beta 4 (16vCPU)</td>
+<td><strong>3.34 secs</strong></td>
+<td><strong>4.5 secs</strong></td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p><strong>So what to make of all those figures…</strong></p>
+<ol>
+<li>In my test, moving from 8 vCPU to 16 vCPU give me a speed increase of around 30% for Tableau 8.3 and around 60% for Tableau 9. As I said earlier, this may well be due to the underlying hardware being better on the c4.4xlarge than on the m3.2xlarge, and nothing to do with Tableau itself. (Investigating this thoroughly is beyond the remit of this piece.)</li>
+<li>However, upgrading from Tableau 8.3 to 9.0 on 8 vCPU server boosted performance by <span style="color: #000080;"><strong>just under 3 times</strong></span>, and for the 16 vCPU server, by <span style="color: #000080;"><strong>just</strong> <strong>over 3.5 times.</strong></span></li>
+</ol>
+<p>Those are some pretty thrilling figures. They&#8217;re not quite in the same league as the Tableau Blog figures, but still interesting enough..</p>
+<p>I guess it&#8217;s going to depend on your own dashboards, your datasets and the overall load on your Servers, as to what performance improvements you will see.<br />
+Also, in this testing I don’t take into account the other features offered in Tableau 9 such as Query Caching or Query Fusion (which I haven’t gone into here, and if no-one else writes about these features, I may have to do so myself)</p>
+<p>So overall, you are going to see great improvements in the times taken to render dashboards. This is going to make your customers happier which is going to make you happier.<br />
+However, what I’m not so sure about is what effect this upgrade is going to have on your servers.<br />
+There are a few unknowns out there such as;</p>
+<ul>
+<li>Are you going to see more user load on your Tableau server, as they now are more readily gain access to their reports?</li>
+<li>Are you going to be publishing dashboards which you would never have done on Tableau 8 because their performance wasn’t acceptable, but is now (additional load)?</li>
+<li>Is having a more ‘peaky’ CPU performance profile going to cause you issues, which may necessitate additional Hardware purchases?</li>
+<li>Or will having Query Caching and Query Fusion save the day, and actually result in less load on the server?</li>
+</ul>
+<p>All these are questions and more are what makes this server upgrade extremely exciting and takes Tableau 9.0 to a #WholeNewLevel. If you&#8217;re yet to download Tableau Server, or would like more information on it, please <a href="http://interworks.co.uk/business-intelligence/tableau-server/">click here </a>or feel free to shoot me a <a href="http://interworks.co.uk/team/glen-robinson/">message.</a></p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/comparing-performance-tableau-8-3-server-vs-tableau-9-0-server/">Comparing Performance on Tableau 8.3 Server vs Tableau 9.0 Server</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/comparing-performance-tableau-8-3-server-vs-tableau-9-0-server/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+	</channel>
+</rss>

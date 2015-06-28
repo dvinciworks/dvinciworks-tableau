@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: It’s your round at the bar…</title>
+	<atom:link href="http://interworks.co.uk/blog/radial-bar-chart/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/blog/radial-bar-chart/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 05 Jun 2015 09:45:31 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>By: Tapaswini</title>
+		<link>http://interworks.co.uk/blog/radial-bar-chart/#comment-204808</link>
+		<dc:creator><![CDATA[Tapaswini]]></dc:creator>
+		<pubDate>Thu, 11 Dec 2014 13:17:03 +0000</pubDate>
+		<guid isPermaLink="false">http://interworks.co.uk/?p=9389#comment-204808</guid>
+		<description><![CDATA[Hi Dave,
+
+This post was really helpful. But i want to know can we fill the inner circle with a color??
+
+Thanks.
+Tapaswini]]></description>
+		<content:encoded><![CDATA[<p>Hi Dave,</p>
+<p>This post was really helpful. But i want to know can we fill the inner circle with a color??</p>
+<p>Thanks.<br />
+Tapaswini</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Dave Hart</title>
+		<link>http://interworks.co.uk/blog/radial-bar-chart/#comment-118558</link>
+		<dc:creator><![CDATA[Dave Hart]]></dc:creator>
+		<pubDate>Wed, 22 Oct 2014 16:43:01 +0000</pubDate>
+		<guid isPermaLink="false">http://interworks.co.uk/?p=9389#comment-118558</guid>
+		<description><![CDATA[Hi AP,
+definitely you could use a similar approach. you wouldn&#039;t need to do the union as you wouldn&#039;t need two plotting points for each data point. you&#039;d need to change the RADIAL_ANGLE field to remove the IF statement because you wouldn&#039;t have a PathOrder field anymore, and you&#039;d have to change the calculation there to make it line up on time rather than a straight fraction of the circle based on record count. You&#039;d also need to make sure that the path order was correct to make it draw the line in the correct order. The easiest way to do that would be to create an INDEX() field and send that the same way as the RADIAL calcs and then drop that on &quot;Path&quot;. But yes, it could be done using the same sort of geometry with just a few changes.
+Good Luck!
+Dave]]></description>
+		<content:encoded><![CDATA[<p>Hi AP,<br />
+definitely you could use a similar approach. you wouldn&#8217;t need to do the union as you wouldn&#8217;t need two plotting points for each data point. you&#8217;d need to change the RADIAL_ANGLE field to remove the IF statement because you wouldn&#8217;t have a PathOrder field anymore, and you&#8217;d have to change the calculation there to make it line up on time rather than a straight fraction of the circle based on record count. You&#8217;d also need to make sure that the path order was correct to make it draw the line in the correct order. The easiest way to do that would be to create an INDEX() field and send that the same way as the RADIAL calcs and then drop that on &#8220;Path&#8221;. But yes, it could be done using the same sort of geometry with just a few changes.<br />
+Good Luck!<br />
+Dave</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: abhisekh</title>
+		<link>http://interworks.co.uk/blog/radial-bar-chart/#comment-108637</link>
+		<dc:creator><![CDATA[abhisekh]]></dc:creator>
+		<pubDate>Sat, 18 Oct 2014 18:13:38 +0000</pubDate>
+		<guid isPermaLink="false">http://interworks.co.uk/?p=9389#comment-108637</guid>
+		<description><![CDATA[Hi Dave,
+This post was a brilliant view to understand how to plot a bar chart radially. I am trying a similar plot but using line chart to plot time series around a circle. I have 12 months of plot and i want to divide the circle into twelve equal sectors and plot the time series around it. Should i be using the similar translation for plotting the x,y co ordinate....Let us know your thoughts.
+Thanks,
+AP]]></description>
+		<content:encoded><![CDATA[<p>Hi Dave,<br />
+This post was a brilliant view to understand how to plot a bar chart radially. I am trying a similar plot but using line chart to plot time series around a circle. I have 12 months of plot and i want to divide the circle into twelve equal sectors and plot the time series around it. Should i be using the similar translation for plotting the x,y co ordinate&#8230;.Let us know your thoughts.<br />
+Thanks,<br />
+AP</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Tam Nguyen</title>
+		<link>http://interworks.co.uk/blog/radial-bar-chart/#comment-92629</link>
+		<dc:creator><![CDATA[Tam Nguyen]]></dc:creator>
+		<pubDate>Wed, 24 Sep 2014 00:11:18 +0000</pubDate>
+		<guid isPermaLink="false">http://interworks.co.uk/?p=9389#comment-92629</guid>
+		<description><![CDATA[Dave, love your creativity and imagination!]]></description>
+		<content:encoded><![CDATA[<p>Dave, love your creativity and imagination!</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Alex Kerin</title>
+		<link>http://interworks.co.uk/blog/radial-bar-chart/#comment-82216</link>
+		<dc:creator><![CDATA[Alex Kerin]]></dc:creator>
+		<pubDate>Thu, 28 Aug 2014 14:15:37 +0000</pubDate>
+		<guid isPermaLink="false">http://interworks.co.uk/?p=9389#comment-82216</guid>
+		<description><![CDATA[If you do choose to use this for time period data, with minute or hour taking the place of row ID, you need to change RADIAL ANGLE to:
+
+-(INDEX()-1) *
+(1/WINDOW_COUNT(COUNT([Minute]))) * 2 * PI() +(pi()/2)
+
+The minus reverses the direction so the clock is clockwise (!), and the extra pi/2 moves the  0 minute or hour to the top.]]></description>
+		<content:encoded><![CDATA[<p>If you do choose to use this for time period data, with minute or hour taking the place of row ID, you need to change RADIAL ANGLE to:</p>
+<p>-(INDEX()-1) *<br />
+(1/WINDOW_COUNT(COUNT([Minute]))) * 2 * PI() +(pi()/2)</p>
+<p>The minus reverses the direction so the clock is clockwise (!), and the extra pi/2 moves the  0 minute or hour to the top.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Alex Kerin</title>
+		<link>http://interworks.co.uk/blog/radial-bar-chart/#comment-82210</link>
+		<dc:creator><![CDATA[Alex Kerin]]></dc:creator>
+		<pubDate>Thu, 28 Aug 2014 13:40:43 +0000</pubDate>
+		<guid isPermaLink="false">http://interworks.co.uk/?p=9389#comment-82210</guid>
+		<description><![CDATA[Dave, great job. There&#039;s one usage in particular that this chart is great for - time series data where you want to show values over the 24 hours in a day, minutes in an hour, or seconds in a minute. If you show these on a flat x axis, it&#039;s difficult to follow any patterns as you go from 11PM to midnight, 59 minutes (or seconds) to 0 minutes.
+
+Depending on the pattern of the data, you can maybe help by moving the day/hour/minute start to the middle of the flat x-axis (you can manually sort the minute discrete pill; select all of the 0 to 29 entries if you&#039;re looking at minutes, and hit move down 30 times..). 
+
+However, the radial bar chart is a much better way to understand the data. Thank you for this.]]></description>
+		<content:encoded><![CDATA[<p>Dave, great job. There&#8217;s one usage in particular that this chart is great for &#8211; time series data where you want to show values over the 24 hours in a day, minutes in an hour, or seconds in a minute. If you show these on a flat x axis, it&#8217;s difficult to follow any patterns as you go from 11PM to midnight, 59 minutes (or seconds) to 0 minutes.</p>
+<p>Depending on the pattern of the data, you can maybe help by moving the day/hour/minute start to the middle of the flat x-axis (you can manually sort the minute discrete pill; select all of the 0 to 29 entries if you&#8217;re looking at minutes, and hit move down 30 times..). </p>
+<p>However, the radial bar chart is a much better way to understand the data. Thank you for this.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: kk molugu</title>
+		<link>http://interworks.co.uk/blog/radial-bar-chart/#comment-56576</link>
+		<dc:creator><![CDATA[kk molugu]]></dc:creator>
+		<pubDate>Thu, 08 May 2014 01:31:27 +0000</pubDate>
+		<guid isPermaLink="false">http://interworks.co.uk/?p=9389#comment-56576</guid>
+		<description><![CDATA[Dave.
+
+This is phenomenal.  Even though some viz experts might have a diff opinion, this is a crowd pleaser. 
+
+..kk]]></description>
+		<content:encoded><![CDATA[<p>Dave.</p>
+<p>This is phenomenal.  Even though some viz experts might have a diff opinion, this is a crowd pleaser. </p>
+<p>..kk</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Paul Banoub</title>
+		<link>http://interworks.co.uk/blog/radial-bar-chart/#comment-44607</link>
+		<dc:creator><![CDATA[Paul Banoub]]></dc:creator>
+		<pubDate>Thu, 06 Feb 2014 14:45:53 +0000</pubDate>
+		<guid isPermaLink="false">http://interworks.co.uk/?p=9389#comment-44607</guid>
+		<description><![CDATA[Hi Dave
+
+I totally love this view. Tableau should provide this as a default chart type IMHO.
+
+Cheers
+@paulbanoub
+www.vizninja.com]]></description>
+		<content:encoded><![CDATA[<p>Hi Dave</p>
+<p>I totally love this view. Tableau should provide this as a default chart type IMHO.</p>
+<p>Cheers<br />
+@paulbanoub<br />
+<a href="http://www.vizninja.com" rel="nofollow">http://www.vizninja.com</a></p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Dave Hart</title>
+		<link>http://interworks.co.uk/blog/radial-bar-chart/#comment-43366</link>
+		<dc:creator><![CDATA[Dave Hart]]></dc:creator>
+		<pubDate>Mon, 13 Jan 2014 11:35:17 +0000</pubDate>
+		<guid isPermaLink="false">http://interworks.co.uk/?p=9389#comment-43366</guid>
+		<description><![CDATA[Thanks for the comments I&#039;m glad you&#039;ve enjoyed the post even if it is a little unorthodox. Don&#039;t feel guilty though Kelly, embrace the educational value of learning to use tableau as a data-driven drawing tool, that&#039;s how I justified it to myself anyway...
+
+As to whether there are any actual implementations, I think it would depend largely on whether its aesthetic qualities could add to the users understanding, or whether a circular image in the centre of the chart gave greater context. I think adding circular reference lines to the background might help. Maybe something like points about sea level around the equator (or any other given latitude or longitude supplied by a parameter). 
+
+I&#039;ll put my thinking cap on and try to find some &quot;real&quot; data to play with... if you&#039;ve got any more ideas though I&#039;d love to hear them. 
+
+thanks for reading!
+Dave]]></description>
+		<content:encoded><![CDATA[<p>Thanks for the comments I&#8217;m glad you&#8217;ve enjoyed the post even if it is a little unorthodox. Don&#8217;t feel guilty though Kelly, embrace the educational value of learning to use tableau as a data-driven drawing tool, that&#8217;s how I justified it to myself anyway&#8230;</p>
+<p>As to whether there are any actual implementations, I think it would depend largely on whether its aesthetic qualities could add to the users understanding, or whether a circular image in the centre of the chart gave greater context. I think adding circular reference lines to the background might help. Maybe something like points about sea level around the equator (or any other given latitude or longitude supplied by a parameter). </p>
+<p>I&#8217;ll put my thinking cap on and try to find some &#8220;real&#8221; data to play with&#8230; if you&#8217;ve got any more ideas though I&#8217;d love to hear them. </p>
+<p>thanks for reading!<br />
+Dave</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Data Enthusiast (@DataEnthusiast)</title>
+		<link>http://interworks.co.uk/blog/radial-bar-chart/#comment-43231</link>
+		<dc:creator><![CDATA[Data Enthusiast (@DataEnthusiast)]]></dc:creator>
+		<pubDate>Sat, 11 Jan 2014 17:31:32 +0000</pubDate>
+		<guid isPermaLink="false">http://interworks.co.uk/?p=9389#comment-43231</guid>
+		<description><![CDATA[Dave,
+
+This is slick. I really think this could be useful in a sense of looking at say the delta between forecasted units/dollars vs actuals. Any other ideas ? 
+
+Thanks,
+Joshua]]></description>
+		<content:encoded><![CDATA[<p>Dave,</p>
+<p>This is slick. I really think this could be useful in a sense of looking at say the delta between forecasted units/dollars vs actuals. Any other ideas ? </p>
+<p>Thanks,<br />
+Joshua</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

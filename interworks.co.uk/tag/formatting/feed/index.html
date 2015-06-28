@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>InterWorks - Tableau Software &#38; Business Intelligence Consulting &#187; formatting</title>
+	<atom:link href="http://interworks.co.uk/tag/formatting/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 26 Jun 2015 08:09:24 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>Dual axes: nice formatting</title>
+		<link>http://interworks.co.uk/blog/dual-axes-nice-formatting/</link>
+		<comments>http://interworks.co.uk/blog/dual-axes-nice-formatting/#comments</comments>
+		<pubDate>Thu, 24 Mar 2011 22:08:22 +0000</pubDate>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Andy Cotgreave]]></category>
+		<category><![CDATA[axis]]></category>
+		<category><![CDATA[Dual Axis]]></category>
+		<category><![CDATA[formatting]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=2231</guid>
+		<description><![CDATA[<p>You&#8217;ve built a nice chart using synchronised dual axes (maybe it&#8217;s a lollipop chart &#8211; as described in my previous posts!). It looks great, but you&#8217;re just left with a niggling little design flaw: those dual axis sure take up a lot of space, at the top and the bottom of your viz: What can [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/dual-axes-nice-formatting/">Dual axes: nice formatting</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fdual-axes-nice-formatting%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>You&#8217;ve built a nice chart using synchronised dual axes (maybe it&#8217;s a lollipop chart &#8211; <a href="http://www.interworks.co.uk/blog/the-data-studio-blog/andy-cotgreave/lollipop-charts">as described in my previous posts</a>!). It looks great, but you&#8217;re just left with a niggling little design flaw: those dual axis sure take up a lot of space, at the top <strong>and </strong>the bottom of your viz:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/dual-axes-take-up-space.png"><img class="alignnone size-full wp-image-2236" title="dual axes take up space" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/dual-axes-take-up-space.png" alt="" width="495" height="507" /></a></p>
+<p>What can we do about this? The first thing I thought of was to format all the Tick Marks and Titles away from the top axis:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/dual-axes-space-saved-badly.png"><img class="alignnone size-full wp-image-2232" title="dual axes space saved badly" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/dual-axes-space-saved-badly.png" alt="" width="495" height="507" /></a></p>
+<p>That&#8217;s no good &#8211; there&#8217;s a huge useless white banner of dead space at the top of the chart now.</p>
+<p>Instead, why not just format each axis to show one of the important parts: one to show the <strong>title </strong>and one to show the <strong>tick marks</strong>? This is the end result:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/dual-axes-space-saved.png"><img class="alignnone size-full wp-image-2235" title="dual axes space saved" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/dual-axes-space-saved.png" alt="" width="619" height="634" /></a></p>
+<p>Now I have the best of both worlds &#8211; the user&#8217;s not aware of any dead space, and nothing gets repeated. To format the axis, right-click anywhere on the axis on the worksheet and choose <strong>Edit axis&#8230;</strong></p>
+<p>On the top axis, leave the Title as it is, and show just the Minor tick marks, making sure they are the same interval as the Major tick marks on the bottom axis:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/tick-marks.png"><img class="alignnone size-full wp-image-2234" title="tick marks" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/tick-marks.png" alt="" width="379" height="394" /></a>:</p>
+<p>On the bottom axis, leave the tick marks, and delete the Title:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/title.png"><img class="alignnone size-full wp-image-2233" title="title" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/title.png" alt="" width="379" height="393" /></a></p>
+<p>Job done! You&#8217;ve maximised your available space <em>and </em>made your users&#8217; lives a bit easier.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/dual-axes-nice-formatting/">Dual axes: nice formatting</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fdual-axes-nice-formatting%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/dual-axes-nice-formatting/feed/</wfw:commentRss>
+		<slash:comments>6</slash:comments>
+		</item>
+		<item>
+		<title>Lollipop charts: the search for the perfect mark (part one)</title>
+		<link>http://interworks.co.uk/blog/lollipop-charts/</link>
+		<comments>http://interworks.co.uk/blog/lollipop-charts/#comments</comments>
+		<pubDate>Thu, 10 Mar 2011 06:22:30 +0000</pubDate>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Andy Cotgreave]]></category>
+		<category><![CDATA[Dual Axis]]></category>
+		<category><![CDATA[formatting]]></category>
+		<category><![CDATA[lollipop]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[visualisation]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=2182</guid>
+		<description><![CDATA[<p>Here&#8217;s the problem: I am visualising satisfaction rates over multiple dimensions. In almost all cases, satisfaction rates are high (between 70% and 100%). I want a visualisation that allows comparison over multiple dimensions that is also nice on the eye. Below is the result: a lollipop chart. Although I stumbled across this design by trial [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/lollipop-charts/">Lollipop charts: the search for the perfect mark (part one)</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Flollipop-charts%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Here&#8217;s the problem: I am visualising satisfaction rates over multiple dimensions. In almost all cases, satisfaction rates are high (between 70% and 100%). I want a visualisation that allows comparison over multiple dimensions that is also nice on the eye. Below is the result: a lollipop chart. Although I stumbled across this design by trial and error in Tableau, it is a chart type found elsewhere, eg on <a href="http://chandoo.org/wp/2010/04/09/dot-plot-panel-chart/">Chandoo&#8217;s excellent Excel blog</a>. What I thought I would do in this post is explain why I think it&#8217;s a great chart in this situation and how to do it in Tableau. <strong>Note: in this post, I&#8217;m using the Superstore data, not my real dataset. </strong>In my next post, I&#8217;ll explain how to build a lollipop in Tableau. If you can&#8217;t wait that long, you could try it yourself as your homework <img src="http://interworks.co.uk/wp-includes/images/smilies/icon_smile.gif" alt=":-)" class="wp-smiley" /></p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/lollipop.png"><img class="alignnone size-full wp-image-2186" title="lollipop" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/lollipop.png" alt="" width="631" height="618" /></a></p>
+<p><br class="spacer_" /></p>
+<p>To me, it&#8217;s a great way to reduce the data-ink ratio while retaining readability. What do you think? Here&#8217;s how I arrived at this design.</p>
+<p>Tableau&#8217;s default visualisation is the bar. What&#8217;s the problem with this? Well, when the bars are all very long (as is the case with my data), there&#8217;s just too much ink, and it creates an unpleasant <a href="http://en.wikipedia.org/wiki/Moir%C3%A9_pattern">Moire effect</a>:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/default-bars-db.png"><img class="alignnone size-full wp-image-2202" title="default bars (db)" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/default-bars-db.png" alt="" width="495" height="507" /></a></p>
+<p>How can we solve this? Well, we can reduce the bars to wafer thin ones, but this looks, well, flakey:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/thin-lines-db.png"><img class="alignnone size-full wp-image-2201" title="thin lines (db)" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/thin-lines-db.png" alt="" width="495" height="507" /></a></p>
+<p>Maybe we should push the size slider to the max (and add a border). This is what I would normally do in this situation. It removes the Moire effect, and isn&#8217;t too bad, but boy, there&#8217;s now a lot of ink being used:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/fat-bars-and-borders-db.png"><img class="alignnone size-full wp-image-2200" title="fat bars and borders (db)" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/fat-bars-and-borders-db.png" alt="" width="495" height="507" /></a></p>
+<p>Given there&#8217;s too much ink, maybe the bar itself is the problem. So how does a circle work? Well, the problem is that the circle is a long long way away from the label. When we try and foist this kind of thing on our users, they tell us it&#8217;s too hard to relate the circle to the name, even using shaded lines:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/circle-db.png"><img class="alignnone size-full wp-image-2199" title="circle (db)" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/circle-db.png" alt="" width="495" height="507" /></a></p>
+<p>We can get round this distance problem in a couple of ways. One is to fix the axis so that it&#8217;s range is only as wide as the min/max values:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/circle-4-db.png"><img class="alignnone size-full wp-image-2196" title="circle 4 (db)" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/circle-4-db.png" alt="" width="495" height="507" /></a></p>
+<p>But we all know that an axis that doesn&#8217;t start at zero is a bad thing, right? Well, sometimes it isn&#8217;t a bad thing, but it sure makes the states at the bottom of the list look like poor performers, even though they&#8217;re actually only 0.6% lower than the top of the list. Best in this case to keep the axis starting at zero. Maybe we could label the circle directly instead:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/circle-3-db.png"><img class="alignnone size-full wp-image-2197" title="circle 3 (db)" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/circle-3-db.png" alt="" width="495" height="507" /></a></p>
+<p>This still isn&#8217;t right: all that white space at the left of the chart seems wrong.</p>
+<p>And this was when I had my brainwave. Thick bars are no good and lonely circles are no good. How about making a combination of them both? And that&#8217;s how I came up with a lollipop.I think it has the following benefits:</p>
+<ul>
+</ul>
+<ol>
+<li>Can be used when all dimension members have high values (i.e. long/tall bars in a bar chart)</li>
+<li>Greatly reduces the data-ink ratio while maintaining a clear link to axis labels</li>
+<li>All the users I&#8217;ve shown it to so far have really engaged with it &#8211; they think it&#8217;s both pretty and easy to read</li>
+</ol>
+<ul>
+</ul>
+<p>I also like the fact that it works if you add more dimensions to make small multiples:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/lollipop-multiple-dims-db2.png"><img class="alignnone size-medium wp-image-2194" title="lollipop (multiple dims) (db2)" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/lollipop-multiple-dims-db2-292x300.png" alt="" width="292" height="300" /></a></p>
+<p>Next time we&#8217;ll look at how to build it in Tableau. In the meantime, let me know your thoughts.</p>
+<p><br class="spacer_" /></p>
+<p><br class="spacer_" /></p>
+<p><br class="spacer_" /></p>
+<p><br class="spacer_" /></p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/lollipop-charts/">Lollipop charts: the search for the perfect mark (part one)</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Flollipop-charts%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/lollipop-charts/feed/</wfw:commentRss>
+		<slash:comments>10</slash:comments>
+		</item>
+		<item>
+		<title>Text-labelled bars: beyond the default</title>
+		<link>http://interworks.co.uk/blog/text-label-beyond-default/</link>
+		<comments>http://interworks.co.uk/blog/text-label-beyond-default/#comments</comments>
+		<pubDate>Tue, 24 Aug 2010 13:01:35 +0000</pubDate>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Andy Cotgreave]]></category>
+		<category><![CDATA[formatting]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[text labels]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1114</guid>
+		<description><![CDATA[<p>By default, Tableau won&#8217;t label a bar. The axis is enough for viewers. However, a lot of our users say to us, &#8220;We like the bar, but we want to see the numbers as well&#8220;. Rather than reproduce a bar chart as a table, labelling the bars is the obvious way to go. Tableau provides [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/text-label-beyond-default/">Text-labelled bars: beyond the default</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Ftext-label-beyond-default%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>By default, Tableau won&#8217;t label a bar. The axis is enough for viewers. However, a lot of our users say to us, &#8220;<strong>We like the bar, but we want to see the numbers as well</strong>&#8220;. Rather than reproduce a bar chart as a table, labelling the bars is the obvious way to go. Tableau provides an obvious way to do this, but this viz below shows 3 other ways you can label the bars.</p>
+<p>
+<script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script><object class="tableauViz" width="544" height="669" style="display:none;"><param name="name" value="Labellingbars/Howtolabelbars" /><param name="toolbar" value="yes" /></object><noscript>How to label bars <br /><a href="#"><img alt="How to label bars " src="http://public.tableausoftware.com/static/images/Labellingbars-Howtolabelbars_rss.png" height="100%" /></a></noscript></p>
+<div style="width:544px;height:22px;padding:0px 10px 0px 0px; color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float:right; padding-right:8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/Labellingbars/Howtolabelbars" target="_blank">Powered by Tableau</a></div>
+</div>
+<div style="padding: 0px 10px 0px 0px; width: 544px; height: 22px; color: black; font-family: verdana,helvetica,arial,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 8pt; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;">
+<div style="float: right; padding-right: 8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/Labellingbars/Howtolabelbars" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>Example <strong>one </strong>in the above viz is the default &#8211; just copy the Measure that&#8217;s on the Columns shelf to the Text shelf of the Marks card:</p>
+<p><em><strong><img title="Default text" src="http://www.interworks.co.uk/wp-content/uploads/2010/08/DefaultLabel.png" alt="Default text" width="154" height="234" /><br />
+ </strong></em></p>
+<p>In Example <strong>two</strong>, I&#8217;ve added Color to the Marks shelf to get a stacked bar chart. By default, the Text marks would now appear in each segment. If you still want the total label visible, you need to add a Reference Line. Right-click on the axis and choose <strong>Add Reference Line&#8230;</strong></p>
+<p>You then need to add a Line with the following settings:</p>
+<p><em><strong><img class="alignnone" title="Totals Reference Line" src="http://www.interworks.co.uk/wp-content/uploads/2010/08/TotalsReferenceLine.png" alt="Totals Reference Line" width="317" height="406" /></strong></em></p>
+<p>That&#8217;s cool &#8211; you&#8217;ve done some labelling that is outside of Tableau&#8217;s default behaviour. What if you want to add some allowable bling to your chart, ie do something visually attractive, but stick to the principles of good visualisation? Well, you can put the text label <em>inside</em> the bar.</p>
+<p>The <strong>third </strong>example, with the white text inside the right-hand edge of the bar, is also acheived with a Reference Line. To do this, create a reference line with the same settings as the previous example.  Now select the Reference Line and choose Format&#8230;</p>
+<p><em><strong><img title="Format Reference Line" src="http://www.interworks.co.uk/wp-content/uploads/2010/08/FormatReferenceLine.png" alt="Format Reference Line" width="171" height="135" /><br />
+ </strong></em></p>
+<p>On the Format panel, set the <strong>Reference Line Label </strong>Alignment to Left-Align (horizontal) and centrally aligned (vertical). Change the Shading to 0% and the Font to white. Bingo! Your text is now inside the right-hand edge of the bar.</p>
+<p>The <strong>fourth </strong>example, aligning the text at the left-hand edge of the bar, next to the category label, was something of a quest for me after seeing that it can be done relatively simply in Excel. To achieve this, we need to twist some of Tableau&#8217;s other functionality to suit our needs!</p>
+<p>The first step is to remove the Measure mark from the Columns shelf, and put it onto the Text shelf. Yes, that means we have just created a table, not a chart. Stick with me, we&#8217;ll get there. Now put a copy of the same Measure onto the Size shelf. Still looking a bit wacky? Ok, the final step is to change the Mark type from Automatic to Bar:</p>
+<p><em><strong><img title="Left-aligned text in a bar" src="http://www.interworks.co.uk/wp-content/uploads/2010/08/LeftAlignedText.png" alt="Left-aligned text in a bar" width="154" height="233" /><br />
+ </strong></em></p>
+<p>You should now have your left-aligned labelled bar.</p>
+<p>The techniques for examples 3 and 4 can enhance your Tableau charts. There are some restrictions to these two though:</p>
+<ul>
+<li>They only work on horizontal bars</li>
+<li>If one value is very low, the label may not appear correctly</li>
+<li>For the left-aligned text (example 4), it works best with a big range of values.</li>
+</ul>
+<p>You may also have noticed that I have hidden the axes on all of the charts above. I believe that if you are going to put text-labels on the bars, it&#8217;s bad practice to also show an axis.</p>
+<p>To get a better idea of how to do this, download the workbook to see how I built it all up.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/text-label-beyond-default/">Text-labelled bars: beyond the default</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Ftext-label-beyond-default%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/text-label-beyond-default/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+	</channel>
+</rss>

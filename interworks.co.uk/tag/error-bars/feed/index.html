@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>InterWorks - Tableau Software &#38; Business Intelligence Consulting &#187; Error bars</title>
+	<atom:link href="http://interworks.co.uk/tag/error-bars/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 26 Jun 2015 08:09:24 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>The joy of six: easy error bars</title>
+		<link>http://interworks.co.uk/blog/error-bars/</link>
+		<comments>http://interworks.co.uk/blog/error-bars/#comments</comments>
+		<pubDate>Mon, 15 Nov 2010 21:38:56 +0000</pubDate>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Andy Cotgreave]]></category>
+		<category><![CDATA[Dual Axis]]></category>
+		<category><![CDATA[Error bars]]></category>
+		<category><![CDATA[Joy of 6]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1455</guid>
+		<description><![CDATA[<p>Over on the forum, Hadbar asked a question about Error Bars. He asked the question back in the days of version 5, when it wasn&#8217;t straightforward to make a pleasant error bar. However, now we have the Joy of Six, we can use the new dual axis/multiple mark features to create some visually appealing error [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/error-bars/">The joy of six: easy error bars</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Ferror-bars%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Over on the forum,<a href="http://community.tableau.com/thread/106154" target="_blank"> Hadbar asked a question about Error Bars</a>. He asked the question back in the days of version 5, when it wasn&#8217;t straightforward to make a pleasant error bar. However, now we have the Joy of Six, we can use the new dual axis/multiple mark features to create some visually appealing error bars:</p>
+<p><script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script><object class="tableauViz" width="594" height="569" style="display:none;"><param name="name" value="JoyOfSixErrorbars/EasyErrorBars" /><param name="toolbar" value="yes" /><param name="tabs" value="no" /></object><noscript>Easy error barsUse dual axes to create tidy error bars <br /><a href="#"><img alt="Easy error barsUse dual axes to create tidy error bars " src="http://public.tableausoftware.com/static/images/Jo/JoyOfSixErrorbars/EasyErrorBars/1_rss.png" height="100%" /></a></noscript></p>
+<div style="width:594px;height:22px;padding:0px 10px 0px 0px; color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float:right; padding-right:8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/JoyOfSixErrorbars/EasyErrorBars" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>Tableau won&#8217;t calculate the error values for you, so you need those in your dataset. With this example, you need two measures:</p>
+<ul>
+<li>Error &#8211; the magnitude of the error</li>
+<li>Error lower &#8211; the lower limit of the error bar</li>
+</ul>
+<p>Here&#8217;s how we build the viz. First make a regular bar chart with the relevant Dimension and Measure, as below:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/11/RegularBarChart.png"><img class="alignnone size-full wp-image-1605" title="RegularBarChart" src="http://www.interworks.co.uk/wp-content/uploads/2010/11/RegularBarChart.png" alt="" width="550" height="361" /></a></p>
+<p>To create the error bar, we build a Gantt chart on the second axis. It&#8217;s lower limit is the value of the Error lower measure, and it&#8217;s size (height) is the size of the error. Step one is to put the MIN(Error Lower) pill on the Rows shelf, and set it to use Dual Axis (click the picture to see details):</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/11/Min-Error-dual-axis.png"><img class="alignnone size-full wp-image-1606" title="Min Error dual axis" src="http://www.interworks.co.uk/wp-content/uploads/2010/11/Min-Error-dual-axis.png" alt="" width="578" height="401" /></a></p>
+<p>We&#8217;ve now got a dual axis graph, but there&#8217;s some way to go yet. The Error Bars need to use a different mark type, in this case a Gantt Bar. Right-click on the axis, and choose <em><strong>Mark Type&#8230;Gantt Bar</strong></em>:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/11/Change-to-Gantt-Bar.png"><img class="alignnone size-full wp-image-1613" title="Change to Gantt Bar" src="http://www.interworks.co.uk/wp-content/uploads/2010/11/Change-to-Gantt-Bar.png" alt="" width="493" height="457" /></a></p>
+<p>Set the Size of the Gantt Bar to the size of the error. To do this, make sure the Marks shelf is showing the correct Mark. In this case, it&#8217;s MIN(Error Lower). This is a new feature in v6. In case you&#8217;ve not seen it, you can page through all the Marks:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/11/Marks-scrolling.png"><img class="alignnone size-full wp-image-1614" title="Marks scrolling" src="http://www.interworks.co.uk/wp-content/uploads/2010/11/Marks-scrolling.png" alt="" width="399" height="246" /></a></p>
+<p>Once you have found the correct mark, put the Error measure onto the Size shelf &#8211; that creates the Gantt bar with the height of the error. You&#8217;ll probably now notice that you have error bars, but they&#8217;re wide, and not in the right position relative to the bar. This fat bar problem is easily fixed &#8211; just slide the Size slider on the Mark shelf to be the smallest possible. That creates a nice thin line.</p>
+<p>How to get the error bars to align correctly? Simple &#8211; right-click on the axis and choose <em><strong>Synchronise Axis</strong></em>. While you&#8217;re there, you don&#8217;t need to show the right-hand axis at all. You can&#8217;t properly hide axes in Tableau, but you can format them so they don&#8217;t appear. Right-click on the axis and choose <em><strong>Edit axis</strong></em>. Delete the title on the General tab, and in the Tick Marks tab, set the Minor and Major Tick Marks to <span style="text-decoration: underline;">N</span>one. Click OK and your axis has &#8220;disappeared&#8221;.</p>
+<p>Lo and behold &#8211; you have some error bars. Play around with widths/colours and other settings to make it appear just how you want it. Coming next in the Joy Of Six series&#8230;. using parameters to create dynamic groups.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/error-bars/">The joy of six: easy error bars</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Ferror-bars%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/error-bars/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+	</channel>
+</rss>

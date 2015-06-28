@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>InterWorks - Tableau Software &#38; Business Intelligence Consulting &#187; Rob Austin</title>
+	<atom:link href="http://interworks.co.uk/author/robaustin/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 26 Jun 2015 08:09:24 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>Using Tableau on your Mobile</title>
+		<link>http://interworks.co.uk/blog/using-tableau-on-your-mobile/</link>
+		<comments>http://interworks.co.uk/blog/using-tableau-on-your-mobile/#comments</comments>
+		<pubDate>Wed, 27 May 2015 10:55:32 +0000</pubDate>
+		<dc:creator><![CDATA[Rob Austin]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Mobile]]></category>
+		<category><![CDATA[Rob Austin]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=12345</guid>
+		<description><![CDATA[<p>I have been using Tableau since version 4, initially as a Tableau customer. One of the first things I wanted was to be able to see my data on the move. I didn&#8217;t want to see everything, just the basics, a list of green ticks showing me everything was OK back in the office, or the [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/using-tableau-on-your-mobile/">Using Tableau on your Mobile</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-on-your-mobile%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>I have been using Tableau since version 4, initially as a Tableau customer. One of the first things I wanted was to be able to see my data on the move. I didn&#8217;t want to see everything, just the basics, a list of green ticks showing me everything was OK back in the office, or the ability to interrogate if not.</p>
+<p>Tableau has come on a long way since v4 and there are many bespoke interactive features for mobile / iPad. The purpose of this article is to point you towards best practice when designing a mobile dashboard rather than listing out the features. Please note I am focusing on Tableau on your mobile rather than a tablet (if you use a phone with a screen that is somewhere in between mobile &amp; tablet then I can&#8217;t help you &#8230;. and you probably look like an 80s yuppie when you are making calls).</p>
+<p>Tableau has the ability to size automatically but this won&#8217;t usually help you when it comes to mobile screens as the result will be squashed vizzes and missing text.</p>
+<p>I was asked once if Tableau would re-organise your dashboard automatically for mobile and the current v9 answer is &#8216;no, you would need to build a second dashboard&#8217; (which is no bad thing). If you consider the amount of time taken to obtain, collate, clean and validate your data before dashboarding I believe that as a dashboard designer you have a responsibility to make the dashboard look as good as possible, only that way do you do justice to your team (and yourself). Dashboarding in Tableau probably represents about 5% of the total project duration but that is all the end user sees so it is worth the bit of extra effort to create a dashboard tailored for mobile.</p>
+<p>If you are reading this on a desktop / laptop it may be a good idea to open the dashboard below on your mobile to check out the interface as you go:<br />
+<a title="http://public.tableau.com/profile/rob.austin#!/vizhome/MobileDemo/MobileDashboard" href="http://goo.gl/q5HmmW" target="_blank">http://goo.gl/q5HmmW</a></p>
+<hr />
+<p>&nbsp;</p>
+<p style="text-align: justify;">Tip 1: Design your mobile dashboard for the smallest screen size you will want to use. Create the dashboard 1 worksheet wide with the ability to scroll if necessary rather than trying to tile worksheets.</p>
+<div class="ezcol ezcol-three-fifth"><script src="https://public.tableau.com/javascripts/api/viz_v1.js" type="text/javascript"></script></p>
+<div class="tableauPlaceholder" style="width: 324px; height: 1029px;"><noscript>&amp;amp;amp;amp;amp;amp;amp;lt;a href=&#8217;#&#8217;&amp;amp;amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;amp;amp;lt;img alt=&#8217;Cover Dashboard (Mobile) &#8216; src=&#8217;https:&amp;amp;amp;amp;amp;amp;amp;amp;#47;&amp;amp;amp;amp;amp;amp;amp;amp;#47;public.tableau.com&amp;amp;amp;amp;amp;amp;amp;amp;#47;static&amp;amp;amp;amp;amp;amp;amp;amp;#47;images&amp;amp;amp;amp;amp;amp;amp;amp;#47;Mo&amp;amp;amp;amp;amp;amp;amp;amp;#47;MobileDemo&amp;amp;amp;amp;amp;amp;amp;amp;#47;MobileDashboard&amp;amp;amp;amp;amp;amp;amp;amp;#47;1_rss.png&#8217; style=&#8217;border: none&#8217; /&amp;amp;amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;amp;amp;lt;/a&amp;amp;amp;amp;amp;amp;amp;gt;</noscript><object class="tableauViz" style="display: none;" width="324" height="1029"><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F" /><param name="site_root" value="" /><param name="name" value="MobileDemo/MobileDashboard" /><param name="tabs" value="no" /><param name="toolbar" value="yes" /><param name="static_image" value="https://public.tableau.com/static/images/Mo/MobileDemo/MobileDashboard/1.png" /><param name="animate_transition" value="yes" /><param name="display_static_image" value="yes" /><param name="display_spinner" value="yes" /><param name="display_overlay" value="yes" /><param name="display_count" value="yes" /><param name="showVizHome" value="no" /><param name="showTabs" value="n" /><param name="bootstrapWhenNotified" value="true" /></object></div>
+</div>
+<div class="ezcol ezcol-two-fifth ezcol-last">
+<p style="text-align: justify;">Tip 2: Include an icon (worksheet with action filter) to / from the original dashboard, this lets people know that it is accessible on their mobile too.</p>
+<p style="text-align: justify;">Tip 3: Filters are all in one place at the start of the dashboard</p>
+<p style="text-align: justify;">Tip 4: Start high level but give the ability to drill, the bars use a hierarchy and the word &#8216;drill&#8217; to alert the user to this functionality.</p>
+<p style="text-align: justify;">Tip 5: Declutter wherever possible, I have removed tooltips from the high level view and replaced with labels which appear when selected.</p>
+<p style="text-align: justify;">Tip 6: Make the dashboard the same width (and height) as the smallest mobile screen. (320w x 480h)</p>
+<p style="text-align: justify;">Tip 6a: If you can&#8217;t do this because there is too much info then create a scroll bar (blank text box with a border) on the right hand side so that the user always has somewhere to grab &amp; pull. This is particularly important if you are using a map as Tableau will prioritise the panning of the map view.</p>
+<p style="text-align: justify;">Tip 6b: Use Action filters to create drop-downs so that you can easily get to the view(s) that you need. This can be done in combination with layout containers to maximise the available space.</p>
+</div>
+<div class="ezcol-divider"></div>
+<hr />
+<p>&amp; here&#8217;s how each of the tips are implemented:</p>
+<div class="ezcol ezcol-two-third">
+<p><strong>Tip 1:</strong> Set the dashboard size to fit your mobile screen, or at least the width if you are using a scroll bar (320 x 960 in this case). You get to this at the bottom left of the dashboard sheet.</div>
+<div class="ezcol ezcol-one-third ezcol-last"><a href="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-26-at-16.37.16.png"><img class="alignnone  wp-image-12365" src="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-26-at-16.37.16-300x140.png" alt="Screen Shot 2015-05-26 at 16.37.16" width="167" height="78" /></a></div>
+<div class="ezcol-divider"></div>
+<p><strong>Tip 2:</strong> Include an icon to go between mobile and full dashboard. This is done as follows</p>
+<p style="padding-left: 30px;"><span style="font-size: small;"><em>1: In a new worksheet create a calculated field called [Go to full]  with the content &#8216;Go To&#8217; or similar.</em><br />
+<em> 2: Set the mark type to Shape and put the new field in the Shape Dropzone, customise the shape.</em><br />
+<em> 3: Put your new worksheet in your dashboard and create an action filter.</em><br />
+<em> 4: Set the current sheet to be the Source Sheet and select the new worksheet as a source</em><br />
+<em> 5: Set the destination dashboard as the Target sheet and leave all sheets selected</em><br />
+<em> 6: Run Action on Select, clearing selection will &#8216;Show All Values&#8217;</em><br />
+<em> 7: Target Filters = &#8216;Selected Fields&#8217; but leave the list blank, this will transport you to the other dashboard without applying any filters.</em><br />
+</span></p>
+<p><strong>Tip 3:</strong> Drag a horizontal layout container on to your dashboard and put all your quick filters in there. Make sure you select a dropdown option on the quick filter to minimise the space.</p>
+<p><strong>Tip 4:</strong> Use a hierarchy and drill option to allow the users to expand the view as necessary.</p>
+<p style="padding-left: 30px;"><span style="font-size: small;"><em>1: Create a new Calculated Field called [drill] and add the content &#8216;drill&#8217;</em><br />
+<em> 2: Use the ctrl key to multi select your top level field, detail level field and [drill], right click and create a hierarchy. Arrange the hierarchy so that drill is in the middle.</em><br />
+<em> 3: Go to Analysis &gt; Table Layout &gt; Advanced and set the Maximum levels of row labels to 2, set the maximum levels of horizontal row labels to 1. This will rotate the high level field labels when you drill down. When you test the operation of this on a mobile it works really nicely through the tooltip menu, it also allows you to drill up in the same way.</em><br />
+</span></p>
+<p><strong>Tip 5:</strong> You can add the labels on the marks card and then set them to appear when selected (rather than all the time). Make sure you switch off the tooltips (Worksheet &gt; Tooltip&#8230;)</p>
+<p><strong>Tip 6a:</strong> To create a faux-scrollbar drag a text box on to the far right of your dashboard, from there you can format it, use either a border or fill depending on the look / feel of your dashboard.</p>
+<p><strong>Tip 6b:</strong> The point of a dashboard is to get the relevant information in one place, which is tricky on a small screen. By allowing your audience to show / hide panels you can give them the best chance of fitting what they want on the screen.</p>
+<p style="padding-left: 30px;"><span style="font-size: small;"><em>1: Create a new worksheet (called Map Title in this case)</em><br />
+<em> 2: Create a new calculated field called [Map] containing the content &#8216;Map&#8217;.</em><br />
+<em> 3. Change the mark type to Shape, drop the [Map] field in to shape and change it to a down arrow.</em><br />
+<em> 4: Add [Map] to rows and hide the field labels.</em><br />
+<em> 5: Repeat steps 1 &#8211; 4 for your other sheets (Timeline in this case)</em><br />
+<em> 6: Drag a vertical layout container on to your dashboard and add all the worksheets you want to show / hide in to it. (I have added my high level sheet as well to give it room to expand when drilling).</em><br />
+<em> 7: Add your new &#8216;title&#8217; worksheets to the dashboard. I have added these ones in a horizontal layout container next to a blank for alignment.</em><br />
+<em> 8: Create an action filter where the source sheet is your &#8216;title&#8217; and the target is the viz you want to hide. Make sure you run on &#8216;select&#8217; and &#8216;Exclude all values&#8217; upon clearing the selection. Repeat this step for your other hide-able sheets.</em><br />
+</span></p>
+<p>Thanks for reading, you now have the power of Tableau on your mobile &amp; in your pocket.</p>
+<hr />
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/using-tableau-on-your-mobile/">Using Tableau on your Mobile</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-on-your-mobile%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/using-tableau-on-your-mobile/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Tableau Level of Detail Calculated Fields v9</title>
+		<link>http://interworks.co.uk/blog/tableau-level-detail-calculated-fields-v9/</link>
+		<comments>http://interworks.co.uk/blog/tableau-level-detail-calculated-fields-v9/#comments</comments>
+		<pubDate>Thu, 29 Jan 2015 16:19:35 +0000</pubDate>
+		<dc:creator><![CDATA[Rob Austin]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=11198</guid>
+		<description><![CDATA[<p>In this tutorial I talk about the Tableau Level of Detail calculations  {fixed}, {include} and {exclude} which are new in Tableau Version 9. We see how {fixed} can be used to turn a measure into bands and give it the full functionality of a dimension. This functionality is something that we are regularly asked for [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/tableau-level-detail-calculated-fields-v9/">Tableau Level of Detail Calculated Fields v9</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Ftableau-level-detail-calculated-fields-v9%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>In this tutorial I talk about the Tableau Level of Detail calculations  {fixed}, {include} and {exclude} which are new in Tableau Version 9.</p>
+<p>We see how {fixed} can be used to turn a measure into bands <i>and</i> give it the full functionality of a dimension. This functionality is something that we are regularly asked for at Interworks and gives a great alternative to using ‘bins’ which can often be limiting.</p>
+<p>Next we see how {include} is used to drill in to a lower level of detail without needing the dimension in the visualisation. This functionality really opens up possibilities on KPI or high level visualisations where space is a premium.</p>
+<p>Finally {exclude} is used to compare a value within a chart to its overarching value. This functionality then expanded to define the overarching value which the cells are compared to using both {include} and {exclude} in the same calculation.</p>
+<p>&nbsp;</p>
+<p><span class='embed-youtube' style='text-align:center; display: block;'><iframe class='youtube-player' type='text/html' width='904' height='539' src='http://www.youtube.com/embed/YMKhpHgUMc4?version=3&#038;rel=1&#038;fs=1&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;wmode=transparent' frameborder='0' allowfullscreen='true'></iframe></span></p>
+<p>If you have any questions, or comments, let us know in the comments section and keep tuned for more blog posts covering the latest improvements of Tableau Desktop 9.0. If you have any questions, please feel free to send me an email or, if you’re ready to download Tableau, <a href="http://interworks.co.uk/business-intelligence/download-tableau-desktop-free-trial/" target="_blank">click here</a> to get started on a free 14 day trial!</p>
+[contact-form]<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/tableau-level-detail-calculated-fields-v9/">Tableau Level of Detail Calculated Fields v9</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Ftableau-level-detail-calculated-fields-v9%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/tableau-level-detail-calculated-fields-v9/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>3 Way Venn in Tableau Upgrade</title>
+		<link>http://interworks.co.uk/blog/3-way-venn-tableau-upgrade/</link>
+		<comments>http://interworks.co.uk/blog/3-way-venn-tableau-upgrade/#comments</comments>
+		<pubDate>Wed, 29 Oct 2014 12:39:20 +0000</pubDate>
+		<dc:creator><![CDATA[Rob Austin]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=10880</guid>
+		<description><![CDATA[<p>This post is an upgrade to my original 3 Way Venn post, or at least is a better alternative as it gives the right numbers loads faster and is easier to make! This method doesn&#8217;t use sets or anything complicated within Tableau but rather it uses a self join on the data tables. I am using [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/3-way-venn-tableau-upgrade/">3 Way Venn in Tableau Upgrade</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2F3-way-venn-tableau-upgrade%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>This post is an upgrade to my original <a title="3 Way Venn" href="http://interworks.co.uk/tableau/3-way-venn/">3 Way Venn</a> post, or at least is a better alternative as it gives the right numbers loads faster and is easier to make!</p>
+<p><script type='text/javascript' src='https://public.tableausoftware.com/javascripts/api/viz_v1.js'></script>
+<div class='tableauPlaceholder' style='width: 604px; height: 669px;'><noscript><a href='#'><img alt='Venn Joined 3 ' src='https:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Ve&#47;Venn&#47;VennJoined3&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='604' height='669' style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableausoftware.com%2F' /><param name='site_root' value='' /><param name='name' value='Venn&#47;VennJoined3' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Ve&#47;Venn&#47;VennJoined3&#47;1.png' /><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='showVizHome' value='no' /></object></div>
+<div style='width:604px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'>
+<div style='float:right; padding-right:8px;'><a href='http://www.tableausoftware.com/public/about-tableau-products?ref=https://public.tableausoftware.com/views/Venn/VennJoined3' target='_blank'>Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p>This method doesn&#8217;t use sets or anything complicated within Tableau but rather it uses a self join on the data tables. I am using the demo dataset &#8216;Sample &#8211; Superstore Sales (Excel)&#8217; which ships with tableau desktop.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2014/10/Screen-Shot-2014-10-13-at-15.08.14.png"><img class="alignnone  wp-image-10881" src="http://interworks.co.uk/wp-content/uploads/2014/10/Screen-Shot-2014-10-13-at-15.08.14-1024x317.png" alt="Screen Shot 2014-10-13 at 15.08.14" width="748" height="231" /></a></p>
+<p>The Orders table has been joined to itself on &#8216;Customer Name&#8217; twice. This gives the ability to easily compare table entries on a single row rather than needing to reference other rows using a table calculation or set. This type of self join can be used for cohort or market basket analysis as well.</p>
+<hr />
+<div class="ezcol ezcol-one-third">
+<p>I have also created an extract and filtered it to keep only Jumbo Box, Jumbo Drum and Large Box.</p>
+<p>I have done this on each of the &#8216;Orders&#8217; tables as shown:</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2014/10/Screen-Shot-2014-10-29-at-16.48.24.png"><img class="alignnone wp-image-10943" src="http://interworks.co.uk/wp-content/uploads/2014/10/Screen-Shot-2014-10-29-at-16.48.24.png" alt="Screen Shot 2014-10-29 at 16.48.24" width="252" height="125" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</div>
+<div class="ezcol ezcol-two-third ezcol-last"><a href="http://interworks.co.uk/wp-content/uploads/2014/10/Screen-Shot-2014-10-29-at-16.48.00.png"><img class="alignnone  wp-image-10944" src="http://interworks.co.uk/wp-content/uploads/2014/10/Screen-Shot-2014-10-29-at-16.48.00.png" alt="Screen Shot 2014-10-29 at 16.48.00" width="355" height="333" /></a></div>
+<div class="ezcol-divider"></div>
+<hr />
+<div class="ezcol ezcol-two-third">
+<p>The only fields which I need to keep are:</p>
+<p>Customer Name, Product Container (Orders$),<br />
+Product Container (Orders$1) and Product Container (Orders$2).</p>
+<p>The rest can be hidden for now then removed when we re-create the extract.</p></div>
+<div class="ezcol ezcol-one-third ezcol-last"><a href="http://interworks.co.uk/wp-content/uploads/2014/10/Screen-Shot-2014-10-13-at-15.23.26.png"><img class="alignnone  wp-image-10885" src="http://interworks.co.uk/wp-content/uploads/2014/10/Screen-Shot-2014-10-13-at-15.23.26.png" alt="Screen Shot 2014-10-13 at 15.23.26" width="302" height="160" /></a></div>
+<div class="ezcol-divider"></div>
+<hr />
+<p>&nbsp;</p>
+<p>We now need to break our customers in to 3 groups &amp; because of the data structure we are able to do this in a single calculated field:</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2014/10/Screen-Shot-2014-10-13-at-15.39.16.png"><img class="alignnone  wp-image-10892" src="http://interworks.co.uk/wp-content/uploads/2014/10/Screen-Shot-2014-10-13-at-15.39.16-1024x419.png" alt="Screen Shot 2014-10-13 at 15.39.16" width="742" height="303" /></a></p>
+<p>Copy &amp; Paste if you prefer:</p>
+<address>//Customers who used 3 Shipping Methods</address>
+<address> if [Product Container]&gt;[Product Container (Orders$1)] AND [Product Container (Orders$1)]&gt; [Product Container (Orders$2)] then [Product Container]+ &#8216; &#8211; &#8216; + [Product Container (Orders$1)] + &#8216; &#8211; &#8216; + [Product Container (Orders$2)] elseif [Product Container]&lt;[Product Container (Orders$1)] AND [Product Container (Orders$1)]&lt; [Product Container (Orders$2)] then [Product Container (Orders$2)]+ &#8216; &#8211; &#8216; + [Product Container (Orders$1)] + &#8216; &#8211; &#8216; + [Product Container]</address>
+<address>//Customers who used 2 Shipping Methods</address>
+<address>elseif [Product Container]&lt;[Product Container (Orders$1)] then [Product Container]+ &#8216; &#8211; &#8216; +[Product Container (Orders$1)] elseif [Product Container]&gt;[Product Container (Orders$1)] then [Product Container (Orders$1)] + &#8216; &#8211; &#8216; +[Product Container]</address>
+<address>//Customers who used 1 Shipping Method</address>
+<address>else[Product Container] end</address>
+<p>&nbsp;</p>
+<p>When we now do a distinct count of the customer names, the customers who used 3 shipping methods will also appear in the other 2 groups.  The customers who used 2 shipping methods will also appear in the singles group.</p>
+<p>Here are the other calculated fields I have used in the Dashboard:</p>
+<table style="height: auto; width: 650px;" border="1" cellspacing="5" cellpadding="1">
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Field Name</strong></td>
+<td style="text-align: center;"><strong>Calculation</strong></td>
+<td style="text-align: center;"><strong>Default Direction</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Index()</td>
+<td style="text-align: center;">
+<address>INDEX()</address>
+</td>
+<td style="text-align: center;">Computed along [Containers Match 3], [Product Container]</td>
+</tr>
+<tr>
+<td style="text-align: center;">Front / Back</td>
+<td style="text-align: center;">
+<address>IF [Index()]&lt;=3 THEN &#8216;Front&#8217; ELSE &#8216;Back&#8217; END</address>
+</td>
+<td style="text-align: center;">N/A</td>
+</tr>
+<tr>
+<td style="text-align: center;">Containers Match Length</td>
+<td style="text-align: center;">
+<address>LEN([Containers Match 3])</address>
+</td>
+<td style="text-align: center;">N/A</td>
+</tr>
+<tr>
+<td style="text-align: center;">Label</td>
+<td style="text-align: center;">
+<address>IF [Front / Back] = &#8216;Front&#8217;</address>
+<address>THEN ATTR([Product Container])</address>
+<address>ELSE &#8216; &#8216; END</address>
+</td>
+<td style="text-align: center;">N/A</td>
+</tr>
+<tr>
+<td style="text-align: center;">Size</td>
+<td style="text-align: center;">
+<address>IF [Front / Back] = &#8216;Front&#8217; THEN COUNTD([Customer Name]) else 0 end</address>
+</td>
+<td style="text-align: center;">N/A</td>
+</tr>
+<tr>
+<td style="text-align: center;">X3a</td>
+<td style="text-align: center;">
+<address>CASE [Index()] WHEN 1 THEN 1 WHEN 2 THEN 2 WHEN 3 THEN 1.5 WHEN 4 THEN 1.5 WHEN 5 THEN 1.5 &#8211; 0.44*[Label Position] WHEN 6 THEN 1.5 + 0.44*[Label Position] ELSE 1.5 END</address>
+</td>
+<td style="text-align: center;">Table Across</td>
+</tr>
+<tr>
+<td style="text-align: center;">Y3a</td>
+<td style="text-align: center;">CASE [Index()] WHEN 1 THEN 1 WHEN 2 THEN 1 WHEN 3 THEN 2 WHEN 4 THEN 1 WHEN 5 THEN 2-0.89*[Label Position] WHEN 6 THEN 2-0.89*[Label Position] ELSE 2-[Label Position] END</td>
+<td style="text-align: center;">Table Across</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p>[Label Position] is a parameter between 0 &amp; 2 which allows us to position the labels on the inside of the top venn bubble.</p>
+<hr />
+<p>Once all these fields have been created, arrange them on your worksheet as shown below:</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2014/10/Screen-Shot-2014-10-13-at-16.11.16.png"><img class="alignnone  wp-image-10894" src="http://interworks.co.uk/wp-content/uploads/2014/10/Screen-Shot-2014-10-13-at-16.11.16-1024x920.png" alt="Screen Shot 2014-10-13 at 16.11.16" width="742" height="666" /></a></p>
+<p>Note that all of the Table Calculations (the fields with the triangle next to them) should be correct if the [Index()] defaults have been set up correctly:</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2014/10/Screen-Shot-2014-10-13-at-16.16.17.png"><img class="alignnone  wp-image-10895" src="http://interworks.co.uk/wp-content/uploads/2014/10/Screen-Shot-2014-10-13-at-16.16.17-1024x508.png" alt="Screen Shot 2014-10-13 at 16.16.17" width="741" height="367" /></a></p>
+<div class="ezcol ezcol-one-half">
+<p>The [Containers Match 3] field should be sorted &#8216;ascending&#8217; based on MIN([Containers Match Length])</p>
+</div>
+<div class="ezcol ezcol-one-half ezcol-last"><img class="alignnone  wp-image-10896" src="http://interworks.co.uk/wp-content/uploads/2014/10/Screen-Shot-2014-10-13-at-16.19.50.png" alt="Screen Shot 2014-10-13 at 16.19.50" width="386" height="189" /></div>
+<div class="ezcol-divider"></div>
+<hr />
+<div class="ezcol ezcol-one-half">
+<p>Finally, adjust the marks. Make sure that you can see all of your mark labels by allowing them to overlap and position them &#8216;middle centre&#8217;.</p>
+<p>You will need to add some transparency (click &#8216;color&#8217;) and make sure that the sizing is dialled right up (click &#8216;size&#8217;).</p>
+<p>.</p></div>
+<div class="ezcol ezcol-one-half ezcol-last"><a href="http://interworks.co.uk/wp-content/uploads/2014/10/Screen-Shot-2014-10-29-at-17.29.51.png"><img class="alignnone  wp-image-10965" src="http://interworks.co.uk/wp-content/uploads/2014/10/Screen-Shot-2014-10-29-at-17.29.51.png" alt="Screen Shot 2014-10-29 at 17.29.51" width="295" height="269" /></a></div>
+<div class="ezcol-divider"></div>
+<p>&nbsp;</p>
+<p>If all goes well you now have yourself a 3 way Venn Diagram. You can adjust the position of the labels using the parameter once you have brought the worksheet in to a dashboard.  You will need to make sure that the dashboard size is fixed and spend a little bit of time getting the sizing right.</p>
+<p>If your data is likely to change wildly you may need to keep an eye on the sizing to make sure that the labels stay within their boundaries.</p>
+<p>Happy venn-ing!</p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/3-way-venn-tableau-upgrade/">3 Way Venn in Tableau Upgrade</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2F3-way-venn-tableau-upgrade%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/3-way-venn-tableau-upgrade/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Measure Names &amp; Values in Tableau</title>
+		<link>http://interworks.co.uk/blog/measure-names-values-tableau/</link>
+		<comments>http://interworks.co.uk/blog/measure-names-values-tableau/#comments</comments>
+		<pubDate>Mon, 22 Sep 2014 15:09:47 +0000</pubDate>
+		<dc:creator><![CDATA[Rob Austin]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=10195</guid>
+		<description><![CDATA[<p>The Value of Measures? What are Measure Names and Measure Values and how do they work? These are built in Tableau fields and they have 2 main uses or strictly speaking two variations of the same functionality. The first is a Combined Axis Chart and the second is a Crosstab with multiple measures. Combined axis [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/measure-names-values-tableau/">Measure Names &#038; Values in Tableau</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmeasure-names-values-tableau%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<h1>The Value of Measures?</h1>
+<p>What are Measure Names and Measure Values and how do they work? These are built in Tableau fields and they have 2 main uses or strictly speaking two variations of the same functionality. The first is a Combined Axis Chart and the second is a Crosstab with multiple measures.</p>
+<h2>Combined axis chart.</h2>
+<p>A combined axis chart can be used if your measures are similar e.g. if Sales and Profit are both in the same ball park then they could feasibly be put on the same axis without one of them appearing to be permanently zero.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-18.48.44.png"><img class="aligncenter wp-image-10197" src="http://interworks.co.uk/wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-18.48.44-773x1024.png" alt="Screen Shot 2014-03-18 at 18.48.44" width="400" height="529" /></a></p>
+<p>&nbsp;</p>
+<p>The combined axis chart shows Measure Values once in the rows shelf, whilst Measure Names appears three times. I should also point out that a new shelf has appeared called Measure Values.</p>
+<p>If we look at the numbers we can see that we have 2 measures in the chart above, Sales and Profit.  This means that the Measure Values are the numbers which correspond to those Measure Names (Sales and Profit). It is the 2 Measure Values which we are plotting on the axis hence that appears in Rows.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-19.11.59.png"><img class="aligncenter wp-image-10199" src="http://interworks.co.uk/wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-19.11.59.png" alt="Screen Shot 2014-03-18 at 19.11.59" width="400" height="62" /></a></p>
+<p>It is the Measure Names which are dividing the colour (Orange for Sales, Blue for Profit) hence that is on the marks card (I have also added it as a label). Finally Measure Names appears on the filters shelf because we have more than 2 measures in our dataset but we only want to display Sales and Profit.</p>
+<div class="ezcol ezcol-two-third">
+Shortcut: How to create a combined axis chart in 3 steps.</p>
+<ol>
+<li><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px;">Order Date to Columns</span></li>
+<li><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px;">Sales to Rows</span></li>
+<li><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px;">Profit to Axis.</span></li>
+</ol>
+<p>When performing step 3 you need to make sure that you<br />
+drag the profit field on to the existing axis such that a<br />
+faint green double-ruler appears.</p></div>
+<div class="ezcol ezcol-one-third ezcol-last"><a href="http://interworks.co.uk/wp-content/uploads/2014/03/Screen-Shot-2014-03-19-at-07.29.09.png"><img class="alignnone size-small wp-image-10200" src="http://interworks.co.uk/wp-content/uploads/2014/03/Screen-Shot-2014-03-19-at-07.29.09-278x300.png" alt="Screen Shot 2014-03-19 at 07.29.09" width="190" height="200" /></a></div>
+<div class="ezcol-divider"></div>
+<hr />
+<h2>CrossTab (Table) with Multiple Measures</h2>
+<div class="ezcol ezcol-two-third">
+Shortcut: How to create a Crosstab from Multiple measures in 3 steps</p>
+<ol>
+<li><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px;">Order Date to Rows</span></li>
+<li><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px;">Sales to Workspace, where it says &#8216;abc&#8217; in the pane</span></li>
+<li><span style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px;">Profit to Workspace, where the Sales figures now are. (or you can double click Profit)</span></li>
+</ol>
+<p>Let’s consider a table with a set of dimensions (Quarter of Order Date) and one measure per column.</p>
+<p>Measure Names / Measures Values are essentially data reshaping tools.</p></div>
+<div class="ezcol ezcol-one-third ezcol-last"><a href="http://interworks.co.uk/wp-content/uploads/2014/03/Screen-Shot-2014-03-19-at-07.39.51.png"><img class="alignnone size-medium wp-image-10201" src="http://interworks.co.uk/wp-content/uploads/2014/03/Screen-Shot-2014-03-19-at-07.39.51-300x185.png" alt="Screen Shot 2014-03-19 at 07.39.51" width="300" height="185" /></a></div>
+<div class="ezcol-divider"></div>
+<div class="ezcol ezcol-two-third">
+<p>To look at it another way what we have are two dimensions and some values. The first dimension contains: Q1,Q2,Q3,Q4.</p>
+<p>The second contains the headers (Measure Names): Profit, Sales and Discount.</p>
+<p>The table to the right is what is effectively happening in the background when we use Measure Names &amp; Measure Values to create a Crosstab from multiple measures.</p>
+<p>The Rows are Quarter of Order Date and the Columns are Measure Names.<br />
+It is this data reshaping that makes it so effortless to create the table below.</p>
+</div>
+<div class="ezcol ezcol-one-third ezcol-last"><a href="http://interworks.co.uk/wp-content/uploads/2014/03/Screen-Shot-2014-03-19-at-08.13.15.png"><img class="alignnone wp-image-10202 size-medium" src="http://interworks.co.uk/wp-content/uploads/2014/03/Screen-Shot-2014-03-19-at-08.13.15-204x300.png" alt="Screen Shot 2014-03-19 at 08.13.15" width="204" height="300" /></a></div>
+<div class="ezcol-divider"></div>
+<p>&nbsp;</p>
+<p style="text-align: center;"><a href="http://interworks.co.uk/wp-content/uploads/2014/03/Screen-Shot-2014-03-21-at-09.08.21.png"><img class="alignnone wp-image-10227" src="http://interworks.co.uk/wp-content/uploads/2014/03/Screen-Shot-2014-03-21-at-09.08.21-267x300.png" alt="Screen Shot 2014-03-21 at 09.08.21" width="400" height="449" /></a></p>
+<p>&nbsp;</p>
+<hr />
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/measure-names-values-tableau/">Measure Names &#038; Values in Tableau</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmeasure-names-values-tableau%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/measure-names-values-tableau/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>URL Parameters in Tableau</title>
+		<link>http://interworks.co.uk/blog/url-parameters-tableau/</link>
+		<comments>http://interworks.co.uk/blog/url-parameters-tableau/#comments</comments>
+		<pubDate>Mon, 17 Mar 2014 15:36:09 +0000</pubDate>
+		<dc:creator><![CDATA[Rob Austin]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Gantt]]></category>
+		<category><![CDATA[Parameters]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=10159</guid>
+		<description><![CDATA[<p>Why would you need to use URL parameters in Tableau Server? Below is an example of a list of order dates.Thanks to Tableau&#8217;s massive amount of built in date functions we can do just about anything with them but what if we want to find the number of orders that were being processed on a [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/url-parameters-tableau/">URL Parameters in Tableau</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Furl-parameters-tableau%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Why would you need to use URL parameters in Tableau Server?<br />
+Below is an example of a list of order dates.Thanks to Tableau&#8217;s massive amount of built in date functions we can do just about anything with them but what if we want to find the number of orders that were being processed on a specific date, or range of dates from another data source. That becomes tricky because that data isn&#8217;t necessarily there.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2014/03/Screen-Shot-2014-03-17-at-11.51.48.png"><img class="aligncenter size-medium wp-image-10161" src="http://interworks.co.uk/wp-content/uploads/2014/03/Screen-Shot-2014-03-17-at-11.51.48-290x300.png" alt="Orders" width="290" height="300" /></a></p>
+<p>The first step to this is to create some Parameters in Tableau one for the start date called &#8220;Start&#8221;, one for the end date called &#8220;End&#8221;.<br />
+In the visualisation below I have created a calculated field using DATEDIFF to show the duration of each order and then shown them on a gantt chart.<br />
+You can manually change the parameters to see the number of Orders which were being handled within the range of dates. We will later embed this dashboard inside another and pass the parameters automatically from a second data source.</p>
+<p><script type='text/javascript' src='http://public.tableausoftware.com/javascripts/api/viz_v1.js'></script>
+<div class='tableauPlaceholder' style='width: 564px; height: 669px;'><noscript><a href='#'><img alt='Parameter Dashboard ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Pa&#47;ParameterPassing&#47;ParameterDashboard&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='564' height='669' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableausoftware.com%2F' /><param name='site_root' value='' /><param name='name' value='ParameterPassing&#47;ParameterDashboard' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Pa&#47;ParameterPassing&#47;ParameterDashboard&#47;1.png' /><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>
+<div style='width:564px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'>
+<div style='float:right; padding-right:8px;'><a href='http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/views/ParameterPassing/ParameterDashboard' target='_blank'>Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p>Here is the calculated field I used to identify the Orders which were being processed within that date range. As you can see it would not be possible to do this from a single date field so action filters would not be an option.<em><br />
+</em></p>
+<address>IF [Start]&lt;=[Ship Date] AND [Start]&gt;=[Order Date] THEN 1</address>
+<address>ELSEIF [End]&lt;=[Ship Date] AND [End]&gt;=[Order Date] THEN 1</address>
+<address>ELSEIF [Start]&lt;=[Order Date] AND [End]&gt;=[Ship Date] THEN 1</address>
+<address>ELSE 0 END</address>
+<p>The annoyance with the method used in the Dashboard above is that the user must select individual dates whereas we really want to be able to drive the dates from another data source&#8230;&#8230;<br />
+<script type='text/javascript' src='http://public.tableausoftware.com/javascripts/api/viz_v1.js'></script>
+<div class='tableauPlaceholder' style='width: 584px; height: 869px;'><noscript><a href='#'><img alt='Order Analysis Dashboard ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Pa&#47;ParameterPassing&#47;OrderAnalysisDashboard&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='584' height='869' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableausoftware.com%2F' /><param name='site_root' value='' /><param name='name' value='ParameterPassing&#47;OrderAnalysisDashboard' /><param name='tabs' value='no' /><param name='toolbar' value='no' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Pa&#47;ParameterPassing&#47;OrderAnalysisDashboard&#47;1.png' /><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='no' /><param name='display_count' value='yes' /></object></div>
+<div style='width:584px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'>
+<div style='float:right; padding-right:8px;'><a href='http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/views/ParameterPassing/OrderAnalysisDashboard' target='_blank'>Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p>The data source I have picked is just a list of dates, it could just as easily have some values associated. The trick is to restructure date(s) to be passed so that they are in an iso format e.g. 2013-02-31 <em><br />
+</em></p>
+<address>Min Date: STR(YEAR(MIN(Date)))+&#8217;-&#8216;+STR(MONTH(MIN(Date)))+&#8217;-&#8216;+STR(DAY(MIN(Date)))</address>
+<address>Max Date: STR(YEAR(MAX(Date)))+&#8217;-&#8216;+STR(MONTH(MAX(Date)))+&#8217;-&#8216;+STR(DAY(MAX(Date)))</address>
+<p>I have created a min date and max date in ISO format which I pass to my original &#8216;embedded&#8217; dashboard using a url action.</p>
+<p>The final dashboard includes a view from the driving data source (the list of dates) as well as the embedded dashboard from before; this was achieved by putting a web page in my final dashboard and pointing it towards my Tableau Server / Tableau Public URL. I then use a url action to drive the parameters in the embedded view as follows.<em><br />
+</em></p>
+<address> </address>
+<address><span style="color: #0000ff;">http://public.tableau.com/views/ParameterPassing/EmbeddedDashboard</span>?<span style="color: #ff0000;">:showVizHome=no&amp;:embed=yes</span>&amp;<span style="color: #008000;">Start=&lt;AGG(MinDate)&gt;&amp;End=&lt;AGG(MaxDate)&gt;</span></address>
+<p>&nbsp;</p>
+<p>This is made up of <span style="color: #0000ff;">embedded dashboard url <span style="color: #ff0000;">embed commands <span style="color: #008000;">my passed parameter fields</span></span></span></p>
+<p>In Order to test your work you need to publish the dashboard you wish to embed first, then create your final dashboard.</p>
+<p>URL Parameters / Filters open up some really interesting possibilities and I&#8217;d love to hear about it if you are using them or have plans to use them in any other innovative ways.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/url-parameters-tableau/">URL Parameters in Tableau</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Furl-parameters-tableau%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/url-parameters-tableau/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+		<item>
+		<title>My Path to InterWorks by Rob Austin</title>
+		<link>http://interworks.co.uk/blog/path-interworks-rob-austin/</link>
+		<comments>http://interworks.co.uk/blog/path-interworks-rob-austin/#comments</comments>
+		<pubDate>Mon, 10 Mar 2014 17:59:54 +0000</pubDate>
+		<dc:creator><![CDATA[Rob Austin]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[consultancy]]></category>
+		<category><![CDATA[InterWorks]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=10138</guid>
+		<description><![CDATA[<p>I started my career as an electrical engineer graduating from the University of Southampton. I enjoyed engineering and the problem solving challenges it frequently provided but it wasn’t until I started running my own businesses that I discovered a wider version of problem solving. My second business ‘Total Console Repair’ was the point at which [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/path-interworks-rob-austin/">My Path to InterWorks by Rob Austin</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fpath-interworks-rob-austin%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>I started my career as an electrical engineer graduating from the University of Southampton. I enjoyed engineering and the problem solving challenges it frequently provided but it wasn’t until I started running my own businesses that I discovered a wider version of problem solving.<br />
+My second business ‘Total Console Repair’ was the point at which I really discovered Business Intelligence. I didn’t know I‘d discovered Business Intelligence, but I had.</p>
+<p><strong>Total Console Repair</strong><br />
+Total Console Repair Limited was a company which fixed consumer electronics, by the truck load. In order to service our large corporate clients and handle the vast quantities of units we needed to have a large number of repair technicians. Initially we used traditional management methods to monitor and get the most from our staff but we soon found a better way. We started setting Key Performance Indicators (KPI’s) that the technicians could be compared against: Number of repairs, Ratio of repaired / failed, Warranty returns etc etc.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2014/03/Rob-PS3.jpg"><img class="aligncenter size-medium wp-image-10139" src="http://interworks.co.uk/wp-content/uploads/2014/03/Rob-PS3-300x228.jpg" alt="Rob PS3" width="300" height="228" /></a></p>
+<p>For the first few years we dashboarded all of this in Excel which pulled data from our Access database. I spent a lot of time and became a master of Excel. Typically a dashboard would take up to 10 days to create and often would require a full rebuild whenever we wanted to add a new measure. Imagine my delight when I was introduced to Tableau v4.0 by none other than our fearless leader at InterWorks Europe, Mel Stephenson. Suddenly I could create a dashboard in under a day and make modifications in minutes. As our business grew at an alarming rate we upgraded to MS SQL server and Tableau seamlessly accommodated the change in technology and business process.<br />
+We started rolling out dashboards to other areas of the business. Call centre, Finance, Management, Sales. ISO 9000 accreditation said that each job role must be defined but we went a step further than that and gave each job role a dashboard which not only defined the important tasks but measured each staff member against their KPIs in real time.<br />
+Sadly the recession hit the UK, most of our customers went in to administration and we had to shut down Total Console Repair. During the 18 month wind down period Tableau came in to its own again. We were able to vastly change the way we worked and alter business processes to combine job roles.</p>
+<p><strong>Reflection</strong><br />
+After Total Console Repair ceased trading I couldn’t think of anything I would prefer to do than to advise and implement best use of Tableau within other organisations. I had become passionate about BI best practice; which is really Jargon for ‘making your job easier and more productive’. It’s not all about data; it’s about people and giving them the right information in the right way. A happy, stress-free workforce is a productive workforce.</p>
+<p><script type='text/javascript' src='http://public.tableausoftware.com/javascripts/api/viz_v1.js'></script>
+<div class='tableauPlaceholder' style='width: 604px; height: 269px;'><noscript><a href='#'><img alt='Career  Path ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Ca&#47;CareerPath&#47;CareerPath&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='604' height='269' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableausoftware.com%2F' /><param name='site_root' value='' /><param name='name' value='CareerPath&#47;CareerPath' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Ca&#47;CareerPath&#47;CareerPath&#47;1.png' /><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>
+<div style='width:604px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'>
+<div style='float:right; padding-right:8px;'><a href='http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/views/CareerPath/CareerPath' target='_blank'>Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p><strong>InterWorks</strong><br />
+I was involved with InterWorks EU from the early days and it was a natural choice for me to join the team. I love working with Tableau every day and I also love the positive impact which can be created from implementing sound BI for clients. A good dashboard is like opening a window in to an otherwise black box. With enough well designed dashboards you can turn your company in to a transparent box with every aspect being visible to all.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/path-interworks-rob-austin/">My Path to InterWorks by Rob Austin</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fpath-interworks-rob-austin%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/path-interworks-rob-austin/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Marimekko Part 5: Totals</title>
+		<link>http://interworks.co.uk/blog/marimekko-part-5-totals/</link>
+		<comments>http://interworks.co.uk/blog/marimekko-part-5-totals/#comments</comments>
+		<pubDate>Mon, 06 Jan 2014 13:55:08 +0000</pubDate>
+		<dc:creator><![CDATA[Rob Austin]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Marimekko]]></category>
+		<category><![CDATA[Table Calculation]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=9608</guid>
+		<description><![CDATA[<p>In Part 4 of the blog we learned how to make a basic Mekko Chart. In this part of the blog we are going to add in some totals, thankfully we can use some of our existing calculations to do this. The first is the Y Dimension (Colours) total. We are going to use quick [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/marimekko-part-5-totals/">Marimekko Part 5: Totals</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmarimekko-part-5-totals%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>In <a href="http://interworks.co.uk/random/marimekko-part-4-basic-marimekko/">Part 4</a> of the blog we learned how to make a basic Mekko Chart.  In this part of the blog we are going to add in some totals, thankfully we can use some of our existing calculations to do this. The first is the Y Dimension (Colours) total. We are going to use quick table calcs to generate the percentage values. Don&#8217;t forget to hide the axis when you are done to maximise the useful space on the dashboard.</p>
+<p>Rows: SUM(Sales) > Quick Table Calculation > Percent of Total<br />
+Color: [Y Dimension] (sorted Ascending by sum of [Sales])<br />
+Text: As Rows</p>
+<p>The next worksheet is going to be the totals bar at the bottom which uses many of the same fields. Please note there are 2 text fields used in this worksheet using Tableau&#8217;s ability to stack labels in the same cell.<br />
+Columns: SUM(Sales) > Quick Table Calculation > Percent of Total<br />
+Text: [X Dimension] (sorted Ascending by sum of [Sales])<br />
+Text: As Rows</p>
+<p>Once that you have the totals in place all that remains is to arrange them on the dashboard.<br />
+<script type='text/javascript' src='http://public.tableausoftware.com/javascripts/api/viz_v1.js'></script>
+<div class='tableauPlaceholder' style='width: 604px; height: 669px;'><noscript><a href='#'><img alt='Marimekko Chart ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;XK&#47;XKYSHFSJ4&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='604' height='669' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableausoftware.com%2F' /><param name='path' value='shared&#47;XKYSHFSJ4' / ><param name='toolbar' value='yes' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;XK&#47;XKYSHFSJ4&#47;1.png' / ><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>
+<div style='width:604px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'>
+<div style='float:right; padding-right:8px;'><a href='http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/shared/XKYSHFSJ4' target='_blank'>Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p>The optional extra with this chart is to get around the data densification issues. This is only a problem with the X Axis as the Y Axis stacks naturally anyway. The following calculations use the Maximum X Axis running along the Y Dimension only.</p>
+<p>[X Axis Complete]<br />
+WINDOW_MAX([X Axis])<br />
+DTC > Compute Using: Y Dimension</p>
+<p>[Label X Complete]<br />
+IF MIN([Point])=3 THEN [X Axis Complete] &#8211; [X%]/2 END</p>
+<p>To use these new calculations simply replace the [X Axis] and [Label X] fields from the previous blog (<a href="http://interworks.co.uk/random/marimekko-part-4-basic-marimekko/">Part 4</a>).</p>
+<p>Another optional extra is to ensure that the charts disappear when the same parameter is selected on both axis. Simply put the following field in to the filter box and filter on False only.<br />
+[Are They The Same?]<br />
+[Parameters].[Y Dimension]=[Parameters].[X Dimension]</p>
+<p>I have expanded on this by telling the audience that they need to select some different options, I&#8217;m sure you can find innovative ways to do this.</p>
+<p>I leave you to apply the chart to your own data, play with the formatting and enjoy this flexible chart type.  I would like to thank Joe Mako for his work on Marimekko in Tableau and for his subsequent interest in my blog.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/marimekko-part-5-totals/">Marimekko Part 5: Totals</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmarimekko-part-5-totals%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/marimekko-part-5-totals/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Marimekko Part 4: Basic Marimekko</title>
+		<link>http://interworks.co.uk/blog/marimekko-part-4-basic-marimekko/</link>
+		<comments>http://interworks.co.uk/blog/marimekko-part-4-basic-marimekko/#comments</comments>
+		<pubDate>Mon, 06 Jan 2014 13:54:56 +0000</pubDate>
+		<dc:creator><![CDATA[Rob Austin]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Marimekko]]></category>
+		<category><![CDATA[Table Calculation]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=9592</guid>
+		<description><![CDATA[<p>In Part 3 we created all the calculated fields necessary for our basic Mekko. Because we have preset the DTC (Direction of Table Calculation) for each calculated field we can simply drag them on to the view to create the mekko and be confident that the values will match our table. Mark Type: Polygon Color: [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/marimekko-part-4-basic-marimekko/">Marimekko Part 4: Basic Marimekko</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmarimekko-part-4-basic-marimekko%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>In <a href="http://interworks.co.uk/random/marimekko-part-3-table-calculations/">Part 3</a> we created all the calculated fields necessary for our basic Mekko.  Because we have preset the DTC (Direction of Table Calculation) for each calculated field we can simply drag them on to the view to create the mekko and be confident that the values will match our table.<br />
+Mark Type: Polygon<br />
+Color: [Y Dimension] (sorted ascending along sum of sales to align the ledgend)<br />
+Path: [Point]<br />
+Detail: [X Dimension] (sorted descending along sum of sales to show the biggest first)<br />
+Columns: [X Axis]<br />
+Rows: [Y Axis]</p>
+<p><script type='text/javascript' src='http://public.tableausoftware.com/javascripts/api/viz_v1.js'></script>
+<div class='tableauPlaceholder' style='width: 604px; height: 669px;'><noscript><a href='#'><img alt='Basic Marimekko ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Me&#47;MekkoDemo&#47;BasicMarimekko&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='604' height='669' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableausoftware.com%2F' /><param name='site_root' value='' /><param name='name' value='MekkoDemo&#47;BasicMarimekko' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Me&#47;MekkoDemo&#47;BasicMarimekko&#47;1.png' / ><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>
+<div style='width:604px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'>
+<div style='float:right; padding-right:8px;'><a href='http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/views/MekkoDemo/BasicMarimekko' target='_blank'>Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p>The figures / labels on the Mekko are the next step. We are going to have to create another 3 calculated fields to get them in the correct position. </p>
+<p>[Label X]<br />
+IF ATTR([Point])=3 THEN [X Axis] &#8211; [X%]/2 END<br />
+This field creates another cartesian point between points 2 &#038; 3.</p>
+<p>[Text]<br />
+&#8216;<br />
+&#8216;+<br />
+LEFT(STR(ROUND([% of Y within X],3)*100),4) + &#8216;%&#8217;<br />
+This field ensures that the label displays below the line for each element.</p>
+<p>[Text (Hidden)]<br />
+IF [X%] > 0.05 THEN [Text] END<br />
+This is an optional field depending on your data which hides labels where space is limited.</p>
+<p>To display the labels in the same view we are going to make use of Dual Axis and then synchronize and hide the second axis. For the 2nd Axis we should have the following settings:<br />
+Columns: add Label X to the right of the existing X Axis<br />
+Mark Type: Text<br />
+Text: [Text] or [Text (Hidden)]<br />
+Detail: [Y Dimension], [X Dimension], [Point], [% of Y within X]</p>
+<p>This version of the Marimekko chart requires full data densification (i.e. you need to have a row of data for each combination of X Dimension &#038; Y Dimension). If you are missing a row of data then the running calculations will not compute correctly and will not add up to 100%. Try Selecting Y Dimension > Department and X Dimension > Container to see the issue in the viz above. </p>
+<p>We will solve this issue in <a href="http://interworks.co.uk/random/marimekko-part-5-totals/">Part 5</a> of the blog and add some totals.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/marimekko-part-4-basic-marimekko/">Marimekko Part 4: Basic Marimekko</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmarimekko-part-4-basic-marimekko%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/marimekko-part-4-basic-marimekko/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Marimekko Part 3: Table calculations</title>
+		<link>http://interworks.co.uk/blog/marimekko-part-3-table-calculations/</link>
+		<comments>http://interworks.co.uk/blog/marimekko-part-3-table-calculations/#comments</comments>
+		<pubDate>Mon, 06 Jan 2014 13:46:09 +0000</pubDate>
+		<dc:creator><![CDATA[Rob Austin]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Marimekko]]></category>
+		<category><![CDATA[Table Calculation]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=9541</guid>
+		<description><![CDATA[<p>In Part 2 we simulated a Marimekko using stacked bars but since the boundary for each element / polygon of a Marimekko in Tableau is made up from 4 Cartesian Coordinates we are going to use scales of 0 &#8211; 100 % for both X and Y axis and plot each corner of the polygon [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/marimekko-part-3-table-calculations/">Marimekko Part 3: Table calculations</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmarimekko-part-3-table-calculations%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>In <a href="http://interworks.co.uk/random/marimekko-part-2-parameters-table-calculations/">Part 2</a> we simulated a Marimekko using stacked bars but since the boundary for each element / polygon of a Marimekko in Tableau is made up from 4 Cartesian Coordinates we are going to use scales of 0 &#8211; 100 % for both X and Y axis and plot each corner of the polygon accordingly. This means that we will need a to calculate different values for various Points (1-4) for any given X or Y Dimension. We can use logical IF and CASE statements in our calculated fields to achieve this. Please note that [Point] should be dragged to Dimensions in the data window.</p>
+<p>[X Axis]:<br />
+IF ATTR([Point]) = 3<br />
+THEN PREVIOUS_VALUE(0) + [X%]<br />
+ELSE PREVIOUS_VALUE(0)<br />
+END<br />
+DTC &gt; Compute Using: Advanced &gt; Addressing: X Dimension, Point; Sort: Automatic</p>
+<p>[Y Axis]<br />
+ZN(PREVIOUS_VALUE(0)+<br />
+CASE ATTR([Point])<br />
+WHEN 1 THEN ZN(LOOKUP([% of Y within X],-1))<br />
+WHEN 2 THEN [% of Y within X]<br />
+WHEN 3 THEN 0<br />
+WHEN 4 THEN [% of Y within X]*-1<br />
+END)<br />
+DTC &gt; Compute Using: Advanced &gt; Addressing: Y Dimension, Point; Sort: Sum of Sales Decending.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2014/01/Screen-Shot-2014-01-03-at-14.14.02.png"><img class="alignleft size-medium wp-image-9496" alt="Screen Shot 2014-01-03 at 14.14.02" src="http://interworks.co.uk/wp-content/uploads/2014/01/Screen-Shot-2014-01-03-at-14.14.02-300x298.png" width="250" height="230" /></a>    <a href="http://interworks.co.uk/wp-content/uploads/2014/01/Screen-Shot-2014-01-06-at-09.29.07.png"><img src="http://interworks.co.uk/wp-content/uploads/2014/01/Screen-Shot-2014-01-06-at-09.29.07-300x221.png" alt="Screen Shot 2014-01-06 at 09.29.07" width="325" height="221" class="alignnone size-medium wp-image-9583" /></a></p>
+<p>When dealing with complicated table calculations it is best to start with a table of data, that way you can get a feel for what the calculations are really doing and make sure there are no mistakes before you create your viz. In the Crosstab above I have put [X-Dimension] in to columns, [Y Dimension] and [Point] in to Rows. I then drag [X Axis] in to the workspace followed by [Y Axis] to make use of measure names / measure values. Lastly I sorted the dimensions to make sure that they appeared in the same order as my table calculations.</p>
+<p>In the X Axis calculation above we are putting the previous value in for points 1 and 2 (or Zero if there is no previous value) we are then incrementing the value for point 3, it is behaving as a running sum for each Y Dimension along the X Dimension but only incrementing at point 3 (this means that point 4 will be the same as point 3 for each X Dimension. The value of the increment is calculated using [X%] as described earlier in the blog series.</p>
+<p>The Y Axis calculation is a little more complicated as the values are not common to each Y Dimension but run along the Y Dimension (and Point).  It restarts for each X Dimension calculating the result from the previous value along the Y Dimension and Point.</p>
+<p>If you understood that on your first read then you are doing very well. The table above illustrates how the results should look and may be easier to digest.</p>
+<p>In <a href="http://interworks.co.uk/random/marimekko-part-4-basic-marimekko/">Part 4</a> we will be putting these calculated fields in to a Mekko.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/marimekko-part-3-table-calculations/">Marimekko Part 3: Table calculations</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmarimekko-part-3-table-calculations%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/marimekko-part-3-table-calculations/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+		<item>
+		<title>Marimekko Part 2: Parameters and Table Calculations</title>
+		<link>http://interworks.co.uk/blog/marimekko-part-2-parameters-table-calculations/</link>
+		<comments>http://interworks.co.uk/blog/marimekko-part-2-parameters-table-calculations/#comments</comments>
+		<pubDate>Mon, 06 Jan 2014 13:41:30 +0000</pubDate>
+		<dc:creator><![CDATA[Rob Austin]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Marimekko]]></category>
+		<category><![CDATA[Table Calculation]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=9527</guid>
+		<description><![CDATA[<p>In Part 1 we learned how to use custom SQL to shape our data ready for use later on in polygons. In this part we will use parameters to allow dashboard viewers to exchange dimensions. This methodology can be applied to any chart type which is sliced by a dimension and is a great alternative [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/marimekko-part-2-parameters-table-calculations/">Marimekko Part 2: Parameters and Table Calculations</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmarimekko-part-2-parameters-table-calculations%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>In <a href="http://interworks.co.uk/random/marimekko-part-1-polygons-paths-custom-sql/">Part 1</a> we learned how to use custom SQL to shape our data ready for use later on in polygons. In this part we will use parameters to allow dashboard viewers to exchange dimensions. This methodology can be applied to any chart type which is sliced by a dimension and is a great alternative to replicating many similar dashboards.</p>
+<p>Although Tableau doesn&#8217;t have a Marimekko built in, a great adaptation is a Variable width bar chart, this will enable us to set up the parameters and to start creating some of the table calculations ready for our Mekko later. Much like a Marimekko, the variable width bar chart represents the % of total for each X Dimension as the width of the bar; it then shows the % of the Y dimension within each X dimension to give an impression of the overall % of any one element.<br />
+<script type='text/javascript' src='http://public.tableausoftware.com/javascripts/api/viz_v1.js'></script>
+<div class='tableauPlaceholder' style='width: 604px; height: 669px;'><noscript><a href='#'><img alt='Variable Bar ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Me&#47;MekkoDemo&#47;VariableBar&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='604' height='669' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableausoftware.com%2F' /><param name='site_root' value='' /><param name='name' value='MekkoDemo&#47;VariableBar' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Me&#47;MekkoDemo&#47;VariableBar&#47;1.png' / ><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>
+<div style='width:604px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'>
+<div style='float:right; padding-right:8px;'><a href='http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/views/MekkoDemo/VariableBar' target='_blank'>Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p>A parameter only works in conjunction with something else (in this case a calculated field) We shall therefore create 2 parameters called &#8220;X Dimension&#8221; and &#8220;Y Dimension&#8221; and 2 calculated fields also called [X Dimension] and [Y Dimension]. Each parameter will refer to the names of the Dimensions to be selected between.<br />
+<a href="http://interworks.co.uk/wp-content/uploads/2014/01/Screen-Shot-2014-01-03-at-15.57.12.png"><img class="aligncenter size-medium wp-image-9530" alt="Screen Shot 2014-01-03 at 15.57.12" src="http://interworks.co.uk/wp-content/uploads/2014/01/Screen-Shot-2014-01-03-at-15.57.12-300x251.png" width="300" height="251" /></a></p>
+<p>Each calculated field will refer to the corresponding parameter.<br />
+<a href="http://interworks.co.uk/wp-content/uploads/2014/01/Screen-Shot-2014-01-03-at-15.58.11.png"><img class="alignnone size-large wp-image-9534" alt="Screen Shot 2014-01-03 at 15.58.11" src="http://interworks.co.uk/wp-content/uploads/2014/01/Screen-Shot-2014-01-03-at-15.58.11-1024x223.png" width="904" height="196" /></a></p>
+<p>We will also create 2 calculated fields for the width of the bars [X%] and the percentage share within each bar [% of Y within X]. The 2 calculated fields are table calculations rather than standard calculated fields. The important thing about these table-calculated fields is that they run in a certain direction; this can be pre-defined in the blue &#8216;Define Table Calculation&#8217; text (DTC) which appears in the top right of the calculated field window. Although Tableau will default to the appropriate dimensions for us we are going to define these now for ease of use later.</p>
+<p>[% of Y within X] = SUM([Sales])/TOTAL(SUM([Sales]))<br />
+DTC &gt; Compute Using: Advanced &gt; Addressing: Y Dimension, Sort: Sales Ascending</p>
+<p>[X%] = [Total of Y]/[Total Overall]<br />
+Where:<br />
+[Total of Y] = TOTAL(SUM([Sales]))<br />
+DTC &gt; Compute Using: Y Dimension<br />
+&amp;:<br />
+[Total Overall] = TOTAL(SUM([Sales]))<br />
+DTC &gt; Compute Using: Advanced &gt; Addressing: X Dimension,Y Dimension, Sort: Automatic</p>
+<p>Although the last two calculations are identical, the direction of table calculation yields a very different result. This difference means that when we divide one by the other we get the percentage of each X Dimension compared to the Grand Total.</p>
+<p>To complete this viz Add the Calculated fields as follows:<br />
+Columns: X Dimension<br />
+Rows: % of Y within X<br />
+Color: Y Dimension<br />
+Size X%<br />
+Don&#8217;t forget to &#8216;Show Parameter Control&#8217; to play around with your dimensions on the fly.</p>
+<p>In <a href="http://interworks.co.uk/random/marimekko-part-3-table-calculations/">Part 3</a> we will delve a little deeper in to table calculations as we begin to make our real Mekko using our progress so far.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/marimekko-part-2-parameters-table-calculations/">Marimekko Part 2: Parameters and Table Calculations</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmarimekko-part-2-parameters-table-calculations%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/marimekko-part-2-parameters-table-calculations/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

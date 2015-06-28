@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: The joy of six: user-built views</title>
+	<atom:link href="http://interworks.co.uk/blog/user-built-views/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/blog/user-built-views/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 05 Jun 2015 09:45:31 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>By: Steve Wexler</title>
+		<link>http://interworks.co.uk/blog/user-built-views/#comment-280</link>
+		<dc:creator><![CDATA[Steve Wexler]]></dc:creator>
+		<pubDate>Mon, 13 Jun 2011 14:32:08 +0000</pubDate>
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1579#comment-280</guid>
+		<description><![CDATA[Just a follow up that the massive CASE statement works fine and does not slow things down too much.  A shout out to Andy Cotgreave who saved my behind by suggesting this approach.]]></description>
+		<content:encoded><![CDATA[<p>Just a follow up that the massive CASE statement works fine and does not slow things down too much.  A shout out to Andy Cotgreave who saved my behind by suggesting this approach.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Steve Wexler</title>
+		<link>http://interworks.co.uk/blog/user-built-views/#comment-279</link>
+		<dc:creator><![CDATA[Steve Wexler]]></dc:creator>
+		<pubDate>Fri, 10 Jun 2011 16:53:46 +0000</pubDate>
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1579#comment-279</guid>
+		<description><![CDATA[Andy,
+
+I love this, but wonder if there&#039;s a way to handle the following construct more efficiently:
+
+IF [Choose bar] = &quot;Sales&quot; then Sales
+ELSEIF [Choose bar] = &quot;Profit&quot; then ([Profit])
+ELSEIF [Choose bar] = &quot;Shipping Cost&quot; then ([Shipping Cost])
+ELSEIF [Choose bar] = &quot;Unit Price&quot; then ([Unit Price])
+ELSEIF [Choose bar] = &quot;Order Quantity&quot; then ([Order Quantity])
+END
+
+In my situation I have to test for over 100 conditions. Now, the field names (measure names) and parameter strings are identical, so is there any way to tell Tableau that 
+
+&quot;Profit&quot;
+
+should be treated as 
+
+[Profit]
+
+without a very long CASE statement?
+
+Steve]]></description>
+		<content:encoded><![CDATA[<p>Andy,</p>
+<p>I love this, but wonder if there&#8217;s a way to handle the following construct more efficiently:</p>
+<p>IF [Choose bar] = &#8220;Sales&#8221; then Sales<br />
+ELSEIF [Choose bar] = &#8220;Profit&#8221; then ([Profit])<br />
+ELSEIF [Choose bar] = &#8220;Shipping Cost&#8221; then ([Shipping Cost])<br />
+ELSEIF [Choose bar] = &#8220;Unit Price&#8221; then ([Unit Price])<br />
+ELSEIF [Choose bar] = &#8220;Order Quantity&#8221; then ([Order Quantity])<br />
+END</p>
+<p>In my situation I have to test for over 100 conditions. Now, the field names (measure names) and parameter strings are identical, so is there any way to tell Tableau that </p>
+<p>&#8220;Profit&#8221;</p>
+<p>should be treated as </p>
+<p>[Profit]</p>
+<p>without a very long CASE statement?</p>
+<p>Steve</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Ty</title>
+		<link>http://interworks.co.uk/blog/user-built-views/#comment-277</link>
+		<dc:creator><![CDATA[Ty]]></dc:creator>
+		<pubDate>Mon, 27 Dec 2010 23:11:12 +0000</pubDate>
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1579#comment-277</guid>
+		<description><![CDATA[well done, old chap!~ Top notch explanation as well...]]></description>
+		<content:encoded><![CDATA[<p>well done, old chap!~ Top notch explanation as well&#8230;</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Rina Petersen</title>
+		<link>http://interworks.co.uk/blog/user-built-views/#comment-276</link>
+		<dc:creator><![CDATA[Rina Petersen]]></dc:creator>
+		<pubDate>Mon, 22 Nov 2010 17:43:01 +0000</pubDate>
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1579#comment-276</guid>
+		<description><![CDATA[Thanks for laying this out so nicely and clear. 
+
+Rina]]></description>
+		<content:encoded><![CDATA[<p>Thanks for laying this out so nicely and clear. </p>
+<p>Rina</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Alex Kerin</title>
+		<link>http://interworks.co.uk/blog/user-built-views/#comment-275</link>
+		<dc:creator><![CDATA[Alex Kerin]]></dc:creator>
+		<pubDate>Mon, 15 Nov 2010 13:43:54 +0000</pubDate>
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1579#comment-275</guid>
+		<description><![CDATA[Nice job Andy - really like this]]></description>
+		<content:encoded><![CDATA[<p>Nice job Andy &#8211; really like this</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Dan Murray</title>
+		<link>http://interworks.co.uk/blog/user-built-views/#comment-274</link>
+		<dc:creator><![CDATA[Dan Murray]]></dc:creator>
+		<pubDate>Sun, 14 Nov 2010 05:00:00 +0000</pubDate>
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1579#comment-274</guid>
+		<description><![CDATA[You&#039;ve done it again man.  Nice work!]]></description>
+		<content:encoded><![CDATA[<p>You&#8217;ve done it again man.  Nice work!</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Andy Cotgreave</title>
+		<link>http://interworks.co.uk/blog/user-built-views/#comment-273</link>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+		<pubDate>Thu, 11 Nov 2010 14:09:33 +0000</pubDate>
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1579#comment-273</guid>
+		<description><![CDATA[Andy - I forgot to make that point in the post. Using this technique we&#039;re cutting one of our workbooks from about 55 worksheets to just 4!!!]]></description>
+		<content:encoded><![CDATA[<p>Andy &#8211; I forgot to make that point in the post. Using this technique we&#8217;re cutting one of our workbooks from about 55 worksheets to just 4!!!</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Andy Kriebel</title>
+		<link>http://interworks.co.uk/blog/user-built-views/#comment-272</link>
+		<dc:creator><![CDATA[Andy Kriebel]]></dc:creator>
+		<pubDate>Thu, 11 Nov 2010 13:36:19 +0000</pubDate>
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1579#comment-272</guid>
+		<description><![CDATA[Andy, one more comment.  I opened this workbook in Reader and it works exactly the same way.  Given Reader is how we distribute so many of our reports, this is going to be an incredible reduction in work.  Man I&#039;m excited!]]></description>
+		<content:encoded><![CDATA[<p>Andy, one more comment.  I opened this workbook in Reader and it works exactly the same way.  Given Reader is how we distribute so many of our reports, this is going to be an incredible reduction in work.  Man I&#8217;m excited!</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Andy Kriebel</title>
+		<link>http://interworks.co.uk/blog/user-built-views/#comment-271</link>
+		<dc:creator><![CDATA[Andy Kriebel]]></dc:creator>
+		<pubDate>Thu, 11 Nov 2010 12:56:38 +0000</pubDate>
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1579#comment-271</guid>
+		<description><![CDATA[Thanks for the explanation Andy.  I haven&#039;t been able to test out parameters yet, but this is going to reducing our reporting leaps and bounds.]]></description>
+		<content:encoded><![CDATA[<p>Thanks for the explanation Andy.  I haven&#8217;t been able to test out parameters yet, but this is going to reducing our reporting leaps and bounds.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Alistair Knock</title>
+		<link>http://interworks.co.uk/blog/user-built-views/#comment-270</link>
+		<dc:creator><![CDATA[Alistair Knock]]></dc:creator>
+		<pubDate>Wed, 10 Nov 2010 15:57:34 +0000</pubDate>
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1579#comment-270</guid>
+		<description><![CDATA[Good explanation, it&#039;s one of the &quot;Parameters?  Hmmm... I bet I could do this with it!&quot; uses that sprang to mind when they were first announced.]]></description>
+		<content:encoded><![CDATA[<p>Good explanation, it&#8217;s one of the &#8220;Parameters?  Hmmm&#8230; I bet I could do this with it!&#8221; uses that sprang to mind when they were first announced.</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

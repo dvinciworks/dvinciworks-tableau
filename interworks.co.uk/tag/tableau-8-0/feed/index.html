@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>InterWorks - Tableau Software &#38; Business Intelligence Consulting &#187; Tableau 8.0</title>
+	<atom:link href="http://interworks.co.uk/tag/tableau-8-0/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 26 Jun 2015 08:09:24 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>Table Calculations &#8211; Why apply them &#8216;By Cell&#8217;</title>
+		<link>http://interworks.co.uk/blog/table-calculations-why-apply-them-by-cell/</link>
+		<comments>http://interworks.co.uk/blog/table-calculations-why-apply-them-by-cell/#comments</comments>
+		<pubDate>Tue, 09 Jul 2013 08:17:37 +0000</pubDate>
+		<dc:creator><![CDATA[Darren Evans]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[InterWorks]]></category>
+		<category><![CDATA[Table Calculation]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[Tableau 8.0]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=8738</guid>
+		<description><![CDATA[<p>A question I was recently asked by an in training Tableau User was ‘Why would I apply a table calculation by cell?’. To answer this I have produced a simple example of a by cell Table Calculation. Before I get to it I would like to run through some Table Calculation basics. Calculation Direction One [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/table-calculations-why-apply-them-by-cell/">Table Calculations &#8211; Why apply them &#8216;By Cell&#8217;</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Ftable-calculations-why-apply-them-by-cell%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>A question I was recently asked by an in training Tableau User was ‘Why would I apply a table calculation by cell?’. To answer this I have produced a simple example of a by cell Table Calculation. Before I get to it I would like to run through some Table Calculation basics.</p>
+<p><strong>Calculation Direction</strong></p>
+<p>One of the key principles in Table Calculations is the direction of the calculation. Consider the following table which shows the ‘Running Sum’ table calculation running ‘Table Across’:</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2013/07/Across.png"><img class="alignnone size-medium wp-image-8743" src="http://interworks.co.uk/wp-content/uploads/2013/07/Across-300x170.png" alt="Across" width="300" height="170" /></a></p>
+<p>As you can see this running sum is running horizontally left to right and restarting on each row.</p>
+<p>If you ran the calculation again, this time &#8216;Table Down&#8217; the calculation would work vertically down the table restarting for each column.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2013/07/Down.png"><img class="alignnone size-medium wp-image-8742" src="http://interworks.co.uk/wp-content/uploads/2013/07/Down-300x169.png" alt="Down" width="300" height="169" /></a></p>
+<p>&#8216;Across then down&#8217; runs first horizontally and then carries the result to the next row running against the entire table:</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2013/07/Across-Then-Down.png"><img class="alignnone size-medium wp-image-8741" src="http://interworks.co.uk/wp-content/uploads/2013/07/Across-Then-Down-300x171.png" alt="Across Then Down" width="300" height="171" /></a></p>
+<p>Down then across runs vertically but carries the result to the next column of data, working across the whole table.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2013/07/Down-then-across.png"><img class="alignnone size-medium wp-image-8740" src="http://interworks.co.uk/wp-content/uploads/2013/07/Down-then-across-300x173.png" alt="Down then across" width="300" height="173" /></a></p>
+<p><strong>By Cell</strong></p>
+<p>The by cell calculation runs the calculation for a single cell of data (i.e. the lowest level of granularity in the view) Consider the following example:<br />
+<script src="http://public.tableausoftware.com/javascripts/api/viz_v1.js" type="text/javascript"></script></p>
+<div class="tableauPlaceholder" style="width: 604px; height: 595px;"><noscript><a href="#"><img alt=" " src="http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;By&#47;ByCell&#47;Acrossthendown_1&#47;1_rss.png" style="border: none" /></a></noscript><object class="tableauViz" style="display: none;" width="604" height="595"><param name="host_url" value="http%3A%2F%2Fpublic.tableausoftware.com%2F" /><param name="site_root" value="" /><param name="name" value="ByCell/Acrossthendown_1" /><param name="tabs" value="yes" /><param name="toolbar" value="yes" /><param name="static_image" value="http://public.tableausoftware.com/static/images/By/ByCell/Acrossthendown_1/1.png" /><param name="animate_transition" value="yes" /><param name="display_static_image" value="yes" /><param name="display_spinner" value="yes" /><param name="display_overlay" value="yes" /><param name="display_count" value="yes" /></object></div>
+<div style="width: 604px; height: 22px; padding: 0px 10px 0px 0px; color: black; font: normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float: right; padding-right: 8px;"><a href="http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/views/ByCell/Acrossthendown_1" target="_blank">Learn About Tableau</a></div>
+</div>
+<p>This chart shows Sales broken down by product type and market. I have applied ‘Type’ to the colour of the chart and set up my table calculation as percentage of total.</p>
+<p>What I would like to see is the % split between decaf and regular sales for each Product Type and Market.</p>
+<p>By default this calculation has been applied as &#8216;Table Across&#8217; so each colour split is the % of the total for the entire row of data.</p>
+<p>If I want to see the split value for each cell I need to set the calculation to run ‘By Cell’. Click &#8216;By Cell&#8217; to see this calculation in action.</p>
+<p>Now you can see that each cell of data has a total of 100% showing the split between Decaf and Regular drink sales.</p>
+<p>Any questions at all, please don&#8217;t hesitate to get in touch. We love a challenge!</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/table-calculations-why-apply-them-by-cell/">Table Calculations &#8211; Why apply them &#8216;By Cell&#8217;</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Ftable-calculations-why-apply-them-by-cell%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/table-calculations-why-apply-them-by-cell/feed/</wfw:commentRss>
+		<slash:comments>5</slash:comments>
+		</item>
+		<item>
+		<title>Using Custom Colour Palettes</title>
+		<link>http://interworks.co.uk/blog/using-custom-colour-palettes/</link>
+		<comments>http://interworks.co.uk/blog/using-custom-colour-palettes/#comments</comments>
+		<pubDate>Thu, 04 Jul 2013 14:20:33 +0000</pubDate>
+		<dc:creator><![CDATA[Darren Evans]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Colour Palette]]></category>
+		<category><![CDATA[Cusomisation]]></category>
+		<category><![CDATA[Darren Evans]]></category>
+		<category><![CDATA[Design]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[Tableau 8.0]]></category>
+		<category><![CDATA[visualisation]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=8679</guid>
+		<description><![CDATA[<p>Tableau has the ability to recreate any colour by using the RGB colour model. By using this you can customise your charts and dashboards to match your corporate branding guidelines. The chart below shows the top 5 BBC Television Channels by expenditure in 2012. It is using the default Tableau Colour Palette To amend a [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/using-custom-colour-palettes/">Using Custom Colour Palettes</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-custom-colour-palettes%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p dir="ltr">Tableau has the ability to recreate any colour by using the <a title="RGB Colour Model" href=" https://en.wikipedia.org/wiki/RGB_color_model" target="_blank">RGB colour model</a>. By using this you can customise your charts and dashboards to match your corporate branding guidelines.</p>
+<p dir="ltr">The chart below shows the top 5 BBC Television Channels by expenditure in 2012. It is using the default Tableau Colour Palette</p>
+<p><script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script>
+<div class="tableauPlaceholder" style="width:600px; height:550px;"><noscript><a href="#"><img alt=" " src="http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Co&#47;ColourBlog&#47;BBCTVSpendStandard&#47;1_rss.png" style="border: none" /></a></noscript><object class="tableauViz" width="600" height="550" style="display:none;"><param name="host_url" value="http%3A%2F%2Fpublic.tableausoftware.com%2F" /><param name="site_root" value="" /><param name="name" value="ColourBlog&#47;BBCTVSpendStandard" /><param name="tabs" value="no" /><param name="toolbar" value="yes" /><param name="static_image" value="http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Co&#47;ColourBlog&#47;BBCTVSpendStandard&#47;1.png" /><param name="animate_transition" value="yes" /><param name="display_static_image" value="yes" /><param name="display_spinner" value="yes" /><param name="display_overlay" value="yes" /><param name="display_count" value="yes" /></object></div>
+<div style="width:600px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float:right; padding-right:8px;"><a href="http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/views/ColourBlog/BBCTVSpendStandard" target="_blank">Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p dir="ltr">To amend a colour in Tableau Desktop you can double click on a colour on the colour legend itself. This pops up the standard select a colour menu. If you now double click on the blue square next to a category, BBC 1 in this example, you can customise the colour by choosing a different colour, amending the gradient or by specifying an RGB code.</p>
+<p dir="ltr"><a href="http://interworks.co.uk/wp-content/uploads/2013/07/BBC2.png"><img class="alignnone size-medium wp-image-8695" src="http://interworks.co.uk/wp-content/uploads/2013/07/BBC2-300x235.png" alt="BBC2" width="300" height="235" /></a></p>
+<p dir="ltr">The website <a title="Colour Lovers" href="http://www.colourlovers.com/palette/410981/BBC_World" target="_blank">colourlovers.com</a> allows users to store custom colour palettes. I am using the BBC Worldwide Colour Palette in this example.</p>
+<p>If we look at the colour we can see it has an RGB of 184, 31, 30.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2013/07/BBC6.png"><img src="http://interworks.co.uk/wp-content/uploads/2013/07/BBC6-300x152.png" alt="BBC6" width="300" height="152" /></a></p>
+<p dir="ltr">If we enter this into the cusom colour menu on Tableau and click OK we can assign this shade of red to BBC. Repeating this for each channel will give it a BBC ‘branded’ look.</p>
+<p><script src="http://public.tableausoftware.com/javascripts/api/viz_v1.js" type="text/javascript"></script></p>
+<div class="tableauPlaceholder" style="width: 550px; height: 550px;"><noscript><a href="#"><img alt="BBC TV Spend Bespoke Palette " src="http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Co&#47;ColourBlogBespoke&#47;BBCTVSpendBespokePalette&#47;1_rss.png" style="border: none" /></a></noscript><object class="tableauViz" style="display: none;" width="550" height="550"><param name="host_url" value="http%3A%2F%2Fpublic.tableausoftware.com%2F" /><param name="site_root" value="" /><param name="name" value="ColourBlogBespoke/BBCTVSpendBespokePalette" /><param name="tabs" value="no" /><param name="toolbar" value="yes" /><param name="static_image" value="http://public.tableausoftware.com/static/images/Co/ColourBlogBespoke/BBCTVSpendBespokePalette/1.png" /><param name="animate_transition" value="yes" /><param name="display_static_image" value="yes" /><param name="display_spinner" value="yes" /><param name="display_overlay" value="yes" /><param name="display_count" value="yes" /></object></div>
+<div style="width: 550px; height: 22px; padding: 0px 10px 0px 0px; color: black; font: normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float: right; padding-right: 8px;"><a href="http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/views/ColourBlogBespoke/BBCTVSpendBespokePalette" target="_blank">Learn About Tableau</a></div>
+</div>
+<p dir="ltr">This works fine for a one off chart, however it would be a laborious task if it were carried out on every visualisation built at the company. Whilst not available through the front end, Tableau does allow for the creation of additional custom colour palettes.</p>
+<p dir="ltr">To do this you need to amend the Preferences.tps file which can be located in the ‘My Tableau Repository Folder’. The repository is by default found within the My Documents folder on a Tableau Desktop user&#8217;s machine.</p>
+<p dir="ltr">Navigate to the Repository and right click on the preferences file. You can open the file in Notepad or any other text editor.</p>
+<p dir="ltr">The file uses a standard xml format. To add a colour palette you can use the following syntax:</p>
+<p dir="ltr"><em>&lt;preferences&gt;</em></p>
+<p dir="ltr"><em>       &lt;color-palette name=&#8221;BBC Colour Scheme&#8221; type=&#8221;regular&#8221; &gt;</em></p>
+<p dir="ltr"><em>               &lt;color&gt;#B81F1E&lt;/color&gt;</em></p>
+<p dir="ltr"><em>          &lt;/color-palette&gt;</em></p>
+<p dir="ltr"><em>&lt;/preferences&gt;</em></p>
+<p dir="ltr">Each color needs to be entered within the &#8216;Color-palette&#8217; section. Unlike Desktop this uses HTML Hex Codes. Each code needs to be prefixed with a #.</p>
+<p dir="ltr">The completed file for the BBC palette looks like this:</p>
+<p dir="ltr"><a href="http://interworks.co.uk/wp-content/uploads/2013/07/BBC13.png"><img class="alignnone size-medium wp-image-8684" src="http://interworks.co.uk/wp-content/uploads/2013/07/BBC13-300x114.png" alt="BBC13" width="300" height="114" /></a></p>
+<p dir="ltr">Once you have entered each of your colours you can save the preferences file. You will need to close and reopen Tableau for the new preferences to load.<br />
+Now if you go to edit colours you will see a new colour palette listed in the dropdown with the colours you have just specified.</p>
+<p dir="ltr"><a href="http://interworks.co.uk/wp-content/uploads/2013/07/BBC9.png"><img class="alignnone size-full wp-image-8688" src="http://interworks.co.uk/wp-content/uploads/2013/07/BBC9.png" alt="BBC9" width="192" height="190" /></a></p>
+<p dir="ltr">The preferences file will need to be installed on all local machines for users to be able to use the palette during design. The colours will still appear on the visualisation if loaded on another machine but the palette will not be available.</p>
+<p dir="ltr">Did you know that Microsoft Paint allows you to get the RGB for any pixel on an image? Simply load or paste an image in MS Paint and use the Colour picker (it looks like an eye dropper) to select a pixel and then choose &#8216;Edit colors&#8217; which is right most on the toolbar to reveal the RGB codes for the selected colour.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/using-custom-colour-palettes/">Using Custom Colour Palettes</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-custom-colour-palettes%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/using-custom-colour-palettes/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Tableau 8 is now available! We can upgrade your server for you.</title>
+		<link>http://interworks.co.uk/blog/tableau-v8-is-now-available-we-can-upgrade-your-server/</link>
+		<comments>http://interworks.co.uk/blog/tableau-v8-is-now-available-we-can-upgrade-your-server/#comments</comments>
+		<pubDate>Thu, 21 Mar 2013 11:32:17 +0000</pubDate>
+		<dc:creator><![CDATA[Kevin Pemberton]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[Tableau 8.0]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=7319</guid>
+		<description><![CDATA[<p>Tableau 8 is out and we&#8217;re really excited. InterWorks Europe can help you with upgrading your server to the latest and greatest version of Tableau. With over 90 new features such as web authoring, Google Analytics and Salesforce.com connectivity and improved performance it&#8217;s the latest and best upgrade to Tableau. We&#8217;ve been beta testers of [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/tableau-v8-is-now-available-we-can-upgrade-your-server/">Tableau 8 is now available! We can upgrade your server for you.</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Ftableau-v8-is-now-available-we-can-upgrade-your-server%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p><strong> Tableau 8 </strong>is out and we&#8217;re really excited. <strong>InterWorks Europe</strong> can help you with upgrading your server to the latest and greatest version of Tableau.</p>
+<p>With over 90 new features such as web authoring, Google Analytics and Salesforce.com connectivity and improved performance it&#8217;s the latest and best upgrade to <a title="Tableau 8 New Features" href="https://www.tableausoftware.com/new-features/8.0" target="_blank">Tableau</a>. We&#8217;ve been beta testers of version 8 since November last year and have assisted Tableau with the testing of this version. We can say from experience this is an awesome release!</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2013/03/Tableau8BlogImage.jpg"><img class="alignnone size-full wp-image-7400" src="http://interworks.co.uk/wp-content/uploads/2013/03/Tableau8BlogImage.jpg" alt="Tableau8BlogImage" width="640" height="556" /></a></p>
+<p>Check out more about <a href="http://www.tableausoftware.com/new-features/8.0">Tableau 8’s new features </a>or see them in person on the <a href="https://www.interworks.com/events">Tableau 8 Tour </a>in a city near you.</p>
+<p>If you do not have the resources available to perform this upgrade quickly, we are the company to do it for you. We are offering a fixed price upgrade service from any version of Tableau v7 to v8. Our charges to do this are listed below, please contact us on <strong>01202 373333</strong> or <a href="mailto:hello@interworks.co.uk">hello@interworks.co.uk</a> to arrange your upgrade.</p>
+<p><strong>Remote</strong> &#8211; We perform the upgrade remotely and test your dashboards are working as before (limited to 5 dashboards due to time, call us if you need more) &#8211; £1000</p>
+<p><strong>On-site</strong> &#8211; An on-site upgrade including testing your dashboards, we will also include a health-check of your server including performance and backup &#8211; £1400</p>
+<p>The prices above exclude VAT and travel expenses will be charged at cost.</p>
+<p><strong><img class="size-full wp-image-7321 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2013/03/500x340_webandmobileauthor.jpg.jpeg" alt="500x340_webandmobileauthor.jpg" width="401" height="272" /></strong></p>
+<p>Exclusions &#8211; We have to make the following exclusions for this offer:</p>
+<p>These prices apply to single server installations only. Please contact us if you need to upgrade a clustered server or high availability configuration of Tableau.</p>
+<p>This offer is made subject to our standard terms and conditions and is subject to availability.</p>
+<p><strong>Tableau 8 Training</strong></p>
+<p>Once you’ve upgraded to Tableau 8, you’ll definitely want to take advantage of all its slick new features. Our Certified Tableau Trainers can train you and your entire team on how best to use Tableau 8’s dynamic upgrades</p>
+<p>If you would like to discuss the offer further then please contact us on <strong>01202 373333</strong> or email <a href="mailto:hello@interworks.co.uk">hello@interworks.co.uk</a></p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/tableau-v8-is-now-available-we-can-upgrade-your-server/">Tableau 8 is now available! We can upgrade your server for you.</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Ftableau-v8-is-now-available-we-can-upgrade-your-server%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/tableau-v8-is-now-available-we-can-upgrade-your-server/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>InterWorks Joins Tableau on Tableau 8 Tour</title>
+		<link>http://interworks.co.uk/blog/interworks-joins-tableau-on-tableau-8-tour/</link>
+		<comments>http://interworks.co.uk/blog/interworks-joins-tableau-on-tableau-8-tour/#comments</comments>
+		<pubDate>Tue, 05 Mar 2013 10:34:58 +0000</pubDate>
+		<dc:creator><![CDATA[Chris Bradshaw]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Events]]></category>
+		<category><![CDATA[Tableau 8.0]]></category>
+		<category><![CDATA[tableau consulting]]></category>
+		<category><![CDATA[Tableau on Tour]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=6376</guid>
+		<description><![CDATA[<p>InterWorks will join Tableau Software on the nationwide Tableau 8 Tour to promote the newest release of Tableau. InterWorks Inc in the US will be sponsoring the US tour dates, and InterWorks Europe will be sponsoring the Manchester and London dates. The coast-to-coast, 42-stop tour will hit most major U.S. cities, beginning March 5 in [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/interworks-joins-tableau-on-tableau-8-tour/">InterWorks Joins Tableau on Tableau 8 Tour</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Finterworks-joins-tableau-on-tableau-8-tour%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p><img class="alignnone size-medium wp-image-6377" src="http://interworks.co.uk/wp-content/uploads/2013/03/Tableau-Tour-Image1-300x127.png" alt="Tableau Tour Image" width="300" height="127" /></p>
+<p>InterWorks will join Tableau Software on the nationwide Tableau 8 Tour to promote the newest release of Tableau.</p>
+<p>InterWorks Inc in the US will be sponsoring the US tour dates, and InterWorks Europe will be sponsoring the Manchester and London dates.</p>
+<p>The coast-to-coast, 42-stop tour will hit most major U.S. cities, beginning March 5 in Seattle, Washington.</p>
+<p><em><strong>UK Dates are:</strong></em></p>
+<ul>
+<li><strong>Manchester</strong> &#8211; 14th March</li>
+<li><strong>London</strong> &#8211; 20th March.</li>
+</ul>
+<p>The Tableau 8 Tour will introduce both new and experienced Tableau users to the highly-anticipated Tableau 8.0. Tour attendees can attend breakout sessions, listen to customer success stories and receive hands-on training on new features.</p>
+<p>Each event in the Tableau 8 Tour is free to attend. Those interested in attending can register at:<a href="http://www.tableausoftware.com/tableau8tour" target="_blank"></p>
+<p>http://www.tableausoftware.com/tableau8tour</a></p>
+<p><em>Additional tour dates are to be announced on the Tableau 8 Tour page.</em></p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/interworks-joins-tableau-on-tableau-8-tour/">InterWorks Joins Tableau on Tableau 8 Tour</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Finterworks-joins-tableau-on-tableau-8-tour%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/interworks-joins-tableau-on-tableau-8-tour/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Google Analytics in Tableau V8</title>
+		<link>http://interworks.co.uk/blog/google-analytics-in-tableau-v8/</link>
+		<comments>http://interworks.co.uk/blog/google-analytics-in-tableau-v8/#comments</comments>
+		<pubDate>Mon, 19 Nov 2012 16:33:46 +0000</pubDate>
+		<dc:creator><![CDATA[Rob Austin]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[GA Tableau]]></category>
+		<category><![CDATA[Google Analytics]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[Tableau 8.0]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=3290</guid>
+		<description><![CDATA[<p>I’ve used several tools for extracting data from Google Analytics (GA) in the past so I was particularly excited to find out about the new connector in Tableau V8 straight in to GA.  Once you click Google Analytics from the list of data sources, you have to enter your Google authorisation credentials. Then you get [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/google-analytics-in-tableau-v8/">Google Analytics in Tableau V8</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fgoogle-analytics-in-tableau-v8%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>I’ve used several tools for extracting data from Google Analytics (GA) in the past so I was particularly excited to find out about the new connector in Tableau V8 straight in to GA.  Once you click Google Analytics from the list of data sources, you have to enter your Google authorisation credentials.</p>
+<p dir="ltr"><a href="http://www.interworks.co.uk/wp-content/uploads/2012/11/GA4.png"><img class="size-medium wp-image-3304 alignleft" title="Google Analytics Authorisation" alt="Google Analytics Authorisation" src="http://www.interworks.co.uk/wp-content/uploads/2012/11/GA4-300x196.png" alt="" width="300" height="196" /></a></p>
+<p dir="ltr">Then you get to choose between all your accounts within GA.  You can choose your time period, going back as far as the beginning of last year.  You can choose between your profiles, although we have a great solution to combine profiles. You get some handy preset measures and dimensions to allow you to start visualising even if you are new to GA, you can of course select your dimensions and measures for those who are used to GA data. </p>
+<p>That’s it.. easy as that.</p>
+<p dir="ltr">The chart is what I achieved within 86 seconds of opening Tableau V8 for the first time.</p>
+<p dir="ltr"><a href="http://www.interworks.co.uk/wp-content/uploads/2012/11/GA31.png"><img class="alignleft  wp-image-3311" title="Google Analytics data displayed in Tableau V8" alt="Google Analytics data displayed in Tableau V8" src="http://www.interworks.co.uk/wp-content/uploads/2012/11/GA31.png" alt="" width="602" height="476" /></a></p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/google-analytics-in-tableau-v8/">Google Analytics in Tableau V8</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fgoogle-analytics-in-tableau-v8%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/google-analytics-in-tableau-v8/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+	</channel>
+</rss>

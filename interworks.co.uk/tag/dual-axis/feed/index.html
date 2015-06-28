@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>InterWorks - Tableau Software &#38; Business Intelligence Consulting &#187; Dual Axis</title>
+	<atom:link href="http://interworks.co.uk/tag/dual-axis/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 26 Jun 2015 08:09:24 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>Finally, I can &#8216;do things&#8217; with my Tableau Trendline</title>
+		<link>http://interworks.co.uk/blog/linear-regression-trend-lines/</link>
+		<comments>http://interworks.co.uk/blog/linear-regression-trend-lines/#comments</comments>
+		<pubDate>Thu, 06 Mar 2014 15:32:34 +0000</pubDate>
+		<dc:creator><![CDATA[Aus]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Dual Axis]]></category>
+		<category><![CDATA[Parameters]]></category>
+		<category><![CDATA[Table Calculation]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=10093</guid>
+		<description><![CDATA[<p>Have you ever wanted to know&#8230; “How far above the trend is that?” or “If I have a new client, what can I expect based on the current trend?” I have. InterWorks has clients who want to know and it crops up in many of my Tableau training classes.  I finally had some time to [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/linear-regression-trend-lines/">Finally, I can &#8216;do things&#8217; with my Tableau Trendline</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Flinear-regression-trend-lines%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p><strong>Have you ever wanted to know&#8230;</strong></p>
+<p><strong>“How far above the trend is that?”</strong></p>
+<p>or</p>
+<p><strong>“If I have a new client, what can I expect based on the current trend?”</strong></p>
+<p>I have. InterWorks has clients who want to know and it crops up in many of my Tableau training classes.  I finally had some time to figure it out and thought I would share it so you too can do &#8216;What If&#8217; analysis based on the trend, or show how far above or below the trend a data point is (like in the view below).  It doesn&#8217;t look much but it hasn&#8217;t been possible before, it&#8217;s tough but <strong>REALLY</strong> useful.  Ready?</p>
+<p><script type='text/javascript' src='http://public.tableausoftware.com/javascripts/api/viz_v1.js'></script>
+<div class='tableauPlaceholder' style='width: 604px; height: 695px;'><noscript><a href='#'><img alt=' ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Tr&#47;TrendLine&#47;Application-DifferencetoTrend&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='604' height='695' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableausoftware.com%2F' /><param name='site_root' value='' /><param name='name' value='TrendLine&#47;Application-DifferencetoTrend' /><param name='tabs' value='yes' /><param name='toolbar' value='yes' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Tr&#47;TrendLine&#47;Application-DifferencetoTrend&#47;1.png' /><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>
+<div style='width:604px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'>
+<div style='float:right; padding-right:8px;'><a href='http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/views/TrendLine/Application-DifferencetoTrend' target='_blank'>Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p>&nbsp;</p>
+<p><span style="line-height: 1.5em;">Tableau makes trend lines really easy to add (that&#8217;s the grey dotted line above).  It’s just a right click away. Most of the time simply visualising the trend line is the end goal so job done.  But if you want to &#8216;use&#8217; the trend line, interact with it and get real answers out you&#8217;re pretty stuck.  Hovering your mouse over the correct bit of the line and getting a confusing P value is not exactly useful, user friendly or slick. But there is a solution&#8230;</span></p>
+<p>&nbsp;</p>
+<p>OK this can get a little bit mathematical so I’ll keep it as light as I can.</p>
+<p><strong>Step 1 – The Nasty Bit &#8211; Calculate the trend line in Tableau</strong></p>
+<p>A linear progression (linear trend line) is based on the calculation:</p>
+<p>y = αx + β            (Hover your mouse over the trend line above and you&#8217;ll see Tableau doing this calculation)</p>
+<p>Where        α = (n∑(xy) -∑x ∑y) / (n∑x^2 -(∑x)^2 )        and              β = (∑y-α∑x) / n</p>
+<p>&nbsp;</p>
+<p><strong>Sorry about that bit.</strong> An example of this calculation is in the workbook but below is a brief explanation of how the annotation above can be written in Tableau calculated fields.</p>
+<p>Generally speaking when you create a scatter plot in Tableau you are plotting SUM(X) against SUM(Y) rather than x against y. Just look at the Columns and Rows shelves to see this. So if we start to break the formula down then everywhere you see an x you are going to be using SUM(X) and y as SUM(Y). Hopefully you are with me so far.</p>
+<p>The next step is to get the ∑x part which means the sum of x. This would be SUM( SUM(X) ) but this will throw up an error so for Tableau it can be written as WINDOW_SUM( SUM(X) ). This does bring us into table calc territory I’m afraid so later on we are going to have to consider what the ‘compute using’ is going to be or in other words what is the WINDOW that we are summing.</p>
+<p>So parts like ∑x ∑y would be calculated in Tableau with</p>
+<p>WINDOW_SUM( SUM(X) ) * WINDOW_SUM( SUM(Y) )</p>
+<p>The other piece to the puzzle is what to use for the n in this equation. n stands for the number of data points which in Tableau becomes the calculated field SIZE(). So n∑(xy) becomes</p>
+<p>SIZE() * WINDOW_SUM( SUM(X) * SUM(Y) )</p>
+<p>Easy eh!!! I did say this is the nasty bit.</p>
+<p>The way I have gone about this is by using a different calculation for each of the little elements of this equation.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2014/03/CalculatedField.png"><img class="alignnone size-medium wp-image-10095" src="http://interworks.co.uk/wp-content/uploads/2014/03/CalculatedField-300x113.png" alt="CalculatedField" width="300" height="113" /></a></p>
+<p>The only other thing to do which may be new to you is to set the Default Table Calculation. In my case to Country/Region but the important thing is to keep this consistent in all the calculations.  If you are going to be plotting customers then put in customers, if plotting products then compute using products etc. I have a data point for each Country/Region so that&#8217;s what I&#8217;m using. This is far more solid than &#8216;Compute using Table Across&#8217;.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2014/03/ComputeUsing.png"><img class="alignnone size-medium wp-image-10096" src="http://interworks.co.uk/wp-content/uploads/2014/03/ComputeUsing-300x213.png" alt="ComputeUsing" width="300" height="213" /></a></p>
+<p>This is a really good habit to get into when writing table calculations in Tableau.</p>
+<p>And here’s how it looks &#8211; Red line is my bit, dotted grey is Tableau&#8217;s. Snap.</p>
+<p><script type='text/javascript' src='http://public.tableausoftware.com/javascripts/api/viz_v1.js'></script>
+<div class='tableauPlaceholder' style='width: 604px; height: 695px;'><noscript><a href='#'><img alt=' ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Tr&#47;TrendLine&#47;CalculatedTrendLine&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='604' height='695' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableausoftware.com%2F' /><param name='site_root' value='' /><param name='name' value='TrendLine&#47;CalculatedTrendLine' /><param name='tabs' value='yes' /><param name='toolbar' value='yes' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Tr&#47;TrendLine&#47;CalculatedTrendLine&#47;1.png' /><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>
+<div style='width:604px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'>
+<div style='float:right; padding-right:8px;'><a href='http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/views/TrendLine/CalculatedTrendLine' target='_blank'>Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p>This has been created with a Dual axis chart of SUM(y) and Trend Line on the rows shelf. The only real purpose of this graph is to show that the figures match Tableau’s. No practical use as you could just turn on Tableau’s own trend line.</p>
+<p><strong>Step 2 – Practical applications</strong></p>
+<p>Answering the question <strong>“how far above the trend is that”</strong></p>
+<p>Now we’ve done the hard bit, calculating the difference is a pretty simple calculation of SUM(Y) – [Trend Line].</p>
+<p>I’ve plotted this again as a dual axis using a Gantt bar to get the red line.  See chart at the top of this blog.</p>
+<p>&nbsp;</p>
+<p>Answering the question <strong>“If I have a new client, what can I expect based on the current trend?”</strong></p>
+<p>If you&#8217;ve got this far then well done as this is the most useful bit!</p>
+<p>To get a single figure for this question is not too hard, unfortunately visualising it is a bit tougher. The calculation works by using a parameter to allow the user to enter their own x value. Then we use a version of the trend line calculation to output the value for the y. Tableau doesn’t make it easy to add an imaginary data point to a viz so this view is a bit awkward to build. However, play around with the slider below and you&#8217;ll see that the square moves up and down the trend line.</p>
+<p><script type='text/javascript' src='http://public.tableausoftware.com/javascripts/api/viz_v1.js'></script>
+<div class='tableauPlaceholder' style='width: 604px; height: 695px;'><noscript><a href='#'><img alt=' ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Tr&#47;TrendLine&#47;Application-WhatIf&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='604' height='695' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableausoftware.com%2F' /><param name='site_root' value='' /><param name='name' value='TrendLine&#47;Application-WhatIf' /><param name='tabs' value='yes' /><param name='toolbar' value='yes' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Tr&#47;TrendLine&#47;Application-WhatIf&#47;1.png' /><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>
+<div style='width:604px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'>
+<div style='float:right; padding-right:8px;'><a href='http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/views/TrendLine/Application-WhatIf' target='_blank'>Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p>And&#8230;.relax! Feel free to reach out to me if you need a fuller explanation on any of these elements.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/linear-regression-trend-lines/">Finally, I can &#8216;do things&#8217; with my Tableau Trendline</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Flinear-regression-trend-lines%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/linear-regression-trend-lines/feed/</wfw:commentRss>
+		<slash:comments>8</slash:comments>
+		</item>
+		<item>
+		<title>Marimekko in Tableau</title>
+		<link>http://interworks.co.uk/blog/marimekko-in-tableau/</link>
+		<comments>http://interworks.co.uk/blog/marimekko-in-tableau/#comments</comments>
+		<pubDate>Mon, 01 Jul 2013 15:03:38 +0000</pubDate>
+		<dc:creator><![CDATA[Rob Austin]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Dual Axis]]></category>
+		<category><![CDATA[Filters]]></category>
+		<category><![CDATA[Marimekko]]></category>
+		<category><![CDATA[Table Calculation]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=8664</guid>
+		<description><![CDATA[<p>This Marimekko chart was fun to get right. There are some great examples of complex table calculations built in to it. The use case is similar to that of a series of stacked bars. It has graphical similarities to a treemap but it lacks the visual superiority when dealing with large numbers of members; however [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/marimekko-in-tableau/">Marimekko in Tableau</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmarimekko-in-tableau%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>This Marimekko chart was fun to get right. There are some great examples of complex table calculations built in to it.</p>
+<p>The use case is similar to that of a series of stacked bars. It has graphical similarities to a treemap but it lacks the visual superiority when dealing with large numbers of members; however it does have the advantage of defining the positions on the x-axis, hence it is more structured and can be more useful than a treemap or stacked bars in this respect.</p>
+<p><script type='text/javascript' src='http://public.tableausoftware.com/javascripts/api/viz_v1.js'></script>
+<div class='tableauPlaceholder' style='width: 604px; height: 669px;'><noscript><a href='#'><img alt='Marimekko Chart ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;XK&#47;XKYSHFSJ4&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='604' height='669' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableausoftware.com%2F' /><param name='path' value='shared&#47;XKYSHFSJ4' / ><param name='toolbar' value='yes' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;XK&#47;XKYSHFSJ4&#47;1.png' / ><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>
+<div style='width:604px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'>
+<div style='float:right; padding-right:8px;'><a href='http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/shared/XKYSHFSJ4' target='_blank'>Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p>To read the chart think of it as being a stacked bar chart where the colours (y dimensions) show the split within each of the vertical bars. The width of the bars represents the overall share of the x dimension. Try Changing the x and y dimensions to see what happens.</p>
+<p>One would typically use this type of chart when dealing with data which has 3-12 different members in a few different dimensions. It is great for seeing where the overlaps are. When trying to to this type of analysis with other chart types you will either get an impression of the results without easy detail (e.g. stacked bar / heat map) or you will get the detail without a real overview (e.g. scatter plot). The Marimekko chart gives a really nice compromise in the middle.</p>
+<p>I have added a 5 part blog on the building of this useful chart type in Tableau:</p>
+<p><a href="http://interworks.co.uk/random/marimekko-part-1-polygons-paths-custom-sql/">Part 1: Polygons, Paths and Custom SQL</a> contains information on data preparation and the methods used to build.<br />
+<a href="http://interworks.co.uk/random/marimekko-part-2-parameters-table-calculations/">Part 2: Parameters and Table Calculations</a> introduces some good ideas for flexible charting and the use of table calculated fields. Here we use a variable width stacked bar chart as a simple kind of Mekko.<br />
+<a href="http://interworks.co.uk/random/marimekko-part-3-table-calculations/">Part 3: Table calculations</a> delves deeper in to the table calcs needed to create a Mekko and shows what the data looks like.<br />
+<a href="http://interworks.co.uk/random/marimekko-part-4-basic-marimekko/">Part 4: Basic Marimekko</a> is our first go at creating the Marimekko.<br />
+<a href="http://interworks.co.uk/random/marimekko-part-5-totals/">Part 5: Totals</a> is where we add in the optional extras such as total bars which help the viewer understand the visualisation. We also look at a method to avoid the need for data densification.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/marimekko-in-tableau/">Marimekko in Tableau</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmarimekko-in-tableau%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/marimekko-in-tableau/feed/</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+		</item>
+		<item>
+		<title>Dynamically choose a chart type</title>
+		<link>http://interworks.co.uk/blog/dynamic-chart-type/</link>
+		<comments>http://interworks.co.uk/blog/dynamic-chart-type/#comments</comments>
+		<pubDate>Tue, 29 Mar 2011 12:12:52 +0000</pubDate>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Andy Cotgreave]]></category>
+		<category><![CDATA[Calculated Fields]]></category>
+		<category><![CDATA[Dual Axis]]></category>
+		<category><![CDATA[Parameters]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=2270</guid>
+		<description><![CDATA[<p>Ujval Gandhi commented on my post about dual axis formatting. He asked if you could use dual axes/parameters to choose between showing a bar and a line chart. Turns out that, yes, you can: It&#8217;s quite a simple trick: Choose to show a bar or line chart Powered by Tableau 1. Create a Boolean parameter. [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/dynamic-chart-type/">Dynamically choose a chart type</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fdynamic-chart-type%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Ujval Gandhi commented on <a href="http://www.interworks.co.uk/blog/the-data-studio-blog/andy-cotgreave/dual-axes-nice-formatting">my post about dual axis formatting</a>. He asked if you could use dual axes/parameters to choose between showing a bar and a line chart. Turns out that, yes, you can:</p>
+<p>It&#8217;s quite a simple trick:</p>
+<p><script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script></p>
+<p><object class="tableauViz" width="544" height="789" style="display:none;"><param name="host_url" value="http%3A%2F%2Fpublic.tableausoftware.com%2F" /><param name="name" value="Barorline&#47;Barorline" /><param name="tabs" value="no" /><param name="toolbar" value="yes" /><param name="animate_transition" value="yes" /><param name="display_static_image" value="yes" /><param name="display_spinner" value="yes" /><param name="display_overlay" value="yes" /><param name="host_url" value="http%3A%2F%2Fpublic.tableausoftware.com%2F" /><param name="animate_transition" value="yes" /><param name="display_static_image" value="yes" /><param name="display_spinner" value="yes" /><param name="display_overlay" value="yes" /></object><noscript>Choose to show a bar or line chart <br /><a href="#"><img alt="Choose to show a bar or line chart " src="http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Ba&#47;Barorline&#47;Barorline&#47;1_rss.png" height="100%" /></a></noscript></p>
+<div style="width:500px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float:right; padding-right:8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/Barorline/Barorline" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>1. Create a Boolean parameter. I called my &#8220;Bar or Line&#8221;</p>
+<p>2. For each measure you are displaying, create 2 calculated fields: one for the bar and one for the line. Here&#8217;s the Sales field for the bar:<a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/sales_bar.png"></a></p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/sales_bar.png"><img class="alignnone size-full wp-image-2271" title="sales_bar" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/sales_bar.png" alt="" width="295" height="164" /></a></p>
+<p>3. Drop both calculated fields onto the Rows shelf, choose Dual Axes, and Synchronise them.</p>
+<p>4. Change the Marks card to show Multiple Mark Types:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/multiple-makrs1.png"><img class="alignnone size-full wp-image-2218" title="multiple makrs" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/multiple-makrs1.png" alt="" width="208" height="218" /></a></p>
+<p>5. Set one mark to Bar and one to Line</p>
+<p>6. Show the parameter control.</p>
+<p>You&#8217;re done!</p>
+<p>This is quite a nice trick, but I&#8217;m not sure why you&#8217;d want to do it. I can&#8217;t see a way it could be extended to cover other functionality. There are other ways to allow users to show multiple chart types; for example, <a href="http://www.alansmitheepresents.org/2011/03/changing-viz-types-with-dashboard.html">Alan Smithee has an excellent example of this here</a>. It&#8217;s possible that with lots of parameters and calculated fields, you could give the end user more control over what they show.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/dynamic-chart-type/">Dynamically choose a chart type</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fdynamic-chart-type%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/dynamic-chart-type/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+		<item>
+		<title>Dual axes: nice formatting</title>
+		<link>http://interworks.co.uk/blog/dual-axes-nice-formatting/</link>
+		<comments>http://interworks.co.uk/blog/dual-axes-nice-formatting/#comments</comments>
+		<pubDate>Thu, 24 Mar 2011 22:08:22 +0000</pubDate>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Andy Cotgreave]]></category>
+		<category><![CDATA[axis]]></category>
+		<category><![CDATA[Dual Axis]]></category>
+		<category><![CDATA[formatting]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=2231</guid>
+		<description><![CDATA[<p>You&#8217;ve built a nice chart using synchronised dual axes (maybe it&#8217;s a lollipop chart &#8211; as described in my previous posts!). It looks great, but you&#8217;re just left with a niggling little design flaw: those dual axis sure take up a lot of space, at the top and the bottom of your viz: What can [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/dual-axes-nice-formatting/">Dual axes: nice formatting</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fdual-axes-nice-formatting%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>You&#8217;ve built a nice chart using synchronised dual axes (maybe it&#8217;s a lollipop chart &#8211; <a href="http://www.interworks.co.uk/blog/the-data-studio-blog/andy-cotgreave/lollipop-charts">as described in my previous posts</a>!). It looks great, but you&#8217;re just left with a niggling little design flaw: those dual axis sure take up a lot of space, at the top <strong>and </strong>the bottom of your viz:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/dual-axes-take-up-space.png"><img class="alignnone size-full wp-image-2236" title="dual axes take up space" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/dual-axes-take-up-space.png" alt="" width="495" height="507" /></a></p>
+<p>What can we do about this? The first thing I thought of was to format all the Tick Marks and Titles away from the top axis:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/dual-axes-space-saved-badly.png"><img class="alignnone size-full wp-image-2232" title="dual axes space saved badly" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/dual-axes-space-saved-badly.png" alt="" width="495" height="507" /></a></p>
+<p>That&#8217;s no good &#8211; there&#8217;s a huge useless white banner of dead space at the top of the chart now.</p>
+<p>Instead, why not just format each axis to show one of the important parts: one to show the <strong>title </strong>and one to show the <strong>tick marks</strong>? This is the end result:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/dual-axes-space-saved.png"><img class="alignnone size-full wp-image-2235" title="dual axes space saved" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/dual-axes-space-saved.png" alt="" width="619" height="634" /></a></p>
+<p>Now I have the best of both worlds &#8211; the user&#8217;s not aware of any dead space, and nothing gets repeated. To format the axis, right-click anywhere on the axis on the worksheet and choose <strong>Edit axis&#8230;</strong></p>
+<p>On the top axis, leave the Title as it is, and show just the Minor tick marks, making sure they are the same interval as the Major tick marks on the bottom axis:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/tick-marks.png"><img class="alignnone size-full wp-image-2234" title="tick marks" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/tick-marks.png" alt="" width="379" height="394" /></a>:</p>
+<p>On the bottom axis, leave the tick marks, and delete the Title:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/title.png"><img class="alignnone size-full wp-image-2233" title="title" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/title.png" alt="" width="379" height="393" /></a></p>
+<p>Job done! You&#8217;ve maximised your available space <em>and </em>made your users&#8217; lives a bit easier.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/dual-axes-nice-formatting/">Dual axes: nice formatting</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fdual-axes-nice-formatting%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/dual-axes-nice-formatting/feed/</wfw:commentRss>
+		<slash:comments>6</slash:comments>
+		</item>
+		<item>
+		<title>Lollipops and page history</title>
+		<link>http://interworks.co.uk/blog/lollipops-and-page-history/</link>
+		<comments>http://interworks.co.uk/blog/lollipops-and-page-history/#comments</comments>
+		<pubDate>Sat, 19 Mar 2011 11:20:33 +0000</pubDate>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Andy Cotgreave]]></category>
+		<category><![CDATA[Dual Axis]]></category>
+		<category><![CDATA[lollipop]]></category>
+		<category><![CDATA[page filters]]></category>
+		<category><![CDATA[page history]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=2247</guid>
+		<description><![CDATA[<p>In my original Lollipop Chart post, Austin Dahl commented that lollipops are a way of adding page history to a bar-type display. When I tried this in v6.0.2 it crashed my workbook. However, I&#8217;ve upgraded to 6.0.5 and it now works. At least, it works in that it doesn&#8217;t crash Tableau. Below is a snapshot [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/lollipops-and-page-history/">Lollipops and page history</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Flollipops-and-page-history%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>In my original <a href="http://www.interworks.co.uk/blog/the-data-studio-blog/andy-cotgreave/lollipop-charts">Lollipop Chart post</a>, Austin Dahl commented that lollipops are a way of adding page history to a bar-type display. When I tried this in v6.0.2 it crashed my workbook. However, I&#8217;ve upgraded to 6.0.5 and it now works. At least, it works in that it doesn&#8217;t crash Tableau. Below is a snapshot of my lollipop chart with a page history on Month/Year of Order Date.</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/lollipop-page-history.png"><img class="alignnone size-full wp-image-2264" title="lollipop page history" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/lollipop-page-history.png" alt="" width="633" height="382" /></a></p>
+<p>And below is David Catley&#8217;s implementation using Corruption data:</p>
+<p><script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script><object class="tableauViz" width="544" height="609" style="display:none;"><param name="name" value="CorruptionPerceptionsIndex/CorruptionPerceptionsIndex" /><param name="tabs" value="no" /><param name="toolbar" value="yes" /></object><noscript>Corruption Perceptions Index <br /><a href="#"><img alt="Corruption Perceptions Index " src="http://public.tableausoftware.com/static/images/Co/CorruptionPerceptionsIndex/CorruptionPerceptionsIndex/1_rss.png" height="100%" /></a></noscript></p>
+<div style="width:544px;height:22px;padding:0px 10px 0px 0px; color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float:right; padding-right:8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/CorruptionPerceptionsIndex/CorruptionPerceptionsIndex" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>What do you think? On my example, I think it adds too much noise. However, on David&#8217;s, if you scroll to the most recent year, the reduction in the Corruption Index in Italy is very clear. I&#8217;ll soon be showing another way you can show historical data more effectively on a ranked bar-style chart.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/lollipops-and-page-history/">Lollipops and page history</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Flollipops-and-page-history%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/lollipops-and-page-history/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+		<item>
+		<title>Lollipop charts: part two</title>
+		<link>http://interworks.co.uk/blog/lollipop-charts-part-two/</link>
+		<comments>http://interworks.co.uk/blog/lollipop-charts-part-two/#comments</comments>
+		<pubDate>Thu, 17 Mar 2011 21:51:06 +0000</pubDate>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Andy Cotgreave]]></category>
+		<category><![CDATA[Dual Axis]]></category>
+		<category><![CDATA[lollipop]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[visualisation]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=2216</guid>
+		<description><![CDATA[<p>In my previous post, I explained how I stumbled across the lollipop chart as a way of displaying data when the values are all very high. This post reveals how I did it. Those of you who are savvy with the new features in v6 will probably have immediately guessed it was using dual axes. [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/lollipop-charts-part-two/">Lollipop charts: part two</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Flollipop-charts-part-two%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p><a href="http://bit.ly/heV1rD">In my previous post</a>, I explained how I stumbled across the lollipop chart as a way of displaying data when the values are all very high. This post reveals how I did it. Those of you who are savvy with the new features in v6 will probably have immediately guessed it was using dual axes. Here&#8217;s what my lollipop chart looks like:</p>
+<p><script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script><object class="tableauViz" width="639" height="745" style="display:none;"><param name="name" value="lollipop/lollipopmultipledimsdb" /><param name="tabs" value="yes" /><param name="toolbar" value="yes" /></object><noscript>lollipop (multiple dims) (db) <br /><a href="#"><img alt="lollipop (multiple dims) (db) " src="http://public.tableausoftware.com/static/images/lo/lollipop/lollipopmultipledimsdb/1_rss.png" height="100%" /></a></noscript>
+<div style="width:639px;height:22px;padding:0px 10px 0px 0px; color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float:right; padding-right:8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/lollipop/lollipopmultipledimsdb" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>What&#8217;s the trick? It revolves around duplicating your measure on the columns shelf, as follows:<a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/dual-axis1.png"><img class="alignnone size-full wp-image-2205" title="dual axis" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/dual-axis1.png" alt="" width="410" height="67" /></a></p>
+<p>You need to make sure it&#8217;s dual axis. Right-click on the second Measure pill and choose &#8220;Dual Axis&#8221; to draw each AVG(Satisfaction) on the same pane. Then right-click on one of the axes and choose &#8220;Synchronise axis&#8221; to make sure they match completely. This step is important because if you add labels to one of the measures, Tableau might stretch one axis to fit the text of the label in.</p>
+<p>The next step is to define multiple marks. This feature might be new to you, and doesn&#8217;t exactly jump out at you in the user interface. Click on the little drop-down arrow at the right of the Marks shelf and choose &#8220;Multiple Mark Types&#8221;:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/multiple-makrs1.png"><img class="alignnone size-full wp-image-2218" title="multiple makrs" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/multiple-makrs1.png" alt="" width="208" height="218" /> </a></p>
+<p>The Mark shelf now has a new row: it will say &#8220;All&#8221; and have left/right arrows. With the multiple mark feature, you can format all measures at once, or each one individually. What we need to do is set one mark to be a bar (a very thin one) and the other to be a circle, as shown below:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/marks-design-for-lollipop2.png"><img class="alignnone size-full wp-image-2220" title="marks design for lollipop" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/marks-design-for-lollipop2.png" alt="" width="499" height="350" /></a></p>
+<p>In my example, I have also added colour to emphasise the Customer Segment dimension. You&#8217;ll see that each Mark uses a different Dimension. While experimenting with the lollipops, I discovered that if the connecting line is the same intensity as the circle, it overwhelms the circle. By using a lighter palette on the line, things look nicer. I achieved this by duplicating the Dimension, and assigning lighter colours of the same hue to its members.</p>
+<p>To label the min/max I turned on labels for just the Circle mark.</p>
+<p>That&#8217;s about all you need to do. I added some shading and subtle row divider lines to highlight the different states. Finally, I formatted the axes so they were pretty much hidden.</p>
+<p>I&#8217;ve started using this technique regularly as it engages users, and improves the data-ink ratio without sacrificing interpretation. What do you think?</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/lollipop-charts-part-two/">Lollipop charts: part two</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Flollipop-charts-part-two%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/lollipop-charts-part-two/feed/</wfw:commentRss>
+		<slash:comments>9</slash:comments>
+		</item>
+		<item>
+		<title>Lollipop charts: the search for the perfect mark (part one)</title>
+		<link>http://interworks.co.uk/blog/lollipop-charts/</link>
+		<comments>http://interworks.co.uk/blog/lollipop-charts/#comments</comments>
+		<pubDate>Thu, 10 Mar 2011 06:22:30 +0000</pubDate>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Andy Cotgreave]]></category>
+		<category><![CDATA[Dual Axis]]></category>
+		<category><![CDATA[formatting]]></category>
+		<category><![CDATA[lollipop]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[visualisation]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=2182</guid>
+		<description><![CDATA[<p>Here&#8217;s the problem: I am visualising satisfaction rates over multiple dimensions. In almost all cases, satisfaction rates are high (between 70% and 100%). I want a visualisation that allows comparison over multiple dimensions that is also nice on the eye. Below is the result: a lollipop chart. Although I stumbled across this design by trial [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/lollipop-charts/">Lollipop charts: the search for the perfect mark (part one)</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Flollipop-charts%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Here&#8217;s the problem: I am visualising satisfaction rates over multiple dimensions. In almost all cases, satisfaction rates are high (between 70% and 100%). I want a visualisation that allows comparison over multiple dimensions that is also nice on the eye. Below is the result: a lollipop chart. Although I stumbled across this design by trial and error in Tableau, it is a chart type found elsewhere, eg on <a href="http://chandoo.org/wp/2010/04/09/dot-plot-panel-chart/">Chandoo&#8217;s excellent Excel blog</a>. What I thought I would do in this post is explain why I think it&#8217;s a great chart in this situation and how to do it in Tableau. <strong>Note: in this post, I&#8217;m using the Superstore data, not my real dataset. </strong>In my next post, I&#8217;ll explain how to build a lollipop in Tableau. If you can&#8217;t wait that long, you could try it yourself as your homework <img src="http://interworks.co.uk/wp-includes/images/smilies/icon_smile.gif" alt=":-)" class="wp-smiley" /></p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/lollipop.png"><img class="alignnone size-full wp-image-2186" title="lollipop" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/lollipop.png" alt="" width="631" height="618" /></a></p>
+<p><br class="spacer_" /></p>
+<p>To me, it&#8217;s a great way to reduce the data-ink ratio while retaining readability. What do you think? Here&#8217;s how I arrived at this design.</p>
+<p>Tableau&#8217;s default visualisation is the bar. What&#8217;s the problem with this? Well, when the bars are all very long (as is the case with my data), there&#8217;s just too much ink, and it creates an unpleasant <a href="http://en.wikipedia.org/wiki/Moir%C3%A9_pattern">Moire effect</a>:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/default-bars-db.png"><img class="alignnone size-full wp-image-2202" title="default bars (db)" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/default-bars-db.png" alt="" width="495" height="507" /></a></p>
+<p>How can we solve this? Well, we can reduce the bars to wafer thin ones, but this looks, well, flakey:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/thin-lines-db.png"><img class="alignnone size-full wp-image-2201" title="thin lines (db)" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/thin-lines-db.png" alt="" width="495" height="507" /></a></p>
+<p>Maybe we should push the size slider to the max (and add a border). This is what I would normally do in this situation. It removes the Moire effect, and isn&#8217;t too bad, but boy, there&#8217;s now a lot of ink being used:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/fat-bars-and-borders-db.png"><img class="alignnone size-full wp-image-2200" title="fat bars and borders (db)" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/fat-bars-and-borders-db.png" alt="" width="495" height="507" /></a></p>
+<p>Given there&#8217;s too much ink, maybe the bar itself is the problem. So how does a circle work? Well, the problem is that the circle is a long long way away from the label. When we try and foist this kind of thing on our users, they tell us it&#8217;s too hard to relate the circle to the name, even using shaded lines:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/circle-db.png"><img class="alignnone size-full wp-image-2199" title="circle (db)" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/circle-db.png" alt="" width="495" height="507" /></a></p>
+<p>We can get round this distance problem in a couple of ways. One is to fix the axis so that it&#8217;s range is only as wide as the min/max values:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/circle-4-db.png"><img class="alignnone size-full wp-image-2196" title="circle 4 (db)" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/circle-4-db.png" alt="" width="495" height="507" /></a></p>
+<p>But we all know that an axis that doesn&#8217;t start at zero is a bad thing, right? Well, sometimes it isn&#8217;t a bad thing, but it sure makes the states at the bottom of the list look like poor performers, even though they&#8217;re actually only 0.6% lower than the top of the list. Best in this case to keep the axis starting at zero. Maybe we could label the circle directly instead:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/circle-3-db.png"><img class="alignnone size-full wp-image-2197" title="circle 3 (db)" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/circle-3-db.png" alt="" width="495" height="507" /></a></p>
+<p>This still isn&#8217;t right: all that white space at the left of the chart seems wrong.</p>
+<p>And this was when I had my brainwave. Thick bars are no good and lonely circles are no good. How about making a combination of them both? And that&#8217;s how I came up with a lollipop.I think it has the following benefits:</p>
+<ul>
+</ul>
+<ol>
+<li>Can be used when all dimension members have high values (i.e. long/tall bars in a bar chart)</li>
+<li>Greatly reduces the data-ink ratio while maintaining a clear link to axis labels</li>
+<li>All the users I&#8217;ve shown it to so far have really engaged with it &#8211; they think it&#8217;s both pretty and easy to read</li>
+</ol>
+<ul>
+</ul>
+<p>I also like the fact that it works if you add more dimensions to make small multiples:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2011/03/lollipop-multiple-dims-db2.png"><img class="alignnone size-medium wp-image-2194" title="lollipop (multiple dims) (db2)" src="http://www.interworks.co.uk/wp-content/uploads/2011/03/lollipop-multiple-dims-db2-292x300.png" alt="" width="292" height="300" /></a></p>
+<p>Next time we&#8217;ll look at how to build it in Tableau. In the meantime, let me know your thoughts.</p>
+<p><br class="spacer_" /></p>
+<p><br class="spacer_" /></p>
+<p><br class="spacer_" /></p>
+<p><br class="spacer_" /></p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/lollipop-charts/">Lollipop charts: the search for the perfect mark (part one)</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Flollipop-charts%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/lollipop-charts/feed/</wfw:commentRss>
+		<slash:comments>10</slash:comments>
+		</item>
+		<item>
+		<title>Pareto Graphs In Tableau &#8211; Part 1 of 4</title>
+		<link>http://interworks.co.uk/blog/pareto-graphs-in-tableau/</link>
+		<comments>http://interworks.co.uk/blog/pareto-graphs-in-tableau/#comments</comments>
+		<pubDate>Tue, 07 Dec 2010 10:29:11 +0000</pubDate>
+		<dc:creator><![CDATA[Darren Evans]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Dual Axis]]></category>
+		<category><![CDATA[Parameters]]></category>
+		<category><![CDATA[pareto]]></category>
+		<category><![CDATA[Table Calculation]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1755</guid>
+		<description><![CDATA[<p>At InterWorks we love communicating information back to our clients using Pareto charts. Showing decision makers the results of 80/20 analysis in their organisation is a often a real eye-opener, helping to identify and resolve previously hidden problems leading to gains in both profitability and productivity. Using some of the new features found in the brilliant  [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/pareto-graphs-in-tableau/">Pareto Graphs In Tableau &#8211; Part 1 of 4</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fpareto-graphs-in-tableau%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>At InterWorks we love communicating information back to our clients using Pareto charts. Showing decision makers the results of 80/20 analysis in their organisation is a often a real eye-opener, helping to identify and resolve previously hidden problems leading to gains in both profitability and productivity.</p>
+<p>Using some of the new features found in the brilliant  Tableau 6 it is now possible to create fully functional Pareto Charts. Below is a Pareto Chart I created using the sample &#8216;Superstore&#8217; dataset that ships with Tableau desktop:</p>
+<p><script src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script><object class="tableauViz" style="display: none;" width="600" height="520"><param name="name" value="ParetoBlog/Pareto" /><param name="toolbar" value="yes" /><param name="tabs" value="yes" /></object><br />
+<noscript>Pareto<br />
+<a href="#"><img alt="Pareto " src="http://public.tableausoftware.com/static/images/Pa/ParetoBlog/Pareto/1_rss.png" height="100%" /></a></noscript></p>
+<div style="width: 600px; height: 22px; padding: 0px 10px 0px 0px; color: black; font: normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float: right; padding-right: 8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/ParetoBlog/Pareto" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>Represented in blue is the bar element of the chart. There are 795 customers in the superstore data and each bar represents that customer&#8217;s total profit. The Orange line represents the running total of the % contribution to the overall profit that the customer is making. I have highlighted an area in red to the top of the chart, this area represents losses &#8211; notice how the line peaks at 144.6% and then descends when it reaches the loss making customers until it finishes at 100%. If the superstore had not traded with these loss makers then total profits would have been 44.6% higher.</p>
+<p>The ‘cross hair’ style reference lines are set to show the percentage of the customer base that generates 80% of the profit. We can see that for the superstore 80% of the profit is being generated by just 7.55% of the customer base. Using the parameter control at the top of the graph the user can specify the % profit being displayed on the cross hair.</p>
+<p>In just a few seconds of viewing this chart has communicated that the superstore is reliant on a small % of their customer base to support their business whilst they are also carrying 34% of their customer base at a cost of $135m to the company in Gross Profit. This information would definitely be of interest to the owners, senior management and shareholders of the superstore company!</p>
+<p>Creating the Pareto graph is quite an advanced use of Tableau and is a great opportunity for me to demonstrate some of the powerful new features in Tableau version 6 including dual axis and parameters as well as the enhancements to both table calculations and calculated fields. Over the next week I shall be publishing a series of blogs building up to producing the main Pareto chart in this diagram.</p>
+<p>For Part 2 <a href="http://www.interworks.co.uk/blog/pareto-blog-2-creating-a-basic-pareto-curve">Click Here</a></p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/pareto-graphs-in-tableau/">Pareto Graphs In Tableau &#8211; Part 1 of 4</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fpareto-graphs-in-tableau%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/pareto-graphs-in-tableau/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>The joy of six: easy error bars</title>
+		<link>http://interworks.co.uk/blog/error-bars/</link>
+		<comments>http://interworks.co.uk/blog/error-bars/#comments</comments>
+		<pubDate>Mon, 15 Nov 2010 21:38:56 +0000</pubDate>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Andy Cotgreave]]></category>
+		<category><![CDATA[Dual Axis]]></category>
+		<category><![CDATA[Error bars]]></category>
+		<category><![CDATA[Joy of 6]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1455</guid>
+		<description><![CDATA[<p>Over on the forum, Hadbar asked a question about Error Bars. He asked the question back in the days of version 5, when it wasn&#8217;t straightforward to make a pleasant error bar. However, now we have the Joy of Six, we can use the new dual axis/multiple mark features to create some visually appealing error [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/error-bars/">The joy of six: easy error bars</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Ferror-bars%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Over on the forum,<a href="http://community.tableau.com/thread/106154" target="_blank"> Hadbar asked a question about Error Bars</a>. He asked the question back in the days of version 5, when it wasn&#8217;t straightforward to make a pleasant error bar. However, now we have the Joy of Six, we can use the new dual axis/multiple mark features to create some visually appealing error bars:</p>
+<p><script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script><object class="tableauViz" width="594" height="569" style="display:none;"><param name="name" value="JoyOfSixErrorbars/EasyErrorBars" /><param name="toolbar" value="yes" /><param name="tabs" value="no" /></object><noscript>Easy error barsUse dual axes to create tidy error bars <br /><a href="#"><img alt="Easy error barsUse dual axes to create tidy error bars " src="http://public.tableausoftware.com/static/images/Jo/JoyOfSixErrorbars/EasyErrorBars/1_rss.png" height="100%" /></a></noscript></p>
+<div style="width:594px;height:22px;padding:0px 10px 0px 0px; color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float:right; padding-right:8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/JoyOfSixErrorbars/EasyErrorBars" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>Tableau won&#8217;t calculate the error values for you, so you need those in your dataset. With this example, you need two measures:</p>
+<ul>
+<li>Error &#8211; the magnitude of the error</li>
+<li>Error lower &#8211; the lower limit of the error bar</li>
+</ul>
+<p>Here&#8217;s how we build the viz. First make a regular bar chart with the relevant Dimension and Measure, as below:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/11/RegularBarChart.png"><img class="alignnone size-full wp-image-1605" title="RegularBarChart" src="http://www.interworks.co.uk/wp-content/uploads/2010/11/RegularBarChart.png" alt="" width="550" height="361" /></a></p>
+<p>To create the error bar, we build a Gantt chart on the second axis. It&#8217;s lower limit is the value of the Error lower measure, and it&#8217;s size (height) is the size of the error. Step one is to put the MIN(Error Lower) pill on the Rows shelf, and set it to use Dual Axis (click the picture to see details):</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/11/Min-Error-dual-axis.png"><img class="alignnone size-full wp-image-1606" title="Min Error dual axis" src="http://www.interworks.co.uk/wp-content/uploads/2010/11/Min-Error-dual-axis.png" alt="" width="578" height="401" /></a></p>
+<p>We&#8217;ve now got a dual axis graph, but there&#8217;s some way to go yet. The Error Bars need to use a different mark type, in this case a Gantt Bar. Right-click on the axis, and choose <em><strong>Mark Type&#8230;Gantt Bar</strong></em>:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/11/Change-to-Gantt-Bar.png"><img class="alignnone size-full wp-image-1613" title="Change to Gantt Bar" src="http://www.interworks.co.uk/wp-content/uploads/2010/11/Change-to-Gantt-Bar.png" alt="" width="493" height="457" /></a></p>
+<p>Set the Size of the Gantt Bar to the size of the error. To do this, make sure the Marks shelf is showing the correct Mark. In this case, it&#8217;s MIN(Error Lower). This is a new feature in v6. In case you&#8217;ve not seen it, you can page through all the Marks:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/11/Marks-scrolling.png"><img class="alignnone size-full wp-image-1614" title="Marks scrolling" src="http://www.interworks.co.uk/wp-content/uploads/2010/11/Marks-scrolling.png" alt="" width="399" height="246" /></a></p>
+<p>Once you have found the correct mark, put the Error measure onto the Size shelf &#8211; that creates the Gantt bar with the height of the error. You&#8217;ll probably now notice that you have error bars, but they&#8217;re wide, and not in the right position relative to the bar. This fat bar problem is easily fixed &#8211; just slide the Size slider on the Mark shelf to be the smallest possible. That creates a nice thin line.</p>
+<p>How to get the error bars to align correctly? Simple &#8211; right-click on the axis and choose <em><strong>Synchronise Axis</strong></em>. While you&#8217;re there, you don&#8217;t need to show the right-hand axis at all. You can&#8217;t properly hide axes in Tableau, but you can format them so they don&#8217;t appear. Right-click on the axis and choose <em><strong>Edit axis</strong></em>. Delete the title on the General tab, and in the Tick Marks tab, set the Minor and Major Tick Marks to <span style="text-decoration: underline;">N</span>one. Click OK and your axis has &#8220;disappeared&#8221;.</p>
+<p>Lo and behold &#8211; you have some error bars. Play around with widths/colours and other settings to make it appear just how you want it. Coming next in the Joy Of Six series&#8230;. using parameters to create dynamic groups.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/error-bars/">The joy of six: easy error bars</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Ferror-bars%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/error-bars/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+	</channel>
+</rss>

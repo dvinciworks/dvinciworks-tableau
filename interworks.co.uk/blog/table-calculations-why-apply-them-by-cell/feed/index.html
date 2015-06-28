@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Table Calculations &#8211; Why apply them &#8216;By Cell&#8217;</title>
+	<atom:link href="http://interworks.co.uk/blog/table-calculations-why-apply-them-by-cell/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/blog/table-calculations-why-apply-them-by-cell/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 05 Jun 2015 09:45:31 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>By: Matt Lutton</title>
+		<link>http://interworks.co.uk/blog/table-calculations-why-apply-them-by-cell/#comment-31145</link>
+		<dc:creator><![CDATA[Matt Lutton]]></dc:creator>
+		<pubDate>Wed, 18 Sep 2013 18:43:21 +0000</pubDate>
+		<guid isPermaLink="false">http://interworks.co.uk/?p=8738#comment-31145</guid>
+		<description><![CDATA[Have often wondered about a use case for computing table calcs at the cell level.  Thanks for posting.]]></description>
+		<content:encoded><![CDATA[<p>Have often wondered about a use case for computing table calcs at the cell level.  Thanks for posting.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Joe Mako</title>
+		<link>http://interworks.co.uk/blog/table-calculations-why-apply-them-by-cell/#comment-22512</link>
+		<dc:creator><![CDATA[Joe Mako]]></dc:creator>
+		<pubDate>Mon, 05 Aug 2013 23:11:12 +0000</pubDate>
+		<guid isPermaLink="false">http://interworks.co.uk/?p=8738#comment-22512</guid>
+		<description><![CDATA[I am sorry I was not clear in my challenge, hopefully this makes more sense:
+
+from a blank worksheet,
+1. place Product Type on the Columns shelf
+2. place Market on the Rows shelf
+(notice there are only 15 marks for 4 columns and 4 rows)
+3. place Sales on the Text shelf
+4. make the Sales pill a Running Total Quick Table Calc, this defaults to a Compute Using of Table (Across)
+(notice there are now 16 marks)
+
+When Tableau adds marks for dimension value combinations that do not exist in the data source, this is called Data Densification. The example here is just one type, there are other types and other ways of dealing with them.
+
+How do you turn turn Data Densification off in this case?
+or in other words,
+How do you make the extra mark go away without impacting the computation?
+
+Answer:
+1. set the Compute Using to Product Type
+1. place another pill for Product Type on the Detail shelf
+2. from the context menu on the Product Type pill on the Columns shelf, change it from a Dimension to an Attribute.
+
+Important here is awareness of the 4 Pill Types, and the impact of using either a Discrete Dimension to a Discrete Measure on the Columns/Rows shelves at the same time with a table calculation and its Compute Using setting.]]></description>
+		<content:encoded><![CDATA[<p>I am sorry I was not clear in my challenge, hopefully this makes more sense:</p>
+<p>from a blank worksheet,<br />
+1. place Product Type on the Columns shelf<br />
+2. place Market on the Rows shelf<br />
+(notice there are only 15 marks for 4 columns and 4 rows)<br />
+3. place Sales on the Text shelf<br />
+4. make the Sales pill a Running Total Quick Table Calc, this defaults to a Compute Using of Table (Across)<br />
+(notice there are now 16 marks)</p>
+<p>When Tableau adds marks for dimension value combinations that do not exist in the data source, this is called Data Densification. The example here is just one type, there are other types and other ways of dealing with them.</p>
+<p>How do you turn turn Data Densification off in this case?<br />
+or in other words,<br />
+How do you make the extra mark go away without impacting the computation?</p>
+<p>Answer:<br />
+1. set the Compute Using to Product Type<br />
+1. place another pill for Product Type on the Detail shelf<br />
+2. from the context menu on the Product Type pill on the Columns shelf, change it from a Dimension to an Attribute.</p>
+<p>Important here is awareness of the 4 Pill Types, and the impact of using either a Discrete Dimension to a Discrete Measure on the Columns/Rows shelves at the same time with a table calculation and its Compute Using setting.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Kevin Pemberton</title>
+		<link>http://interworks.co.uk/blog/table-calculations-why-apply-them-by-cell/#comment-19675</link>
+		<dc:creator><![CDATA[Kevin Pemberton]]></dc:creator>
+		<pubDate>Tue, 23 Jul 2013 17:59:13 +0000</pubDate>
+		<guid isPermaLink="false">http://interworks.co.uk/?p=8738#comment-19675</guid>
+		<description><![CDATA[Thanks for the extra information Joe! I&#039;ll let Darren know about the extra bonus points challenge.]]></description>
+		<content:encoded><![CDATA[<p>Thanks for the extra information Joe! I&#8217;ll let Darren know about the extra bonus points challenge.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Darren Evans</title>
+		<link>http://interworks.co.uk/blog/table-calculations-why-apply-them-by-cell/#comment-19655</link>
+		<dc:creator><![CDATA[Darren Evans]]></dc:creator>
+		<pubDate>Tue, 23 Jul 2013 15:41:40 +0000</pubDate>
+		<guid isPermaLink="false">http://interworks.co.uk/?p=8738#comment-19655</guid>
+		<description><![CDATA[Hi Joe,
+
+Thanks for the feedback!
+
+You could do this using PREVIOUS_VALUE() which looks at the value in the previous row or column (dependant if run on table across or table down). 
+
+Something like
+
+IF PREVIOUS_VALUE(1) = WINDOW_SUM(SUM(Sales)) THEN
+     null
+ELSE
+     WINDOW_SUM(SUM(Sales))
+END
+
+(Set to run table across)
+
+Howzat!?
+
+Would love to hear if you have simpler way of achieving this.
+
+Darren]]></description>
+		<content:encoded><![CDATA[<p>Hi Joe,</p>
+<p>Thanks for the feedback!</p>
+<p>You could do this using PREVIOUS_VALUE() which looks at the value in the previous row or column (dependant if run on table across or table down). </p>
+<p>Something like</p>
+<p>IF PREVIOUS_VALUE(1) = WINDOW_SUM(SUM(Sales)) THEN<br />
+     null<br />
+ELSE<br />
+     WINDOW_SUM(SUM(Sales))<br />
+END</p>
+<p>(Set to run table across)</p>
+<p>Howzat!?</p>
+<p>Would love to hear if you have simpler way of achieving this.</p>
+<p>Darren</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Joe Mako</title>
+		<link>http://interworks.co.uk/blog/table-calculations-why-apply-them-by-cell/#comment-19509</link>
+		<dc:creator><![CDATA[Joe Mako]]></dc:creator>
+		<pubDate>Mon, 22 Jul 2013 20:12:09 +0000</pubDate>
+		<guid isPermaLink="false">http://interworks.co.uk/?p=8738#comment-19509</guid>
+		<description><![CDATA[Nice post!
+
+Here is another way to think of these options:
+
+Table Down: Address on Dimension pills on Rows shelf, Partitioning on all other Dimension pills
+
+Table Across: Address on Dimension pills on Columns shelf, Partitioning on all other Dimension pills
+
+Cell: Address on Dimension pills on Marks card, Partitioning on all other Dimension pills
+
+Also, TOTAL() is an exception when using Table/Pane options, when using TOTAL() and Table or Pane compute usings, the Dimension pills on the Marks card will also be used for Addressing.
+
+And since you asked, here is a quick challenge for you :)
+Notice in the first two images there is a mark for the combination Tea-South, and no mark in that cell for the other images. This is because that combination does not exist in the data source, and data densification is being performed. How would you turn off the data densification, getting the same result view, just without the extra mark? (without using filters or hide)]]></description>
+		<content:encoded><![CDATA[<p>Nice post!</p>
+<p>Here is another way to think of these options:</p>
+<p>Table Down: Address on Dimension pills on Rows shelf, Partitioning on all other Dimension pills</p>
+<p>Table Across: Address on Dimension pills on Columns shelf, Partitioning on all other Dimension pills</p>
+<p>Cell: Address on Dimension pills on Marks card, Partitioning on all other Dimension pills</p>
+<p>Also, TOTAL() is an exception when using Table/Pane options, when using TOTAL() and Table or Pane compute usings, the Dimension pills on the Marks card will also be used for Addressing.</p>
+<p>And since you asked, here is a quick challenge for you <img src="http://interworks.co.uk/wp-includes/images/smilies/icon_smile.gif" alt=":)" class="wp-smiley" /><br />
+Notice in the first two images there is a mark for the combination Tea-South, and no mark in that cell for the other images. This is because that combination does not exist in the data source, and data densification is being performed. How would you turn off the data densification, getting the same result view, just without the extra mark? (without using filters or hide)</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

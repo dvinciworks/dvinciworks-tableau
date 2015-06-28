@@ -1,0 +1,755 @@
+<!DOCTYPE HTML>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<head>
+        <meta charset="utf-8" />
+	<meta name="google-site-verification" content="o-LcfCT3_jYXrNT5Ov5EH8B62M8rrRVIi1OgdWHOyig" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+    <link rel="pingback" href="../../xmlrpc.php" />
+    <link rel="alternate" type="application/rss+xml" title="InterWorks &#8211; Tableau Software &amp; Business Intelligence Consulting" href="../../feed/index.html" />
+
+    
+<!-- This site is optimized with the Yoast WordPress SEO plugin v2.0.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<title>Comparing performance of Tableau 8.3 vs Tableau 9 Server</title>
+
+<link rel="stylesheet" href="../../wp-content/plugins/sitepress-multilingual-cms/res/css/language-selector.css?v=3.1.9.3" type="text/css" media="all" />
+<meta name="description" content="Tableau Server: Comparing the performance of Tableau 8.3 Server vs Tableau 9 Server"/>
+<link rel="canonical" href="index.html" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Comparing performance of Tableau 8.3 vs Tableau 9 Server" />
+<meta property="og:description" content="Tableau Server: Comparing the performance of Tableau 8.3 Server vs Tableau 9 Server" />
+<meta property="og:url" content="http://interworks.co.uk/blog/comparing-performance-tableau-8-3-server-vs-tableau-9-0-server/" />
+<meta property="og:site_name" content="InterWorks - Tableau Software &amp; Business Intelligence Consulting" />
+<meta property="article:tag" content="blog,Server,Tableau,Tableau 9.0" />
+<meta property="article:section" content="Blog" />
+<meta property="article:published_time" content="2015-02-12T13:51:53+00:00" />
+<meta property="article:modified_time" content="2015-03-26T11:43:19+00:00" />
+<meta property="og:updated_time" content="2015-03-26T11:43:19+00:00" />
+<meta property="og:image" content="http://interworks.co.uk/wp-content/uploads/2015/02/image001-300x246.png" />
+<meta property="og:image" content="http://interworks.co.uk/wp-content/uploads/2015/02/image003-300x154.png" />
+<meta property="og:image" content="http://interworks.co.uk/wp-content/uploads/2015/02/image005-300x153.png" />
+<meta property="og:image" content="http://interworks.co.uk/wp-content/uploads/2015/02/image007-300x231.png" />
+<meta property="og:image" content="http://interworks.co.uk/wp-content/uploads/2015/02/image009-300x232.png" />
+<meta property="og:image" content="http://interworks.co.uk/wp-content/uploads/2015/02/image011-300x160.png" />
+<meta property="og:image" content="http://interworks.co.uk/wp-content/uploads/2015/02/image013-300x238.png" />
+<meta property="og:image" content="http://interworks.co.uk/wp-content/uploads/2015/02/image015-300x150.png" />
+<meta property="og:image" content="http://interworks.co.uk/wp-content/uploads/2015/02/image017-300x235.png" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:description" content="Tableau Server: Comparing the performance of Tableau 8.3 Server vs Tableau 9 Server"/>
+<meta name="twitter:title" content="Comparing performance of Tableau 8.3 vs Tableau 9 Server"/>
+<meta name="twitter:site" content="@interworks"/>
+<meta name="twitter:domain" content="InterWorks - Tableau Software &amp; Business Intelligence Consulting"/>
+<meta name="twitter:image:src" content="http://interworks.co.uk/wp-content/uploads/2015/02/image001-300x246.png"/>
+<meta name="twitter:creator" content="@glenrobinson72"/>
+<!-- / Yoast WordPress SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="InterWorks - Tableau Software &amp; Business Intelligence Consulting &raquo; Feed" href="../../feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="InterWorks - Tableau Software &amp; Business Intelligence Consulting &raquo; Comments Feed" href="../../comments/feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="InterWorks - Tableau Software &amp; Business Intelligence Consulting &raquo; Comparing Performance on Tableau 8.3 Server vs Tableau 9.0 Server Comments Feed" href="feed/index.html" />
+<link rel='stylesheet' id='sociablecss-css'  href='../../wp-content/plugins/sociable/css/sociable.css?ver=4.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='layerslider_css-css'  href='../../wp-content/plugins/LayerSlider/css/layerslider.css?ver=3.6.2' type='text/css' media='all' />
+<link rel='stylesheet' id='contact-form-7-css'  href='../../wp-content/plugins/contact-form-7/includes/css/styles.css?ver=4.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='se-link-styles-css'  href='../../wp-content/plugins/search-everything/static/css/se-styles.css?ver=4.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='leadin-subscribe-css-css'  href='../../wp-content/plugins/leadin/assets/css/build/leadin-subscribe.css?ver=4.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='evcal_cal_default-css'  href='../../wp-content/plugins/eventON/assets/css/eventon_styles.css?ver=4.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='evo_dynamic_css-css'  href='http://interworks.co.uk/wp-admin/admin-ajax.php?action=evo_dynamic_css&#038;ver=4.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='evcal_google_fonts-css'  href='http://fonts.googleapis.com/css?family=Oswald%3A400%2C300%7COpen+Sans%3A400%2C300&#038;ver=4.1.5' type='text/css' media='screen' />
+<link rel='stylesheet' id='evo_font_icons-css'  href='../../wp-content/plugins/eventON/assets/fonts/font-awesome.css?ver=4.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='fancybox-css'  href='../../wp-content/plugins/easy-fancybox/fancybox/jquery.fancybox-1.3.7.min.css?ver=1.5.7' type='text/css' media='screen' />
+<link rel='stylesheet' id='jetpack_css-css'  href='../../wp-content/plugins/jetpack/css/jetpack.css?ver=3.4.3' type='text/css' media='all' />
+<link rel='stylesheet' id='wp_dlmp_styles-css'  href='../../wp-content/plugins/download-monitor/page-addon/styles.css?ver=4.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='hubspot-css'  href='../../wp-content/plugins/hubspot/css/hubspot.css?ver=4.1.5' type='text/css' media='all' />
+<!-- This site uses the Google Analytics by Yoast plugin v5.3.3 - Universal disabled - https://yoast.com/wordpress/plugins/google-analytics/ -->
+<script type="text/javascript">
+
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-38237981-1']);
+	_gaq.push(['_gat._forceSSL']);
+	_gaq.push(['_trackPageview']);
+
+	(function () {
+		var ga = document.createElement('script');
+		ga.type = 'text/javascript';
+		ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(ga, s);
+	})();
+
+</script>
+<!-- / Google Analytics by Yoast -->
+<script type='text/javascript' src='../../wp-includes/js/jquery/jquery.js?ver=1.11.1'></script>
+<script type='text/javascript' src='../../wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<script type='text/javascript' src='../../wp-content/plugins/sociable/js/sociable.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/plugins/sociable/js/vuible.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/plugins/sociable/js/addtofavorites.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/plugins/LayerSlider/js/layerslider.kreaturamedia.jquery.js?ver=3.6.2'></script>
+<script type='text/javascript' src='../../wp-content/plugins/LayerSlider/js/jquery-easing-1.3.js?ver=1.3.0'></script>
+<script type='text/javascript' src='../../wp-content/plugins/sitepress-multilingual-cms/res/js/jquery.cookie.js?ver=3.1.9.3'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpml_browser_redirect_params = {"pageLanguage":"en","languageUrls":{"en_US":"http:\/\/interworks.co.uk\/blog\/comparing-performance-tableau-8-3-server-vs-tableau-9-0-server\/","en":"http:\/\/interworks.co.uk\/blog\/comparing-performance-tableau-8-3-server-vs-tableau-9-0-server\/","US":"http:\/\/interworks.co.uk\/blog\/comparing-performance-tableau-8-3-server-vs-tableau-9-0-server\/"},"cookie":{"name":"_icl_visitor_lang_js","domain":"interworks.co.uk","path":"\/","expiration":24}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/sitepress-multilingual-cms/res/js/browser-redirect.js?ver=3.1.9.3'></script>
+<link rel='shortlink' href='http://wp.me/p5CyOF-2Wg' />
+	<style type='text/css'>
+	.download-info .download-button {
+		background-image: url(../../wp-content/plugins/download-monitor/page-addon/downloadbutton.gif);
+	}
+	.download-info .more-button {
+		background-image: url(../../wp-content/plugins/download-monitor/page-addon/morebutton.gif);
+	}
+	</style>
+<script type="text/javascript">
+	window._se_plugin_version = '8.1.3';
+</script>
+<meta name="generator" content="WPML ver:3.1.9.3 stt:1,39,4,3;0" />
+<script type='text/javascript'>var base_url_sociable = 'http://interworks.co.uk/wp-content/plugins/sociable/'</script><script type='text/javascript' src='http://apis.google.com/js/plusone.js'></script><link href="../../wp-content/themes/Sterling/style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="../../wp-content/themes/Sterling/css/primary-red.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="../../wp-content/themes/Sterling/css/_mobile.css" rel="stylesheet" type="text/css" media="screen" />
+<link rel="shortcut icon" href="../../wp-content/uploads/2014/03/favicon.png"/>
+
+
+<!-- EventON Version -->
+<meta name="generator" content="EventON 2.2.4" />
+
+<style type="text/css">.broken_link, a.broken_link {
+	text-decoration: line-through;
+}</style><link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600&amp;lang=en-SG" />
+
+<!--styles generated by site options-->
+<style type='text/css'>
+a, a:hover {color: #a41d21;font-weight:bold}
+
+*{font-family:"Open Sans",arial,sans-serif !important;}
+.top-aside .social_icons a {font-weight:600;padding-top:3px;}
+nav a {font-size:14.5px;padding:3px 4px;}
+header .sub-menu a, .sidebar li, input, textarea, select {font-size:12px;}
+div.breadcrumbs {font-size:10px;}
+.metadata, .small_banner .page-banner-description {font-size:12px;}
+.footer-callout-content p {font-size:16px;}
+.social_icons a {padding-bottom:8px;}
+.small_banner .page-banner-heading {font-weight:300;padding-bottom:3px;}
+h3 {font-size: 16px;font-weight: 600;}
+.business-hours .day, strong, .tabs_type_1 dt, .tabs_type_2 dt, .accordion dt, .tt-contentbox-title span, .tt-dropcap-round, .tt-dropcap-square, .tt-dropcap-text {font-weight: 600;}
+.preview h2, .preview h2 a {font-size:22px;}
+.widget-heading {font-size: 15px;font-weight: 600;}
+.tt-button, #content-container p, p.callout-heading, .footer-content p, .banner-slider p{font-family:arial,sans-serif !important;}
+p.callout-heading {letter-spacing:0px;}
+.banner-slider h1, .banner-slider h2, .banner-slider h3, .banner-slider h4, .banner-slider h5, .banner-slider h6 {font-weight: 300;}
+			
+
+body,html{background-image:url(../../wp-content/themes/Sterling/images/body-backgrounds/null.png) !important;background-position:left top !important;background-repeat:repeat !important;}
+#tt-boxed-layout {-moz-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);-webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);}
+footer{background:none !important;background-color:#ededed !important;}
+.top-aside{padding:4px 0;}
+.small_banner {padding:5px 0;}
+.footer-content {padding:0px 0;}
+header {padding:40px 0;}
+</style>
+			<!-- Easy Columns 2.1.1 by Pat Friedl http://www.patrickfriedl.com -->
+			<link rel="stylesheet" href="../../wp-content/plugins/easy-columns/css/easy-columns.css" type="text/css" media="screen, projection" />
+			
+<!-- Easy FancyBox 1.5.7 using FancyBox 1.3.7 - RavanH (http://status301.net/wordpress-plugins/easy-fancybox/) -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var fb_timeout = null;
+var fb_opts = { 'overlayShow' : true, 'hideOnOverlayClick' : true, 'showCloseButton' : true, 'centerOnScroll' : true, 'enableEscapeButton' : true, 'autoScale' : true };
+var easy_fancybox_handler = function(){
+	/* IMG */
+	var fb_IMG_select = 'a[href*=".jpg"]:not(.nofancybox,.pin-it-button), area[href*=".jpg"]:not(.nofancybox), a[href*=".jpeg"]:not(.nofancybox,.pin-it-button), area[href*=".jpeg"]:not(.nofancybox), a[href*=".png"]:not(.nofancybox,.pin-it-button), area[href*=".png"]:not(.nofancybox)';
+	jQuery(fb_IMG_select).addClass('fancybox image');
+	var fb_IMG_sections = jQuery('div.gallery ');
+	fb_IMG_sections.each(function() { jQuery(this).find(fb_IMG_select).attr('rel', 'gallery-' + fb_IMG_sections.index(this)); });
+	jQuery('a.fancybox, area.fancybox, li.fancybox a:not(li.nofancybox a)').fancybox( jQuery.extend({}, fb_opts, { 'transitionIn' : 'elastic', 'easingIn' : 'easeOutBack', 'transitionOut' : 'elastic', 'easingOut' : 'easeInBack', 'opacity' : false, 'hideOnContentClick' : false, 'titleShow' : true, 'titlePosition' : 'over', 'titleFromAlt' : true, 'showNavArrows' : true, 'enableKeyboardNav' : true, 'cyclic' : false }) );
+	/* Auto-click */ 
+	jQuery('#fancybox-auto').trigger('click');
+}
+/* ]]> */
+</script>
+
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" href="http://interworks.co.uk/wp-content/themes/Sterling/css/IE.css" />
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <script type="text/javascript" src="http://interworks.co.uk/wp-content/themes/Sterling/framework/js/IE.js"></script>
+        <script type="text/javascript" src="http://interworks.co.uk/wp-content/themes/Sterling/framework/js/respond.js"></script>
+    <![endif]-->
+
+    <link href="http://interworks.co.uk/wp-content/themes/Sterling/css/" rel="stylesheet" type="text/css" media="screen" />
+<link href="http://interworks.co.uk/wp-content/themes/Sterling/css/" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body class="single single-post postid-11300 single-format-standard wpb-js-composer js-comp-ver-3.6.7 vc_responsive">
+<div id="tt-wide-layout">    <aside class="top-aside clearfix">
+        <div class="center-wrap">
+            <div class="one_half">
+                <div class="sidebar-widget widget_text">			<div class="textwidget"></div>
+		</div>            </div><!-- end .top-toolbar-left -->
+
+            <div class="one_half">
+                <div class="sidebar-widget widget_search"><form method="get" class="searchform" action="../../index.html">
+    <fieldset>
+        <input type="text" name="s" class="s" value="Search..." onfocus="if(this.value=='Search...')this.value='';" onblur="if(this.value=='')this.value='Search...';" />
+    </fieldset>
+<input type='hidden' name='lang' value='en' /></form></div>            </div><!-- end .top-toolbar-right -->
+        </div><!-- end .center-wrap -->
+        <div class="top-aside-shadow"></div>
+    </aside>
+    <header>
+        <div class="center-wrap">
+            <div class="companyIdentity">
+                                                            <a href="../../index.html"><img src="../../wp-content/uploads/2014/03/interworks_external_logo.png" alt="InterWorks &#8211; Tableau Software &amp; Business Intelligence Consulting" /></a>
+                                                </div><!-- end .companyIdentity -->
+            <nav>
+                <ul>
+                    <li id="menu-item-142" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-142"><a href="../../business-intelligence/index.html">Business Intelligence</a>
+<ul class="sub-menu">
+	<li id="menu-item-3852" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3852"><a href="../../business-intelligence/why-use-bi/index.html">Why Use BI?</a></li>
+	<li id="menu-item-3851" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3851"><a href="../../business-intelligence/what-is-bi/index.html">What Is BI?</a></li>
+	<li id="menu-item-6611" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6611"><a href="../../business-intelligence/tableau-tools/index.html">Power Tools for Tableau</a></li>
+</ul>
+</li>
+<li id="menu-item-217" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-217"><a href="../../tableau-services/index.html">Tableau</a>
+<ul class="sub-menu">
+	<li id="menu-item-3850" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3850"><a href="../../business-intelligence/tableau-software/index.html">Tableau Software</a></li>
+	<li id="menu-item-9212" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9212"><a href="../../business-intelligence/why-tableau/index.html">Why Tableau?</a></li>
+	<li id="menu-item-3855" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3855"><a href="../../tableau-services/tableau-consulting/index.html">Tableau Consulting</a></li>
+	<li id="menu-item-3854" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3854"><a href="../../tableau-services/tableau-development/index.html">Tableau Development</a></li>
+	<li id="menu-item-3853" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3853"><a href="../../tableau-services/tableau-bi-infrastructure/index.html">Tableau BI Infrastructure</a></li>
+	<li id="menu-item-11003" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11003"><a href="../../tableau-services/tableau-training/index.html">Tableau Training</a></li>
+	<li id="menu-item-10582" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10582"><a href="../../business-intelligence/tableau-desktop/index.html">Tableau Desktop</a></li>
+	<li id="menu-item-10587" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10587"><a href="../../business-intelligence/tableau-server.1">Tableau Server</a></li>
+</ul>
+</li>
+<li id="menu-item-29" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-29"><a href="../index.html">Blog</a></li>
+<li id="menu-item-9810" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9810"><a href="../../event/index.html">Events</a></li>
+<li id="menu-item-412" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-412"><a href="../../resources/index.html">On Demand Help &#038; Resources</a>
+<ul class="sub-menu">
+	<li id="menu-item-3397" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3397"><a href="../../resources/data-exploration-tools/index.html">Data Exploration Tools</a></li>
+	<li id="menu-item-3400" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3400"><a href="../../resources/videos.1">Videos</a></li>
+	<li id="menu-item-3399" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3399"><a href="../../resources/social-links.1">Social Links</a></li>
+	<li id="menu-item-3395" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3395"><a href="../../resources/blogs.1">Blogs</a></li>
+	<li id="menu-item-11374" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11374"><a href="../../case-studies.1">Case Studies</a></li>
+	<li id="menu-item-3396" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3396"><a href="../../resources/books.1">Books</a></li>
+	<li id="menu-item-3398" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3398"><a href="../../resources/knowledge">Knowledge Base</a></li>
+	<li id="menu-item-11950" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11950"><a href="../../tableau-expert-hotline/index.html">On Demand Help</a></li>
+</ul>
+</li>
+                </ul>
+            </nav>
+            <a class="free-trial-link" target="_blank" href="http://www.tableau.com/partner-trial?id=13372#form">Free Tableau Trial</a>
+        </div><!-- end .center-wrap -->
+    </header>
+    <section class="small_banner">
+            <div class="center-wrap banner-no-crumbs">
+                    <h1>InterWorks EU Blog</h1>
+        
+        
+            </div><!-- end .center-wrap -->
+    <div class="shadow top"></div>
+    <div class="shadow bottom"></div>
+    <div class="tt-overlay"></div>
+    </section>
+
+<section id="content-container" class="clearfix">
+    <div id="main-wrap" class="clearfix">
+        <div class="page_content blog_page_content">
+            
+                    <div id="post-11300" class="post-11300 post type-post status-publish format-standard hentry category-blog tag-blog tag-server tag-tableau tag-tableau-9-0">
+                        <article class="preview blog-main-preview">
+                            <h2 ><a href="index.html" title="Comparing Performance on Tableau 8.3 Server vs Tableau 9.0 Server">Comparing Performance on Tableau 8.3 Server vs Tableau 9.0 Server</a></h2>
+
+                                                                <span class="metadata postinfo">
+                                        Posted by <a href="../../author/glen-robinson/index.html" title="Posts by Glen Robinson" rel="author">Glen Robinson</a> on 12 February, 2015 &nbsp;                                     </span>
+                            <p>Here in InterWorks we are getting a little bit over-excited about Tableau 9.</p>
+<p>Especially, when this <a href="http://www.tableau.com/about/blog/2015/1/90-preview-query-performance-improvements-36406" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.tableau.com/about/blog/2015/1/90-preview-query-performance-improvements-36406', 'blog']);" title="http://www.tableau.com/about/blog/2015/1/90-preview-query-performance-improvements-36406"  target="_blank">blog</a> post came out from the Tableau mothership.</p>
+<p style="padding-left: 30px;"><span style="color: #3366ff;">Individual Query time improved by <strong>10x</strong></span><br />
+<span style="color: #3366ff;">Dashboard Query times improved by <strong>9x</strong></span><br />
+<span style="color: #3366ff;">Query Fusion improving times by <strong>2x</strong></span><br />
+<span style="color: #3366ff;">And Query Caching improving times by <strong>50x</strong></span></p>
+<p>Those are some pretty bold figures to put out there..<br />
+Not being one to believe everything that I’m told, I thought that maybe it would be great for someone to do their own independent testing to check on those numbers.</p>
+<p>So…… I waited, and as no one did, it was left to me to do my own testing.<br />
+So here we go….</p>
+<h2>Testing</h2>
+<p><strong>Step 1:</strong> Build out 2 identical servers in Amazon Web Services EC2 (<a href="http://aws.amazon.com/ec2/" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://aws.amazon.com/ec2/', 'http://aws.amazon.com/ec2/']);" title="http://aws.amazon.com/ec2/"  target="_blank">http://aws.amazon.com/ec2/</a>)<br />
+I went for an <strong>m3.2xlarge</strong> server which has 8 vCPU (Intel Xeon E5-2670 v2) and 30 GB of RAM. (A pretty standard server setup.)</p>
+<p><strong>Step 2:</strong> Install Tableau 8.3 64bit Server on the first server, and Tableau 9 Beta 4 64-bit Server on the other.<br />
+<strong>Step 3:</strong> Upload my 150 million row Data extract to both servers.<br />
+<strong>Step 4:</strong> Create a dashboard to query the Data Source. (if you click on the image it will expand)</p>
+<div id="attachment_11308" style="width: 310px" class="wp-caption alignnone"><a href="../../wp-content/uploads/2015/02/image001.png"><img class="size-medium wp-image-11308" src="../../wp-content/uploads/2015/02/image001-300x246.png" alt="Tableau Server Performance Testing Dashboard" width="300" height="246" /></a>
+<p class="wp-caption-text">Tableau Server Performance Testing Dashboard</p>
+</div>
+<p><strong>Step 5:</strong> Test dashboard, record the timings and compare.</p>
+<h2>Results</h2>
+<p><strong>First let’s look at the Tableau 8.3 performance recording.</strong></p>
+<div id="attachment_11309" style="width: 357px" class="wp-caption alignnone"><a href="../../wp-content/uploads/2015/02/image003.png"><img class=" wp-image-11309" src="../../wp-content/uploads/2015/02/image003-300x154.png" alt="Tableau 8.3 8 vCPU Performance Recording" width="347" height="178" /></a>
+<p class="wp-caption-text">Tableau 8.3 8vCPU Performance Recording</p>
+</div>
+<p>So what we have here is a pretty standard Tableau 8 dashboard performance recording, with each query happening sequentially, one after the other.<br />
+The duration of the longest query came in at 10.78 seconds, with the overall duration from start to finish of around 22 seconds.</p>
+<p><strong>Now, let’s take a look at the same query on Tableau 9 Server</strong></p>
+<div id="attachment_11310" style="width: 355px" class="wp-caption alignnone"><a href="../../wp-content/uploads/2015/02/image005.png"><img class=" wp-image-11310" src="../../wp-content/uploads/2015/02/image005-300x153.png" alt="Tableau 9 8vCPU Performance Recording" width="345" height="176" /></a>
+<p class="wp-caption-text">Tableau 9 8vCPU Performance Recording</p>
+</div>
+<p>Whoa!!! So what’s happening here then?</p>
+<p>To start with, we have much shorter query durations, with the longest query length down from 10.78 to 5.4 seconds, and we also have parallel query executions to bring the overall time down from 22 seconds to 7.5 seconds</p>
+<p>That’s not bad at all…<br />
+Now, let’s take a look at the underlying server performance, to see what’s happening</p>
+<p><strong>First the Tableau 8.3 server</strong></p>
+<div id="attachment_11302" style="width: 310px" class="wp-caption alignnone"><a href="../../wp-content/uploads/2015/02/image007.png"><img class="size-medium wp-image-11302" src="../../wp-content/uploads/2015/02/image007-300x231.png" alt="Tableau 8.3 8vCPU CPU Performance" width="300" height="231" /></a>
+<p class="wp-caption-text">Tableau 8.3 8vCPU CPU Performance</p>
+</div>
+<p>There are 2 points to notice here.</p>
+<p>Firstly, the total processor usage never gets above 27% <span style="color: #0000ff;">[blue]</span> of what the server is capable of for the duration of the query.<br />
+Secondly, both the VizQL (vizqlserver <span style="color: #800080;">[purple]</span>) and Data Engine (tdeserver64<span style="color: #339966;"> [green]</span>) processes max out at one vCPU each.</p>
+<p><strong>Now let&#8217;s take a look at the Tableau 9 server..</strong></p>
+<div id="attachment_11303" style="width: 310px" class="wp-caption alignnone"><a href="../../wp-content/uploads/2015/02/image009.png"><img class="size-medium wp-image-11303" src="../../wp-content/uploads/2015/02/image009-300x232.png" alt="Tableau 9 8vCPU CPU performance" width="300" height="232" /></a>
+<p class="wp-caption-text">Tableau 9 8vCPU CPU performance</p>
+</div>
+<p>We see that again the VizQL process continues to use 1 vCPU, but now the Data Engine is multi-core, with the result that the total processor usage peaked at around 96%, and a much much shorter overall query time.</p>
+<p>Now, I know what you’re thinking; what effect does increasing the number of cores in a server have on the overall query times?</p>
+<p>As you’ve asked so nicely, let’s find out…</p>
+<p>I changed the underlying image on AWS from a m3.2xlarge to a c4.4xlarge for both the Tableau 8.3 and Tableau 9 Servers.</p>
+<p>A <strong>c4.4xlarge</strong> server has 16 vCPU (Intel Xeon E5-2666 v3) with 30GB of RAM (effectively doubling the core count for this test)</p>
+<p><strong>The same query run on Tableau 8.3 Server.</strong></p>
+<table style="height: 27px; border-color: #fcfcfc;" border="0" width="431" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td style="border-color: #ffffff;">
+<div id="attachment_11304" style="width: 310px" class="wp-caption alignnone"><a href="../../wp-content/uploads/2015/02/image011.png"><img class="size-medium wp-image-11304" src="../../wp-content/uploads/2015/02/image011-300x160.png" alt="Tableau 8.3 16vCPU Performance Recording" width="300" height="160" /></a>
+<p class="wp-caption-text">Tableau 8.3 16vCPU Performance Recording</p>
+</div>
+</td>
+<td style="border-color: #ffffff;">
+<div id="attachment_11305" style="width: 310px" class="wp-caption alignnone"><a href="../../wp-content/uploads/2015/02/image013.png"><img class="size-medium wp-image-11305" src="../../wp-content/uploads/2015/02/image013-300x238.png" alt="Tableau 8.3 16vCPU Processor Performance" width="300" height="238" /></a>
+<p class="wp-caption-text">Tableau 8.3 16vCPU Processor Performance</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>We <em>do</em> see a shorter overall query time (down from 22 seconds to around 16 seconds).</p>
+<p>But, we see the same process &amp; processor usage profile as Tableau 8.3 running on 8 vCPU, with only one core being used for each of the VizQL and Data Engine processes.<br />
+(Note that the improved query times moving from 8 to 16 vCPU may well be due to the changes in the underlying hardware, including the use of a faster Processor.</p>
+<p><strong>Now, on to Tableau 9 running on 16 vCPU</strong></p>
+<table style="height: 259px; border-color: #fcfcfc;" border="0" width="641" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td style="border-color: #ffffff;" scope="row">
+<div id="attachment_11306" style="width: 310px" class="wp-caption alignnone"><a href="../../wp-content/uploads/2015/02/image015.png"><img class="size-medium wp-image-11306" src="../../wp-content/uploads/2015/02/image015-300x150.png" alt="Tableau 9 16vCPU Performance Recording" width="300" height="150" /></a>
+<p class="wp-caption-text">Tableau 9 16vCPU Performance Recording</p>
+</div>
+</td>
+<td style="border-color: #ffffff;">
+<div id="attachment_11307" style="width: 310px" class="wp-caption alignnone"><a href="../../wp-content/uploads/2015/02/image017.png"><img class="size-medium wp-image-11307" src="../../wp-content/uploads/2015/02/image017-300x235.png" alt="Tableau 9 16vCPU Processor Performance" width="300" height="235" /></a>
+<p class="wp-caption-text">Tableau 9 16vCPU Processor Performance</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Again, we see the parallel querying and also, and an improvement in query times, with the longest query now taking 3.34 seconds, and the overall query time down to a sparkling 4.5 seconds.</p>
+<p>This is reflected in the performance chart, where again we see the multi-core in action. (This time peaking at just under 60% utilisation)</p>
+<h2>Summary and Conclusions</h2>
+<p>&nbsp;</p>
+<table style="height: 102px;" width="865">
+<tbody>
+<tr>
+<td><strong><span style="color: #000080;">Server Type and Tableau Version</span></strong></td>
+<td><strong><span style="color: #000080;">Time Taken for Longest Query (secs)</span></strong></td>
+<td><strong><span style="color: #000080;">Overall Dashboard Duration (secs)</span></strong></td>
+</tr>
+<tr>
+<td>Tableau 8.3 (8vCPU)</td>
+<td><strong>10.78 secs</strong></td>
+<td><strong>22 secs</strong></td>
+</tr>
+<tr>
+<td>Tableau 8.3 (16vCPU)</td>
+<td><strong>8.19 secs</strong></td>
+<td><strong>16 secs</strong></td>
+</tr>
+<tr>
+<td>Tableau 9 Beta 4 (8vCPU)</td>
+<td><strong>5.4 secs</strong></td>
+<td><strong>7.5 secs</strong></td>
+</tr>
+<tr>
+<td>Tableau 9 Beta 4 (16vCPU)</td>
+<td><strong>3.34 secs</strong></td>
+<td><strong>4.5 secs</strong></td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p><strong>So what to make of all those figures…</strong></p>
+<ol>
+<li>In my test, moving from 8 vCPU to 16 vCPU give me a speed increase of around 30% for Tableau 8.3 and around 60% for Tableau 9. As I said earlier, this may well be due to the underlying hardware being better on the c4.4xlarge than on the m3.2xlarge, and nothing to do with Tableau itself. (Investigating this thoroughly is beyond the remit of this piece.)</li>
+<li>However, upgrading from Tableau 8.3 to 9.0 on 8 vCPU server boosted performance by <span style="color: #000080;"><strong>just under 3 times</strong></span>, and for the 16 vCPU server, by <span style="color: #000080;"><strong>just</strong> <strong>over 3.5 times.</strong></span></li>
+</ol>
+<p>Those are some pretty thrilling figures. They&#8217;re not quite in the same league as the Tableau Blog figures, but still interesting enough..</p>
+<p>I guess it&#8217;s going to depend on your own dashboards, your datasets and the overall load on your Servers, as to what performance improvements you will see.<br />
+Also, in this testing I don’t take into account the other features offered in Tableau 9 such as Query Caching or Query Fusion (which I haven’t gone into here, and if no-one else writes about these features, I may have to do so myself)</p>
+<p>So overall, you are going to see great improvements in the times taken to render dashboards. This is going to make your customers happier which is going to make you happier.<br />
+However, what I’m not so sure about is what effect this upgrade is going to have on your servers.<br />
+There are a few unknowns out there such as;</p>
+<ul>
+<li>Are you going to see more user load on your Tableau server, as they now are more readily gain access to their reports?</li>
+<li>Are you going to be publishing dashboards which you would never have done on Tableau 8 because their performance wasn’t acceptable, but is now (additional load)?</li>
+<li>Is having a more ‘peaky’ CPU performance profile going to cause you issues, which may necessitate additional Hardware purchases?</li>
+<li>Or will having Query Caching and Query Fusion save the day, and actually result in less load on the server?</li>
+</ul>
+<p>All these are questions and more are what makes this server upgrade extremely exciting and takes Tableau 9.0 to a #WholeNewLevel. If you&#8217;re yet to download Tableau Server, or would like more information on it, please <a href="../../business-intelligence/tableau-server.1">click here </a>or feel free to shoot me a <a href="../../team/glen-robinson/index.html">message.</a><!-- Start Sociable -->
+<div class="sociable">
+<div class="sociable_tagline">Share this with your network&#8230;</div>
+<ul class='clearfix'>
+<li><a href="http://twitter.com/intent/tweet?text=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server%20-%20http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F%20  " onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://twitter.com/intent/tweet?text=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server%20-%20http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F%20  ', '']);" title="Twitter" class="option1_32" style="background-position:-288px -32px" rel="nofollow" target="_blank"></a></li>
+<li><a href="http://www.facebook.com/share.php?u=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&amp;t=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.facebook.com/share.php?u=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&amp;t=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server', '']);" title="Facebook" class="option1_32" style="background-position:-96px 0px" rel="nofollow" target="_blank"></a></li>
+<li><a href="https://mail.google.com/mail/?view=cm&#038;fs=1&#038;to&#038;su=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server&#038;body=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&#038;ui=2&#038;tf=1&#038;shva=1" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to&amp;su=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server&amp;body=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&amp;ui=2&amp;tf=1&amp;shva=1', '']);" title="email" class="option1_32" style="background-position:-160px 0px" rel="nofollow" target="_blank"></a></li>
+<li><a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&amp;title=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server&amp;source=InterWorks+-+Tableau+Software+%26amp%3B+Business+Intelligence+Consulting+InterWorks+-+Tableau+Software+%26amp%3B+Business+Intelligence+Consulting&amp;summary=Here%20in%20InterWorks%20we%20are%20getting%20a%20little%20bit%20over-excited%20about%20Tableau%209.%0D%0A%0D%0AEspecially%2C%20when%20this%20blog%20post%20came%20out%20from%20the%20Tableau%20mothership.%0D%0AIndividual%20Query%20time%20improved%20by%2010x%0D%0ADashboard%20Query%20times%20improved%20by%209x%0D%0AQuery%20Fusion%20improving" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&amp;title=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server&amp;source=InterWorks+-+Tableau+Software+%26amp%3B+Business+Intelligence+Consulting+InterWorks+-+Tableau+Software+%26amp%3B+Business+Intelligence+Consulting&amp;summary=Here%20in%20InterWorks%20we%20are%20getting%20a%20little%20bit%20over-excited%20about%20Tableau%209.%0D%0A%0D%0AEspecially%2C%20when%20this%20blog%20post%20came%20out%20from%20the%20Tableau%20mothership.%0D%0AIndividual%20Query%20time%20improved%20by%2010x%0D%0ADashboard%20Query%20times%20improved%20by%209x%0D%0AQuery%20Fusion%20improving', '']);" title="LinkedIn" class="option1_32" style="background-position:-288px 0px" rel="nofollow" target="_blank"></a></li>
+</ul>
+<div onMouseout="fixOnMouseOut(this,event,'post-11300')" id="sociable-post-11300" style="display:none;">
+<div style="top: auto; left: auto; display: block;" id="sociable">
+<div class="popup">
+<div class="content">
+<ul>
+<li style="heigth:32px;width:32px"><a href="http://www.myspace.com/Modules/PostTo/Pages/?u=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&amp;t=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.myspace.com/Modules/PostTo/Pages/?u=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&amp;t=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server', '']);" title="Myspace" class="option1_32" style="background-position:0px -32px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://delicious.com/post?url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&amp;title=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server&amp;notes=Here%20in%20InterWorks%20we%20are%20getting%20a%20little%20bit%20over-excited%20about%20Tableau%209.%0D%0A%0D%0AEspecially%2C%20when%20this%20blog%20post%20came%20out%20from%20the%20Tableau%20mothership.%0D%0AIndividual%20Query%20time%20improved%20by%2010x%0D%0ADashboard%20Query%20times%20improved%20by%209x%0D%0AQuery%20Fusion%20improving" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://delicious.com/post?url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&amp;title=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server&amp;notes=Here%20in%20InterWorks%20we%20are%20getting%20a%20little%20bit%20over-excited%20about%20Tableau%209.%0D%0A%0D%0AEspecially%2C%20when%20this%20blog%20post%20came%20out%20from%20the%20Tableau%20mothership.%0D%0AIndividual%20Query%20time%20improved%20by%2010x%0D%0ADashboard%20Query%20times%20improved%20by%209x%0D%0AQuery%20Fusion%20improving', '']);" title="Delicious" class="option1_32" style="background-position:-32px 0px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://digg.com/submit?phase=2&amp;url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&amp;title=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server&amp;bodytext=Here%20in%20InterWorks%20we%20are%20getting%20a%20little%20bit%20over-excited%20about%20Tableau%209.%0D%0A%0D%0AEspecially%2C%20when%20this%20blog%20post%20came%20out%20from%20the%20Tableau%20mothership.%0D%0AIndividual%20Query%20time%20improved%20by%2010x%0D%0ADashboard%20Query%20times%20improved%20by%209x%0D%0AQuery%20Fusion%20improving" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://digg.com/submit?phase=2&amp;url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&amp;title=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server&amp;bodytext=Here%20in%20InterWorks%20we%20are%20getting%20a%20little%20bit%20over-excited%20about%20Tableau%209.%0D%0A%0D%0AEspecially%2C%20when%20this%20blog%20post%20came%20out%20from%20the%20Tableau%20mothership.%0D%0AIndividual%20Query%20time%20improved%20by%2010x%0D%0ADashboard%20Query%20times%20improved%20by%209x%0D%0AQuery%20Fusion%20improving', '']);" title="Digg" class="option1_32" style="background-position:-64px 0px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://reddit.com/submit?url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&amp;title=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://reddit.com/submit?url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&amp;title=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server', '']);" title="Reddit" class="option1_32" style="background-position:-128px -32px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://www.stumbleupon.com/submit?url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&#038;title=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.stumbleupon.com/submit?url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&amp;title=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server', '']);" title="StumbleUpon" class="option1_32" style="background-position:-224px -32px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://www.google.com/bookmarks/mark?op=edit&amp;bkmk=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&amp;title=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server&amp;annotation=Here%20in%20InterWorks%20we%20are%20getting%20a%20little%20bit%20over-excited%20about%20Tableau%209.%0D%0A%0D%0AEspecially%2C%20when%20this%20blog%20post%20came%20out%20from%20the%20Tableau%20mothership.%0D%0AIndividual%20Query%20time%20improved%20by%2010x%0D%0ADashboard%20Query%20times%20improved%20by%209x%0D%0AQuery%20Fusion%20improving" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.google.com/bookmarks/mark?op=edit&amp;bkmk=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&amp;title=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server&amp;annotation=Here%20in%20InterWorks%20we%20are%20getting%20a%20little%20bit%20over-excited%20about%20Tableau%209.%0D%0A%0D%0AEspecially%2C%20when%20this%20blog%20post%20came%20out%20from%20the%20Tableau%20mothership.%0D%0AIndividual%20Query%20time%20improved%20by%2010x%0D%0ADashboard%20Query%20times%20improved%20by%209x%0D%0AQuery%20Fusion%20improving', '']);" title="Google Bookmarks" class="option1_32" style="background-position:-192px 0px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://news.ycombinator.com/submitlink?u=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&amp;t=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://news.ycombinator.com/submitlink?u=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&amp;t=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server', '']);" title="HackerNews" class="option1_32" style="background-position:-256px 0px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://reporter.es.msn.com/?fn=contribute&amp;Title=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server&amp;URL=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&amp;cat_id=6&amp;tag_id=31&amp;Remark=Here%20in%20InterWorks%20we%20are%20getting%20a%20little%20bit%20over-excited%20about%20Tableau%209.%0D%0A%0D%0AEspecially%2C%20when%20this%20blog%20post%20came%20out%20from%20the%20Tableau%20mothership.%0D%0AIndividual%20Query%20time%20improved%20by%2010x%0D%0ADashboard%20Query%20times%20improved%20by%209x%0D%0AQuery%20Fusion%20improving" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://reporter.es.msn.com/?fn=contribute&amp;Title=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server&amp;URL=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&amp;cat_id=6&amp;tag_id=31&amp;Remark=Here%20in%20InterWorks%20we%20are%20getting%20a%20little%20bit%20over-excited%20about%20Tableau%209.%0D%0A%0D%0AEspecially%2C%20when%20this%20blog%20post%20came%20out%20from%20the%20Tableau%20mothership.%0D%0AIndividual%20Query%20time%20improved%20by%2010x%0D%0ADashboard%20Query%20times%20improved%20by%209x%0D%0AQuery%20Fusion%20improving', '']);" title="MSNReporter" class="option1_32" style="background-position:-352px 0px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://www.blinklist.com/index.php?Action=Blink/addblink.php&amp;Url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&amp;Title=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.blinklist.com/index.php?Action=Blink/addblink.php&amp;Url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&amp;Title=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server', '']);" title="BlinkList" class="option1_32" style="background-position:0px 0px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://sphinn.com/index.php?c=post&amp;m=submit&amp;link=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://sphinn.com/index.php?c=post&amp;m=submit&amp;link=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F', '']);" title="Sphinn" class="option1_32" style="background-position:-192px -32px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://posterous.com/share?linkto=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&amp;title=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server&amp;selection=Here%20in%20InterWorks%20we%20are%20getting%20a%20little%20bit%20over-excited%20about%20Tableau%209.%0D%0A%0D%0AEspecially%2C%20when%20this%20blog%20post%20came%20out%20from%20the%20Tableau%20mothership.%0D%0AIndividual%20Query%20time%20improved%20by%2010x%0D%0ADashboard%20Query%20times%20improved%20by%209x%0D%0AQuery%20Fusion%20improving" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://posterous.com/share?linkto=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&amp;title=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server&amp;selection=Here%20in%20InterWorks%20we%20are%20getting%20a%20little%20bit%20over-excited%20about%20Tableau%209.%0D%0A%0D%0AEspecially%2C%20when%20this%20blog%20post%20came%20out%20from%20the%20Tableau%20mothership.%0D%0AIndividual%20Query%20time%20improved%20by%2010x%0D%0ADashboard%20Query%20times%20improved%20by%209x%0D%0AQuery%20Fusion%20improving', '']);" title="Posterous" class="option1_32" style="background-position:-64px -32px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://www.tumblr.com/share?v=3&amp;u=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&amp;t=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server&amp;s=Here%20in%20InterWorks%20we%20are%20getting%20a%20little%20bit%20over-excited%20about%20Tableau%209.%0D%0A%0D%0AEspecially%2C%20when%20this%20blog%20post%20came%20out%20from%20the%20Tableau%20mothership.%0D%0AIndividual%20Query%20time%20improved%20by%2010x%0D%0ADashboard%20Query%20times%20improved%20by%209x%0D%0AQuery%20Fusion%20improving" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.tumblr.com/share?v=3&amp;u=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&amp;t=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server&amp;s=Here%20in%20InterWorks%20we%20are%20getting%20a%20little%20bit%20over-excited%20about%20Tableau%209.%0D%0A%0D%0AEspecially%2C%20when%20this%20blog%20post%20came%20out%20from%20the%20Tableau%20mothership.%0D%0AIndividual%20Query%20time%20improved%20by%2010x%0D%0ADashboard%20Query%20times%20improved%20by%209x%0D%0AQuery%20Fusion%20improving', '']);" title="Tumblr" class="option1_32" style="background-position:-256px -32px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://www.google.com/reader/link?url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&amp;title=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server&amp;srcURL=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&amp;srcTitle=InterWorks+-+Tableau+Software+%26amp%3B+Business+Intelligence+Consulting+InterWorks+-+Tableau+Software+%26amp%3B+Business+Intelligence+Consulting" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.google.com/reader/link?url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&amp;title=Comparing%20Performance%20on%20Tableau%208.3%20Server%20vs%20Tableau%209.0%20Server&amp;srcURL=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&amp;srcTitle=InterWorks+-+Tableau+Software+%26amp%3B+Business+Intelligence+Consulting+InterWorks+-+Tableau+Software+%26amp%3B+Business+Intelligence+Consulting', '']);" title="Google Reader" class="option1_32" style="background-position:-224px 0px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a class="option1_32" style="cursor:pointer;background-position:-128px 0px" rel="nofollow" title="Add to favorites - doesn't work in Chrome"  onClick="javascript:AddToFavorites();"></a></li>
+<li style="heigth:32px;width:32px"><a style="cursor:poainter" rel="nofollow"   onMouseOver="more(this,'post-11300')"><img  src="../../wp-content/plugins/sociable/images/option1/32/more.png" title="LinkedIn" alt="LinkedIn" /></a></li>
+</ul></div>
+<p>		  <a style="cursor:pointer" onclick="hide_sociable('post-11300',true)" class="close"></p>
+<p>		  <img onclick="hide_sociable('post-11300',true)" title="close" src="../../wp-content/plugins/sociable/images/closelabel.png"></p>
+<p>		  </a></p></div>
+</p></div>
+</p></div>
+</div>
+<div class='sociable' style='float:none'>
+<ul class='clearfix'>
+<li id="Twitter_Counter"><a href="https://twitter.com/share" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'https://twitter.com/share', 'Tweet']);"  data-text="Comparing Performance on Tableau 8.3 Server vs Tableau 9.0 Server - http://interworks.co.uk/blog/comparing-performance-tableau-8-3-server-vs-tableau-9-0-server/" data-url="http://interworks.co.uk/blog/comparing-performance-tableau-8-3-server-vs-tableau-9-0-server/" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></li>
+<li id="Facebook_Counter"><iframe src="http://www.facebook.com/plugins/like.php?href=http://interworks.co.uk/blog/comparing-performance-tableau-8-3-server-vs-tableau-9-0-server/&#038;send=false&#038;layout=button_count&#038;show_faces=false&#038;action=like&#038;colorscheme=light&#038;font" scrolling="no" frameborder="0" style="border:none; overflow:hidden;height:32px;width:100px" allowTransparency="true"></iframe></li>
+<li id="Google_p"><g:plusone annotation="bubble" href="http://interworks.co.uk/blog/comparing-performance-tableau-8-3-server-vs-tableau-9-0-server/" size="medium"></g:plusone></li>
+<li id="LinkedIn_Counter"><script src="http://platform.linkedin.com/in.js" type="text/javascript"></script><script type="IN/Share" data-url="http://interworks.co.uk/blog/comparing-performance-tableau-8-3-server-vs-tableau-9-0-server/" data-counter="right"></script></li>
+</ul>
+</div>
+<p><!-- End Sociable --></p>
+<div class="tt-share clearfix">
+    </div><!-- end .tt-share -->
+                            <div class="post-details">
+                                <p class="post-tags">Tags: <a href="../../tag/blog/index.html" rel="tag">blog</a>, <a href="../../tag/server/index.html" rel="tag">Server</a>, <a href="../../tag/tableau/index.html" rel="tag">Tableau</a>, <a href="../../tag/tableau-9-0/index.html" rel="tag">Tableau 9.0</a></p>
+                                <p class="post-categories"><strong>Posted in: </strong> <a href="../../category/blog/index.html" >Blog</a></p>
+                                <a class="post-leave-comment" href="index.html#respond">Leave a Comment (3) &rarr;</a>
+                            </div><!-- end .post-details -->
+                        </article><!-- end .blog-main-preview -->
+                    </div><!-- end #post-ID -->
+
+                    <p class="tt-comment-count">3 Comments</p>        <div id="blog-comment-outer-wrap">
+            <ol class="comment-ol" id="post-comments">
+                    <li class="comment even thread-even depth-1" id="li-comment-273650">
+        <div class="comment-wrap">
+            <div class="comment-content" id="comment-273650">
+                <div class="comment-gravatar">
+                    <img alt='' src='http://0.gravatar.com/avatar/c242a190963542739628c3e0efdd80d1?s=60&amp;d=http%3A%2F%2Finterworks.co.uk%2Fwp-content%2Fthemes%2FSterling%2Fimages%2Fglobal%2Fimg-default-grav.png%3Fs%3D60&amp;r=G' class='avatar avatar-60 photo' height='60' width='60' />                </div><!-- end .comment-gravatar -->
+
+                <div class="comment-text">
+                    <span class="comment-author">thomas richardson</span>
+                    <span class="comment-date">April 9, 2015</span>
+
+                    
+                    <p>That was a great blog&#8230;straight to the point..well done glen</p>
+                                     </div><!-- end .comment-text -->
+            </div><!-- end .comment-content -->
+        </div><!-- end .comment-wrap -->
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-278991">
+        <div class="comment-wrap">
+            <div class="comment-content" id="comment-278991">
+                <div class="comment-gravatar">
+                    <img alt='' src='http://0.gravatar.com/avatar/09c0e064db4a1a0842aaeabecb23cefb?s=60&amp;d=http%3A%2F%2Finterworks.co.uk%2Fwp-content%2Fthemes%2FSterling%2Fimages%2Fglobal%2Fimg-default-grav.png%3Fs%3D60&amp;r=G' class='avatar avatar-60 photo' height='60' width='60' />                </div><!-- end .comment-gravatar -->
+
+                <div class="comment-text">
+                    <span class="comment-author">Mark Stacey</span>
+                    <span class="comment-date">April 23, 2015</span>
+
+                    
+                    <p>I wish we&#8217;d had the same experience <img src="../../wp-includes/images/smilies/icon_sad.gif" alt=":(" class="wp-smiley" /></p>
+<p>our experience, using Tableau against an Analysis Services datasource, was a 4 fold DECREASE in performance, with the slowest query going from .44 seconds to 8.5 </p>
+<p>I do have a bug logged with them, and hopefully we&#8217;ll get better, but we were hoping for more speed not less!</p>
+                                     </div><!-- end .comment-text -->
+            </div><!-- end .comment-content -->
+        </div><!-- end .comment-wrap -->
+    </li><!-- #comment-## -->
+    <li class="comment byuser comment-author-glen-robinson bypostauthor even thread-even depth-1" id="li-comment-282063">
+        <div class="comment-wrap">
+            <div class="comment-content" id="comment-282063">
+                <div class="comment-gravatar">
+                    <img alt='' src='http://1.gravatar.com/avatar/137c5aaa36b434313eaf02e1836e6f8a?s=60&amp;d=http%3A%2F%2Finterworks.co.uk%2Fwp-content%2Fthemes%2FSterling%2Fimages%2Fglobal%2Fimg-default-grav.png%3Fs%3D60&amp;r=G' class='avatar avatar-60 photo' height='60' width='60' />                </div><!-- end .comment-gravatar -->
+
+                <div class="comment-text">
+                    <span class="comment-author"><a href='http://www.interworks.co.uk' rel='external nofollow' class='url'>Glen Robinson</a></span>
+                    <span class="comment-date">April 27, 2015</span>
+
+                    
+                    <p>Hi Mark, Sorry to hear that you&#8217;ve seen issues with the upgrade to v9. Have you compared a performance recording of v8 and v9 to try to tie down the cause and are you seeing this sort of performance on all dashboards, or just one? When you hear from Tableau, I would be interested in any feedback you get.</p>
+                                     </div><!-- end .comment-text -->
+            </div><!-- end .comment-content -->
+        </div><!-- end .comment-wrap -->
+    </li><!-- #comment-## -->
+            </ol>
+
+                
+
+    <div id="respond">
+        <h3 class="comment-title">
+            Leave a Comment        </h3>
+
+        <div class="comment-cancel"><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Click here to cancel reply.</a></div><!-- end .comment-cancel -->
+
+                            <form action="http://interworks.co.uk/wp-comments-post.php" method="post" id="commentform">
+                                            <p>
+                            <input type="text" name="author" id="author" value="" size="22" tabindex="1" />
+                            <label for="author">Name<span>&#42;</span></label>
+                        </p>
+                        <p>
+                            <input type="text" name="email" id="email" value="" size="22" tabindex="2" />
+                            <label for="email">Email<span>&#42;</span>(will not be published)<small> </small></label>
+                        </p>
+                        <p>
+                            <input type="text" name="url" id="url" value="" size="22" tabindex="3" />
+                            <label for="url">Website</label>
+                        </p>
+                    
+                    <p><textarea name="comment" id="comment" cols="58" rows="10" tabindex="4"></textarea></p>
+
+                    <!-- <p class="allowed-tags"><small><strong>XHTML:</strong> You can use these tags: <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </code></small></p> -->
+
+                    <p>
+                        <input name="submit" type="submit" id="submit-button" tabindex="5" value="Submit" />
+                        <input type='hidden' name='comment_post_ID' value='11300' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+                    </p>
+                    <p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="c777fc5759" /></p><!-- BEGIN: subscribe to comments reloaded --><p class='comment-form-subscriptions'><label for='subscribe-reloaded'><input style='width:30px' type='checkbox' name='subscribe-reloaded' id='subscribe-reloaded' value='yes' checked='checked' /> Notify me of comment replies via e-mail. You can also <a href='../../comment-subscriptions/index.html?srp=11300&amp;srk=&amp;sra=s'>subscribe</a> without commenting.</label></p><!-- END: subscribe to comments reloaded --><p class="comment-subscription-form"><input type="checkbox" name="subscribe_comments" id="subscribe_comments" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" /> <label class="subscribe-label" id="subscribe-label" for="subscribe_comments">Notify me of follow-up comments by email.</label></p><p class="comment-subscription-form"><input type="checkbox" name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" /> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog">Notify me of new posts by email.</label></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="120"/></p>        
+        <input type="hidden" name="icl_comment_language" value="en" />
+        
+          
+                        </form><!-- end #commentform -->
+                    </div><!-- end #respond -->
+    </div><!-- end #blog-comment-outer-wrap -->
+
+                    </div><!-- end .page_content -->
+
+        <aside class="sidebar">
+            <div class="sidebar-widget widget_icl_lang_sel_widget">
+            <div id="lang_sel_list" class="lang_sel_list_vertical">
+            <ul>
+                                <li class="icl-en">
+									<a href="index.html" class="lang_sel_sel">
+																					<img  class="iclflag" src="../../wp-content/plugins/sitepress-multilingual-cms/res/flags/en.png" alt="en"
+													 title="English"/>&nbsp;
+										English									</a>
+                </li>
+                            </ul>
+</div>
+</div><div class="sidebar-widget widget_search"><form method="get" class="searchform" action="../../index.html">
+    <fieldset>
+        <input type="text" name="s" class="s" value="Search..." onfocus="if(this.value=='Search...')this.value='';" onblur="if(this.value=='')this.value='Search...';" />
+    </fieldset>
+<input type='hidden' name='lang' value='en' /></form></div>
+        <style>
+            .JPV_list {
+                overflow: hidden;
+            }
+
+            .JPV_thumbnail {
+                width: 45%;
+            }
+
+            .JPV_thumbnail > .JPV_thumbnail_img {
+                max-width: 125px;
+                height: auto;
+            }
+
+            .JPV_thumbnail + .JPV_text {
+                width: 45%;
+                padding-bottom: 10px;
+                text-align: center;
+                margin-top: -5px;
+            }
+
+            .JPV_thumbnail_title {
+                float: left;
+                width: 21.276596%;
+            }
+
+            .JPV_thumbnail_title > .JPV_thumbnail_img {
+                max-width: 40px;
+                height: auto;
+            }
+
+            .JPV_thumbnail_title + .JPV_text {
+                float: right;
+                width: 73.404255%;
+                padding-bottom: 10px;
+            }
+        </style>
+
+        <div class="sidebar-widget jetpack-post-views"><p class="widget-heading">Most Popular</p><ul><li class="JPV_list"><a href="index.html" title="Comparing Performance on Tableau 8.3 Server vs Tableau 9.0 Server" class="JPV_title">Comparing Performance on Tableau 8.3 Server vs Tableau 9.0 Server</a></li><li class="JPV_list"><a href="../data-reshaping-tableau-9-data-interpreter-data-pivot/index.html" title="Data Reshaping in Tableau 9 &#8211; data interpreter &#038; data pivot" class="JPV_title">Data Reshaping in Tableau 9 &#8211; data interpreter &#038; data pivot</a></li><li class="JPV_list"><a href="../../tableau/tableau-9-0-brings-us-connections/index.html" title="Tableau 9.0 Brings us more connections!" class="JPV_title">Tableau 9.0 Brings us more connections!</a></li><li class="JPV_list"><a href="../radial-bar-chart/index.html" title="It’s your round at the bar…" class="JPV_title">It’s your round at the bar…</a></li><li class="JPV_list"><a href="../whats-new-tableau-server-9-0/index.html" title="What&#8217;s new in Tableau Server 9.0" class="JPV_title">What&#8217;s new in Tableau Server 9.0</a></li></ul></div><div class="sidebar-widget social_widget"><p class="widget-heading">Subscribe to our Networks</p>
+
+
+
+<ul class="social_icons">
+<li><a href="../../feed/index.html" onclick="window.open(this.href);return false;" class="rss">RSS</a></li>
+<li><a href="https://twitter.com/InterWorksEU" class="twitter" onclick="window.open(this.href);return false;">Twitter</a></li>
+<li><a href="https://www.facebook.com/interworkseu" class="facebook" onclick="window.open(this.href);return false;">Facebook</a></li>
+<li><a href="https://www.linkedin.com/company/interworks-uk" class="linkedin" onclick="window.open(this.href);return false;">LinkedIn</a></li>
+<li><a href="https://plus.google.com/108975392261019832708/posts" class="google +" onclick="window.open(this.href);return false;">Google +</a></li>
+</ul>
+
+        </div><div class="sidebar-widget widget_text">			<div class="textwidget"><p><a href="http://www.tableausoftware.com/about/partners" onclick="_gaq.push(['_trackEvent', 'outbound-widget', 'http://www.tableausoftware.com/about/partners', '']);"  target="_blank" alt="Tableau Partners Page" title="Tableau Partners Page"><img class="alignright size-full wp-image-524" title="tableau-partner-logo-3" src="../../wp-content/uploads/2013/02/tableau-gold-partner-logo-1.png" alt="" width="310" height="165" /></a></p>
+</div>
+		</div>        </aside>
+    </div><!-- end #main-wrap -->
+</section><!-- END content-container -->
+
+
+<footer>
+    <div class="center-wrap tt-relative">
+        <div class="footer-content clearfix">
+                                <div class="one_fourth">
+                        <div class="sidebar-widget widget_nav_menu"><ul class="custom-menu"><li id="menu-item-108" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-108"><a href="../../about-interworks/index.html">About InterWorks</a></li>
+<li id="menu-item-11373" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11373"><a href="../../case-studies.1">Case Studies</a></li>
+<li id="menu-item-46" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-46"><a href="../getting-excited-about-tableau-9-0/www.interworks.co.uk/team">Our Team</a></li>
+<li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="../../careers/index.html">Careers</a></li>
+<li id="menu-item-9240" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9240"><a href="../../contact-us/index.html">Contact</a></li>
+</ul></div>                    </div>
+                                        <div class="one_fourth">
+                        <div class="sidebar-widget widget_nav_menu"><ul class="custom-menu"><li id="menu-item-9227" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9227"><a href="../../business-intelligence/download-tableau-desktop-free-trial.1">Free Tableau Desktop Trial</a></li>
+<li id="menu-item-9082" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9082"><a href="../../business-intelligence/tableau-server.1">Free Tableau Server Trial</a></li>
+<li id="menu-item-11272" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11272"><a href="../../business-intelligence/tableau-tools/index.html">Power Tools for Tableau</a></li>
+<li id="menu-item-10872" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10872"><a href="../../tableau-your-data/index.html">Get &#8220;Tableau Your Data&#8221; &#8211; The Ultimate Book on Using Tableau</a></li>
+</ul></div>                    </div>
+                                        <div class="one_fourth">
+                        <div class="sidebar-widget widget_text">			<div class="textwidget"><p><a href="http://www.tableausoftware.com/about/partners" onclick="_gaq.push(['_trackEvent', 'outbound-widget', 'http://www.tableausoftware.com/about/partners', '']);"  target="_blank"><img src="../../wp-content/uploads/2013/02/tableau-gold-partner-logo-1.png" /></a></p>
+</div>
+		</div><div class="sidebar-widget widget_text">			<div class="textwidget"><p><a href="http://www.alteryx.com/" onclick="_gaq.push(['_trackEvent', 'outbound-widget', 'http://www.alteryx.com/', '']);"  target="_blank"><img align="center" src="../../wp-content/uploads/2013/12/alteryx-small-logo.jpg" /></a></p>
+</div>
+		</div>                    </div>
+                                        <div class="one_fourth">
+                        <div class="sidebar-widget widget_nav_menu"><ul class="custom-menu"><li id="menu-item-491" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-491"><a href="../../contact-us/index.html">Email: hello@interworks.co.uk</a></li>
+<li id="menu-item-490" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-490"><a>Call: +44 (0)1202 37 33 33</a></li>
+<li id="menu-item-492" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-492"><a href="https://twitter.com/InterWorksEU" onclick="_gaq.push(['_trackEvent', 'outbound-widget', 'https://twitter.com/InterWorksEU', 'Twitter: @InterWorksEU']);" >Twitter: @InterWorksEU</a></li>
+<li id="menu-item-10377" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10377"><a href="https://www.facebook.com/interworkseu" onclick="_gaq.push(['_trackEvent', 'outbound-widget', 'https://www.facebook.com/interworkseu', 'Facebook: interworkseu']);" >Facebook: interworkseu</a></li>
+</ul></div>                    </div>
+                            </div><!-- end .footer-content -->
+    </div><!-- end .center-wrap -->
+
+    <div class="footer-copyright clearfix">
+        <div class="center-wrap clearfix">
+    	    <div class="foot-copy">
+    	        <p>Copyright © 2015 InterWorks Europe | All Rights Reserved.</p>
+    	    </div><!-- end .foot-copy -->
+
+    	    
+                            <ul class="footer-nav">
+                    <li id="menu-item-385" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-385"><a href="../../cookies/index.html">Cookies</a></li>
+<li id="menu-item-458" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-458"><a href="http://interworks.com" onclick="_gaq.push(['_trackEvent', 'outbound-widget', 'http://interworks.com', 'InterWorks USA']);" >InterWorks USA</a></li>
+                </ul>
+                    </div><!-- end .center-wrap -->
+    </div><!-- end .footer-copyright -->
+
+    <div class="shadow top"></div>
+    <div class="tt-overlay"></div>
+</footer>
+
+</div><!-- end .tt-wide-layout -->
+
+<!-- Start of Async HubSpot Analytics Code for WordPress v1.9.4 -->
+<script type="text/javascript">
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "blog-post"]);
+(function(d,s,i,r) {
+  if (d.getElementById(i)){return;}
+  var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+  n.id=i;n.src = '//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/502772.js';
+  e.parentNode.insertBefore(n, e);
+})(document, "script", "hs-analytics", 300000);
+</script>
+<!-- End of Async HubSpot Analytics Code -->
+<input id="leadin-subscribe-vex-class" value="vex-theme-bottom-right-corner" type="hidden"/><input id="leadin-subscribe-heading" value="Sign up for email updates" type="hidden"/><input id="leadin-subscribe-text" value="" type="hidden"/><input id="leadin-subscribe-btn-label" value="SUBSCRIBE" type="hidden"/><input id="leadin-subscribe-btn-color" value="leadin-popup-color-blue" type="hidden"/><input id="leadin-subscribe-name-fields" value="0" type="hidden"/><input id="leadin-subscribe-phone-field" value="0" type="hidden"/><input id="leadin-subscribe-confirmation" value="0" type="hidden"/><input id="leadin-subscribe-mobile-popup" value="1" type="hidden"/>	<div style="display:none">
+	<div class="grofile-hash-map-c242a190963542739628c3e0efdd80d1">
+	</div>
+	<div class="grofile-hash-map-09c0e064db4a1a0842aaeabecb23cefb">
+	</div>
+	<div class="grofile-hash-map-137c5aaa36b434313eaf02e1836e6f8a">
+	</div>
+	</div>
+<script type='text/javascript' src='../../wp-content/plugins/akismet/_inc/form.js?ver=3.1.1'></script>
+
+							<div id="lang_sel_footer">
+									<ul>
+									    <li><a href="index.html" class="lang_sel_sel"><img src="../../wp-content/plugins/sitepress-multilingual-cms/res/flags/en.png" alt="English" class="iclflag" title="English"  />&nbsp;English</a></li>
+									</ul>
+							</div><script type='text/javascript' src='../../wp-includes/js/comment-reply.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/themes/Sterling/framework/js/custom-main.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/themes/Sterling/framework/js/jquery.prettyPhoto.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/themes/Sterling/framework/js/jquery.superfish.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/themes/Sterling/framework/js/jquery.cycle.all.min.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/plugins/easy-fancybox/jquery.easing.pack.js?ver=1.3'></script>
+<script type='text/javascript' src='../../wp-content/themes/Sterling/framework/js/jquery.isotope.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.51.0-2014.06.20'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _wpcf7 = {"loaderUrl":"http:\/\/interworks.co.uk\/wp-content\/plugins\/contact-form-7\/images\/ajax-loader.gif","sending":"Sending ..."};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.1.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var li_ajax = {"ajax_url":"http:\/\/interworks.co.uk\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/leadin/assets/js/build/leadin-tracking.min.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/plugins/leadin/assets/js/build/leadin-subscribe.min.js?ver=4.1.5'></script>
+<script type='text/javascript' src='http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201526'></script>
+<script type='text/javascript' src='http://s.gravatar.com/js/gprofiles.js?ver=2015Junaa'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/jetpack/modules/wpgroho.js?ver=4.1.5'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var icl_vars = {"current_language":"en","icl_home":"http:\/\/interworks.co.uk\/"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/sitepress-multilingual-cms/res/js/sitepress.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/plugins/easy-fancybox/fancybox/jquery.fancybox-1.3.7.min.js?ver=1.5.7'></script>
+<script type='text/javascript' src='../../wp-content/plugins/easy-fancybox/jquery.mousewheel.min.js?ver=3.1.12'></script>
+<script type='text/javascript' src='http://stats.wp.com/e-201526.js' async defer></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:3.4.3',blog:'83071981',post:'11300',tz:'1'} ]);
+	_stq.push([ 'clickTrackerInit', '83071981', '11300' ]);
+</script>
+
+<script type="text/javascript">
+jQuery(document).on('ready post-load', easy_fancybox_handler );
+</script>
+
+
+</body>
+</html>

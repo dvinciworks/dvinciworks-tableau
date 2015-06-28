@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>InterWorks - Tableau Software &#38; Business Intelligence Consulting &#187; Filters</title>
+	<atom:link href="http://interworks.co.uk/tag/filters/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 26 Jun 2015 08:09:24 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>Marimekko in Tableau</title>
+		<link>http://interworks.co.uk/blog/marimekko-in-tableau/</link>
+		<comments>http://interworks.co.uk/blog/marimekko-in-tableau/#comments</comments>
+		<pubDate>Mon, 01 Jul 2013 15:03:38 +0000</pubDate>
+		<dc:creator><![CDATA[Rob Austin]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Dual Axis]]></category>
+		<category><![CDATA[Filters]]></category>
+		<category><![CDATA[Marimekko]]></category>
+		<category><![CDATA[Table Calculation]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=8664</guid>
+		<description><![CDATA[<p>This Marimekko chart was fun to get right. There are some great examples of complex table calculations built in to it. The use case is similar to that of a series of stacked bars. It has graphical similarities to a treemap but it lacks the visual superiority when dealing with large numbers of members; however [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/marimekko-in-tableau/">Marimekko in Tableau</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmarimekko-in-tableau%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>This Marimekko chart was fun to get right. There are some great examples of complex table calculations built in to it.</p>
+<p>The use case is similar to that of a series of stacked bars. It has graphical similarities to a treemap but it lacks the visual superiority when dealing with large numbers of members; however it does have the advantage of defining the positions on the x-axis, hence it is more structured and can be more useful than a treemap or stacked bars in this respect.</p>
+<p><script type='text/javascript' src='http://public.tableausoftware.com/javascripts/api/viz_v1.js'></script>
+<div class='tableauPlaceholder' style='width: 604px; height: 669px;'><noscript><a href='#'><img alt='Marimekko Chart ' src='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;XK&#47;XKYSHFSJ4&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='604' height='669' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableausoftware.com%2F' /><param name='path' value='shared&#47;XKYSHFSJ4' / ><param name='toolbar' value='yes' /><param name='static_image' value='http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;XK&#47;XKYSHFSJ4&#47;1.png' / ><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>
+<div style='width:604px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;'>
+<div style='float:right; padding-right:8px;'><a href='http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/shared/XKYSHFSJ4' target='_blank'>Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p>To read the chart think of it as being a stacked bar chart where the colours (y dimensions) show the split within each of the vertical bars. The width of the bars represents the overall share of the x dimension. Try Changing the x and y dimensions to see what happens.</p>
+<p>One would typically use this type of chart when dealing with data which has 3-12 different members in a few different dimensions. It is great for seeing where the overlaps are. When trying to to this type of analysis with other chart types you will either get an impression of the results without easy detail (e.g. stacked bar / heat map) or you will get the detail without a real overview (e.g. scatter plot). The Marimekko chart gives a really nice compromise in the middle.</p>
+<p>I have added a 5 part blog on the building of this useful chart type in Tableau:</p>
+<p><a href="http://interworks.co.uk/random/marimekko-part-1-polygons-paths-custom-sql/">Part 1: Polygons, Paths and Custom SQL</a> contains information on data preparation and the methods used to build.<br />
+<a href="http://interworks.co.uk/random/marimekko-part-2-parameters-table-calculations/">Part 2: Parameters and Table Calculations</a> introduces some good ideas for flexible charting and the use of table calculated fields. Here we use a variable width stacked bar chart as a simple kind of Mekko.<br />
+<a href="http://interworks.co.uk/random/marimekko-part-3-table-calculations/">Part 3: Table calculations</a> delves deeper in to the table calcs needed to create a Mekko and shows what the data looks like.<br />
+<a href="http://interworks.co.uk/random/marimekko-part-4-basic-marimekko/">Part 4: Basic Marimekko</a> is our first go at creating the Marimekko.<br />
+<a href="http://interworks.co.uk/random/marimekko-part-5-totals/">Part 5: Totals</a> is where we add in the optional extras such as total bars which help the viewer understand the visualisation. We also look at a method to avoid the need for data densification.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/marimekko-in-tableau/">Marimekko in Tableau</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmarimekko-in-tableau%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/marimekko-in-tableau/feed/</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+		</item>
+		<item>
+		<title>Select A Chart</title>
+		<link>http://interworks.co.uk/blog/select-a-chart/</link>
+		<comments>http://interworks.co.uk/blog/select-a-chart/#comments</comments>
+		<pubDate>Tue, 23 Oct 2012 10:07:27 +0000</pubDate>
+		<dc:creator><![CDATA[Darren Evans]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Filters]]></category>
+		<category><![CDATA[Parameters]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=3238</guid>
+		<description><![CDATA[<p>One of the requests we get quite often is can you set Tableau to have interchangeable charts on a dashboard so that when the user can select which chart to show in a particular place on a dashboard. Whilst not out of the box this is something that is very much possible using parameters and [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/select-a-chart/">Select A Chart</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fselect-a-chart%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>One of the requests we get quite often is can you set Tableau to have interchangeable charts on a dashboard so that when the user can select which chart to show in a particular place on a dashboard.</p>
+<p>Whilst not out of the box this is something that is very much possible using parameters and virtual layout containers.</p>
+<p>Take a look at this example:</p>
+<p><script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script>
+<div class="tableauPlaceholder" style="width:604px; height:580px;"><noscript><a href="#"><img alt="Choose A Chart Example " src="http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Ch&#47;ChooseAChart&#47;ChooseAChart&#47;1_rss.png" style="border: none" /></a></noscript><object class="tableauViz" width="604" height="580" style="display:none;"><param name="host_url" value="http%3A%2F%2Fpublic.tableausoftware.com%2F" /><param name="site_root" value="" /><param name="name" value="ChooseAChart&#47;ChooseAChart" /><param name="tabs" value="yes" /><param name="toolbar" value="yes" /><param name="static_image" value="http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Ch&#47;ChooseAChart&#47;ChooseAChart&#47;1.png" /><param name="animate_transition" value="yes" /><param name="display_static_image" value="yes" /><param name="display_spinner" value="yes" /><param name="display_overlay" value="yes" /><param name="display_count" value="yes" /></object></div>
+<div style="width:604px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float:right; padding-right:8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/ChooseAChart/ChooseAChart" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>The front page visualisation is a dashboard with a single chart on display.</p>
+<p>By selecting a chart in the drop down the chart on display is changed.</p>
+<p>How is this achieved?</p>
+<p>The technique for achieving this is actually quite straight forward.</p>
+<p>You will notice there are four other tabs. Three of these are for the charts that are shown on the dashboard.</p>
+<p>You will also notice that only the chart selected on the front page is shown the other tabs are blank.</p>
+<p>This is because each graph/tab has a filter linked to the parameter that allows the user to select the chart.</p>
+<p>The filter on the bar chart is a calculated field that is only true (and therefore only shows data) when the parameter is set to &#8216;Sales By Customer&#8217;. If the calculated field returns a false no data is returned and the visualisation is not rendered.</p>
+<p>When I created the dashboard I used a vertical layout container and dropped all three charts into it. A layout container automatically resizes the charts within it based on the amount of data returned. As for two of the charts there is no data they are compressed down and not shown.</p>
+<p>When the parameter selected is &#8216;Sales By Customer&#8217; the bar chart filter is true and that chart is returned, the line chart and map filters are false and those charts do not render and are compressed in the layout container.</p>
+<p>I removed the titles for the two bottom charts in the container and amended the title in the top chart to read the same parameter as the drop down menu so that the title is correct for the chart on display.</p>
+<p>Feel free to download this file and have a play, if you have any questions drop them in the comments.</p>
+<p>Darren</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/select-a-chart/">Select A Chart</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fselect-a-chart%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/select-a-chart/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+		<item>
+		<title>Make your filters do more work</title>
+		<link>http://interworks.co.uk/blog/make-your-filters-do-more-work/</link>
+		<comments>http://interworks.co.uk/blog/make-your-filters-do-more-work/#comments</comments>
+		<pubDate>Mon, 29 Nov 2010 22:30:20 +0000</pubDate>
+		<dc:creator><![CDATA[Andy Cotgreave]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Andy Cotgreave]]></category>
+		<category><![CDATA[Filters]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1622</guid>
+		<description><![CDATA[<p>At the recent UK Tableau User Group, Mel Stephenson made a great set of points: Screen real estate is scarce. Filters take up lots of space Filters don&#8217;t show any information. How about making worksheets that perform two functions: work as a filter and convery information? Get that right, and you have just increased the [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/make-your-filters-do-more-work/">Make your filters do more work</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmake-your-filters-do-more-work%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>At the recent UK Tableau User Group, Mel Stephenson made a great set of points:</p>
+<ul>
+<li> Screen real estate is scarce. </li>
+<li>Filters take up lots of space</li>
+<li>Filters don&#8217;t show any <em>information</em>.</li>
+</ul>
+<p>How about making worksheets that perform two functions: work as a filter and convery information?</p>
+<p>Get that right, and you have just increased the data-ink ratio significantly.</p>
+<p>Here&#8217;s an example. Recently, <a href="http://www.tableausoftware.com/public/blog/2010/10/social-media-race">Tableau posted a great viz</a> showing the Social Media Race and Twitter/Facebook follower counts of leading Media players. Here&#8217;s a snapshot of that viz:</p>
+<p><strong><a href="http://www.interworks.co.uk/wp-content/uploads/2010/11/The-original-viz.png"><img class="alignnone size-full wp-image-1624" title="The original viz" src="http://www.interworks.co.uk/wp-content/uploads/2010/11/The-original-viz.png" alt="" width="429" height="483" /></a></strong></p>
+<p>But check out that Filter &#8211; it takes up, what, 15% of the whole space? Why not replace the Filter with a worksheet that shows the number of followers each person has, and add an Action Filter to it. The new version of the viz is as follows:</p>
+<p><script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script><object class="tableauViz" width="524" height="695" style="display:none;"><param name="name" value="FiltersShowingMoreInfo/Worksheetasfilter" /><param name="toolbar" value="yes" /><param name="tabs" value="yes" /></object><noscript>Who&#8217;s Hot In Social Media? Edited to show how a legend can also convey information <br /><a href="#"><img alt="Who's Hot In Social Media? Edited to show how a legend can also convey information " src="http://public.tableausoftware.com/static/images/Fi/FiltersShowingMoreInfo/Worksheetasfilter/1_rss.png" height="100%" /></a></noscript></p>
+<div style="width:524px;height:22px;padding:0px 10px 0px 0px; color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float:right; padding-right:8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/FiltersShowingMoreInfo/Worksheetasfilter" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>What I like about the new version is that you don&#8217;t need to click <em>anything</em> to see who has the most combined followers (Lady Gaga). The only disadvantage is that to select multiple media players, you need to use a lassoo or a Ctrl+Click action with the Mouse.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/make-your-filters-do-more-work/">Make your filters do more work</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fmake-your-filters-do-more-work%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/make-your-filters-do-more-work/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Range Filter on a text dimension</title>
+		<link>http://interworks.co.uk/blog/range-filtering-of-non-numerical-or-non-standard-date-dimensions/</link>
+		<comments>http://interworks.co.uk/blog/range-filtering-of-non-numerical-or-non-standard-date-dimensions/#comments</comments>
+		<pubDate>Mon, 29 Nov 2010 09:00:31 +0000</pubDate>
+		<dc:creator><![CDATA[Kevin Pemberton]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Calculated Fields]]></category>
+		<category><![CDATA[Filters]]></category>
+		<category><![CDATA[Kevin Pemberton]]></category>
+		<category><![CDATA[Parameters]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[The Data Studio]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1673</guid>
+		<description><![CDATA[<p>Tableau provides many types of filter including range filters for dates and numerical data, but what of textual dimensions? For instance lets say we have a dimension with data in the following format, 3-digit months with a 2-digit year and a period used by the client to adjust the year end balance: Period Sales Jan-10 [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/range-filtering-of-non-numerical-or-non-standard-date-dimensions/">Range Filter on a text dimension</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Frange-filtering-of-non-numerical-or-non-standard-date-dimensions%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Tableau provides many types of filter including range filters for dates and numerical data, but what of textual dimensions? For instance lets say we have a dimension with data in the following format, 3-digit months with a 2-digit year and a period used by the client to adjust the year end balance:</p>
+<table width="150px">
+<tbody>
+<tr>
+<td>Period</td>
+<td>Sales</td>
+</tr>
+<tr>
+<td>Jan-10</td>
+<td>129</td>
+</tr>
+<tr>
+<td>Feb-10</td>
+<td>185</td>
+</tr>
+<tr>
+<td>Mar-10</td>
+<td>89</td>
+</tr>
+<tr>
+<td>Apr-10</td>
+<td>124</td>
+</tr>
+<tr>
+<td>Adj-10</td>
+<td>23</td>
+</tr>
+<tr>
+<td>May-10</td>
+<td>156</td>
+</tr>
+</tbody>
+</table>
+<p>This is a date based range of values, however the dates do not conform to any of the built-in date formats Tableau uses. The below visualisation demonstrates the result that we want:</p>
+<p><script src="http://public.tableausoftware.com/javascripts/api/viz_v1.js" type="text/javascript"></script><object class="tableauViz" style="display: none;" width="604" height="400"><param name="name" value="Rangefilteronstrings/Rangefilteronstrings" /><param name="toolbar" value="no" /><param name="tabs" value="no" /></object><noscript>Range filter on strings<br />
+<a href="#"><img alt="Range filter on strings " src="http://public.tableausoftware.com/static/images/Ra/Rangefilteronstrings/Rangefilteronstrings/1_rss.png" height="100%" /></a></noscript></p>
+<div style="width: 604px; height: 22px; padding: 0px 10px 0px 0px; color: black; font: normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float: right; padding-right: 8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/Rangefilteronstrings/Rangefilteronstrings" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>&nbsp;</p>
+<p>So how do this work? The first requirement is Tableau version 6 as we are using parameters to select the start and end of the range.</p>
+<p><strong>Step 1) Download the data file and create a new workbook in Tableau connected to this data</strong></p>
+<p>Download from here <a href="http://www.interworks.co.uk/wp-content/uploads/2010/11/RangeData.xlsx" target="_blank">Range Data</a></p>
+<p><strong>Step 2) Add two parameters to the sheet</strong></p>
+<p>Right-click the dimension you want to provide a range filter on (in this case Period) and select Create Parameter. Call these &#8220;StartPeriod&#8221; and &#8220;EndPeriod&#8221;<br />
+<strong><br />
+<img class="aligncenter size-full wp-image-1708" title="Create_parameter" src="http://www.interworks.co.uk/wp-content/uploads/2010/11/Create_parameter.png" alt="" width="269" height="343" /></strong></p>
+<p>Step 3) Create a calculated field</p>
+<p><img class="aligncenter size-full wp-image-1707" title="Create_calculated_field" src="http://www.interworks.co.uk/wp-content/uploads/2010/11/Create_calculated_field.png" alt="" width="264" height="311" /></p>
+<p>This field is a string containing all of the values that the dimension will contain (this bit is the long-winded bit, and if your dimension data changes you need to update this field also.) In this example the string would read:</p>
+<p>&#8220;Jan-10Feb-10Mar-10Apr-10Adj-10May-10Jun-10Jul-10Aug-10Sep-10Oct-10Nov-10Dec-10&#8243;</p>
+<p>call the field &#8220;Range_Periods&#8221;.</p>
+<p><strong>Step 4) Add another calculated field</strong></p>
+<p>Call it &#8220;Range_Filtered_Period&#8221;. This generates the field we will use on the filter shelf. The syntax for this field is:</p>
+<p><em>CONTAINS(MID([Range_Periods],FIND([Range_Periods],[StartPeriod]),ABS(FIND([Range_Periods],[EndPeriod])-FIND([Range_Periods],[StartPeriod]))+6),[Period])</em></p>
+<p>This line of code searches the Range_Periods string (using the FIND function) for the [StartPeriod] selected, for instance &#8220;Feb-10&#8243; would return the number 6.<br />
+It then uses the FIND function again to find the [EndPeriod],  e.g. &#8220;Adj-10&#8243; would return 24, we then add 6 (the length of each data item in the dimension) to this to find the end of the selected [EndPeriod].</p>
+<p>We can then use these two numbers to remove all of the periods we don&#8217;t want from the [Range_Periods] string, to do this we use MID by providing the [Range_Periods] string and the two number from the FIND functions.</p>
+<p>This gives us the string &#8220;Feb-10Mar-10Apr-10Adj-10&#8243;</p>
+<p>Lastly we use CONTAINS, this function takes a string to search through, in this case our new [Range_Periods] string, and a substring to search for, our [Period] dimension.</p>
+<p><strong>Step 5) Add this new calculated field to the filter shelf</strong></p>
+<p><img class="aligncenter size-full wp-image-1710" title="Add_to_filter_shelf" src="http://www.interworks.co.uk/wp-content/uploads/2010/11/Add_to_filter_shelf.png" alt="" width="185" height="77" /></p>
+<p>Add [Range_Filtered_Period] to the filter shelf and select &#8220;True&#8221; when the filter dialog box pops up.</p>
+<p><strong>Step 6) Have a play with the StartPeriod and EndPeriod parameters </strong></p>
+<p>See how it filters the visualisation.</p>
+<p><strong>Bonus point</strong></p>
+<p>The only issue with our current code is that it does not take into account that a user may select a [StartPeriod] that is later than the [EndPeriod], so edit the calculated field and replace the code with the below:</p>
+<p><em>CONTAINS(</em></p>
+<p><em> IF FIND([Range_Periods],[EndPeriod])&gt;FIND([Range_Periods],[StartPeriod]) THEN<br />
+MID([Range_Periods],FIND([Range_Periods],[StartPeriod]),ABS(FIND([Range_Periods],[EndPeriod])-FIND([Range_Periods],[StartPeriod]))+6)<br />
+ELSE<br />
+MID([Range_Periods],FIND([Range_Periods],[EndPeriod]),ABS(FIND([Range_Periods],[EndPeriod])-FIND([Range_Periods],[StartPeriod]))+6)<br />
+END<br />
+,[Period])</em></p>
+<p>This adds in logic to check for this situation.</p>
+<p><strong>Summary</strong></p>
+<p>This range filter works well on any data that is sequential, it could be date periods, letters in the alphabet or any string. You just have to ensure that the data is sequential and that there are no breaks or out of sequence data items. You also need to have a dimension field where the data items are all of the same length, in the above example 6 characters long.</p>
+<p>Check back soon where I will be building in AND, OR, BETWEEN, NOT and other types of operators to this concept.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/range-filtering-of-non-numerical-or-non-standard-date-dimensions/">Range Filter on a text dimension</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Frange-filtering-of-non-numerical-or-non-standard-date-dimensions%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/range-filtering-of-non-numerical-or-non-standard-date-dimensions/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

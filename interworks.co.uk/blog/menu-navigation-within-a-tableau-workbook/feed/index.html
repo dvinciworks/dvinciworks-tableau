@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Menu Navigation within a Tableau Workbook</title>
+	<atom:link href="http://interworks.co.uk/blog/menu-navigation-within-a-tableau-workbook/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/blog/menu-navigation-within-a-tableau-workbook/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 05 Jun 2015 09:45:31 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>By: Aus</title>
+		<link>http://interworks.co.uk/blog/menu-navigation-within-a-tableau-workbook/#comment-271389</link>
+		<dc:creator><![CDATA[Aus]]></dc:creator>
+		<pubDate>Wed, 01 Apr 2015 07:49:35 +0000</pubDate>
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=3249#comment-271389</guid>
+		<description><![CDATA[either http://onlinehelp.tableau.com/current/pro/online/mac/en-us/actions_url.html or for a more specific example http://interworks.co.uk/blog/url-parameters-tableau/]]></description>
+		<content:encoded><![CDATA[<p>either <a href="http://onlinehelp.tableau.com/current/pro/online/mac/en-us/actions_url.html" rel="nofollow">http://onlinehelp.tableau.com/current/pro/online/mac/en-us/actions_url.html</a> or for a more specific example <a href="http://interworks.co.uk/blog/url-parameters-tableau/" rel="nofollow">http://interworks.co.uk/blog/url-parameters-tableau/</a></p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: JD</title>
+		<link>http://interworks.co.uk/blog/menu-navigation-within-a-tableau-workbook/#comment-271342</link>
+		<dc:creator><![CDATA[JD]]></dc:creator>
+		<pubDate>Wed, 01 Apr 2015 05:31:16 +0000</pubDate>
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=3249#comment-271342</guid>
+		<description><![CDATA[Thanks AUS,
+Any pointers on how to include a url in an action filter?]]></description>
+		<content:encoded><![CDATA[<p>Thanks AUS,<br />
+Any pointers on how to include a url in an action filter?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Aus</title>
+		<link>http://interworks.co.uk/blog/menu-navigation-within-a-tableau-workbook/#comment-271149</link>
+		<dc:creator><![CDATA[Aus]]></dc:creator>
+		<pubDate>Tue, 31 Mar 2015 16:06:30 +0000</pubDate>
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=3249#comment-271149</guid>
+		<description><![CDATA[Hi JD,
+
+If you have tableau server available I would recommend you use a URL action here.  Build a simple and lightweight splash page dashboard which sends people, via the unique url of every dashboard on server, to a totally different dashboard.  This way the load time will be on the target dash not the landing page.  (You can also split the workbook up into separate dashboards if that will help load times).  I hope that makes sense.]]></description>
+		<content:encoded><![CDATA[<p>Hi JD,</p>
+<p>If you have tableau server available I would recommend you use a URL action here.  Build a simple and lightweight splash page dashboard which sends people, via the unique url of every dashboard on server, to a totally different dashboard.  This way the load time will be on the target dash not the landing page.  (You can also split the workbook up into separate dashboards if that will help load times).  I hope that makes sense.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: JD</title>
+		<link>http://interworks.co.uk/blog/menu-navigation-within-a-tableau-workbook/#comment-270377</link>
+		<dc:creator><![CDATA[JD]]></dc:creator>
+		<pubDate>Sun, 29 Mar 2015 17:10:46 +0000</pubDate>
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=3249#comment-270377</guid>
+		<description><![CDATA[I have made some TOC&#039;s in tableau with the same concept.The problem im facing is,once published on tableau server when i click a sheet to navigate on another dashboard, it would appear to not work.After some testing what i found was the the &#039;jump&#039; to the dashboard wont occur till the dashboard is loaded.In other words the user just sees the same screen for a long time till the other dashboard loads in the background.What i want is to immediately jump to the other dashboard and wait for it to load like when u select a different tab in tableau server.]]></description>
+		<content:encoded><![CDATA[<p>I have made some TOC&#8217;s in tableau with the same concept.The problem im facing is,once published on tableau server when i click a sheet to navigate on another dashboard, it would appear to not work.After some testing what i found was the the &#8216;jump&#8217; to the dashboard wont occur till the dashboard is loaded.In other words the user just sees the same screen for a long time till the other dashboard loads in the background.What i want is to immediately jump to the other dashboard and wait for it to load like when u select a different tab in tableau server.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Aus</title>
+		<link>http://interworks.co.uk/blog/menu-navigation-within-a-tableau-workbook/#comment-60035</link>
+		<dc:creator><![CDATA[Aus]]></dc:creator>
+		<pubDate>Tue, 20 May 2014 12:41:47 +0000</pubDate>
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=3249#comment-60035</guid>
+		<description><![CDATA[Hi Vinh,
+
+Thanks. This should work fine in all the Tableau products: Server, Desktop and Reader.  Download it and give it a go.
+
+As mentioned in an earlier question the downside to this approach is the fact that selecting a worksheet (disguised as a button) produces the &#039;action&#039; which takes you to the next dashboard.  However, it does stay selected as Tableau uses deselect to drive further actions.  This is a bit of a pain but a simple workaround is to tell people to double click :-)
+
+Thanks]]></description>
+		<content:encoded><![CDATA[<p>Hi Vinh,</p>
+<p>Thanks. This should work fine in all the Tableau products: Server, Desktop and Reader.  Download it and give it a go.</p>
+<p>As mentioned in an earlier question the downside to this approach is the fact that selecting a worksheet (disguised as a button) produces the &#8216;action&#8217; which takes you to the next dashboard.  However, it does stay selected as Tableau uses deselect to drive further actions.  This is a bit of a pain but a simple workaround is to tell people to double click <img src="http://interworks.co.uk/wp-includes/images/smilies/icon_smile.gif" alt=":-)" class="wp-smiley" /></p>
+<p>Thanks</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Vinh</title>
+		<link>http://interworks.co.uk/blog/menu-navigation-within-a-tableau-workbook/#comment-54630</link>
+		<dc:creator><![CDATA[Vinh]]></dc:creator>
+		<pubDate>Mon, 28 Apr 2014 22:25:15 +0000</pubDate>
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=3249#comment-54630</guid>
+		<description><![CDATA[Great Example Aus. As I understand it, this can only achieved with Tableau Server? Another way to put it, can I create a sheet link that is interactive within Tableau Reader?]]></description>
+		<content:encoded><![CDATA[<p>Great Example Aus. As I understand it, this can only achieved with Tableau Server? Another way to put it, can I create a sheet link that is interactive within Tableau Reader?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Kurt</title>
+		<link>http://interworks.co.uk/blog/menu-navigation-within-a-tableau-workbook/#comment-43382</link>
+		<dc:creator><![CDATA[Kurt]]></dc:creator>
+		<pubDate>Mon, 13 Jan 2014 16:18:05 +0000</pubDate>
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=3249#comment-43382</guid>
+		<description><![CDATA[Re: Sudharshan&#039;s comment: 
+
+&quot;When I Click on Map, it navigates to Map Tab but when i Click Back and come to the Main screen, I can’t click Map again as it is already selected. How do you automatically unselect Map when clicking the Back button in Maps tab ?&quot;
+
+I would love to see a solution for this. It&#039;s a problem with any navigation technique that uses worksheets for the navigation element and filter actions. If you keep the navigation elements in every dashboard (like a set of links), the problem is worse because the user will be on View B but the navigation button for his previous view, View A, will still appear &quot;selected.&quot;
+
+You can see a good example of this here:
+
+http://public.tableausoftware.com/views/DiabetesandTBintheAmericas2008TPteasers/IncidenceofTB?:embed=y#1   
+
+1. At the bottom of the viz, click twice on the first filmstrip thumbnail (TB inc rate) to ensure you are on that tab.
+2.  Now click on the second filmstrip thumbnail, DM Prevalence.
+3.  Now click on the first filmstrip thumbnail , TB inc rate. You are now back on the first tab (TB inc rate), but there is a black box around the DM Prevalence filmstrip thumbnail because it has not been completely deselected. It is confusing to the user.
+
+If this doesn&#039;t work the first time, experiment with going back and forth among various thumbnails and eventually you&#039;ll see the issue.]]></description>
+		<content:encoded><![CDATA[<p>Re: Sudharshan&#8217;s comment: </p>
+<p>&#8220;When I Click on Map, it navigates to Map Tab but when i Click Back and come to the Main screen, I can’t click Map again as it is already selected. How do you automatically unselect Map when clicking the Back button in Maps tab ?&#8221;</p>
+<p>I would love to see a solution for this. It&#8217;s a problem with any navigation technique that uses worksheets for the navigation element and filter actions. If you keep the navigation elements in every dashboard (like a set of links), the problem is worse because the user will be on View B but the navigation button for his previous view, View A, will still appear &#8220;selected.&#8221;</p>
+<p>You can see a good example of this here:</p>
+<p><a href="http://public.tableausoftware.com/views/DiabetesandTBintheAmericas2008TPteasers/IncidenceofTB" rel="nofollow">http://public.tableausoftware.com/views/DiabetesandTBintheAmericas2008TPteasers/IncidenceofTB</a>?:embed=y#1   </p>
+<p>1. At the bottom of the viz, click twice on the first filmstrip thumbnail (TB inc rate) to ensure you are on that tab.<br />
+2.  Now click on the second filmstrip thumbnail, DM Prevalence.<br />
+3.  Now click on the first filmstrip thumbnail , TB inc rate. You are now back on the first tab (TB inc rate), but there is a black box around the DM Prevalence filmstrip thumbnail because it has not been completely deselected. It is confusing to the user.</p>
+<p>If this doesn&#8217;t work the first time, experiment with going back and forth among various thumbnails and eventually you&#8217;ll see the issue.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Sudharshan</title>
+		<link>http://interworks.co.uk/blog/menu-navigation-within-a-tableau-workbook/#comment-20416</link>
+		<dc:creator><![CDATA[Sudharshan]]></dc:creator>
+		<pubDate>Sat, 27 Jul 2013 13:32:41 +0000</pubDate>
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=3249#comment-20416</guid>
+		<description><![CDATA[When I Click on Map, it navigates to Map Tab but when i Click Back and come to the Main screen, I can&#039;t click Map again as it is already selected. How do you automatically unselect Map when clicking the Back button in Maps tab ?]]></description>
+		<content:encoded><![CDATA[<p>When I Click on Map, it navigates to Map Tab but when i Click Back and come to the Main screen, I can&#8217;t click Map again as it is already selected. How do you automatically unselect Map when clicking the Back button in Maps tab ?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Aus - Blog Author</title>
+		<link>http://interworks.co.uk/blog/menu-navigation-within-a-tableau-workbook/#comment-438</link>
+		<dc:creator><![CDATA[Aus - Blog Author]]></dc:creator>
+		<pubDate>Fri, 01 Feb 2013 09:29:45 +0000</pubDate>
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=3249#comment-438</guid>
+		<description><![CDATA[Hi Daniel, 
+
+Thanks for your question.  
+
+Navigating around a workbook with this method requires the tabs to be published.  The way to achieve this without having to show each tab along the top is to navigate to the exact (and full) URL.  
+
+The best way to do this is to publish the workbook to your sever (or public). Then from within server navigate to each of the pages (tabs) directly and make a note of each url.  Just flicking through the tabs won&#039;t change the url.  Then add those url&#039;s into the navigation of your workbook and republish.  In the past I&#039;ve make a new data source like a csv with the url&#039;s in it for ease of maintenance.
+
+Hope that helps.
+Aus - aus@interworks.co.uk]]></description>
+		<content:encoded><![CDATA[<p>Hi Daniel, </p>
+<p>Thanks for your question.  </p>
+<p>Navigating around a workbook with this method requires the tabs to be published.  The way to achieve this without having to show each tab along the top is to navigate to the exact (and full) URL.  </p>
+<p>The best way to do this is to publish the workbook to your sever (or public). Then from within server navigate to each of the pages (tabs) directly and make a note of each url.  Just flicking through the tabs won&#8217;t change the url.  Then add those url&#8217;s into the navigation of your workbook and republish.  In the past I&#8217;ve make a new data source like a csv with the url&#8217;s in it for ease of maintenance.</p>
+<p>Hope that helps.<br />
+Aus &#8211; <a href="mailto:aus@interworks.co.uk">aus@interworks.co.uk</a></p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Daniel Vincent</title>
+		<link>http://interworks.co.uk/blog/menu-navigation-within-a-tableau-workbook/#comment-436</link>
+		<dc:creator><![CDATA[Daniel Vincent]]></dc:creator>
+		<pubDate>Thu, 31 Jan 2013 17:02:17 +0000</pubDate>
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=3249#comment-436</guid>
+		<description><![CDATA[Is there a way to do this without having to publish the individual tabs?]]></description>
+		<content:encoded><![CDATA[<p>Is there a way to do this without having to publish the individual tabs?</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

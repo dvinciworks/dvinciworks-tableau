@@ -1,0 +1,497 @@
+<!DOCTYPE HTML>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<head>
+        <meta charset="utf-8" />
+	<meta name="google-site-verification" content="o-LcfCT3_jYXrNT5Ov5EH8B62M8rrRVIi1OgdWHOyig" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+    <link rel="pingback" href="xmlrpc.php" />
+    <link rel="alternate" type="application/rss+xml" title="InterWorks &#8211; Tableau Software &amp; Business Intelligence Consulting" href="feed/index.html" />
+
+    
+<!-- This site is optimized with the Yoast WordPress SEO plugin v2.0.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<title>CeBIT 2014 - InterWorks - Tableau Software &amp; Business Intelligence Consulting</title>
+
+<link rel="stylesheet" href="wp-content/plugins/sitepress-multilingual-cms/res/css/language-selector.css?v=3.1.9.3" type="text/css" media="all" />
+<link rel="canonical" href="index.html?post_type=ajde_events&amp;p=10074" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="CeBIT 2014 - InterWorks - Tableau Software &amp; Business Intelligence Consulting" />
+<meta property="og:description" content="InterWorks Europe, in partnership with Tableau Software, will be attending CeBit 2014, the worlds largest IT Expo. Situated within the prestigious BARC enclosure, Tableau &amp; InterWorks will be there to show you demos of this revolutionary BI tool, answer all your questions surrounding Tableau software, training and support services. You can find us at Hall &hellip;" />
+<meta property="og:url" content="http://interworks.co.uk/events/cebit-2014/" />
+<meta property="og:site_name" content="InterWorks - Tableau Software &amp; Business Intelligence Consulting" />
+<meta property="og:image" content="http://interworks.co.uk/wp-content/uploads/2014/02/CebIT-header.jpg" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:description" content="InterWorks Europe, in partnership with Tableau Software, will be attending CeBit 2014, the worlds largest IT Expo. Situated within the prestigious BARC enclosure, Tableau &amp; InterWorks will be there to show you demos of this revolutionary BI tool, answer all your questions surrounding Tableau software, training and support services. You can find us at Hall [&hellip;]"/>
+<meta name="twitter:title" content="CeBIT 2014 - InterWorks - Tableau Software &amp; Business Intelligence Consulting"/>
+<meta name="twitter:site" content="@interworks"/>
+<meta name="twitter:domain" content="InterWorks - Tableau Software &amp; Business Intelligence Consulting"/>
+<meta name="twitter:image:src" content="http://interworks.co.uk/wp-content/uploads/2014/02/CebIT-header.jpg"/>
+<meta name="twitter:creator" content="@interworks"/>
+<!-- / Yoast WordPress SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="InterWorks - Tableau Software &amp; Business Intelligence Consulting &raquo; Feed" href="feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="InterWorks - Tableau Software &amp; Business Intelligence Consulting &raquo; Comments Feed" href="comments/feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="InterWorks - Tableau Software &amp; Business Intelligence Consulting &raquo; CeBIT 2014 Comments Feed" href="events/cebit-2014/feed/index.html" />
+<link rel='stylesheet' id='sociablecss-css'  href='wp-content/plugins/sociable/css/sociable.css?ver=4.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='evcal_single_event-css'  href='wp-content/plugins/eventon-single-event/assets/style.css?ver=4.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='layerslider_css-css'  href='wp-content/plugins/LayerSlider/css/layerslider.css?ver=3.6.2' type='text/css' media='all' />
+<link rel='stylesheet' id='contact-form-7-css'  href='wp-content/plugins/contact-form-7/includes/css/styles.css?ver=4.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='se-link-styles-css'  href='wp-content/plugins/search-everything/static/css/se-styles.css?ver=4.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='leadin-subscribe-css-css'  href='wp-content/plugins/leadin/assets/css/build/leadin-subscribe.css?ver=4.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='evcal_cal_default-css'  href='wp-content/plugins/eventON/assets/css/eventon_styles.css?ver=4.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='evo_dynamic_css-css'  href='http://interworks.co.uk/wp-admin/admin-ajax.php?action=evo_dynamic_css&#038;ver=4.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='evcal_google_fonts-css'  href='http://fonts.googleapis.com/css?family=Oswald%3A400%2C300%7COpen+Sans%3A400%2C300&#038;ver=4.1.5' type='text/css' media='screen' />
+<link rel='stylesheet' id='evo_font_icons-css'  href='wp-content/plugins/eventON/assets/fonts/font-awesome.css?ver=4.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='fancybox-css'  href='wp-content/plugins/easy-fancybox/fancybox/jquery.fancybox-1.3.7.min.css?ver=1.5.7' type='text/css' media='screen' />
+<link rel='stylesheet' id='jetpack_css-css'  href='wp-content/plugins/jetpack/css/jetpack.css?ver=3.4.3' type='text/css' media='all' />
+<link rel='stylesheet' id='wp_dlmp_styles-css'  href='wp-content/plugins/download-monitor/page-addon/styles.css?ver=4.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='hubspot-css'  href='wp-content/plugins/hubspot/css/hubspot.css?ver=4.1.5' type='text/css' media='all' />
+<!-- This site uses the Google Analytics by Yoast plugin v5.3.3 - Universal disabled - https://yoast.com/wordpress/plugins/google-analytics/ -->
+<script type="text/javascript">
+
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-38237981-1']);
+	_gaq.push(['_gat._forceSSL']);
+	_gaq.push(['_trackPageview']);
+
+	(function () {
+		var ga = document.createElement('script');
+		ga.type = 'text/javascript';
+		ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(ga, s);
+	})();
+
+</script>
+<!-- / Google Analytics by Yoast -->
+<script type='text/javascript' src='wp-includes/js/jquery/jquery.js?ver=1.11.1'></script>
+<script type='text/javascript' src='wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<script type='text/javascript' src='wp-content/plugins/sociable/js/sociable.js?ver=4.1.5'></script>
+<script type='text/javascript' src='wp-content/plugins/sociable/js/vuible.js?ver=4.1.5'></script>
+<script type='text/javascript' src='wp-content/plugins/sociable/js/addtofavorites.js?ver=4.1.5'></script>
+<script type='text/javascript' src='wp-content/plugins/LayerSlider/js/layerslider.kreaturamedia.jquery.js?ver=3.6.2'></script>
+<script type='text/javascript' src='wp-content/plugins/LayerSlider/js/jquery-easing-1.3.js?ver=1.3.0'></script>
+<script type='text/javascript' src='wp-content/plugins/sitepress-multilingual-cms/res/js/jquery.cookie.js?ver=3.1.9.3'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpml_browser_redirect_params = {"pageLanguage":"en","languageUrls":{"en_US":"http:\/\/interworks.co.uk\/events\/cebit-2014\/","en":"http:\/\/interworks.co.uk\/events\/cebit-2014\/","US":"http:\/\/interworks.co.uk\/events\/cebit-2014\/"},"cookie":{"name":"_icl_visitor_lang_js","domain":"interworks.co.uk","path":"\/","expiration":24}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='wp-content/plugins/sitepress-multilingual-cms/res/js/browser-redirect.js?ver=3.1.9.3'></script>
+	<style type='text/css'>
+	.download-info .download-button {
+		background-image: url(wp-content/plugins/download-monitor/page-addon/downloadbutton.gif);
+	}
+	.download-info .more-button {
+		background-image: url(wp-content/plugins/download-monitor/page-addon/morebutton.gif);
+	}
+	</style>
+<script type="text/javascript">
+	window._se_plugin_version = '8.1.3';
+</script>
+<meta name="generator" content="WPML ver:3.1.9.3 stt:1,39,4,3;0" />
+<script type='text/javascript'>var base_url_sociable = 'http://interworks.co.uk/wp-content/plugins/sociable/'</script><script type='text/javascript' src='http://apis.google.com/js/plusone.js'></script><link href="wp-content/themes/Sterling/style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="wp-content/themes/Sterling/css/primary-red.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="wp-content/themes/Sterling/css/_mobile.css" rel="stylesheet" type="text/css" media="screen" />
+<link rel="shortcut icon" href="wp-content/uploads/2014/03/favicon.png"/>
+
+
+<!-- EventON Version -->
+<meta name="generator" content="EventON 2.2.4" />
+
+<style type="text/css">.broken_link, a.broken_link {
+	text-decoration: line-through;
+}</style><link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600&amp;lang=en-SG" />
+
+<!--styles generated by site options-->
+<style type='text/css'>
+a, a:hover {color: #a41d21;font-weight:bold}
+
+*{font-family:"Open Sans",arial,sans-serif !important;}
+.top-aside .social_icons a {font-weight:600;padding-top:3px;}
+nav a {font-size:14.5px;padding:3px 4px;}
+header .sub-menu a, .sidebar li, input, textarea, select {font-size:12px;}
+div.breadcrumbs {font-size:10px;}
+.metadata, .small_banner .page-banner-description {font-size:12px;}
+.footer-callout-content p {font-size:16px;}
+.social_icons a {padding-bottom:8px;}
+.small_banner .page-banner-heading {font-weight:300;padding-bottom:3px;}
+h3 {font-size: 16px;font-weight: 600;}
+.business-hours .day, strong, .tabs_type_1 dt, .tabs_type_2 dt, .accordion dt, .tt-contentbox-title span, .tt-dropcap-round, .tt-dropcap-square, .tt-dropcap-text {font-weight: 600;}
+.preview h2, .preview h2 a {font-size:22px;}
+.widget-heading {font-size: 15px;font-weight: 600;}
+.tt-button, #content-container p, p.callout-heading, .footer-content p, .banner-slider p{font-family:arial,sans-serif !important;}
+p.callout-heading {letter-spacing:0px;}
+.banner-slider h1, .banner-slider h2, .banner-slider h3, .banner-slider h4, .banner-slider h5, .banner-slider h6 {font-weight: 300;}
+			
+
+body,html{background-image:url(wp-content/themes/Sterling/images/body-backgrounds/null.png) !important;background-position:left top !important;background-repeat:repeat !important;}
+#tt-boxed-layout {-moz-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);-webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);}
+footer{background:none !important;background-color:#ededed !important;}
+.top-aside{padding:4px 0;}
+.small_banner {padding:5px 0;}
+.footer-content {padding:0px 0;}
+header {padding:40px 0;}
+</style>
+			<!-- Easy Columns 2.1.1 by Pat Friedl http://www.patrickfriedl.com -->
+			<link rel="stylesheet" href="wp-content/plugins/easy-columns/css/easy-columns.css" type="text/css" media="screen, projection" />
+			
+<!-- Easy FancyBox 1.5.7 using FancyBox 1.3.7 - RavanH (http://status301.net/wordpress-plugins/easy-fancybox/) -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var fb_timeout = null;
+var fb_opts = { 'overlayShow' : true, 'hideOnOverlayClick' : true, 'showCloseButton' : true, 'centerOnScroll' : true, 'enableEscapeButton' : true, 'autoScale' : true };
+var easy_fancybox_handler = function(){
+	/* IMG */
+	var fb_IMG_select = 'a[href*=".jpg"]:not(.nofancybox,.pin-it-button), area[href*=".jpg"]:not(.nofancybox), a[href*=".jpeg"]:not(.nofancybox,.pin-it-button), area[href*=".jpeg"]:not(.nofancybox), a[href*=".png"]:not(.nofancybox,.pin-it-button), area[href*=".png"]:not(.nofancybox)';
+	jQuery(fb_IMG_select).addClass('fancybox image');
+	var fb_IMG_sections = jQuery('div.gallery ');
+	fb_IMG_sections.each(function() { jQuery(this).find(fb_IMG_select).attr('rel', 'gallery-' + fb_IMG_sections.index(this)); });
+	jQuery('a.fancybox, area.fancybox, li.fancybox a:not(li.nofancybox a)').fancybox( jQuery.extend({}, fb_opts, { 'transitionIn' : 'elastic', 'easingIn' : 'easeOutBack', 'transitionOut' : 'elastic', 'easingOut' : 'easeInBack', 'opacity' : false, 'hideOnContentClick' : false, 'titleShow' : true, 'titlePosition' : 'over', 'titleFromAlt' : true, 'showNavArrows' : true, 'enableKeyboardNav' : true, 'cyclic' : false }) );
+	/* Auto-click */ 
+	jQuery('#fancybox-auto').trigger('click');
+}
+/* ]]> */
+</script>
+
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" href="http://interworks.co.uk/wp-content/themes/Sterling/css/IE.css" />
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <script type="text/javascript" src="http://interworks.co.uk/wp-content/themes/Sterling/framework/js/IE.js"></script>
+        <script type="text/javascript" src="http://interworks.co.uk/wp-content/themes/Sterling/framework/js/respond.js"></script>
+    <![endif]-->
+
+    <link href="http://interworks.co.uk/wp-content/themes/Sterling/css/" rel="stylesheet" type="text/css" media="screen" />
+<link href="http://interworks.co.uk/wp-content/themes/Sterling/css/" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body class="single single-ajde_events postid-10074 wpb-js-composer js-comp-ver-3.6.7 vc_responsive">
+<div id="tt-wide-layout">    <aside class="top-aside clearfix">
+        <div class="center-wrap">
+            <div class="one_half">
+                <div class="sidebar-widget widget_text">			<div class="textwidget"></div>
+		</div>            </div><!-- end .top-toolbar-left -->
+
+            <div class="one_half">
+                <div class="sidebar-widget widget_search"><form method="get" class="searchform" action="index.html">
+    <fieldset>
+        <input type="text" name="s" class="s" value="Search..." onfocus="if(this.value=='Search...')this.value='';" onblur="if(this.value=='')this.value='Search...';" />
+    </fieldset>
+<input type='hidden' name='lang' value='en' /></form></div>            </div><!-- end .top-toolbar-right -->
+        </div><!-- end .center-wrap -->
+        <div class="top-aside-shadow"></div>
+    </aside>
+    <header>
+        <div class="center-wrap">
+            <div class="companyIdentity">
+                                                            <a href="index.html"><img src="wp-content/uploads/2014/03/interworks_external_logo.png" alt="InterWorks &#8211; Tableau Software &amp; Business Intelligence Consulting" /></a>
+                                                </div><!-- end .companyIdentity -->
+            <nav>
+                <ul>
+                    <li id="menu-item-142" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-142"><a href="business-intelligence/index.html">Business Intelligence</a>
+<ul class="sub-menu">
+	<li id="menu-item-3852" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3852"><a href="business-intelligence/why-use-bi/index.html">Why Use BI?</a></li>
+	<li id="menu-item-3851" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3851"><a href="business-intelligence/what-is-bi/index.html">What Is BI?</a></li>
+	<li id="menu-item-6611" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6611"><a href="business-intelligence/tableau-tools/index.html">Power Tools for Tableau</a></li>
+</ul>
+</li>
+<li id="menu-item-217" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-217"><a href="tableau-services/index.html">Tableau</a>
+<ul class="sub-menu">
+	<li id="menu-item-3850" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3850"><a href="business-intelligence/tableau-software/index.html">Tableau Software</a></li>
+	<li id="menu-item-9212" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9212"><a href="business-intelligence/why-tableau/index.html">Why Tableau?</a></li>
+	<li id="menu-item-3855" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3855"><a href="tableau-services/tableau-consulting/index.html">Tableau Consulting</a></li>
+	<li id="menu-item-3854" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3854"><a href="tableau-services/tableau-development/index.html">Tableau Development</a></li>
+	<li id="menu-item-3853" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3853"><a href="tableau-services/tableau-bi-infrastructure/index.html">Tableau BI Infrastructure</a></li>
+	<li id="menu-item-11003" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11003"><a href="tableau-services/tableau-training/index.html">Tableau Training</a></li>
+	<li id="menu-item-10582" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10582"><a href="business-intelligence/tableau-desktop/index.html">Tableau Desktop</a></li>
+	<li id="menu-item-10587" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10587"><a href="business-intelligence/tableau-server.1">Tableau Server</a></li>
+</ul>
+</li>
+<li id="menu-item-29" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-29"><a href="blog/index.html">Blog</a></li>
+<li id="menu-item-9810" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9810"><a href="event/index.html">Events</a></li>
+<li id="menu-item-412" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-412"><a href="resources/index.html">On Demand Help &#038; Resources</a>
+<ul class="sub-menu">
+	<li id="menu-item-3397" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3397"><a href="resources/data-exploration-tools/index.html">Data Exploration Tools</a></li>
+	<li id="menu-item-3400" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3400"><a href="resources/videos.1">Videos</a></li>
+	<li id="menu-item-3399" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3399"><a href="resources/social-links.1">Social Links</a></li>
+	<li id="menu-item-3395" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3395"><a href="resources/blogs.1">Blogs</a></li>
+	<li id="menu-item-11374" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11374"><a href="case-studies.1">Case Studies</a></li>
+	<li id="menu-item-3396" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3396"><a href="resources/books.1">Books</a></li>
+	<li id="menu-item-3398" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3398"><a href="resources/knowledge">Knowledge Base</a></li>
+	<li id="menu-item-11950" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11950"><a href="tableau-expert-hotline/index.html">On Demand Help</a></li>
+</ul>
+</li>
+                </ul>
+            </nav>
+            <a class="free-trial-link" target="_blank" href="http://www.tableau.com/partner-trial?id=13372#form">Free Tableau Trial</a>
+        </div><!-- end .center-wrap -->
+    </header>	
+	<div class='evo_page_body'>
+		<div class='evo_page_content evo_se_sidarbar'>
+						
+				<article id="post-10074" class="post-10074 ajde_events type-ajde_events status-publish has-post-thumbnail hentry">
+
+					<div class="entry-content">
+
+					<div class='eventon_main_section' >
+	<div id='evcal_single_event_10074' class='ajde_evcal_calendar eventon_single_event evo_sin_page ' data-mapformat='roadmap' data-mapzoom='12' data-mapscroll='true'>
+		
+		<div id='evcal_head' class='calendar_header'><p id='evcal_cur'>march, 2014</p></div>
+		<div id='evcal_list' class='eventon_events_list evo_sin_event_list'>
+		<div class='eventon_list_event' event_id='10074' itemscope itemtype='http://schema.org/Event'><div class="evo_event_schema" style="display:none" >
+					<item href="http://interworks.co.uk/events/cebit-2014/" itemprop="url"></item>				
+					<time itemprop="startDate" datetime="2014-3-10"></time></div>
+			<a id='evc_139444200010074' class='evcal_list_a desc_trig mul_val gmaponload evo_exhibition' exlk="1" href="index.html?post_type=ajde_events&amp;p=10074"  style='border-left-color: #ff3355' gmtrig="0" gmap_status="null" ux_val='4'><p class='evcal_cblock' style='bgcolor='#ff3355' smon='march' syr='2014'><em class='evo_date'>10<span> - 14</span></em><em class='clear'></em></p><p class='evcal_desc' ><span class='evcal_desc2 evcal_event_title' itemprop='name'>CeBIT 2014</span><span class='evcal_desc_info' ></span><span class='evcal_desc3'></p></a><div class='event_description evcal_eventcard' ><div class='evorow evcal_evdata_img evo_metarow_fimg' imgheight='399' imgwidth='1330'  style='background-image: url(wp-content/uploads/2014/02/CebIT-header.jpg)'></div><div class='evorow evcal_evdata_row bordb evcal_event_details'>
+						<div class="event_excerpt" style="display:none"><h3>Event Details</h3><p>InterWorks Europe, in partnership with Tableau Software, will be attending CeBit 2014, the worlds largest IT Expo.
+Situated within the prestigious BARC enclosure, Tableau &amp; InterWorks will be there to show [...]</p></div>
+						<span class='evcal_evdata_icons'><i class='fa fa-align-justify'></i></span>
+						<div class='evcal_evdata_cell shorter_desc'><div class='eventon_details_shading_bot'>
+							<p class='eventon_shad_p' content='less'><span class='ev_more_text' txt='less'>more</span><span class='ev_more_arrow'></span></p>
+						</div><div class='eventon_full_description'>
+								<h3 class='padb5 evo_h3'>Event Details</h3><div class='eventon_desc_in' itemprop='description'>
+								<p>InterWorks Europe, in partnership with Tableau Software, will be attending CeBit 2014, the worlds largest IT Expo.</p>
+<p>Situated within the prestigious BARC enclosure, Tableau &amp; InterWorks will be there to show you demos of this revolutionary BI tool, answer all your questions surrounding Tableau software, training and support services.</p>
+<p>You can find us at Hall 6, Stand A18, Hannover Exhibition Grounds, Hannover. Germany.</p>
+<p>Visit their website for more information and booking tickets.</p>
+<p><a href="http://www.cebit.de/home" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.cebit.de/home', ' Website ']);"  class="small orange tt-button" target="_blank"> Website </a></p>
+<p><a href="http://www.cebit.de/en/maps/" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.cebit.de/en/maps/', ' Hall Plan ']);"  class="small orange tt-button" target="_blank"> Hall Plan </a></p>
+</div><div class='clear'></div>
+							</div>
+						</div>
+					</div><div class='evorow evcal_evdata_row bordb evcal_evrow_sm evo_metarow_time'>
+						<span class='evcal_evdata_icons'><i class='fa fa-clock-o'></i></span>
+						<div class='evcal_evdata_cell'>							
+							<h3 class='evo_h3'>Time</h3><p>10 (monday) 09:00 - 14 (friday) 06:00</p>
+						</div>
+					</div><div class='evorow evcal_evdata_row bordb evcal_evrow_sm evo_metarow_organizer lastrow'>
+						<span class='evcal_evdata_icons'><i class='fa fa-headphones'></i></span>
+						<div class='evcal_evdata_cell'>							
+							<h3 class='evo_h3'>Organizer</h3><p class='evo_data_val'>CeBIT</p>
+						</div>
+					<div class='evcal_evdata_row evcal_close' title='Close'></div></div></div><div class='clear'></div></div>		</div>
+	</div>
+</div>
+
+
+        <div id="blog-comment-outer-wrap">
+    
+    <div id="respond">
+        <h3 class="comment-title">
+            Leave a Comment        </h3>
+
+        <div class="comment-cancel"><a rel="nofollow" id="cancel-comment-reply-link" href="index.html?post_type=ajde_events&amp;p=10074#respond" style="display:none;">Click here to cancel reply.</a></div><!-- end .comment-cancel -->
+
+                            <form action="http://interworks.co.uk/wp-comments-post.php" method="post" id="commentform">
+                                            <p>
+                            <input type="text" name="author" id="author" value="" size="22" tabindex="1" />
+                            <label for="author">Name<span>&#42;</span></label>
+                        </p>
+                        <p>
+                            <input type="text" name="email" id="email" value="" size="22" tabindex="2" />
+                            <label for="email">Email<span>&#42;</span>(will not be published)<small> </small></label>
+                        </p>
+                        <p>
+                            <input type="text" name="url" id="url" value="" size="22" tabindex="3" />
+                            <label for="url">Website</label>
+                        </p>
+                    
+                    <p><textarea name="comment" id="comment" cols="58" rows="10" tabindex="4"></textarea></p>
+
+                    <!-- <p class="allowed-tags"><small><strong>XHTML:</strong> You can use these tags: <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </code></small></p> -->
+
+                    <p>
+                        <input name="submit" type="submit" id="submit-button" tabindex="5" value="Submit" />
+                        <input type='hidden' name='comment_post_ID' value='10074' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+                    </p>
+                    <p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="d0fb75b969" /></p><!-- BEGIN: subscribe to comments reloaded --><p class='comment-form-subscriptions'><label for='subscribe-reloaded'><input style='width:30px' type='checkbox' name='subscribe-reloaded' id='subscribe-reloaded' value='yes' checked='checked' /> Notify me of comment replies via e-mail. You can also <a href='comment-subscriptions/index.html?srp=10074&amp;srk=&amp;sra=s'>subscribe</a> without commenting.</label></p><!-- END: subscribe to comments reloaded --><p class="comment-subscription-form"><input type="checkbox" name="subscribe_comments" id="subscribe_comments" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" /> <label class="subscribe-label" id="subscribe-label" for="subscribe_comments">Notify me of follow-up comments by email.</label></p><p class="comment-subscription-form"><input type="checkbox" name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" /> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog">Notify me of new posts by email.</label></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="63"/></p>        
+        <input type="hidden" name="icl_comment_language" value="en" />
+        
+          
+                        </form><!-- end #commentform -->
+                    </div><!-- end #respond -->
+    </div><!-- end #blog-comment-outer-wrap -->
+		
+					</div><!-- .entry-content -->
+
+					
+
+					<footer class="entry-meta">
+											</footer><!-- .entry-meta -->
+				</article><!-- #post -->
+			
+		</div><!-- #content -->
+	
+								<div class='evo_page_sidebar'>
+				<ul id="eventonsidebar">
+					<li id="text-10" class="widget widget_text">			<div class="textwidget"><p><a href="event/index.html" class="small orange tt-button" target="_self"> Back to Events </a></p>
+</div>
+		</li>
+<li id="evcalwidget-2" class="widget EvcalWidget"><h3 class='widget-title'>Other Events</h3><div id='evcal_widget'><div id='evcal_calendar_' class='ajde_evcal_calendar' cal_ver='2.2.4' mapscroll='true' mapformat='roadmap' mapzoom='12'  eventcard="1" cur_m='6' cur_y='2015'><div id='evcal_head' class='calendar_header ' cur_m='6' cur_y='2015' ev_cnt='0' sort_by='sort_date' filters_on='false'>					
+			<span id='evcal_prev' class='evcal_arrows evcal_btn_prev' ></span>
+			<p id='evcal_cur'> june, 2015</p>
+			<span id='evcal_next' class='evcal_arrows evcal_btn_next' ></span><div class='cal_arguments' style='display:none'  hide_past='yes' show_et_ft_img='no' event_order='ASC' ft_event_priority="no" lang='L1'></div><div class='clear'></div></div><a class='evo_sort_btn'>Sort Options</a><div class='eventon_sorting_section' >
+			<div class='eventon_sort_line evo_sortOpt' style='display:none'>
+				<div class='eventon_sf_field'>
+					<p>Sort By:</p>
+				</div>
+				<div class='eventon_sf_cur_val evs'>
+					<p class='sorting_set_val'>Date</p>
+				</div>
+				<div class='eventon_sortbar_selection evs_3 evs' style='display:none'>
+					<p val='sort_date' type='date' class='evs_btn evs_hide'>Date</p><p val='sort_title' type='title' class='evs_btn' >Title</p></div><div class='clear'></div></div>
+			<div class='eventon_filter_line'>
+				<div class='eventon_filter evo_sortOpt' filter_field='event_type' filter_val='all' filter_type='tax' style='display:none'>
+					<div class='eventon_sf_field'><p>Event Type:</p></div>				
+				
+					<div class='eventon_filter_selection'>
+						<p class='filtering_set_val' opts='evs4_in'>All</p>
+						<div class='eventon_filter_dropdown' style='display:none'><p filter_val='all'>All</p><p filter_val='229' filter_slug='conference-3'>Conference</p><p filter_val='208' filter_slug='exhibition'>Exhibition</p><p filter_val='191' filter_slug='social'>Social</p><p filter_val='228' filter_slug='training'>Training</p><p filter_val='344' filter_slug='tug'>TUG</p><p filter_val='304' filter_slug='webinar'>Webinar</p></div>
+					</div><div class='clear'></div>
+				</div></div></div><div id='eventon_loadbar_section'><div id='eventon_loadbar'></div></div><div id='evcal_list' class='eventon_events_list'><div class='eventon_list_event'><p class='no_events'>No Events</p></div></div><div class='clear'></div></div></div></li>
+<li id="text-11" class="widget widget_text">			<div class="textwidget"><p><a href="http://www.tableausoftware.com/about/partners" onclick="_gaq.push(['_trackEvent', 'outbound-widget', 'http://www.tableausoftware.com/about/partners', '']);"  target="_blank" alt="Tableau Partners Page" title="Tableau Partners Page"><img class="alignright size-full wp-image-524" title="tableau-partner-logo-3" src="wp-content/uploads/2013/02/tableau-gold-partner-logo-1.png" alt="" width="310" height="165" /></a></p>
+</div>
+		</li>
+				</ul>
+			</div>
+				</div><!-- #primary -->
+	<div class="clear"></div>
+
+	
+	
+	
+</section><!-- END content-container -->
+
+
+<footer>
+    <div class="center-wrap tt-relative">
+        <div class="footer-content clearfix">
+                                <div class="one_fourth">
+                        <div class="sidebar-widget widget_nav_menu"><ul class="custom-menu"><li id="menu-item-108" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-108"><a href="about-interworks/index.html">About InterWorks</a></li>
+<li id="menu-item-11373" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11373"><a href="case-studies.1">Case Studies</a></li>
+<li id="menu-item-46" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-46"><a href="blog/getting-excited-about-tableau-9-0/www.interworks.co.uk/team">Our Team</a></li>
+<li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="careers/index.html">Careers</a></li>
+<li id="menu-item-9240" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9240"><a href="contact-us/index.html">Contact</a></li>
+</ul></div>                    </div>
+                                        <div class="one_fourth">
+                        <div class="sidebar-widget widget_nav_menu"><ul class="custom-menu"><li id="menu-item-9227" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9227"><a href="business-intelligence/download-tableau-desktop-free-trial.1">Free Tableau Desktop Trial</a></li>
+<li id="menu-item-9082" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9082"><a href="business-intelligence/tableau-server.1">Free Tableau Server Trial</a></li>
+<li id="menu-item-11272" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11272"><a href="business-intelligence/tableau-tools/index.html">Power Tools for Tableau</a></li>
+<li id="menu-item-10872" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10872"><a href="tableau-your-data/index.html">Get &#8220;Tableau Your Data&#8221; &#8211; The Ultimate Book on Using Tableau</a></li>
+</ul></div>                    </div>
+                                        <div class="one_fourth">
+                        <div class="sidebar-widget widget_text">			<div class="textwidget"><p><a href="http://www.tableausoftware.com/about/partners" onclick="_gaq.push(['_trackEvent', 'outbound-widget', 'http://www.tableausoftware.com/about/partners', '']);"  target="_blank"><img src="wp-content/uploads/2013/02/tableau-gold-partner-logo-1.png" /></a></p>
+</div>
+		</div><div class="sidebar-widget widget_text">			<div class="textwidget"><p><a href="http://www.alteryx.com/" onclick="_gaq.push(['_trackEvent', 'outbound-widget', 'http://www.alteryx.com/', '']);"  target="_blank"><img align="center" src="wp-content/uploads/2013/12/alteryx-small-logo.jpg" /></a></p>
+</div>
+		</div>                    </div>
+                                        <div class="one_fourth">
+                        <div class="sidebar-widget widget_nav_menu"><ul class="custom-menu"><li id="menu-item-491" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-491"><a href="contact-us/index.html">Email: hello@interworks.co.uk</a></li>
+<li id="menu-item-490" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-490"><a>Call: +44 (0)1202 37 33 33</a></li>
+<li id="menu-item-492" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-492"><a href="https://twitter.com/InterWorksEU" onclick="_gaq.push(['_trackEvent', 'outbound-widget', 'https://twitter.com/InterWorksEU', 'Twitter: @InterWorksEU']);" >Twitter: @InterWorksEU</a></li>
+<li id="menu-item-10377" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10377"><a href="https://www.facebook.com/interworkseu" onclick="_gaq.push(['_trackEvent', 'outbound-widget', 'https://www.facebook.com/interworkseu', 'Facebook: interworkseu']);" >Facebook: interworkseu</a></li>
+</ul></div>                    </div>
+                            </div><!-- end .footer-content -->
+    </div><!-- end .center-wrap -->
+
+    <div class="footer-copyright clearfix">
+        <div class="center-wrap clearfix">
+    	    <div class="foot-copy">
+    	        <p>Copyright © 2015 InterWorks Europe | All Rights Reserved.</p>
+    	    </div><!-- end .foot-copy -->
+
+    	    
+                            <ul class="footer-nav">
+                    <li id="menu-item-385" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-385"><a href="cookies/index.html">Cookies</a></li>
+<li id="menu-item-458" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-458"><a href="http://interworks.com" onclick="_gaq.push(['_trackEvent', 'outbound-widget', 'http://interworks.com', 'InterWorks USA']);" >InterWorks USA</a></li>
+                </ul>
+                    </div><!-- end .center-wrap -->
+    </div><!-- end .footer-copyright -->
+
+    <div class="shadow top"></div>
+    <div class="tt-overlay"></div>
+</footer>
+
+</div><!-- end .tt-wide-layout -->
+
+<!-- Start of Async HubSpot Analytics Code for WordPress v1.9.4 -->
+<script type="text/javascript">
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "blog-post"]);
+(function(d,s,i,r) {
+  if (d.getElementById(i)){return;}
+  var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+  n.id=i;n.src = '//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/502772.js';
+  e.parentNode.insertBefore(n, e);
+})(document, "script", "hs-analytics", 300000);
+</script>
+<!-- End of Async HubSpot Analytics Code -->
+<input id="leadin-subscribe-vex-class" value="vex-theme-bottom-right-corner" type="hidden"/><input id="leadin-subscribe-heading" value="Sign up for email updates" type="hidden"/><input id="leadin-subscribe-text" value="" type="hidden"/><input id="leadin-subscribe-btn-label" value="SUBSCRIBE" type="hidden"/><input id="leadin-subscribe-btn-color" value="leadin-popup-color-blue" type="hidden"/><input id="leadin-subscribe-name-fields" value="0" type="hidden"/><input id="leadin-subscribe-phone-field" value="0" type="hidden"/><input id="leadin-subscribe-confirmation" value="0" type="hidden"/><input id="leadin-subscribe-mobile-popup" value="1" type="hidden"/>	<div style="display:none">
+	</div>
+<script type='text/javascript' src='wp-content/plugins/akismet/_inc/form.js?ver=3.1.1'></script>
+
+							<div id="lang_sel_footer">
+									<ul>
+									    <li><a href="index.html?post_type=ajde_events&amp;p=10074" class="lang_sel_sel"><img src="wp-content/plugins/sitepress-multilingual-cms/res/flags/en.png" alt="English" class="iclflag" title="English"  />&nbsp;English</a></li>
+									</ul>
+							</div><script type='text/javascript' src='wp-includes/js/comment-reply.js?ver=4.1.5'></script>
+<script type='text/javascript' src='wp-content/themes/Sterling/framework/js/custom-main.js?ver=4.1.5'></script>
+<script type='text/javascript' src='wp-content/themes/Sterling/framework/js/jquery.prettyPhoto.js?ver=4.1.5'></script>
+<script type='text/javascript' src='wp-content/themes/Sterling/framework/js/jquery.superfish.js?ver=4.1.5'></script>
+<script type='text/javascript' src='wp-content/themes/Sterling/framework/js/jquery.cycle.all.min.js?ver=4.1.5'></script>
+<script type='text/javascript' src='wp-content/plugins/easy-fancybox/jquery.easing.pack.js?ver=1.3'></script>
+<script type='text/javascript' src='wp-content/themes/Sterling/framework/js/jquery.isotope.js?ver=4.1.5'></script>
+<script type='text/javascript' src='wp-content/plugins/eventon-single-event/assets/se_page_script.js?ver=1.0'></script>
+<script type='text/javascript' src='wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.51.0-2014.06.20'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _wpcf7 = {"loaderUrl":"http:\/\/interworks.co.uk\/wp-content\/plugins\/contact-form-7\/images\/ajax-loader.gif","sending":"Sending ..."};
+/* ]]> */
+</script>
+<script type='text/javascript' src='wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.1.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var li_ajax = {"ajax_url":"http:\/\/interworks.co.uk\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='wp-content/plugins/leadin/assets/js/build/leadin-tracking.min.js?ver=4.1.5'></script>
+<script type='text/javascript' src='wp-content/plugins/leadin/assets/js/build/leadin-subscribe.min.js?ver=4.1.5'></script>
+<script type='text/javascript' src='http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201526'></script>
+<script type='text/javascript' src='http://s.gravatar.com/js/gprofiles.js?ver=2015Junaa'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='wp-content/plugins/jetpack/modules/wpgroho.js?ver=4.1.5'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var icl_vars = {"current_language":"en","icl_home":"http:\/\/interworks.co.uk\/"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='wp-content/plugins/sitepress-multilingual-cms/res/js/sitepress.js?ver=4.1.5'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var the_ajax_script = {"ajaxurl":"http:\/\/interworks.co.uk\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='wp-content/plugins/eventON/assets/js/eventon_script.js?ver=1.0'></script>
+<script type='text/javascript' src='wp-content/plugins/eventON/assets/js/eventon_gen_maps.js?ver=1.0'></script>
+<script type='text/javascript' src='wp-content/plugins/eventON/assets/js/eventon_init_gmap.js?ver=1.0'></script>
+<script type='text/javascript' src='wp-content/plugins/easy-fancybox/fancybox/jquery.fancybox-1.3.7.min.js?ver=1.5.7'></script>
+<script type='text/javascript' src='wp-content/plugins/easy-fancybox/jquery.mousewheel.min.js?ver=3.1.12'></script>
+<script type='text/javascript' src='http://stats.wp.com/e-201526.js' async defer></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:3.4.3',blog:'83071981',post:'10074',tz:'1'} ]);
+	_stq.push([ 'clickTrackerInit', '83071981', '10074' ]);
+</script>
+
+<script type="text/javascript">
+jQuery(document).on('ready post-load', easy_fancybox_handler );
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,944 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>InterWorks - Tableau Software &#38; Business Intelligence Consulting &#187; Tableau 9.0</title>
+	<atom:link href="http://interworks.co.uk/tag/tableau-9-0/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 26 Jun 2015 08:09:24 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>Hot Topics: Best Practices for Data Connections</title>
+		<link>http://interworks.co.uk/blog/hot-topics-best-practices-for-data-connections/</link>
+		<comments>http://interworks.co.uk/blog/hot-topics-best-practices-for-data-connections/#comments</comments>
+		<pubDate>Fri, 05 Jun 2015 08:30:22 +0000</pubDate>
+		<dc:creator><![CDATA[Darren Evans]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[data connection]]></category>
+		<category><![CDATA[data preparation]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[Tableau 9.0]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=12406</guid>
+		<description><![CDATA[<p>Working on the InterWorks Expert Hotline I come into contact with many clients every day assisting them with all aspects of their Tableau deployment from data preparation to best practice dashboard design all the way through to complex table calculations and Tableau Server tuning. This new series of blogs will pick up hot topics that are commonly [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/hot-topics-best-practices-for-data-connections/">Hot Topics: Best Practices for Data Connections</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Working on the <a href="http://www.interworks.co.uk/hotline">InterWorks Expert Hotline</a> I come into contact with many clients every day assisting them with all aspects of their Tableau deployment from data preparation to best practice dashboard design all the way through to complex table calculations and Tableau Server tuning. This new series of blogs will pick up hot topics that are commonly seen during hotline bookings and share that knowledge with our wider customer base. This blog will look at best practices for data connections.</p>
+<p>Having a strong foundation is instrumental to the success of any development project and developing BI solutions in Tableau is no exception to this.</p>
+<p>A common issue with Tableau deployments is performance degradation manifested in poor data connection design.</p>
+<p>This blog will take a look at a 12 step set of best practices that will ensure that all data connections are initially set up for optimum development speed and then configured for best possible performance when the report is ready for production use.</p>
+<p>To help look at the potential for performance issues I have created a ‘big’ view against the Microsoft SQL Server AdventureWorks2014 database. This view has 100 columns and 12.4 million rows. This is not enormous compared to some of the databases that we experience in the real world setting, however the performance gains that are demonstrated will scale against larger databases and deliver significant gain to both the Tableau developers and the audience.</p>
+<p>I have connected Tableau to this view without performing any data maintenance and then created an extract. I have then produced a straightforward dashboard showing some sales data.</p>
+<p><a href="https://public.tableau.com/profile/darren.evans#!/vizhome/BlogDatasets/AdventureWorksSalesDashboard"><img class="alignnone size-large wp-image-12416" src="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.20-1024x934.png" alt="Screen Shot 2015-05-29 at 09.07.20" width="904" height="825" /></a></p>
+<p>Using the Workbook Tools Performance Monitoring I have then carried out a set of actions and filters against the dashboard and recorded the execution times in seconds for these which are shown below:</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.06.22.png"><img class="alignnone size-large wp-image-12407" src="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.06.22-1024x251.png" alt="Screen Shot 2015-05-29 at 09.06.22" width="904" height="222" /></a></p>
+<p>The Workbook tools are a component of the <a href="http://powertoolsfortableau.com/" target="_blank">Power Tools for Tableau</a> suite of applications that allow for analysis and automated changes to be made to Tableau Workbooks and Server files. These tools can save you many hours on the administration of your Tableau environment. For more information see <a title="http://interworks.co.uk/business-intelligence/tableau-tools/" href="http://interworks.co.uk/business-intelligence/tableau-tools/">http://interworks.co.uk/business-intelligence/tableau-tools/</a></p>
+<p>The final test I carried out was the record the time taken to build the extract which came in at a 2508 seconds or a little over 41 minutes.</p>
+<p>I will now run through my 12 steps for best practice data connection development. During this I will produce two additional data connections; an optimised development data connection and a production data connection. I will then carry out the same benchmark tests as before and compare the timings.</p>
+<p><strong>12 Steps for Data Connection Development<br />
+</strong><br />
+These are the 12 steps that I follow each time I start out on a development project in Tableau.</p>
+<p>These steps ensure that at whatever stage the dashboards are at in terms of development they are as responsive as possible.</p>
+<p><em>1 Build the data connection</em></p>
+<p>The first stage is the initial connection to the underlying data source. In this case the data connection is a SQL Server view (see attached SQL File). The file is made up of 75 Dimensions and 25 measures and has 12.5 million rows of data.</p>
+<p><em>2 Review all fields</em></p>
+<p>Review all the fields in the data connection and ensure that they are set correctly to either Dimension or Measure and have the correct data types applied.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.06.41.png"><img class="alignnone size-large wp-image-12408" src="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.06.41-1024x458.png" alt="Screen Shot 2015-05-29 at 09.06.41" width="904" height="404" /></a></p>
+<p><em>3 Hide all non applicable fields</em></p>
+<p>This is an important early step. You need to identify all the fields in your data connection that you will never use during analysis. There will be i) some fields that will definitely be required, and ii) a selection of fields which may be considered during the build but you are unsure about, and iii) the fields that will never be used. These are the fields that should be removed at this stage.</p>
+<p>For this step you can use the main data connection editor window or the meta data manager screen. However I find it is easier to go to a blank worksheet and multi select (ctrl click) all the fields not required from the dimensions and measures shelf, you can then right-click and hide these fields.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.06.52.png"><img class="alignnone size-medium wp-image-12418" src="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.06.52-300x294.png" alt="Screen Shot 2015-05-29 at 09.06.52" width="300" height="294" /></a></p>
+<p>The time at which fields are hidden makes a big difference in Tableau. If you hide fields in a connection with an active data extract the field is only hidden from you in Tableau Desktop. If you hide them before you extract, Tableau will remove them from the query that it uses to pull the data and it will not be pulled in at all. This results in fewer columns in the query and the resulting extract meaning a faster extract speed and better performance as a result.</p>
+<p><em>4 Apply Long Term Filters</em></p>
+<p>When you click to generate the extract you can apply filters. This limits the data brought into the extract. Some filters will be long term (permanent) filters. For example if you are only producing this report for a rolling 2 years then a filter can be applied to remove all other data. The same is true if the report is only for specific locale or business division as the non applicable data can be removed permanently. All of these will limit the row count and provide performance benefit.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.04.png"><img class="alignnone size-medium wp-image-12417" src="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.04-292x300.png" alt="Screen Shot 2015-05-29 at 09.07.04" width="292" height="300" /></a></p>
+<p><em>5 Apply Short Term Filters</em></p>
+<p>These are filters applied only for development. For example If I limit the development report to only two products or the top 100 products out of a possible xxx and also only include 2 months per year this will allow me to pull in a dramatically smaller dataset making extract creation quicker and giving the me maximum speed during development.</p>
+<p>I will quite often only produce reports on a small subset of data, 1 week for example, to give me this speed during development and also give me a subset of data to get signed off as accurate.</p>
+<p>In this example I am limiting the data to the first 2 days of each month only</p>
+<p><em>6 Build Development Extract</em></p>
+<p>I can now run the extract build. With reduced rows and columns I would expect this to be quicker.</p>
+<p>And it has &#8211; 89 seconds compared to 2508 seconds. This is considerable when scaled against larger datasets.</p>
+<p><em>7 Build The Dashboards</em></p>
+<p>Now I can go ahead and build my dashboards against this development set.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.20.png"><img class="alignnone size-medium wp-image-12416" src="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.20-300x274.png" alt="Screen Shot 2015-05-29 at 09.07.20" width="300" height="274" /></a></p>
+<p>At this point I now have a signed off dashboard sitting on a development data connection and it is time to build a Production Data Connection.</p>
+<p><em>8 Remove the Extract</em></p>
+<p>I start by removing my development extract. Navigate to a blank sheet so that Tableau does not try to process live data, right click on the data connection and delete the extract.</p>
+<p><em>9 Hide all unused fields</em></p>
+<p>Next up I can use the hide unused fields option. Click on the menu on the dimensions shelf and choose the hide unused fields option.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.31.png"><img class="alignnone size-medium wp-image-12415" src="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.31-265x300.png" alt="Screen Shot 2015-05-29 at 09.07.31" width="265" height="300" /></a></p>
+<p>As it says on the tin this option will look for all dimensions and measures not being used anywhere in the workbook and hide them. This will have a dramatic effect on the speed of the extract as it is reducing the column size considerably.</p>
+<p>Based on my dashboard design I would be left with just 8 fields from the underlying dataset. A massive reduction from the 100 columns in the initial view.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.46.png"><img class="alignnone size-medium wp-image-12414" src="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.46-120x300.png" alt="Screen Shot 2015-05-29 at 09.07.46" width="120" height="300" /></a></p>
+<p><em>10 Remove development filters and apply new long term filters</em></p>
+<p>I now need to review my filters removing any filters applied only for development. I also may have determined new long term filters that can be applied.</p>
+<p><em>11 Extract Data</em></p>
+<p>I am now in the position to extract the data and build my production dataset.</p>
+<p>An extra step I would consider here is to aggregate visible dimensions. What this option does is truncate all date fields to a fixed level (for example year or month) and then sums up all measure fields grouping by the remaining dimensions. For example AdventureWorks has all dates at day level, in this dataset if a product was sold every day in January 2015 then there would be a row of data for this product on every day in January 2015 with a sales value. What aggregate visible dimensions would do is return a single line for the whole month (no days) along with the product ID and the total sales amount for all days. For a single product in a single month this would save 30 rows in our dataset. Spread out across the whole view this could be a considerable time saver for the end user. One thing to bear in mind is that using this will remove the dates from the dataset restricting the analysis that could take place which is why I suggest it as a final enhancement if your time series is all at a high date level (i.e month). The extract will also be slower to generate as the query required to fetch the data will be more complex.</p>
+<p>Using aggregate visible dimensions against my production dataset to return all dates at month level reduced the row count from 7,444,201 rows to 2,183,256. If all my time series analysis was only required at month level this would be an excellent design choice for end user experience.</p>
+<p>For the purpose of this blog I chose not to aggregate the dimensions as I wanted to compare the original dataset to an optimised dataset at day level.</p>
+<p>As I am now pulling all the rows of data into the extract but a significantly reduced column count. This resulted in a 321 second extract time, more than the development data source but a lot less than than the initial data connection.</p>
+<p><em>12 Optimize Extract</em></p>
+<p>Once the data has been extracted I can now run an optimisation by clicking on the option contained within the data menu and the extract sub menu. This will create a secondary structure inside the actual extract file materialising the results of some calculated fields and also creating views for the filters to query so that they do not have to run against the whole dataset.</p>
+<p><strong>The Results<br />
+</strong><br />
+To demonstrate the advantages of efficient data connections I carried out a set of benchmark tests on each workbook I created.</p>
+<p><strong>Extract Refresh times<br />
+</strong><br />
+Each workbook was uploaded to Server and the extract refresh time recorded.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.56.png"><img class="alignnone size-medium wp-image-12413" src="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.56-300x69.png" alt="Screen Shot 2015-05-29 at 09.07.56" width="300" height="69" /></a></p>
+<p>This makes it pretty clear that amending the data connection reduced extract refresh time considerably. The best extract refresh time was for Development running at just under 1.5 minutes compared to the 42 minutes the original workbook took to refresh. This quick extract time would be of great benefit during a development cycle as changes can be made to the data connection without the need to wait for the extract to fully rebuild.</p>
+<p>The production connection extracting in 321 seconds saw an improvement of over 35 minutes when compared with the original despite containing the same number of rows. As I did not apply any additional data filters this is purely down to the removal of most of the columns during the production data set build.</p>
+<p><strong>Benchmark Testing<br />
+</strong><br />
+The Workbook Tools for Tableau have a tool called <a href="http://powertoolsfortableau.com/tools/workbook-tools-suite/#wc-section" target="_blank">Performance Analyzer</a>. This tool opens a Tableau workbook and records timings for all processing carried out by Tableau including the load time for opening the workbook, all interactions and filter applications.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.08.02.png"><img class="alignnone size-large wp-image-12412" src="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.08.02-1024x610.png" alt="Screen Shot 2015-05-29 at 09.08.02" width="904" height="539" /></a></p>
+<p>In order to assess the benefit of the data connection best pracrice steps I drew up a list of benchmark tests and carried out the same tests on the original, development and production workbooks.</p>
+<p>Here is a summary of the results.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.08.08.png"><img class="alignnone size-large wp-image-12411" src="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.08.08-1024x260.png" alt="Screen Shot 2015-05-29 at 09.08.08" width="904" height="230" /></a></p>
+<p>The results show exactly what I anticipated. The best results are for the development dataset which contained a very small number of rows and a reduced column count. The Production dataset has significant performance improvement over the original data connection also.</p>
+<p>Here are two key benchmark areas in more detail:</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.08.23.png"><img class="alignnone size-medium wp-image-12410" src="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.08.23-300x212.png" alt="Screen Shot 2015-05-29 at 09.08.23" width="300" height="212" /></a></p>
+<p>The load time when opening the Tableau Workbook file is dramatically reduced for the Production workbook when compared to the original workbook loading an impressive 61% faster.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.08.34.png"><img class="alignnone size-medium wp-image-12409" src="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.08.34-300x206.png" alt="Screen Shot 2015-05-29 at 09.08.34" width="300" height="206" /></a></p>
+<p>Grouping all the action filter benchmark tests and computing the average also shows that there is also a significant performance gain here -16% on execution time over the original workbook.</p>
+<p>I hope that this blog has been useful. Good data connection design has a positive impact on the developer as the time to execute tasks and make data-connection changes can be considerable. Taking the time to create a development data connection makes for fast intuitive data discovery. Once the report is finalised removing all non-required columns and rows will provide the audience with the best possible user experience.</p>
+<p>Here is a cheat list for the 12 Best Practice Steps:</p>
+<p><em><strong>Build Development Data Connection</strong></em></p>
+<p><em>1 Build the data connection</em><br />
+<em> 2 Review all fields</em><br />
+<em> 3 Hide all non applicable fields</em><br />
+<em> 4 Apply Long Term Filters</em><br />
+<em> 5 Apply Short Term Filters</em><br />
+<em> 6 Build the Development Extract</em><br />
+<em> 7 Build Dashboards</em></p>
+<p><em><strong>Build Production Data Connection</strong></em></p>
+<p><em>8 Remove the Extract</em><br />
+<em> 9 Hide all unused fields</em><br />
+<em> 10 Remove development filters and add any new long term filters</em><br />
+<em> 11 Extract Data</em><br />
+<em> 12 Optimise Extract</em></p>
+<p>All performance monitoring for this blog was carried out using Power Tools for Tableau. The tools can significantly improve maintaining your BI environment and are available on a full featured trial license. <a title="http://interworks.co.uk/business-intelligence/tableau-tools/" href="http://interworks.co.uk/business-intelligence/tableau-tools/">http://interworks.co.uk/business-intelligence/tableau-tools/</a></p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/hot-topics-best-practices-for-data-connections/">Hot Topics: Best Practices for Data Connections</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/hot-topics-best-practices-for-data-connections/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>What’s new in Tableau Server 9.0 for the Administrator</title>
+		<link>http://interworks.co.uk/blog/whats-new-in-tableau-server-9-0-for-the-administrator/</link>
+		<comments>http://interworks.co.uk/blog/whats-new-in-tableau-server-9-0-for-the-administrator/#comments</comments>
+		<pubDate>Wed, 22 Apr 2015 15:53:53 +0000</pubDate>
+		<dc:creator><![CDATA[Glen Robinson]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Tableau 9.0]]></category>
+		<category><![CDATA[Tableau Server]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=12121</guid>
+		<description><![CDATA[<p>Today I&#8217;m going to give you a quick run through of the updates and changes you will see in Tableau Server 9.0 from an administrator’s perspective, and what has changed since Tableau Server 8.3 Visual Differences Firstly and most obviously are the visual changes. Tableau has completely redesigned the GUI, so we now have  the [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/whats-new-in-tableau-server-9-0-for-the-administrator/">What’s new in Tableau Server 9.0 for the Administrator</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fwhats-new-in-tableau-server-9-0-for-the-administrator%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Today I&#8217;m going to give you a quick run through of the updates and changes you will see in Tableau Server 9.0 from an administrator’s perspective, and what has changed since Tableau Server 8.3</p>
+<h2><span style="color: #ff0000;"><b>Visual Differences</b></span></h2>
+<p>Firstly and most obviously are the visual changes. Tableau has completely redesigned the GUI, so we now have  the options across the bar at the top of the screen instead of down the right hand side…</p>
+<p>Overall the changes that have been made are a great improvement, which in general means you require fewer clicks to do what you want to do compared to the previous version.</p>
+<p>So, what looks like this in Tableau v8:</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/04/Tableau-8-Menu.png"><img class="alignnone  wp-image-12139" src="http://interworks.co.uk/wp-content/uploads/2015/04/Tableau-8-Menu-145x300.png" alt="Tableau 8 Menu" width="113" height="234" /></a></p>
+<p>Now looks like this in Tableau v9:</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/04/Tableau-9-Menu-Bar.png"><img class="alignnone  wp-image-12140" src="http://interworks.co.uk/wp-content/uploads/2015/04/Tableau-9-Menu-Bar-1024x77.png" alt="Tableau 9 Menu Bar" width="638" height="48" /></a></p>
+<p>Windows Server 2003 is no longer supported, and the minimum hardware requirements for 64-bit Tableau Server are now set at 4 core, 8GB RAM and 15GB free disk space. Tableau server will <strong><span style="text-decoration: underline;">not</span></strong> install if these requirements aren&#8217;t met.</p>
+<h2><span style="color: #ff0000;"><b>Tableau Server Activity Analysis </b></span></h2>
+<p>The built in Analysis dashboards have been redesigned so that  they now answer direct questions like;</p>
+<p style="padding-left: 30px;"><span style="color: #0000ff;"><b>What Is the Total View Count by Day?</b></span></p>
+<p style="padding-left: 30px;"><span style="color: #0000ff;"><b>What Views Are Seen the Most?</b></span></p>
+<p style="padding-left: 30px;"><span style="color: #0000ff;"><b>Who Accesses Views Most Often?</b></span></p>
+<p> <a href="http://interworks.co.uk/wp-content/uploads/2015/04/Tableau-9-Analysis-Menu.png"><img class="alignnone  wp-image-12142" src="http://interworks.co.uk/wp-content/uploads/2015/04/Tableau-9-Analysis-Menu.png" alt="Tableau 9 Analysis Menu" width="491" height="226" /></a></p>
+<p>&nbsp;</p>
+<p>This makes finding out how your Tableau Server Environment a little bit easier as it&#8217;s now a little bit more intuitive.</p>
+<h2><span style="color: #ff0000;"><b>Tableau Server Processes</b></span></h2>
+<p>There have been a number of redesigns to how Tableau works, which have increased the number of processes that are being run on the server which you will need to get your head around.</p>
+<p>Below is the list of new processes and their function</p>
+<table style="border-color: #000000;" border="1">
+<tbody>
+<tr>
+<td>
+<h3>Process</h3>
+</td>
+<td>
+<h3>File Name</h3>
+</td>
+<td>
+<h3>Description</h3>
+</td>
+</tr>
+<tr>
+<td>API Server</td>
+<td>wgserver.exe</td>
+<td>Handles REST API calls</td>
+</tr>
+<tr>
+<td>Application Server</td>
+<td>vizportal.exe</td>
+<td>Handles the web application, supports browsing and searching.</td>
+</tr>
+<tr>
+<td>Cache Server</td>
+<td>redis-server.exe</td>
+<td>Query cache which is distributed and shared across the cluster. Improvement in caching over v8 and reduces the number of query requests made.</td>
+</tr>
+<tr>
+<td>Cluster Controller</td>
+<td>clustercontroller.exe</td>
+<td>Responsible for monitoring the various server components, detecting failures, and executing failover when needed.</td>
+</tr>
+<tr>
+<td>Coordination Service</td>
+<td>zookeeper.exe</td>
+<td>In distributed installations it is responsible for ensuring there is a quorum for making decisions during failover.</td>
+</tr>
+<tr>
+<td>File Store</td>
+<td>filestore.exe</td>
+<td>Replicates data extracts across nodes running Data Engine.</td>
+</tr>
+<tr>
+<td>Search &amp; Browse</td>
+<td>searchserver.exe</td>
+<td>Handles fast search, filtering, retrieval, and display of content metadata on the server.</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h2><span style="color: #ff0000;"><b>Cluster Management</b></span></h2>
+<p>Tableau have improved the management of how clustering works within Server.</p>
+<p>Firstly, the concept of 2-node High Availability cluster has been changed. You can still run Tableau across 2 servers (and spread the load between these two servers), but the loss of one of the servers will bring your Tableau environment down. Therefore the minimum requirement for a true cluster is now 3 servers.</p>
+<p>You are now able to set the preferred server for the Active Repository, which for instance, is good in the case where the hardware specification is different for each of the servers in the cluster, and you want to ensure that the Active Repository runs on the most powerful server in your cluster.</p>
+<p><span style="line-height: 1.5;"><a href="http://interworks.co.uk/wp-content/uploads/2015/04/Tableau-9-Failover-Options.png"><img class="alignnone  wp-image-12143" src="http://interworks.co.uk/wp-content/uploads/2015/04/Tableau-9-Failover-Options.png" alt="Tableau 9 Failover Options" width="433" height="99" /></a></span></p>
+<p><span style="line-height: 1.5;">You can also initiate a failover of the Active Repository to Standby Repository. This is done using a <strong>tabadmin</strong> command line interface (See later in the article). This is useful during server maintenance, if you have a requirement to take one of the servers in cluster offline, but want the cluster to remain available.</span></p>
+<p>Also, there is no longer the concept of an Active and Standby Data Engine. All Data Engines in the cluster are now active, and there is no longer the limitation of having a maximum of 2 servers running Data Engines. All servers in your cluster can now be Active Data Engine Servers if you require.</p>
+<p><strong><strong><a href="http://interworks.co.uk/wp-content/uploads/2015/04/Screen-Shot-2015-04-20-at-11.56.52.png"><img class="alignnone  wp-image-12145" src="http://interworks.co.uk/wp-content/uploads/2015/04/Screen-Shot-2015-04-20-at-11.56.52.png" alt="Tableau 9 Cluster" width="481" height="290" /></a> </strong></strong></p>
+<h2><span style="color: #ff0000;"><b>Command line updates</b></span></h2>
+<p>A few additions have been made to the command line interfaces.</p>
+<h3>Tabadmin</h3>
+<p><span style="color: #0000ff;"><strong>tabadmin decommission &lt;node1 node2 &#8230; &gt;</strong></span></p>
+<p style="padding-left: 30px;">Used to prepare Tableau File Store nodes for removal from the distributed environment.</p>
+<p><span style="color: #0000ff;"><strong>tabadmin failoverrepository &#8211;target &lt;node&gt; | &#8211;preferred</strong></span></p>
+<p style="padding-left: 30px;">Used to failover the active repository to the secondary repository.</p>
+<p><span style="color: #0000ff;"><strong>tabadmin recommission &lt;node1 node2 &#8230; &gt;</strong></span></p>
+<p style="padding-left: 30px;">Used to revert a decommissioned file store into an active state.</p>
+<p><span style="color: #0000ff;"><strong>tabadmin reindex</strong></span></p>
+<p style="padding-left: 30px;">Rebuilds the search index for Tableau Server, if it becomes corrupt or shows incomplete results.</p>
+<h3>Tabcmd</h3>
+<p><strong><span style="color: #0000ff;">tabcmd editdomain &#8211;id 2 &#8211;nickname &#8220;new-nickname&#8221;</span></strong></p>
+<p style="padding-left: 30px;">Used to modify the nickname for any domain the server is using.</p>
+<p><strong><span style="color: #0000ff;">tabcmd listdomains</span></strong></p>
+<p style="padding-left: 30px;">Used to display a list of domains used by the server.</p>
+<h3>REST API</h3>
+<p>There are 34 new REST API Commands to really fill out this functionality. New commands includes assigning and removing permissions, adding and removing membership, and the ability to publish &amp; download workbooks and datasources.</p>
+<p>Below is the full list of commands</p>
+<table dir="ltr" style="height: 1572px;" border="1" width="587" cellspacing="0" cellpadding="0">
+<colgroup>
+<col width="234" />
+<col width="234" /></colgroup>
+<tbody>
+<tr>
+<td data-sheets-value="[null,2,&quot;Tableau 8.3 REST API Commands&quot;]">
+<h4><strong>Tableau 8.3 REST API Commands</strong></h4>
+</td>
+<td data-sheets-value="[null,2,&quot;Tableau 9.0 REST API Commands&quot;]">
+<h4><strong>Tableau 9.0 REST API Commands</strong></h4>
+</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Add Datasource Permissions&quot;]">Add Datasource Permissions</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Add Project Permissions&quot;]">Add Project Permissions</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Add Tags to Workbook&quot;]">Add Tags to Workbook</td>
+<td data-sheets-value="[null,2,&quot;Add Tags to Workbook&quot;]">Add Tags to Workbook</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Add User to Group&quot;]">Add User to Group</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Add User to Site&quot;]">Add User to Site</td>
+<td data-sheets-value="[null,2,&quot;Add User to Site&quot;]">Add User to Site</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Add View to Favorites&quot;]">Add View to Favorites</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Add Workbook Permissions&quot;]">Add Workbook Permissions</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Add Workbook to Favorites&quot;]">Add Workbook to Favorites</td>
+<td data-sheets-value="[null,2,&quot;Add Workbook to Favorites&quot;]">Add Workbook to Favorites</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Append to File Upload&quot;]">Append to File Upload</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Create Group&quot;]">Create Group</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Create Project&quot;]">Create Project</td>
+<td data-sheets-value="[null,2,&quot;Create Project&quot;]">Create Project</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Create Site&quot;]">Create Site</td>
+<td data-sheets-value="[null,2,&quot;Create Site&quot;]">Create Site</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Delete Datasource&quot;]">Delete Datasource</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Delete Datasource Permissions&quot;]">Delete Datasource Permissions</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Delete Project&quot;]">Delete Project</td>
+<td data-sheets-value="[null,2,&quot;Delete Project&quot;]">Delete Project</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Delete Project Permission&quot;]">Delete Project Permission</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Delete Site&quot;]">Delete Site</td>
+<td data-sheets-value="[null,2,&quot;Delete Site&quot;]">Delete Site</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Delete Tag from Workbook&quot;]">Delete Tag from Workbook</td>
+<td data-sheets-value="[null,2,&quot;Delete Tag from Workbook&quot;]">Delete Tag from Workbook</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Delete View from Favorites&quot;]">Delete View from Favorites</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Delete Workbook&quot;]">Delete Workbook</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Delete Workbook from Favorites&quot;]">Delete Workbook from Favorites</td>
+<td data-sheets-value="[null,2,&quot;Delete Workbook from Favorites&quot;]">Delete Workbook from Favorites</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Delete Workbook Permissions&quot;]">Delete Workbook Permissions</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Download Datasource&quot;]">Download Datasource</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Download Workbook&quot;]">Download Workbook</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Get Users in Group&quot;]">Get Users in Group</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Get Users on Site&quot;]">Get Users on Site</td>
+<td data-sheets-value="[null,2,&quot;Get Users on Site&quot;]">Get Users on Site</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Initiate File Upload&quot;]">Initiate File Upload</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Publish Datasource&quot;]">Publish Datasource</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Publish Workbook&quot;]">Publish Workbook</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Query Datasource&quot;]">Query Datasource</td>
+<td data-sheets-value="[null,2,&quot;Query Datasource&quot;]">Query Datasource</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Query Datasource Permissions&quot;]">Query Datasource Permissions</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Query Datasources&quot;]">Query Datasources</td>
+<td data-sheets-value="[null,2,&quot;Query Datasources&quot;]">Query Datasources</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Query Groups&quot;]">Query Groups</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Query Job&quot;]">Query Job</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Query Project Permissions&quot;]">Query Project Permissions</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Query Projects&quot;]">Query Projects</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Query Site&quot;]">Query Site</td>
+<td data-sheets-value="[null,2,&quot;Query Site&quot;]">Query Site</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Query Sites&quot;]">Query Sites</td>
+<td data-sheets-value="[null,2,&quot;Query Sites&quot;]">Query Sites</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Query User On Site&quot;]">Query User On Site</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Query View with a Preview Image&quot;]">Query View with a Preview Image</td>
+<td data-sheets-value="[null,2,&quot;Query View with a Preview Image&quot;]">Query View with a Preview Image</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Query Views for Workbook&quot;]">Query Views for Workbook</td>
+<td data-sheets-value="[null,2,&quot;Query Views for Workbook&quot;]">Query Views for Workbook</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Query Workbook&quot;]">Query Workbook</td>
+<td data-sheets-value="[null,2,&quot;Query Workbook&quot;]">Query Workbook</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Query Workbook Connections&quot;]">Query Workbook Connections</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Query Workbook Permissions&quot;]">Query Workbook Permissions</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Query Workbook Preview Image&quot;]">Query Workbook Preview Image</td>
+<td data-sheets-value="[null,2,&quot;Query Workbook Preview Image&quot;]">Query Workbook Preview Image</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Query Workbooks for User&quot;]">Query Workbooks for User</td>
+<td data-sheets-value="[null,2,&quot;Query Workbooks for User&quot;]">Query Workbooks for User</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Remove User from Group&quot;]">Remove User from Group</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Remove User from Site&quot;]">Remove User from Site</td>
+<td data-sheets-value="[null,2,&quot;Remove User from Site&quot;]">Remove User from Site</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Sign In&quot;]">Sign In</td>
+<td data-sheets-value="[null,2,&quot;Sign In&quot;]">Sign In</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Sign Out&quot;]">Sign Out</td>
+<td data-sheets-value="[null,2,&quot;Sign Out&quot;]">Sign Out</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Update Datasource&quot;]">Update Datasource</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Update Datasource Connection&quot;]">Update Datasource Connection</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Update Group&quot;]">Update Group</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Update Project&quot;]">Update Project</td>
+<td data-sheets-value="[null,2,&quot;Update Project&quot;]">Update Project</td>
+</tr>
+<tr>
+<td data-sheets-value="[null,2,&quot;Update Site&quot;]">Update Site</td>
+<td data-sheets-value="[null,2,&quot;Update Site&quot;]">Update Site</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Update User&quot;]">Update User</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Update Workbook&quot;]">Update Workbook</td>
+</tr>
+<tr>
+<td></td>
+<td data-sheets-value="[null,2,&quot;Update Workbook Connection&quot;]">Update Workbook Connection</td>
+</tr>
+</tbody>
+</table>
+<p>The Tableau Server Administrator Guide can be found <a title="Tableau Server 9.0 Admin Guide" href="http://downloads.tableau.com/quickstart/server-guides/en-us/server_admin90.pdf" target="_blank">here</a>, and the REST API Documentation can be found <a title="Tableau REST API" href="http://onlinehelp.tableau.com/current/api/rest_api/en-us/help.htm" target="_blank">here</a>.</p>
+<p>I hope that you have enjoyed this brief walkthrough of the high level differences between Tableau Server 8 and 9.</p>
+<p>Please don&#8217;t hesitate to get in touch with any comments or suggestions.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/whats-new-in-tableau-server-9-0-for-the-administrator/">What’s new in Tableau Server 9.0 for the Administrator</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fwhats-new-in-tableau-server-9-0-for-the-administrator%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/whats-new-in-tableau-server-9-0-for-the-administrator/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>Getting Excited about Tableau 9.0!</title>
+		<link>http://interworks.co.uk/blog/getting-excited-about-tableau-9-0/</link>
+		<comments>http://interworks.co.uk/blog/getting-excited-about-tableau-9-0/#comments</comments>
+		<pubDate>Tue, 17 Mar 2015 13:55:49 +0000</pubDate>
+		<dc:creator><![CDATA[Victoria Ponsford]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[blog]]></category>
+		<category><![CDATA[InterWorks]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[Tableau 9.0]]></category>
+		<category><![CDATA[webinar]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=11551</guid>
+		<description><![CDATA[<p>Here at InterWorks, we&#8217;ve all been getting very excited about the upcoming release of Tableau 9.0, with many of us trying out and discovering the numerous enhancements the upgrade brings. If you&#8217;ve yet to download the beta version, or are keen to find out more about any of the features, check out our webinar series [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/getting-excited-about-tableau-9-0/">Getting Excited about Tableau 9.0!</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fgetting-excited-about-tableau-9-0%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Here at InterWorks, we&#8217;ve all been getting very excited about the upcoming release of Tableau 9.0, with many of us trying out and discovering the numerous enhancements the upgrade brings. If you&#8217;ve yet to download the beta version, or are keen to find out more about any of the features, check out our <a href="https://www.youtube.com/channel/UC5R4yiyZTKWlkfV88HHF_dQ">webinar</a> series or <a href="http://interworks.co.uk/blog/">blog</a> articles on it.</p>
+<p><strong>&#8220;Top Ten&#8221;: Our Favourite Tableau 9.0 Features:</strong></p>
+<p>1. New Userface Enhancements &#8211; read our blog <a href="http://interworks.co.uk/kevin-pemberton/new-user-interface-enhancements-tableau-desktop-9/" target="_blank">here</a>.<br />
+2. Data Interpreter and Clean-Up Tools (e.g. pivot and split) &#8211; <a href="http://interworks.co.uk/blog/data-reshaping-tableau-9-data-interpreter-data-pivot/" target="_blank">click here.</a><br />
+3. Drag &amp; Drop Analytics.<br />
+4. Improved Performance &#8211; read our blog <a href="http://interworks.co.uk/blog/comparing-performance-tableau-8-3-server-vs-tableau-9-0-server/" target="_blank">here</a>.<br />
+5. Responsive tool-tips &#8211; read our blog <a href="http://interworks.co.uk/kevin-pemberton/new-user-interface-enhancements-tableau-desktop-9/" target="_blank">here</a>.<br />
+6. Level of Detail Calculations &#8211; check out our vlog <a href="http://interworks.co.uk/rob-austin/tableau-level-detail-calculated-fields-v9/" target="_blank">here</a>.<br />
+7. Formatting for Story Points<br />
+8. New Data Connections &#8211; read our blog <a href="http://interworks.co.uk/tableau/tableau-9-0-brings-us-connections/" target="_blank">here</a>.<br />
+9. Creating Calculated Fields &#8211; read our blog <a href="http://interworks.co.uk/tableau/creating-calculated-fields-tableau-9-0/" target="_blank">here</a>.<br />
+10. Colour Picker &#8211; easily embed your company&#8217;s colours into a view!</p>
+<p>To read about any of these in detail, please click on the links to our blog articles below:</p>
+<p><strong><a title="New user interface enhancements in Tableau Desktop 9" href="http://interworks.co.uk/kevin-pemberton/new-user-interface-enhancements-tableau-desktop-9/">New user interface enhancements in <span class="search-everything-highlight-color">Tableau</span> Desktop <span class="search-everything-highlight-color">9</span></a></strong></p>
+<p><strong><a title="Tableau Level of Detail Calculated Fields v9" href="http://interworks.co.uk/rob-austin/tableau-level-detail-calculated-fields-v9/"><span class="search-everything-highlight-color">Tableau</span> Level of Detail Calculated Fields <span class="search-everything-highlight-color">v9</span></a></strong></p>
+<p><strong><a title="What’s new in Tableau Server 9.0" href="http://interworks.co.uk/blog/whats-new-tableau-server-9-0/">What’s new in <span class="search-everything-highlight-color">Tableau</span> Server <span class="search-everything-highlight-color">9</span>.0</a></strong></p>
+<p><strong><a title="Tableau 9.0 Brings us more connections!" href="http://interworks.co.uk/tableau/tableau-9-0-brings-us-connections/"><span class="search-everything-highlight-color">Tableau</span> <span class="search-everything-highlight-color">9</span>.0 Brings us more connections!</a></strong></p>
+<p><strong><a title="Creating calculated fields in Tableau 9.0" href="http://interworks.co.uk/tableau/creating-calculated-fields-tableau-9-0/">Creating calculated fields in <span class="search-everything-highlight-color">Tableau</span> <span class="search-everything-highlight-color">9</span>.0</a></strong></p>
+<p><strong><a title="Data Reshaping in Tableau 9 – data interpreter &amp; data pivot" href="http://interworks.co.uk/blog/data-reshaping-tableau-9-data-interpreter-data-pivot/">Data Reshaping in <span class="search-everything-highlight-color">Tableau</span> <span class="search-everything-highlight-color">9</span> – data interpreter &amp; data pivot</a></strong></p>
+<p><strong><a title="Comparing Performance on Tableau 8.3 Server vs Tableau 9.0 Server" href="http://interworks.co.uk/blog/comparing-performance-tableau-8-3-server-vs-tableau-9-0-server/">Comparing Performance on <span class="search-everything-highlight-color">Tableau</span> 8.3 Server vs <span class="search-everything-highlight-color">Tableau</span> <span class="search-everything-highlight-color">9</span>.0 Server</a></strong></p>
+<p>We&#8217;re also in the middle of hosting a series of webinars on 9.0. So far we&#8217;ve held &#8216;<a href="https://www.youtube.com/watch?v=3xR9Daokz9o">Get Your Answers Quicker with Tableau 9.0</a>&#8216; and &#8216;<a href="https://www.youtube.com/watch?v=xm-SU0Z1MMw">What&#8217;s New in Server</a>&#8216;? Click on either of these links to view them.</p>
+<p>If you&#8217;ve yet to download the beta version, feel free to get in touch with the <a href="www.interworks.co.uk/team">team</a> as these trials are open to all customers. We&#8217;re getting ever closer to the official release, so keep your eyes glued on the upcoming announcements!</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/getting-excited-about-tableau-9-0/">Getting Excited about Tableau 9.0!</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fgetting-excited-about-tableau-9-0%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/getting-excited-about-tableau-9-0/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Comparing Performance on Tableau 8.3 Server vs Tableau 9.0 Server</title>
+		<link>http://interworks.co.uk/blog/comparing-performance-tableau-8-3-server-vs-tableau-9-0-server/</link>
+		<comments>http://interworks.co.uk/blog/comparing-performance-tableau-8-3-server-vs-tableau-9-0-server/#comments</comments>
+		<pubDate>Thu, 12 Feb 2015 13:51:53 +0000</pubDate>
+		<dc:creator><![CDATA[Glen Robinson]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[blog]]></category>
+		<category><![CDATA[Server]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[Tableau 9.0]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=11300</guid>
+		<description><![CDATA[<p>Here in InterWorks we are getting a little bit over-excited about Tableau 9. Especially, when this blog post came out from the Tableau mothership. Individual Query time improved by 10x Dashboard Query times improved by 9x Query Fusion improving times by 2x And Query Caching improving times by 50x Those are some pretty bold figures [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/comparing-performance-tableau-8-3-server-vs-tableau-9-0-server/">Comparing Performance on Tableau 8.3 Server vs Tableau 9.0 Server</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Here in InterWorks we are getting a little bit over-excited about Tableau 9.</p>
+<p>Especially, when this <a title="http://www.tableau.com/about/blog/2015/1/90-preview-query-performance-improvements-36406" href="http://www.tableau.com/about/blog/2015/1/90-preview-query-performance-improvements-36406" target="_blank">blog</a> post came out from the Tableau mothership.</p>
+<p style="padding-left: 30px;"><span style="color: #3366ff;">Individual Query time improved by <strong>10x</strong></span><br />
+<span style="color: #3366ff;">Dashboard Query times improved by <strong>9x</strong></span><br />
+<span style="color: #3366ff;">Query Fusion improving times by <strong>2x</strong></span><br />
+<span style="color: #3366ff;">And Query Caching improving times by <strong>50x</strong></span></p>
+<p>Those are some pretty bold figures to put out there..<br />
+Not being one to believe everything that I’m told, I thought that maybe it would be great for someone to do their own independent testing to check on those numbers.</p>
+<p>So…… I waited, and as no one did, it was left to me to do my own testing.<br />
+So here we go….</p>
+<h2>Testing</h2>
+<p><strong>Step 1:</strong> Build out 2 identical servers in Amazon Web Services EC2 (<a title="http://aws.amazon.com/ec2/" href="http://aws.amazon.com/ec2/" target="_blank">http://aws.amazon.com/ec2/</a>)<br />
+I went for an <strong>m3.2xlarge</strong> server which has 8 vCPU (Intel Xeon E5-2670 v2) and 30 GB of RAM. (A pretty standard server setup.)</p>
+<p><strong>Step 2:</strong> Install Tableau 8.3 64bit Server on the first server, and Tableau 9 Beta 4 64-bit Server on the other.<br />
+<strong>Step 3:</strong> Upload my 150 million row Data extract to both servers.<br />
+<strong>Step 4:</strong> Create a dashboard to query the Data Source. (if you click on the image it will expand)</p>
+<div id="attachment_11308" style="width: 310px" class="wp-caption alignnone"><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image001.png"><img class="size-medium wp-image-11308" src="http://interworks.co.uk/wp-content/uploads/2015/02/image001-300x246.png" alt="Tableau Server Performance Testing Dashboard" width="300" height="246" /></a>
+<p class="wp-caption-text">Tableau Server Performance Testing Dashboard</p>
+</div>
+<p><strong>Step 5:</strong> Test dashboard, record the timings and compare.</p>
+<h2>Results</h2>
+<p><strong>First let’s look at the Tableau 8.3 performance recording.</strong></p>
+<div id="attachment_11309" style="width: 357px" class="wp-caption alignnone"><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image003.png"><img class=" wp-image-11309" src="http://interworks.co.uk/wp-content/uploads/2015/02/image003-300x154.png" alt="Tableau 8.3 8 vCPU Performance Recording" width="347" height="178" /></a>
+<p class="wp-caption-text">Tableau 8.3 8vCPU Performance Recording</p>
+</div>
+<p>So what we have here is a pretty standard Tableau 8 dashboard performance recording, with each query happening sequentially, one after the other.<br />
+The duration of the longest query came in at 10.78 seconds, with the overall duration from start to finish of around 22 seconds.</p>
+<p><strong>Now, let’s take a look at the same query on Tableau 9 Server</strong></p>
+<div id="attachment_11310" style="width: 355px" class="wp-caption alignnone"><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image005.png"><img class=" wp-image-11310" src="http://interworks.co.uk/wp-content/uploads/2015/02/image005-300x153.png" alt="Tableau 9 8vCPU Performance Recording" width="345" height="176" /></a>
+<p class="wp-caption-text">Tableau 9 8vCPU Performance Recording</p>
+</div>
+<p>Whoa!!! So what’s happening here then?</p>
+<p>To start with, we have much shorter query durations, with the longest query length down from 10.78 to 5.4 seconds, and we also have parallel query executions to bring the overall time down from 22 seconds to 7.5 seconds</p>
+<p>That’s not bad at all…<br />
+Now, let’s take a look at the underlying server performance, to see what’s happening</p>
+<p><strong>First the Tableau 8.3 server</strong></p>
+<div id="attachment_11302" style="width: 310px" class="wp-caption alignnone"><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image007.png"><img class="size-medium wp-image-11302" src="http://interworks.co.uk/wp-content/uploads/2015/02/image007-300x231.png" alt="Tableau 8.3 8vCPU CPU Performance" width="300" height="231" /></a>
+<p class="wp-caption-text">Tableau 8.3 8vCPU CPU Performance</p>
+</div>
+<p>There are 2 points to notice here.</p>
+<p>Firstly, the total processor usage never gets above 27% <span style="color: #0000ff;">[blue]</span> of what the server is capable of for the duration of the query.<br />
+Secondly, both the VizQL (vizqlserver <span style="color: #800080;">[purple]</span>) and Data Engine (tdeserver64<span style="color: #339966;"> [green]</span>) processes max out at one vCPU each.</p>
+<p><strong>Now let&#8217;s take a look at the Tableau 9 server..</strong></p>
+<div id="attachment_11303" style="width: 310px" class="wp-caption alignnone"><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image009.png"><img class="size-medium wp-image-11303" src="http://interworks.co.uk/wp-content/uploads/2015/02/image009-300x232.png" alt="Tableau 9 8vCPU CPU performance" width="300" height="232" /></a>
+<p class="wp-caption-text">Tableau 9 8vCPU CPU performance</p>
+</div>
+<p>We see that again the VizQL process continues to use 1 vCPU, but now the Data Engine is multi-core, with the result that the total processor usage peaked at around 96%, and a much much shorter overall query time.</p>
+<p>Now, I know what you’re thinking; what effect does increasing the number of cores in a server have on the overall query times?</p>
+<p>As you’ve asked so nicely, let’s find out…</p>
+<p>I changed the underlying image on AWS from a m3.2xlarge to a c4.4xlarge for both the Tableau 8.3 and Tableau 9 Servers.</p>
+<p>A <strong>c4.4xlarge</strong> server has 16 vCPU (Intel Xeon E5-2666 v3) with 30GB of RAM (effectively doubling the core count for this test)</p>
+<p><strong>The same query run on Tableau 8.3 Server.</strong></p>
+<table style="height: 27px; border-color: #fcfcfc;" border="0" width="431" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td style="border-color: #ffffff;">
+<div id="attachment_11304" style="width: 310px" class="wp-caption alignnone"><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image011.png"><img class="size-medium wp-image-11304" src="http://interworks.co.uk/wp-content/uploads/2015/02/image011-300x160.png" alt="Tableau 8.3 16vCPU Performance Recording" width="300" height="160" /></a>
+<p class="wp-caption-text">Tableau 8.3 16vCPU Performance Recording</p>
+</div>
+</td>
+<td style="border-color: #ffffff;">
+<div id="attachment_11305" style="width: 310px" class="wp-caption alignnone"><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image013.png"><img class="size-medium wp-image-11305" src="http://interworks.co.uk/wp-content/uploads/2015/02/image013-300x238.png" alt="Tableau 8.3 16vCPU Processor Performance" width="300" height="238" /></a>
+<p class="wp-caption-text">Tableau 8.3 16vCPU Processor Performance</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>We <em>do</em> see a shorter overall query time (down from 22 seconds to around 16 seconds).</p>
+<p>But, we see the same process &amp; processor usage profile as Tableau 8.3 running on 8 vCPU, with only one core being used for each of the VizQL and Data Engine processes.<br />
+(Note that the improved query times moving from 8 to 16 vCPU may well be due to the changes in the underlying hardware, including the use of a faster Processor.</p>
+<p><strong>Now, on to Tableau 9 running on 16 vCPU</strong></p>
+<table style="height: 259px; border-color: #fcfcfc;" border="0" width="641" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td style="border-color: #ffffff;" scope="row">
+<div id="attachment_11306" style="width: 310px" class="wp-caption alignnone"><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image015.png"><img class="size-medium wp-image-11306" src="http://interworks.co.uk/wp-content/uploads/2015/02/image015-300x150.png" alt="Tableau 9 16vCPU Performance Recording" width="300" height="150" /></a>
+<p class="wp-caption-text">Tableau 9 16vCPU Performance Recording</p>
+</div>
+</td>
+<td style="border-color: #ffffff;">
+<div id="attachment_11307" style="width: 310px" class="wp-caption alignnone"><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image017.png"><img class="size-medium wp-image-11307" src="http://interworks.co.uk/wp-content/uploads/2015/02/image017-300x235.png" alt="Tableau 9 16vCPU Processor Performance" width="300" height="235" /></a>
+<p class="wp-caption-text">Tableau 9 16vCPU Processor Performance</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Again, we see the parallel querying and also, and an improvement in query times, with the longest query now taking 3.34 seconds, and the overall query time down to a sparkling 4.5 seconds.</p>
+<p>This is reflected in the performance chart, where again we see the multi-core in action. (This time peaking at just under 60% utilisation)</p>
+<h2>Summary and Conclusions</h2>
+<p>&nbsp;</p>
+<table style="height: 102px;" width="865">
+<tbody>
+<tr>
+<td><strong><span style="color: #000080;">Server Type and Tableau Version</span></strong></td>
+<td><strong><span style="color: #000080;">Time Taken for Longest Query (secs)</span></strong></td>
+<td><strong><span style="color: #000080;">Overall Dashboard Duration (secs)</span></strong></td>
+</tr>
+<tr>
+<td>Tableau 8.3 (8vCPU)</td>
+<td><strong>10.78 secs</strong></td>
+<td><strong>22 secs</strong></td>
+</tr>
+<tr>
+<td>Tableau 8.3 (16vCPU)</td>
+<td><strong>8.19 secs</strong></td>
+<td><strong>16 secs</strong></td>
+</tr>
+<tr>
+<td>Tableau 9 Beta 4 (8vCPU)</td>
+<td><strong>5.4 secs</strong></td>
+<td><strong>7.5 secs</strong></td>
+</tr>
+<tr>
+<td>Tableau 9 Beta 4 (16vCPU)</td>
+<td><strong>3.34 secs</strong></td>
+<td><strong>4.5 secs</strong></td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p><strong>So what to make of all those figures…</strong></p>
+<ol>
+<li>In my test, moving from 8 vCPU to 16 vCPU give me a speed increase of around 30% for Tableau 8.3 and around 60% for Tableau 9. As I said earlier, this may well be due to the underlying hardware being better on the c4.4xlarge than on the m3.2xlarge, and nothing to do with Tableau itself. (Investigating this thoroughly is beyond the remit of this piece.)</li>
+<li>However, upgrading from Tableau 8.3 to 9.0 on 8 vCPU server boosted performance by <span style="color: #000080;"><strong>just under 3 times</strong></span>, and for the 16 vCPU server, by <span style="color: #000080;"><strong>just</strong> <strong>over 3.5 times.</strong></span></li>
+</ol>
+<p>Those are some pretty thrilling figures. They&#8217;re not quite in the same league as the Tableau Blog figures, but still interesting enough..</p>
+<p>I guess it&#8217;s going to depend on your own dashboards, your datasets and the overall load on your Servers, as to what performance improvements you will see.<br />
+Also, in this testing I don’t take into account the other features offered in Tableau 9 such as Query Caching or Query Fusion (which I haven’t gone into here, and if no-one else writes about these features, I may have to do so myself)</p>
+<p>So overall, you are going to see great improvements in the times taken to render dashboards. This is going to make your customers happier which is going to make you happier.<br />
+However, what I’m not so sure about is what effect this upgrade is going to have on your servers.<br />
+There are a few unknowns out there such as;</p>
+<ul>
+<li>Are you going to see more user load on your Tableau server, as they now are more readily gain access to their reports?</li>
+<li>Are you going to be publishing dashboards which you would never have done on Tableau 8 because their performance wasn’t acceptable, but is now (additional load)?</li>
+<li>Is having a more ‘peaky’ CPU performance profile going to cause you issues, which may necessitate additional Hardware purchases?</li>
+<li>Or will having Query Caching and Query Fusion save the day, and actually result in less load on the server?</li>
+</ul>
+<p>All these are questions and more are what makes this server upgrade extremely exciting and takes Tableau 9.0 to a #WholeNewLevel. If you&#8217;re yet to download Tableau Server, or would like more information on it, please <a href="http://interworks.co.uk/business-intelligence/tableau-server/">click here </a>or feel free to shoot me a <a href="http://interworks.co.uk/team/glen-robinson/">message.</a></p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/comparing-performance-tableau-8-3-server-vs-tableau-9-0-server/">Comparing Performance on Tableau 8.3 Server vs Tableau 9.0 Server</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcomparing-performance-tableau-8-3-server-vs-tableau-9-0-server%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/comparing-performance-tableau-8-3-server-vs-tableau-9-0-server/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+		<item>
+		<title>Data Reshaping in Tableau 9 &#8211; data interpreter &amp; data pivot</title>
+		<link>http://interworks.co.uk/blog/data-reshaping-tableau-9-data-interpreter-data-pivot/</link>
+		<comments>http://interworks.co.uk/blog/data-reshaping-tableau-9-data-interpreter-data-pivot/#comments</comments>
+		<pubDate>Tue, 03 Feb 2015 08:19:37 +0000</pubDate>
+		<dc:creator><![CDATA[Aus]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[data interpreter]]></category>
+		<category><![CDATA[data pivot]]></category>
+		<category><![CDATA[data preparation]]></category>
+		<category><![CDATA[Tableau 9.0]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=11207</guid>
+		<description><![CDATA[<p>We hope you’ve been enjoying our blog series on Beta 9.0. So far you’ve heard us chat about the new inline calculation editor, general interface, LOD calculations &#38; connections. Today I’m offering something slightly different, by way of a “vlog” which will run through “Data Reshaping in Tableau”, old-skool approach, as well as using the new Tableau [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/data-reshaping-tableau-9-data-interpreter-data-pivot/">Data Reshaping in Tableau 9 &#8211; data interpreter &#038; data pivot</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fdata-reshaping-tableau-9-data-interpreter-data-pivot%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p dir="ltr">We hope you’ve been enjoying our blog series on Beta 9.0. So far you’ve heard us chat about the <a title="Creating calculated fields in Tableau 9.0" href="http://interworks.co.uk/tableau/creating-calculated-fields-tableau-9-0/">new inline calculation editor</a>, <a title="New user interface enhancements in Tableau Desktop 9" href="http://interworks.co.uk/kevin-pemberton/new-user-interface-enhancements-tableau-desktop-9/">general interface</a>, <a title="Tableau Level of Detail Calculated Fields v9" href="http://interworks.co.uk/rob-austin/tableau-level-detail-calculated-fields-v9/">LOD calculations</a> &amp; <a title="Tableau 9.0 Brings us more connections!" href="http://interworks.co.uk/tableau/tableau-9-0-brings-us-connections/">connections</a>. Today I’m offering something slightly different, by way of a “vlog” which will run through “Data Reshaping in Tableau”, old-skool approach, as well as using the new Tableau 9 data interpreter and pivot features.</p>
+<h2><strong>The video will include:</strong></h2>
+<ul>
+<li dir="ltr">
+<p dir="ltr">New Tableau 9.0 Feature &#8211; <span style="text-decoration: underline;"><strong>Data Interpreter</strong></span></p>
+</li>
+<li dir="ltr">
+<p dir="ltr">New Tableau 9.0 Feature &#8211; <span style="text-decoration: underline;"><strong>Data Pivot</strong></span> (normaliser)</p>
+</li>
+<li dir="ltr">
+<p dir="ltr"><span style="text-decoration: underline;"><strong>Tableau Trick</strong></span> &#8211; Data Source Filter</p>
+</li>
+<li dir="ltr">
+<p dir="ltr">What data shape Tableau can accept from excel</p>
+</li>
+<li dir="ltr">
+<p dir="ltr">What data shape Tableau &#8216;loves&#8217;</p>
+</li>
+<li dir="ltr">
+<p dir="ltr">Tableau&#8217;s excel plugin</p>
+</li>
+</ul>
+<p><span class='embed-youtube' style='text-align:center; display: block;'><iframe class='youtube-player' type='text/html' width='640' height='385' src='http://www.youtube.com/embed/yjas3IVV3ow?version=3&#038;rel=1&#038;fs=1&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;wmode=transparent' frameborder='0' allowfullscreen='true'></iframe></span></p>
+<p>I&#8217;m really looking forward to Tableau 9.0 release, and setting these features loose in the wild!</p>
+<p dir="ltr">If you have any questions, or comments, let us know in the comments section and keep tuned for more blog posts covering the latest improvements of Tableau Desktop and Server 9.0. If you have any questions, please feel free to <a href="http://interworks.co.uk/team/james-austin/">email me.</a></p>
+<p dir="ltr">If you&#8217;ve yet to try out Tableau, <a href="http://interworks.co.uk/business-intelligence/download-tableau-desktop-free-trial/" target="_blank">click here</a> to get started on a free 14 day trial! #wholenewlevel</p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/data-reshaping-tableau-9-data-interpreter-data-pivot/">Data Reshaping in Tableau 9 &#8211; data interpreter &#038; data pivot</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fdata-reshaping-tableau-9-data-interpreter-data-pivot%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/data-reshaping-tableau-9-data-interpreter-data-pivot/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>What&#8217;s new in Tableau Server 9.0</title>
+		<link>http://interworks.co.uk/blog/whats-new-tableau-server-9-0/</link>
+		<comments>http://interworks.co.uk/blog/whats-new-tableau-server-9-0/#comments</comments>
+		<pubDate>Mon, 02 Feb 2015 09:20:33 +0000</pubDate>
+		<dc:creator><![CDATA[Glen Robinson]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Tableau 9.0]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=11217</guid>
+		<description><![CDATA[<p>Firstly, for all those still on Windows Server 2003 (you know who you are), it’s time to finally upgrade as Tableau Server 9.0 won’t run on this OS. New User Interface The first thing that you will notice when connecting to the Tableau 9.0 server is the new user interface. The login screen now has [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/whats-new-tableau-server-9-0/">What&#8217;s new in Tableau Server 9.0</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fwhats-new-tableau-server-9-0%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Firstly, for all those still on Windows Server 2003 (you know who you are), it’s time to finally upgrade as Tableau Server 9.0 won’t run on this OS.</p>
+<p><strong><span style="color: red;">New User Interface</span></strong></p>
+<p>The first thing that you will notice when connecting to the Tableau 9.0 server is the new user interface. The login screen now has a clean minimal new look</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image01.png"><img class=" wp-image-11221 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/02/image01-300x142.png" alt="Login Screen" width="370" height="175" /></a></p>
+<p>and the overall user experience has been completely redesigned with a new sleek black theme to it, at a glance looking like the InterWorks site ;).</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image09.png"><img class=" wp-image-11224 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/02/image09-300x197.png" alt="MainScreen" width="369" height="242" /></a></p>
+<p>Instead of having to page through your Workbooks (or your Views, etc) they are now all on the same page, with infinite scrolling.</p>
+<p>Also, searching has been improved with the facility to search all projects, workbooks, views or data sources in one filter.</p>
+<p><strong><strong> <a href="http://interworks.co.uk/wp-content/uploads/2015/02/image10.png"><img class="size-full wp-image-11226 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/02/image10.png" alt="Search" width="260" height="249" /></a></strong></strong></p>
+<p>All of these design changes are also reflected in the Administrator View.</p>
+<p><strong><span style="color: red;">Security Permissioning</span></strong></p>
+<p>User and Group Permissioning has been improved with a new layout which makes changing permissions easier to understand. You can now instantly see the effects of changing group permissions, and what rights the individual users have.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/02/image06.png"><img class=" wp-image-11225 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/02/image06-300x188.png" alt="Permissions" width="379" height="238" /></a></p>
+<p><strong><span style="color: red;">Command Line</span></strong></p>
+<p>For all you scripters out there, Tabcmd is now more responsive for faster batch line programming. The REST API has also been expanded with a number of new functions.</p>
+<p><strong><span style="color: red;">High Availability</span></strong></p>
+<p>Cluster management has improved greatly, so that now you can manage and control fail-overs, and set preferred hosts. This is great news for all those who were frustrated with the rudimentary nature of the previous version.</p>
+<p>Also, the restrictions on the number of data engine nodes in a cluster and which were passive has been removed, with all data engine nodes now being active, resulting in the cluster being more scalable.</p>
+<p><strong><span style="color: red;">Performance Enhancements</span></strong></p>
+<p>All the above points are great, but let’s now dive into the most important improvements, and enhancements that I’m most excited about. These are all about performance. Having Dashboards that render quickly is key for Tableau Server.</p>
+<p>The improvements break down into two main areas:</p>
+<p><b>Getting more out of the Server processor cores by;</b></p>
+<ul>
+<li>Running multiple queries in parallel on Dashboards, instead of sequentially.</li>
+</ul>
+<ul>
+<li>Rewriting the underlying code to take advantage of modern CPU design and architecture.</li>
+</ul>
+<ul>
+<li>Using multiple processor cores for tasks to return results more quickly.</li>
+</ul>
+<p><b>Getting more out of the Server Cache by;</b></p>
+<ul>
+<li>Saving and reusing query results for Tableau Extracts, instead of re-running each time a workbook is opened.</li>
+</ul>
+<ul>
+<li>Recognising related queries in a Dashboard, and optimising the query execution order to increase the number of time cache is being used.</li>
+</ul>
+<ul>
+<li>Creating ‘shadow’ extracts of Text and Excel Data sources, so that they are optimised.</li>
+</ul>
+<p>So, all in all, a number of excellent improvements from Tableau with this new release. There is so much more to go into, but I’ll leave this for another blog. But, what are your thoughts on 9.0’s Server enhancements? Let us know in the comments section as we’d love to hear your views. If you have any questions, please feel free to send me an email or, if you’re ready to download Tableau, <a href="http://interworks.co.uk/business-intelligence/download-tableau-desktop-free-trial/">click here</a> to get started on a free 14 day trial.</p>
+[contact-form]<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/whats-new-tableau-server-9-0/">What&#8217;s new in Tableau Server 9.0</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fwhats-new-tableau-server-9-0%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/whats-new-tableau-server-9-0/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Creating calculated fields in Tableau 9.0</title>
+		<link>http://interworks.co.uk/blog/creating-calculated-fields-tableau-9-0/</link>
+		<comments>http://interworks.co.uk/blog/creating-calculated-fields-tableau-9-0/#comments</comments>
+		<pubDate>Mon, 26 Jan 2015 14:00:52 +0000</pubDate>
+		<dc:creator><![CDATA[Fabian Zimmer]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Calculated Fields]]></category>
+		<category><![CDATA[Improvements]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[Tableau 9.0]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=11167</guid>
+		<description><![CDATA[<p>Over the last few weeks, we at InterWorks have been putting the Tableau Desktop 9.0 beta through its paces and have already showcased some of the newly introduced features in this blog series. We hope you&#8217;ve been enjoying them; today I&#8217;ll be talking through one of my favourites. Even though it may not seem like [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/creating-calculated-fields-tableau-9-0/">Creating calculated fields in Tableau 9.0</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcreating-calculated-fields-tableau-9-0%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Over the last few weeks, we at InterWorks have been putting the Tableau Desktop 9.0 beta through its paces and have already showcased some of the newly introduced features in this blog series. We hope you&#8217;ve been enjoying them; today I&#8217;ll be talking through one of my favourites. Even though it may not seem like much at first, it’s a brand new way to create and change calculated fields.</p>
+<p>Until now, calculated fields could either be created via the Analysis menu, by right-clicking on dimensions and metrics, or by right-clicking the blank space in the data window. While this does suffice in terms of usability, I always appreciate a fresh approach that helps me create meaningful visualisations even faster.</p>
+<p><strong><strong><span style="color: #993300">Enter Type-In Pills:</span></strong></strong></p>
+<p style="text-align: center"><a href="http://interworks.co.uk/wp-content/uploads/2015/01/Type-In-Pills-12.png"><img class="alignnone size-large wp-image-11173" src="http://interworks.co.uk/wp-content/uploads/2015/01/Type-In-Pills-12-1024x268.png" alt="Type-In Pills 1" width="904" height="236" /></a></p>
+<p style="text-align: center"><em>Click the image to view bigger.</em></p>
+<p>Double-clicking anywhere on the rows &amp; columns shelves, or on the marks card, will create an empty pill which allows you to instantly reference existing dimensions and measures as well as creating new calculated fields. And it doesn’t stop here: while typing you will notice that Tableau now automatically suggests functions and field names matching your current input, creating a fast and very pleasant user experience.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/01/Type-In-Pills-21.png"><img class="alignnone size-large wp-image-11174" src="http://interworks.co.uk/wp-content/uploads/2015/01/Type-In-Pills-21-1024x257.png" alt="Type-In Pills 2" width="904" height="226" /></a></p>
+<p style="text-align: center"><em>Click the image to view bigger.</em></p>
+<p>The biggest benefit of this new mechanism is the ability to change calculations in a fraction of the time it took in previous versions of Tableau Desktop, therefore encouraging to try out different approaches and iterate through visualisations on your way to discovery. Once they have been tested and validated, saving these newly calculated fields is just as easy &#8211; drag and drop them onto the data window, replace the formula with a descriptive name and hit the “OK” button.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/01/Type-In-Pills-3.png"><img class="alignnone size-large wp-image-11172" src="http://interworks.co.uk/wp-content/uploads/2015/01/Type-In-Pills-3-1024x348.png" alt="Type-In Pills 3" width="904" height="307" /></a></p>
+<p style="text-align: center"><em>Click the image to view bigger.</em></p>
+<p>This feature has already convinced me and makes for a really smooth Tableau experience. What are your thoughts on it? Let us know in the comments section and keep tuned for more blog posts covering the latest improvements of Tableau Desktop 9.0. If you have any questions, please feel free to send me an <a href="mailto:fabian.zimmer@interworks.co.uk">email</a> or, if you’re ready to download Tableau, <a href="http://interworks.co.uk/business-intelligence/download-tableau-desktop-free-trial/">click here</a> to get started on a free 14 day trial!</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/creating-calculated-fields-tableau-9-0/">Creating calculated fields in Tableau 9.0</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fcreating-calculated-fields-tableau-9-0%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/creating-calculated-fields-tableau-9-0/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>New user interface enhancements in Tableau Desktop 9</title>
+		<link>http://interworks.co.uk/blog/new-user-interface-enhancements-tableau-desktop-9/</link>
+		<comments>http://interworks.co.uk/blog/new-user-interface-enhancements-tableau-desktop-9/#comments</comments>
+		<pubDate>Wed, 21 Jan 2015 23:27:21 +0000</pubDate>
+		<dc:creator><![CDATA[Kevin Pemberton]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Desktop]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[Tableau 9.0]]></category>
+		<category><![CDATA[User Interface]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=11073</guid>
+		<description><![CDATA[<p>Here at InterWorks, we’re all very excited about the latest release of Tableau Beta 9.0. A lot of us are playing around with the new features and are already benefitting from the advancements they bring. Today, I’m kicking off this blog series with a look at the user interface changes and improvements. Click the image [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/new-user-interface-enhancements-tableau-desktop-9/">New user interface enhancements in Tableau Desktop 9</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fnew-user-interface-enhancements-tableau-desktop-9%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Here at InterWorks, we’re all very excited about the latest release of Tableau Beta 9.0. A lot of us are playing around with the new features and are already benefitting from the advancements they bring. Today, I’m kicking off this blog series with a look at the user interface changes and improvements.</p>
+<p style="text-align: center;"><a href="http://interworks.co.uk/wp-content/uploads/2015/01/v9-Home-Screen.png"><img class="size-medium wp-image-11095 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/01/v9-Home-Screen-300x234.png" alt="v9-Home-Screen" width="300" height="234" /></a><em>Click the image to view bigger.</em></p>
+<p>This is one of my longer blogs so I&#8217;ve added this contents so that you can jump to what you are interested in, otherwise please keep reading.</p>
+<p><a href="#home">Home Screen</a><br />
+<a href="#connect">Connect To Data Screen</a><br />
+<a href="#general">General Navigation Changes</a><br />
+<a href="#maps">Maps</a><br />
+<a href="#tooltips">Tooltips</a><br />
+<a href="#inline">In-line Editing</a><br />
+<a href="#calcs">Calculated Field Editor</a><br />
+<a href="#analytics">Analytics Panel</a><br />
+<a href="story">Story Points</a><br />
+<a href="#onemore">And One More Thing&#8230;</a></p>
+<p>If you’ve had the opportunity to download Tableau v9 Beta 2, you’ll no doubt have realised that it’s pretty great. For all those who haven’t, get involved and start downloading!</p>
+<p>In Tableau Desktop 9, there are some fantastic UI improvements that Tableau have made. The majority of it is increasing the usage of drag-and-drop and buttons rather than menus. This is a testament to the way Tableau listens to their customer base and makes the best decisions in each release. So, keep reading to find out some of the look and feel of Tableau v9 (Note: It’s a beta, and things may change before release).</p>
+<h3 id="home">New Home Screen</h3>
+<p>It’s got a lovely, blue, fresh design, incorporating the Home screen from previous versions with the Connect to Data screen.</p>
+<p><img class=" wp-image-11101 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/01/v9-v8buttons.png" alt="v9-v8buttons" width="194" height="38" /></p>
+<p>You will also notice the “Sheet, Thumbs, Data, Home” buttons  have been removed and a new “Tableau Logo” button added to the top-left.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/01/v9-Home-Button.png"><img class="aligncenter wp-image-11093 " src="http://interworks.co.uk/wp-content/uploads/2015/01/v9-Home-Button-300x163.png" alt="v9-Home-Button" width="223" height="121" /></a><br />
+Click this and it flicks between the new Home screen and your last-used worksheet. On this new Home screen, you can Connect to Data, View Server Workbooks, Discover community workbooks and view the “Viz of the Day” from Tableau’s website. It’s a great change as, in my opinion, it simplifies the workflow.</p>
+<p>The thumbnail view button now has a new home in the bottom-right of the Tableau app. Its size and position, I guess, denotes it importance. However, it’s still useful.</p>
+<p>New connectors that I’ve spotted are SPSS .sav, SAS .sas7bdat, R .rda and R .rdata, MonetDB and SparkSQL. I’ll be blogging about the R connectors very soon, as it’ll be great to have an R script pulling data from Twitter, analysing it and then visualising in Tableau!</p>
+<h3 id="connect">Connect to Data Screen</h3>
+<p>The “Go To Worksheet” button has disappeared!</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/01/v9-Go-To-Worksheet.png"><img class="wp-image-11091 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/01/v9-Go-To-Worksheet-300x81.png" alt="v9-Go-To-Worksheet" width="126" height="34" /></a></p>
+<p>But, you can relax. Tableau decided it was redundant, and you now use the sheet navigator at the bottom of the screen to go to a sheet. I personally prefer its simplification of the interface, as previous versions had too many ways to do something.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/01/v9-Data-Source-Button.png"><img class=" wp-image-11089 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/01/v9-Data-Source-Button-300x40.png" alt="v9-Data-Source-Button" width="218" height="29" /></a></p>
+<p>A new “Manage metadata” button has also been added. This opens a view of the fields/columns in your data, allowing you to rename, describe and change aliases in the data and split the data in a column. This feature is a great new addition for shaping your data in Tableau rather than an external app.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/01/v9-Metadata-Button.png"><img class=" wp-image-11096 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/01/v9-Metadata-Button.png" alt="v9-Metadata-Button" width="90" height="50" /></a></p>
+<p>Split function: This gives you the ability to split a field/column into separate fields/columns based on a separator. For example, I have an ID field in a database that is stored “#01-16845”. The key of the row is really the 16845. So, let’s say I want to split the field on “-”. I can do this now with the Split function, giving me a new column containing “16845”. We’ll be talking more about these new data shaping tools (Split and Pivot) in a following blog, so keep an eye on the blog for updates.</p>
+<p>Show Aliases button: If you’ve set any aliases against your data, you can switch them on and off in the data to check the underlying data &#8211; useful.</p>
+<h3 id="general">General Navigation</h3>
+<p>I’ve already mentioned the new position for the Thumbnails view button in the bottom-right and the removal of the navigation buttons in the top right, and you’ll see by doing that the workspace is that little bit bigger. In the end, the data is the star, and the user interface should blend into the background. I feel it does.</p>
+<p>I’m loving the new “Tableau Logo” Home button, so I’ve just mentioned it again ;).</p>
+<p>Data Source button: This is a shortcut for the old “right-click on the data source and then click Edit Data Source”, it’s another improvement to the workflow that potentially reduces the number of clicks to do things.</p>
+<p>“Hide all sheets”. Yay!!! This one is in the right-click menu of a dashboard tab, and it does what it says on the tin &#8211; hides all the sheets used in that dashboard. There’s an Unhide all sheets too.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/01/v9-Hide-All-Sheets.png"><img class=" wp-image-11092 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/01/v9-Hide-All-Sheets-174x300.png" alt="v9-Hide-All-Sheets" width="131" height="226" /></a></p>
+<p>Sheet preview when building dashboards, hover over the sheet in the left navigator and Tableau now displays a thumbnail of the sheet. Great for finding those cryptically named sheets. (Sheet 1, Sheet 2 etc. all you non-namers.)</p>
+<p>What’s that new icon on the right of the sheet tabs I hear you ask?!.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/01/v9-Story-Button.png"><img class=" wp-image-11097 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/01/v9-Story-Button.png" alt="v9-Story-Button" width="186" height="56" /></a></p>
+<p>It’s the new “New Story” button. Again, one less click and less use of menus. This lower dependence on menus is great in OSX as the menu bar is always at the top of the screen rather than attached to the window as in Windows.</p>
+<h3 id="maps">Maps</h3>
+<p>A few new features here; and the “Tableau Classic” map has been removed from the Map Options. Out with the old altogether.</p>
+<p>Hover over the map and the map toolbar is shown, the first button is a search tool allowing you to search for geographic locations around the globe.</p>
+<p>Lasso tools have been improved in maps, there is now a circular and freeform polygon tool to select marks on a map.</p>
+<h3 id="tooltips">Tooltips</h3>
+<p>Responsive tooltips: They appear as you move the mouse around marks. It looks and feels much quicker as there’s no need to hover over a mark, then wait and then read the tooltip. You can still choose the hover tooltips, though. The command buttons are hidden when using responsive and only appear when clicking on the mark &#8211; <span id="more-11073"></span></p>
+<p>makes the interface cleaner.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/01/v9-Tooltip.png"><img class=" wp-image-11099 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/01/v9-Tooltip-300x130.png" alt="v9-Tooltip" width="240" height="104" /></a></p>
+<p>“Show Tooltips” button: This removes the need to delete the contents of a tooltip just to switch it off. A far more explicit and understandable method.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/01/v9-Tooltip-Editor.png"><img class="size-medium wp-image-11100 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/01/v9-Tooltip-Editor-300x157.png" alt="v9-Tooltip-Editor" width="300" height="157" /></a></p>
+<h3 id="inline">In-line Editing</h3>
+<p>We’ll be telling you more about this in a further blog; however, this is a lovely method for creating calculations on the sheet. You can even create a calculation on a sheet and not have it appear in the dimensions and measures, keeping your metadata tidy. Then, when you’ve tested it, you can easily create a dimension or measure from it by dragging it to the Metadata window.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/01/v9-Code-Completion.png"><img class="size-medium wp-image-11088 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/01/v9-Code-Completion-300x202.png" alt="v9-Code-Completion" width="300" height="202" /></a><br />
+The in-line editing works on columns, rows and marks at present. Let’s hope Tableau add it to the Filters and Pages shelf soon.</p>
+<h3 id="calcs">Calculated Field Editor</h3>
+<p>This one looks completely new with a flat, clean design, and the best bit is that it takes up far less space making the viz visible below. Hey, Tableau, how about a semi-transparent window &#8230;.<img class="size-medium wp-image-11086 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/01/v9-Calc-Editor-300x183.png" alt="v9-Calc-Editor" width="300" height="183" /></p>
+<p>You’ll notice the help windows for functions, etc. have gone. Well, they’re now available by clicking the arrow button on the right of the window.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/01/v9-Calc-Help.png"><img class=" wp-image-11087 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/01/v9-Calc-Help-296x300.png" alt="v9-Calc-Help" width="185" height="188" /></a></p>
+<p>Code completion: This is great for those of you who code in IDEs (well, great for everyone really). Start typing into the window and Tableau suggests items you can add. So, start with “[S”, and a list of dimensions and measures is shown, named with the first letter S from all data sources. Arrow key down to the one you want and hit Tab. Voila! Code completed!</p>
+<p>Cancel button is now an X in the top right.</p>
+<h3 id="analytics">Analytics Panel</h3>
+<p>Next to the “Data Window” button is a new “Analytics” button. Click this, and you get a new view with various analytic functions available for drag and drop. Click the one you want, and drag it to the view. When you drag it over, a new Scope window appears. Drag it to “Table, Pane or Cell” to set the scope. Far, far better than digging around in Windows and Menus.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/01/v9-Analytics-Pane.png"><img class=" wp-image-11085 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/01/v9-Analytics-Pane-161x300.png" alt="v9-Analytics-Pane" width="134" height="250" /></a></p>
+<h3 id="story">Story Points</h3>
+<p>The interface works as before; however, you can now resize the grey navigation boxes at the top. It makes the interface cleaner. I quite like just having 1, 2, 3 for each of the points and a description to go with each one. Tableau, can we justify the navigation buttons left, center and right rather than them being stuck in the middle?</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/01/v9-Story-Nav.png"><img class="size-medium wp-image-11098 aligncenter" src="http://interworks.co.uk/wp-content/uploads/2015/01/v9-Story-Nav-300x98.png" alt="v9-Story-Nav" width="300" height="98" /></a></p>
+<h3 id="onemore">And One More Thing …(this one’s a bit geeky)</h3>
+<p>The grey used in various places is lighter. It was RGB 231,231,231 but is now 242,242,242. Makes everything feel like a lighter and happier place to be :).</p>
+<p>So, there we have it. Tableau v9 is a great improvement from a user interface point of view. There is lots more to learn under the hood, but that’s for another blog post. Keep an eye out for the rest of our blog series for more info on Tableau Desktop and Tableau Server v9.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/new-user-interface-enhancements-tableau-desktop-9/">New user interface enhancements in Tableau Desktop 9</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fnew-user-interface-enhancements-tableau-desktop-9%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/new-user-interface-enhancements-tableau-desktop-9/feed/</wfw:commentRss>
+		<slash:comments>6</slash:comments>
+		</item>
+	</channel>
+</rss>

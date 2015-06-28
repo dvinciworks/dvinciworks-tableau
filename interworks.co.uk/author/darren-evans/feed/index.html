@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>InterWorks - Tableau Software &#38; Business Intelligence Consulting &#187; Darren Evans</title>
+	<atom:link href="http://interworks.co.uk/author/darren-evans/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 26 Jun 2015 08:09:24 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>Hot Topics: Best Practices for Data Connections</title>
+		<link>http://interworks.co.uk/blog/hot-topics-best-practices-for-data-connections/</link>
+		<comments>http://interworks.co.uk/blog/hot-topics-best-practices-for-data-connections/#comments</comments>
+		<pubDate>Fri, 05 Jun 2015 08:30:22 +0000</pubDate>
+		<dc:creator><![CDATA[Darren Evans]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[data connection]]></category>
+		<category><![CDATA[data preparation]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[Tableau 9.0]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=12406</guid>
+		<description><![CDATA[<p>Working on the InterWorks Expert Hotline I come into contact with many clients every day assisting them with all aspects of their Tableau deployment from data preparation to best practice dashboard design all the way through to complex table calculations and Tableau Server tuning. This new series of blogs will pick up hot topics that are commonly [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/hot-topics-best-practices-for-data-connections/">Hot Topics: Best Practices for Data Connections</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Working on the <a href="http://www.interworks.co.uk/hotline">InterWorks Expert Hotline</a> I come into contact with many clients every day assisting them with all aspects of their Tableau deployment from data preparation to best practice dashboard design all the way through to complex table calculations and Tableau Server tuning. This new series of blogs will pick up hot topics that are commonly seen during hotline bookings and share that knowledge with our wider customer base. This blog will look at best practices for data connections.</p>
+<p>Having a strong foundation is instrumental to the success of any development project and developing BI solutions in Tableau is no exception to this.</p>
+<p>A common issue with Tableau deployments is performance degradation manifested in poor data connection design.</p>
+<p>This blog will take a look at a 12 step set of best practices that will ensure that all data connections are initially set up for optimum development speed and then configured for best possible performance when the report is ready for production use.</p>
+<p>To help look at the potential for performance issues I have created a ‘big’ view against the Microsoft SQL Server AdventureWorks2014 database. This view has 100 columns and 12.4 million rows. This is not enormous compared to some of the databases that we experience in the real world setting, however the performance gains that are demonstrated will scale against larger databases and deliver significant gain to both the Tableau developers and the audience.</p>
+<p>I have connected Tableau to this view without performing any data maintenance and then created an extract. I have then produced a straightforward dashboard showing some sales data.</p>
+<p><a href="https://public.tableau.com/profile/darren.evans#!/vizhome/BlogDatasets/AdventureWorksSalesDashboard"><img class="alignnone size-large wp-image-12416" src="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.20-1024x934.png" alt="Screen Shot 2015-05-29 at 09.07.20" width="904" height="825" /></a></p>
+<p>Using the Workbook Tools Performance Monitoring I have then carried out a set of actions and filters against the dashboard and recorded the execution times in seconds for these which are shown below:</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.06.22.png"><img class="alignnone size-large wp-image-12407" src="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.06.22-1024x251.png" alt="Screen Shot 2015-05-29 at 09.06.22" width="904" height="222" /></a></p>
+<p>The Workbook tools are a component of the <a href="http://powertoolsfortableau.com/" target="_blank">Power Tools for Tableau</a> suite of applications that allow for analysis and automated changes to be made to Tableau Workbooks and Server files. These tools can save you many hours on the administration of your Tableau environment. For more information see <a title="http://interworks.co.uk/business-intelligence/tableau-tools/" href="http://interworks.co.uk/business-intelligence/tableau-tools/">http://interworks.co.uk/business-intelligence/tableau-tools/</a></p>
+<p>The final test I carried out was the record the time taken to build the extract which came in at a 2508 seconds or a little over 41 minutes.</p>
+<p>I will now run through my 12 steps for best practice data connection development. During this I will produce two additional data connections; an optimised development data connection and a production data connection. I will then carry out the same benchmark tests as before and compare the timings.</p>
+<p><strong>12 Steps for Data Connection Development<br />
+</strong><br />
+These are the 12 steps that I follow each time I start out on a development project in Tableau.</p>
+<p>These steps ensure that at whatever stage the dashboards are at in terms of development they are as responsive as possible.</p>
+<p><em>1 Build the data connection</em></p>
+<p>The first stage is the initial connection to the underlying data source. In this case the data connection is a SQL Server view (see attached SQL File). The file is made up of 75 Dimensions and 25 measures and has 12.5 million rows of data.</p>
+<p><em>2 Review all fields</em></p>
+<p>Review all the fields in the data connection and ensure that they are set correctly to either Dimension or Measure and have the correct data types applied.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.06.41.png"><img class="alignnone size-large wp-image-12408" src="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.06.41-1024x458.png" alt="Screen Shot 2015-05-29 at 09.06.41" width="904" height="404" /></a></p>
+<p><em>3 Hide all non applicable fields</em></p>
+<p>This is an important early step. You need to identify all the fields in your data connection that you will never use during analysis. There will be i) some fields that will definitely be required, and ii) a selection of fields which may be considered during the build but you are unsure about, and iii) the fields that will never be used. These are the fields that should be removed at this stage.</p>
+<p>For this step you can use the main data connection editor window or the meta data manager screen. However I find it is easier to go to a blank worksheet and multi select (ctrl click) all the fields not required from the dimensions and measures shelf, you can then right-click and hide these fields.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.06.52.png"><img class="alignnone size-medium wp-image-12418" src="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.06.52-300x294.png" alt="Screen Shot 2015-05-29 at 09.06.52" width="300" height="294" /></a></p>
+<p>The time at which fields are hidden makes a big difference in Tableau. If you hide fields in a connection with an active data extract the field is only hidden from you in Tableau Desktop. If you hide them before you extract, Tableau will remove them from the query that it uses to pull the data and it will not be pulled in at all. This results in fewer columns in the query and the resulting extract meaning a faster extract speed and better performance as a result.</p>
+<p><em>4 Apply Long Term Filters</em></p>
+<p>When you click to generate the extract you can apply filters. This limits the data brought into the extract. Some filters will be long term (permanent) filters. For example if you are only producing this report for a rolling 2 years then a filter can be applied to remove all other data. The same is true if the report is only for specific locale or business division as the non applicable data can be removed permanently. All of these will limit the row count and provide performance benefit.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.04.png"><img class="alignnone size-medium wp-image-12417" src="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.04-292x300.png" alt="Screen Shot 2015-05-29 at 09.07.04" width="292" height="300" /></a></p>
+<p><em>5 Apply Short Term Filters</em></p>
+<p>These are filters applied only for development. For example If I limit the development report to only two products or the top 100 products out of a possible xxx and also only include 2 months per year this will allow me to pull in a dramatically smaller dataset making extract creation quicker and giving the me maximum speed during development.</p>
+<p>I will quite often only produce reports on a small subset of data, 1 week for example, to give me this speed during development and also give me a subset of data to get signed off as accurate.</p>
+<p>In this example I am limiting the data to the first 2 days of each month only</p>
+<p><em>6 Build Development Extract</em></p>
+<p>I can now run the extract build. With reduced rows and columns I would expect this to be quicker.</p>
+<p>And it has &#8211; 89 seconds compared to 2508 seconds. This is considerable when scaled against larger datasets.</p>
+<p><em>7 Build The Dashboards</em></p>
+<p>Now I can go ahead and build my dashboards against this development set.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.20.png"><img class="alignnone size-medium wp-image-12416" src="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.20-300x274.png" alt="Screen Shot 2015-05-29 at 09.07.20" width="300" height="274" /></a></p>
+<p>At this point I now have a signed off dashboard sitting on a development data connection and it is time to build a Production Data Connection.</p>
+<p><em>8 Remove the Extract</em></p>
+<p>I start by removing my development extract. Navigate to a blank sheet so that Tableau does not try to process live data, right click on the data connection and delete the extract.</p>
+<p><em>9 Hide all unused fields</em></p>
+<p>Next up I can use the hide unused fields option. Click on the menu on the dimensions shelf and choose the hide unused fields option.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.31.png"><img class="alignnone size-medium wp-image-12415" src="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.31-265x300.png" alt="Screen Shot 2015-05-29 at 09.07.31" width="265" height="300" /></a></p>
+<p>As it says on the tin this option will look for all dimensions and measures not being used anywhere in the workbook and hide them. This will have a dramatic effect on the speed of the extract as it is reducing the column size considerably.</p>
+<p>Based on my dashboard design I would be left with just 8 fields from the underlying dataset. A massive reduction from the 100 columns in the initial view.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.46.png"><img class="alignnone size-medium wp-image-12414" src="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.46-120x300.png" alt="Screen Shot 2015-05-29 at 09.07.46" width="120" height="300" /></a></p>
+<p><em>10 Remove development filters and apply new long term filters</em></p>
+<p>I now need to review my filters removing any filters applied only for development. I also may have determined new long term filters that can be applied.</p>
+<p><em>11 Extract Data</em></p>
+<p>I am now in the position to extract the data and build my production dataset.</p>
+<p>An extra step I would consider here is to aggregate visible dimensions. What this option does is truncate all date fields to a fixed level (for example year or month) and then sums up all measure fields grouping by the remaining dimensions. For example AdventureWorks has all dates at day level, in this dataset if a product was sold every day in January 2015 then there would be a row of data for this product on every day in January 2015 with a sales value. What aggregate visible dimensions would do is return a single line for the whole month (no days) along with the product ID and the total sales amount for all days. For a single product in a single month this would save 30 rows in our dataset. Spread out across the whole view this could be a considerable time saver for the end user. One thing to bear in mind is that using this will remove the dates from the dataset restricting the analysis that could take place which is why I suggest it as a final enhancement if your time series is all at a high date level (i.e month). The extract will also be slower to generate as the query required to fetch the data will be more complex.</p>
+<p>Using aggregate visible dimensions against my production dataset to return all dates at month level reduced the row count from 7,444,201 rows to 2,183,256. If all my time series analysis was only required at month level this would be an excellent design choice for end user experience.</p>
+<p>For the purpose of this blog I chose not to aggregate the dimensions as I wanted to compare the original dataset to an optimised dataset at day level.</p>
+<p>As I am now pulling all the rows of data into the extract but a significantly reduced column count. This resulted in a 321 second extract time, more than the development data source but a lot less than than the initial data connection.</p>
+<p><em>12 Optimize Extract</em></p>
+<p>Once the data has been extracted I can now run an optimisation by clicking on the option contained within the data menu and the extract sub menu. This will create a secondary structure inside the actual extract file materialising the results of some calculated fields and also creating views for the filters to query so that they do not have to run against the whole dataset.</p>
+<p><strong>The Results<br />
+</strong><br />
+To demonstrate the advantages of efficient data connections I carried out a set of benchmark tests on each workbook I created.</p>
+<p><strong>Extract Refresh times<br />
+</strong><br />
+Each workbook was uploaded to Server and the extract refresh time recorded.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.56.png"><img class="alignnone size-medium wp-image-12413" src="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.56-300x69.png" alt="Screen Shot 2015-05-29 at 09.07.56" width="300" height="69" /></a></p>
+<p>This makes it pretty clear that amending the data connection reduced extract refresh time considerably. The best extract refresh time was for Development running at just under 1.5 minutes compared to the 42 minutes the original workbook took to refresh. This quick extract time would be of great benefit during a development cycle as changes can be made to the data connection without the need to wait for the extract to fully rebuild.</p>
+<p>The production connection extracting in 321 seconds saw an improvement of over 35 minutes when compared with the original despite containing the same number of rows. As I did not apply any additional data filters this is purely down to the removal of most of the columns during the production data set build.</p>
+<p><strong>Benchmark Testing<br />
+</strong><br />
+The Workbook Tools for Tableau have a tool called <a href="http://powertoolsfortableau.com/tools/workbook-tools-suite/#wc-section" target="_blank">Performance Analyzer</a>. This tool opens a Tableau workbook and records timings for all processing carried out by Tableau including the load time for opening the workbook, all interactions and filter applications.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.08.02.png"><img class="alignnone size-large wp-image-12412" src="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.08.02-1024x610.png" alt="Screen Shot 2015-05-29 at 09.08.02" width="904" height="539" /></a></p>
+<p>In order to assess the benefit of the data connection best pracrice steps I drew up a list of benchmark tests and carried out the same tests on the original, development and production workbooks.</p>
+<p>Here is a summary of the results.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.08.08.png"><img class="alignnone size-large wp-image-12411" src="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.08.08-1024x260.png" alt="Screen Shot 2015-05-29 at 09.08.08" width="904" height="230" /></a></p>
+<p>The results show exactly what I anticipated. The best results are for the development dataset which contained a very small number of rows and a reduced column count. The Production dataset has significant performance improvement over the original data connection also.</p>
+<p>Here are two key benchmark areas in more detail:</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.08.23.png"><img class="alignnone size-medium wp-image-12410" src="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.08.23-300x212.png" alt="Screen Shot 2015-05-29 at 09.08.23" width="300" height="212" /></a></p>
+<p>The load time when opening the Tableau Workbook file is dramatically reduced for the Production workbook when compared to the original workbook loading an impressive 61% faster.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.08.34.png"><img class="alignnone size-medium wp-image-12409" src="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.08.34-300x206.png" alt="Screen Shot 2015-05-29 at 09.08.34" width="300" height="206" /></a></p>
+<p>Grouping all the action filter benchmark tests and computing the average also shows that there is also a significant performance gain here -16% on execution time over the original workbook.</p>
+<p>I hope that this blog has been useful. Good data connection design has a positive impact on the developer as the time to execute tasks and make data-connection changes can be considerable. Taking the time to create a development data connection makes for fast intuitive data discovery. Once the report is finalised removing all non-required columns and rows will provide the audience with the best possible user experience.</p>
+<p>Here is a cheat list for the 12 Best Practice Steps:</p>
+<p><em><strong>Build Development Data Connection</strong></em></p>
+<p><em>1 Build the data connection</em><br />
+<em> 2 Review all fields</em><br />
+<em> 3 Hide all non applicable fields</em><br />
+<em> 4 Apply Long Term Filters</em><br />
+<em> 5 Apply Short Term Filters</em><br />
+<em> 6 Build the Development Extract</em><br />
+<em> 7 Build Dashboards</em></p>
+<p><em><strong>Build Production Data Connection</strong></em></p>
+<p><em>8 Remove the Extract</em><br />
+<em> 9 Hide all unused fields</em><br />
+<em> 10 Remove development filters and add any new long term filters</em><br />
+<em> 11 Extract Data</em><br />
+<em> 12 Optimise Extract</em></p>
+<p>All performance monitoring for this blog was carried out using Power Tools for Tableau. The tools can significantly improve maintaining your BI environment and are available on a full featured trial license. <a title="http://interworks.co.uk/business-intelligence/tableau-tools/" href="http://interworks.co.uk/business-intelligence/tableau-tools/">http://interworks.co.uk/business-intelligence/tableau-tools/</a></p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/hot-topics-best-practices-for-data-connections/">Hot Topics: Best Practices for Data Connections</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/hot-topics-best-practices-for-data-connections/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Table Calculations &#8211; Why apply them &#8216;By Cell&#8217;</title>
+		<link>http://interworks.co.uk/blog/table-calculations-why-apply-them-by-cell/</link>
+		<comments>http://interworks.co.uk/blog/table-calculations-why-apply-them-by-cell/#comments</comments>
+		<pubDate>Tue, 09 Jul 2013 08:17:37 +0000</pubDate>
+		<dc:creator><![CDATA[Darren Evans]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[InterWorks]]></category>
+		<category><![CDATA[Table Calculation]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[Tableau 8.0]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=8738</guid>
+		<description><![CDATA[<p>A question I was recently asked by an in training Tableau User was ‘Why would I apply a table calculation by cell?’. To answer this I have produced a simple example of a by cell Table Calculation. Before I get to it I would like to run through some Table Calculation basics. Calculation Direction One [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/table-calculations-why-apply-them-by-cell/">Table Calculations &#8211; Why apply them &#8216;By Cell&#8217;</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Ftable-calculations-why-apply-them-by-cell%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>A question I was recently asked by an in training Tableau User was ‘Why would I apply a table calculation by cell?’. To answer this I have produced a simple example of a by cell Table Calculation. Before I get to it I would like to run through some Table Calculation basics.</p>
+<p><strong>Calculation Direction</strong></p>
+<p>One of the key principles in Table Calculations is the direction of the calculation. Consider the following table which shows the ‘Running Sum’ table calculation running ‘Table Across’:</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2013/07/Across.png"><img class="alignnone size-medium wp-image-8743" src="http://interworks.co.uk/wp-content/uploads/2013/07/Across-300x170.png" alt="Across" width="300" height="170" /></a></p>
+<p>As you can see this running sum is running horizontally left to right and restarting on each row.</p>
+<p>If you ran the calculation again, this time &#8216;Table Down&#8217; the calculation would work vertically down the table restarting for each column.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2013/07/Down.png"><img class="alignnone size-medium wp-image-8742" src="http://interworks.co.uk/wp-content/uploads/2013/07/Down-300x169.png" alt="Down" width="300" height="169" /></a></p>
+<p>&#8216;Across then down&#8217; runs first horizontally and then carries the result to the next row running against the entire table:</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2013/07/Across-Then-Down.png"><img class="alignnone size-medium wp-image-8741" src="http://interworks.co.uk/wp-content/uploads/2013/07/Across-Then-Down-300x171.png" alt="Across Then Down" width="300" height="171" /></a></p>
+<p>Down then across runs vertically but carries the result to the next column of data, working across the whole table.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2013/07/Down-then-across.png"><img class="alignnone size-medium wp-image-8740" src="http://interworks.co.uk/wp-content/uploads/2013/07/Down-then-across-300x173.png" alt="Down then across" width="300" height="173" /></a></p>
+<p><strong>By Cell</strong></p>
+<p>The by cell calculation runs the calculation for a single cell of data (i.e. the lowest level of granularity in the view) Consider the following example:<br />
+<script src="http://public.tableausoftware.com/javascripts/api/viz_v1.js" type="text/javascript"></script></p>
+<div class="tableauPlaceholder" style="width: 604px; height: 595px;"><noscript><a href="#"><img alt=" " src="http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;By&#47;ByCell&#47;Acrossthendown_1&#47;1_rss.png" style="border: none" /></a></noscript><object class="tableauViz" style="display: none;" width="604" height="595"><param name="host_url" value="http%3A%2F%2Fpublic.tableausoftware.com%2F" /><param name="site_root" value="" /><param name="name" value="ByCell/Acrossthendown_1" /><param name="tabs" value="yes" /><param name="toolbar" value="yes" /><param name="static_image" value="http://public.tableausoftware.com/static/images/By/ByCell/Acrossthendown_1/1.png" /><param name="animate_transition" value="yes" /><param name="display_static_image" value="yes" /><param name="display_spinner" value="yes" /><param name="display_overlay" value="yes" /><param name="display_count" value="yes" /></object></div>
+<div style="width: 604px; height: 22px; padding: 0px 10px 0px 0px; color: black; font: normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float: right; padding-right: 8px;"><a href="http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/views/ByCell/Acrossthendown_1" target="_blank">Learn About Tableau</a></div>
+</div>
+<p>This chart shows Sales broken down by product type and market. I have applied ‘Type’ to the colour of the chart and set up my table calculation as percentage of total.</p>
+<p>What I would like to see is the % split between decaf and regular sales for each Product Type and Market.</p>
+<p>By default this calculation has been applied as &#8216;Table Across&#8217; so each colour split is the % of the total for the entire row of data.</p>
+<p>If I want to see the split value for each cell I need to set the calculation to run ‘By Cell’. Click &#8216;By Cell&#8217; to see this calculation in action.</p>
+<p>Now you can see that each cell of data has a total of 100% showing the split between Decaf and Regular drink sales.</p>
+<p>Any questions at all, please don&#8217;t hesitate to get in touch. We love a challenge!</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/table-calculations-why-apply-them-by-cell/">Table Calculations &#8211; Why apply them &#8216;By Cell&#8217;</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Ftable-calculations-why-apply-them-by-cell%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/table-calculations-why-apply-them-by-cell/feed/</wfw:commentRss>
+		<slash:comments>5</slash:comments>
+		</item>
+		<item>
+		<title>Using Custom Colour Palettes</title>
+		<link>http://interworks.co.uk/blog/using-custom-colour-palettes/</link>
+		<comments>http://interworks.co.uk/blog/using-custom-colour-palettes/#comments</comments>
+		<pubDate>Thu, 04 Jul 2013 14:20:33 +0000</pubDate>
+		<dc:creator><![CDATA[Darren Evans]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Colour Palette]]></category>
+		<category><![CDATA[Cusomisation]]></category>
+		<category><![CDATA[Darren Evans]]></category>
+		<category><![CDATA[Design]]></category>
+		<category><![CDATA[Tableau]]></category>
+		<category><![CDATA[Tableau 8.0]]></category>
+		<category><![CDATA[visualisation]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=8679</guid>
+		<description><![CDATA[<p>Tableau has the ability to recreate any colour by using the RGB colour model. By using this you can customise your charts and dashboards to match your corporate branding guidelines. The chart below shows the top 5 BBC Television Channels by expenditure in 2012. It is using the default Tableau Colour Palette To amend a [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/using-custom-colour-palettes/">Using Custom Colour Palettes</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-custom-colour-palettes%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p dir="ltr">Tableau has the ability to recreate any colour by using the <a title="RGB Colour Model" href=" https://en.wikipedia.org/wiki/RGB_color_model" target="_blank">RGB colour model</a>. By using this you can customise your charts and dashboards to match your corporate branding guidelines.</p>
+<p dir="ltr">The chart below shows the top 5 BBC Television Channels by expenditure in 2012. It is using the default Tableau Colour Palette</p>
+<p><script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script>
+<div class="tableauPlaceholder" style="width:600px; height:550px;"><noscript><a href="#"><img alt=" " src="http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Co&#47;ColourBlog&#47;BBCTVSpendStandard&#47;1_rss.png" style="border: none" /></a></noscript><object class="tableauViz" width="600" height="550" style="display:none;"><param name="host_url" value="http%3A%2F%2Fpublic.tableausoftware.com%2F" /><param name="site_root" value="" /><param name="name" value="ColourBlog&#47;BBCTVSpendStandard" /><param name="tabs" value="no" /><param name="toolbar" value="yes" /><param name="static_image" value="http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Co&#47;ColourBlog&#47;BBCTVSpendStandard&#47;1.png" /><param name="animate_transition" value="yes" /><param name="display_static_image" value="yes" /><param name="display_spinner" value="yes" /><param name="display_overlay" value="yes" /><param name="display_count" value="yes" /></object></div>
+<div style="width:600px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float:right; padding-right:8px;"><a href="http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/views/ColourBlog/BBCTVSpendStandard" target="_blank">Learn About Tableau</a></div>
+</div>
+<div class="shortcode-manager"></div>
+<p dir="ltr">To amend a colour in Tableau Desktop you can double click on a colour on the colour legend itself. This pops up the standard select a colour menu. If you now double click on the blue square next to a category, BBC 1 in this example, you can customise the colour by choosing a different colour, amending the gradient or by specifying an RGB code.</p>
+<p dir="ltr"><a href="http://interworks.co.uk/wp-content/uploads/2013/07/BBC2.png"><img class="alignnone size-medium wp-image-8695" src="http://interworks.co.uk/wp-content/uploads/2013/07/BBC2-300x235.png" alt="BBC2" width="300" height="235" /></a></p>
+<p dir="ltr">The website <a title="Colour Lovers" href="http://www.colourlovers.com/palette/410981/BBC_World" target="_blank">colourlovers.com</a> allows users to store custom colour palettes. I am using the BBC Worldwide Colour Palette in this example.</p>
+<p>If we look at the colour we can see it has an RGB of 184, 31, 30.</p>
+<p><a href="http://interworks.co.uk/wp-content/uploads/2013/07/BBC6.png"><img src="http://interworks.co.uk/wp-content/uploads/2013/07/BBC6-300x152.png" alt="BBC6" width="300" height="152" /></a></p>
+<p dir="ltr">If we enter this into the cusom colour menu on Tableau and click OK we can assign this shade of red to BBC. Repeating this for each channel will give it a BBC ‘branded’ look.</p>
+<p><script src="http://public.tableausoftware.com/javascripts/api/viz_v1.js" type="text/javascript"></script></p>
+<div class="tableauPlaceholder" style="width: 550px; height: 550px;"><noscript><a href="#"><img alt="BBC TV Spend Bespoke Palette " src="http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Co&#47;ColourBlogBespoke&#47;BBCTVSpendBespokePalette&#47;1_rss.png" style="border: none" /></a></noscript><object class="tableauViz" style="display: none;" width="550" height="550"><param name="host_url" value="http%3A%2F%2Fpublic.tableausoftware.com%2F" /><param name="site_root" value="" /><param name="name" value="ColourBlogBespoke/BBCTVSpendBespokePalette" /><param name="tabs" value="no" /><param name="toolbar" value="yes" /><param name="static_image" value="http://public.tableausoftware.com/static/images/Co/ColourBlogBespoke/BBCTVSpendBespokePalette/1.png" /><param name="animate_transition" value="yes" /><param name="display_static_image" value="yes" /><param name="display_spinner" value="yes" /><param name="display_overlay" value="yes" /><param name="display_count" value="yes" /></object></div>
+<div style="width: 550px; height: 22px; padding: 0px 10px 0px 0px; color: black; font: normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float: right; padding-right: 8px;"><a href="http://www.tableausoftware.com/public/about-tableau-products?ref=http://public.tableausoftware.com/views/ColourBlogBespoke/BBCTVSpendBespokePalette" target="_blank">Learn About Tableau</a></div>
+</div>
+<p dir="ltr">This works fine for a one off chart, however it would be a laborious task if it were carried out on every visualisation built at the company. Whilst not available through the front end, Tableau does allow for the creation of additional custom colour palettes.</p>
+<p dir="ltr">To do this you need to amend the Preferences.tps file which can be located in the ‘My Tableau Repository Folder’. The repository is by default found within the My Documents folder on a Tableau Desktop user&#8217;s machine.</p>
+<p dir="ltr">Navigate to the Repository and right click on the preferences file. You can open the file in Notepad or any other text editor.</p>
+<p dir="ltr">The file uses a standard xml format. To add a colour palette you can use the following syntax:</p>
+<p dir="ltr"><em>&lt;preferences&gt;</em></p>
+<p dir="ltr"><em>       &lt;color-palette name=&#8221;BBC Colour Scheme&#8221; type=&#8221;regular&#8221; &gt;</em></p>
+<p dir="ltr"><em>               &lt;color&gt;#B81F1E&lt;/color&gt;</em></p>
+<p dir="ltr"><em>          &lt;/color-palette&gt;</em></p>
+<p dir="ltr"><em>&lt;/preferences&gt;</em></p>
+<p dir="ltr">Each color needs to be entered within the &#8216;Color-palette&#8217; section. Unlike Desktop this uses HTML Hex Codes. Each code needs to be prefixed with a #.</p>
+<p dir="ltr">The completed file for the BBC palette looks like this:</p>
+<p dir="ltr"><a href="http://interworks.co.uk/wp-content/uploads/2013/07/BBC13.png"><img class="alignnone size-medium wp-image-8684" src="http://interworks.co.uk/wp-content/uploads/2013/07/BBC13-300x114.png" alt="BBC13" width="300" height="114" /></a></p>
+<p dir="ltr">Once you have entered each of your colours you can save the preferences file. You will need to close and reopen Tableau for the new preferences to load.<br />
+Now if you go to edit colours you will see a new colour palette listed in the dropdown with the colours you have just specified.</p>
+<p dir="ltr"><a href="http://interworks.co.uk/wp-content/uploads/2013/07/BBC9.png"><img class="alignnone size-full wp-image-8688" src="http://interworks.co.uk/wp-content/uploads/2013/07/BBC9.png" alt="BBC9" width="192" height="190" /></a></p>
+<p dir="ltr">The preferences file will need to be installed on all local machines for users to be able to use the palette during design. The colours will still appear on the visualisation if loaded on another machine but the palette will not be available.</p>
+<p dir="ltr">Did you know that Microsoft Paint allows you to get the RGB for any pixel on an image? Simply load or paste an image in MS Paint and use the Colour picker (it looks like an eye dropper) to select a pixel and then choose &#8216;Edit colors&#8217; which is right most on the toolbar to reveal the RGB codes for the selected colour.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/using-custom-colour-palettes/">Using Custom Colour Palettes</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-custom-colour-palettes%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/using-custom-colour-palettes/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Select A Chart</title>
+		<link>http://interworks.co.uk/blog/select-a-chart/</link>
+		<comments>http://interworks.co.uk/blog/select-a-chart/#comments</comments>
+		<pubDate>Tue, 23 Oct 2012 10:07:27 +0000</pubDate>
+		<dc:creator><![CDATA[Darren Evans]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Filters]]></category>
+		<category><![CDATA[Parameters]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=3238</guid>
+		<description><![CDATA[<p>One of the requests we get quite often is can you set Tableau to have interchangeable charts on a dashboard so that when the user can select which chart to show in a particular place on a dashboard. Whilst not out of the box this is something that is very much possible using parameters and [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/select-a-chart/">Select A Chart</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fselect-a-chart%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>One of the requests we get quite often is can you set Tableau to have interchangeable charts on a dashboard so that when the user can select which chart to show in a particular place on a dashboard.</p>
+<p>Whilst not out of the box this is something that is very much possible using parameters and virtual layout containers.</p>
+<p>Take a look at this example:</p>
+<p><script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script>
+<div class="tableauPlaceholder" style="width:604px; height:580px;"><noscript><a href="#"><img alt="Choose A Chart Example " src="http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Ch&#47;ChooseAChart&#47;ChooseAChart&#47;1_rss.png" style="border: none" /></a></noscript><object class="tableauViz" width="604" height="580" style="display:none;"><param name="host_url" value="http%3A%2F%2Fpublic.tableausoftware.com%2F" /><param name="site_root" value="" /><param name="name" value="ChooseAChart&#47;ChooseAChart" /><param name="tabs" value="yes" /><param name="toolbar" value="yes" /><param name="static_image" value="http:&#47;&#47;public.tableausoftware.com&#47;static&#47;images&#47;Ch&#47;ChooseAChart&#47;ChooseAChart&#47;1.png" /><param name="animate_transition" value="yes" /><param name="display_static_image" value="yes" /><param name="display_spinner" value="yes" /><param name="display_overlay" value="yes" /><param name="display_count" value="yes" /></object></div>
+<div style="width:604px;height:22px;padding:0px 10px 0px 0px;color:black;font:normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float:right; padding-right:8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/ChooseAChart/ChooseAChart" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>The front page visualisation is a dashboard with a single chart on display.</p>
+<p>By selecting a chart in the drop down the chart on display is changed.</p>
+<p>How is this achieved?</p>
+<p>The technique for achieving this is actually quite straight forward.</p>
+<p>You will notice there are four other tabs. Three of these are for the charts that are shown on the dashboard.</p>
+<p>You will also notice that only the chart selected on the front page is shown the other tabs are blank.</p>
+<p>This is because each graph/tab has a filter linked to the parameter that allows the user to select the chart.</p>
+<p>The filter on the bar chart is a calculated field that is only true (and therefore only shows data) when the parameter is set to &#8216;Sales By Customer&#8217;. If the calculated field returns a false no data is returned and the visualisation is not rendered.</p>
+<p>When I created the dashboard I used a vertical layout container and dropped all three charts into it. A layout container automatically resizes the charts within it based on the amount of data returned. As for two of the charts there is no data they are compressed down and not shown.</p>
+<p>When the parameter selected is &#8216;Sales By Customer&#8217; the bar chart filter is true and that chart is returned, the line chart and map filters are false and those charts do not render and are compressed in the layout container.</p>
+<p>I removed the titles for the two bottom charts in the container and amended the title in the top chart to read the same parameter as the drop down menu so that the title is correct for the chart on display.</p>
+<p>Feel free to download this file and have a play, if you have any questions drop them in the comments.</p>
+<p>Darren</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/select-a-chart/">Select A Chart</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fselect-a-chart%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/select-a-chart/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+		<item>
+		<title>NHS cuts to jobs</title>
+		<link>http://interworks.co.uk/blog/nhs-cuts-to-jobs/</link>
+		<comments>http://interworks.co.uk/blog/nhs-cuts-to-jobs/#comments</comments>
+		<pubDate>Thu, 24 Feb 2011 10:24:10 +0000</pubDate>
+		<dc:creator><![CDATA[Darren Evans]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Current Affairs]]></category>
+		<category><![CDATA[Guardian Data Store]]></category>
+		<category><![CDATA[Public Sector]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=2153</guid>
+		<description><![CDATA[<p>The NHS is supposed to be immune from the Public Sector Cuts. Published in The Guardian Data Blog new freedom of information analysis shows that more than 50,000 NHS jobs are at risk. I have taken the data and produced this visualisation. The map points turn deep red in line with the number of proposed [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/nhs-cuts-to-jobs/">NHS cuts to jobs</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fnhs-cuts-to-jobs%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>The NHS is supposed to be immune from the Public Sector Cuts. Published in <a href="http://www.guardian.co.uk/news/datablog/2011/feb/23/nhs-cuts-list">The Guardian Data Blog</a> new freedom of information analysis shows that more than 50,000 NHS jobs are at risk.</p>
+<p>I have taken the data and produced this visualisation. The map points turn deep red in line with the number of proposed cuts in a particular. Clicking on a map point will update the bar chart showing cuts by individual NHS trusts. Clicking on a bar will show text information on cuts and where they are planned.</p>
+<p><script src="http://public.tableausoftware.com/javascripts/api/viz_v1.js" type="text/javascript"></script><object class="tableauViz" style="display: none;" width="650" height="1000"><param name="name" value="NHSRedundancies/NHSProposedCuts" /><param name="tabs" value="no" /><param name="toolbar" value="yes" /></object><noscript>NHS Proposed Cuts<br />
+<a href="#"><img alt="NHS Proposed Cuts " src="http://public.tableausoftware.com/static/images/NH/NHSRedundancies/NHSProposedCuts/1_rss.png" height="100%" /></a></noscript></p>
+<div style="width: 650px; height: 22px; padding: 0px 10px 0px 0px; color: black; font: normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float: right; padding-right: 8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/NHSRedundancies/NHSProposedCuts" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>Please comment and lets us know what you think of this viz and how the cuts will affect you.</p>
+<p>Darren</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/nhs-cuts-to-jobs/">NHS cuts to jobs</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fnhs-cuts-to-jobs%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/nhs-cuts-to-jobs/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Pareto Graphs in Tableau Part 4 of 4 &#8211; Flexible Reference Lines and Parameters</title>
+		<link>http://interworks.co.uk/blog/pareto-blog-4-flexible-reference-lines-and-parameters/</link>
+		<comments>http://interworks.co.uk/blog/pareto-blog-4-flexible-reference-lines-and-parameters/#comments</comments>
+		<pubDate>Wed, 05 Jan 2011 12:05:22 +0000</pubDate>
+		<dc:creator><![CDATA[Darren Evans]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Parameters]]></category>
+		<category><![CDATA[pareto]]></category>
+		<category><![CDATA[Table Calculation]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1927</guid>
+		<description><![CDATA[<p>This final blog in the Pareto series will look at how to use parameters and advanced table calculations to give this Pareto chart a ‘flexible’ reference line. To explain why the ‘flexible’ reference line is important consider the images below. This image is the Pareto we have created in the previous blog with two reference [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/pareto-blog-4-flexible-reference-lines-and-parameters/">Pareto Graphs in Tableau Part 4 of 4 &#8211; Flexible Reference Lines and Parameters</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fpareto-blog-4-flexible-reference-lines-and-parameters%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>This final blog in the Pareto series will look at how to use parameters and advanced table calculations to give this Pareto chart a ‘flexible’ reference line. To explain why the ‘flexible’ reference line is important consider the images below.</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/Par12.png"><img class="alignnone size-full wp-image-1933" title="Par1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/Par12.png" alt="" width="408" height="276" /></a></p>
+<p>This image is the Pareto we have created in the previous blog with two reference lines added forming a crosshair. One reference line is set to 80% profit and the other 7.55% Customer base. To create this I simply added the 80% profit reference line and then hovered the mouse pointer over the point on the line at which the reference lines intercept one another. This displayed the % Customer base in the tool tip allowing me to create the second reference line.</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/Par2.png"><img class="alignnone size-full wp-image-1931" title="Par2" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/Par2.png" alt="" width="408" height="276" /></a></p>
+<p>This second image shows the Pareto filtered to just show one year as I needed to simulate a change in the underlying data. As the reference lines are manual they no longer intercept at the correct point on the graph.</p>
+<p>So whilst this technique is fine for performing this analysis as a one off it would be much more beneficial if the reference line would self adjust itself whenever new data was added to the back end system or a filter applied. Using Table Calculations in Tableau we can achieve this.</p>
+<p>Step 1 &#8211; Using the Pareto created in blogs 2 and 3 set up a reference line on the % Profit Axis. Right click on the Axis and select Add Reference Line.</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png" alt="" width="408" height="276" /></a></p>
+<p>Step 2 – In the pop up box use the settings below.</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/2.png" alt="" width="408" height="359" /></a></p>
+<p>Step 3 – You should now see the reference line below:</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/3.png" alt="" width="408" height="276" /></a></p>
+<p>Step 4 – Now we are going to create a calculated field that plots the ‘intercept’ line. This calculated field will use the following logic:</p>
+<p>IF % Profit is less than or equal to 80% THEN</p>
+<p>% Customer Base</p>
+<p>ELSE</p>
+<p>Null</p>
+<p>END IF</p>
+<p>Step 5 &#8211; Right click on the measures shelf and click on ‘Add Calculated Field’. Copy and paste the following into the pop up window. Save the calculated field as ‘Intercept’.</p>
+<p>If [% Profit] &lt;= 0.8 then</p>
+<p>[% Customer Base]</p>
+<p>else</p>
+<p>null</p>
+<p>end</p>
+<p>If you are new to calculated fields please consider the meaning of this code.</p>
+<p>Right click on the calculated field on the measures shelf and set the number format to Percentage.</p>
+<p>Step 6 – Add Intercept to the level of detail. First ensure that you have the Marks Shelf set to ‘All’ marks. Drag the ‘Intercept’ calculated field from the Measures shelf onto the level of detail shelf.</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/4.png" alt="" width="408" height="276" /></a></p>
+<p>Step 7 – Set the Intercept calculated field to calculate along Customer Name. Click on the Intercept pill in the level of detail shelf. On the pop up menu scroll to ‘Compute Using’ and select ‘% Customer Base’</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/5.png" alt="" width="408" height="276" /></a></p>
+<p>Step 8 – Add the Intercept reference line to the % Customer Base axis. Right Click on the axis and select ‘Add Reference Line’.</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/6.png" alt="" width="408" height="276" /></a></p>
+<p>Step 9 – Set up the reference line with the values below. This will display the line at the customer with the highest Intercept value. As the calculated field was set to only give values to the customers underneath the % Profit Reference line this will perfectly intercept the two values.</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/7.png" alt="" width="408" height="377" /></a></p>
+<p>Step 10 &#8211; This reference line will self adjust to show the correct % Customer base that corresponds to 80% of the profit whenever new data is added or filters applied. Try this out on the visualisation below to see how the viz updates when you change the year filter.</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/16.png" alt="" width="536" height="276" /></a></p>
+<p>This completes the Pareto chart. The reference line cross hairs should update with the parameter.</p>
+<p><script src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script><object class="tableauViz" style="display: none;" width="600" height="520"><param name="name" value="ParetoBlog/Pareto" /><param name="toolbar" value="yes" /><param name="tabs" value="yes" /></object><br />
+<noscript>Pareto<br />
+<a href="#"><img alt="Pareto  " src="http://public.tableausoftware.com/static/images/Pa/ParetoBlog/Pareto/1_rss.png" height="100%" /></a></noscript></p>
+<div style="width: 600px; height: 22px; padding: 0px 10px 0px 0px; color: black; font: normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float: right; padding-right: 8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/ParetoBlog/Pareto" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>Step 11 – Another great addition to this visualisation would be if the user could specify the % Profit that they want to analyse on the visualisation without having to amend the calculate field. We can achieve this using another Tableau 6 feature – parameters. Right click on the measures shelf and select ‘Create Parameter’</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/9.png" alt="" width="408" height="276" /></a></p>
+<p>Step 12 – Set the Parameter up with the attributes below and call it ‘Select % Profit’</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/10.png" alt="" width="489" height="276" /></a></p>
+<p>Step 13 – The Parameter now appears in a new Parameters shelf below the measures shelf. Right Click on the Parameter and change its default number format to percentage.</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/11.png" alt="" width="408" height="276" /></a></p>
+<p>Step 14 – Amend the % Profit reference line to look at the parameter. Drag the parameter onto the level of detail shelf and then right click on the % Profit axis. Select Edit Reference Line.</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/12.png" alt="" width="408" height="276" /></a></p>
+<p>Step 15 – Change the attributes of the reference line to the values below. This will now drive the reference line using the &#8216;Select % Profit&#8217; parameter.</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/13.png" alt="" width="408" height="354" /></a></p>
+<p>Step 16 – Right click on the parameter and choose display parameter control. Using the parameter control that appears adjust the values and you will see the reference line move in line with the parameter value. Test this and then set the value to 60%.</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/14.png" alt="" width="408" height="276" /></a></p>
+<p>Step 17 – This has worked as the Y Axis adjusts to the value selected in the parameter but the crosshair no longer intercepts the graph. To achieve this we need to amend our intercept calculated field. Right click on intercept on the measures shelf and choose edit.</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/15.png" alt="" width="408" height="276" /></a></p>
+<p>Step 18 – Delete the value &#8216;0.8&#8217; from the first line of the statement and replace it with our parameter by double clicking on the parameter name in the parameter window within the calculated field pop up. Check that your calculated field matches the syntax below.</p>
+<p><a href="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.png"><img class="alignnone size-full wp-image-1909" title="1" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/16.png" alt="" width="408" height="276" /></a></p>
+<p>The Pareto Chart is now complete with all the enhancements I published back in the first blog. The completed chart should look something similar to the chart below:</p>
+<p><script src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script><object class="tableauViz" style="display: none;" width="675" height="516"><param name="name" value="ParetoWParameter/Paretowithparameter" /><param name="toolbar" value="yes" /><param name="tabs" value="no" /></object><br />
+<noscript>Pareto with parameter<br />
+<a href="#"><img alt="Pareto with parameter " src="http://public.tableausoftware.com/static/images/Pa/ParetoWParameter/Paretowithparameter/1_rss.png" height="100%" /></a></noscript></p>
+<div style="width: 675px; height: 22px; padding: 0px 10px 0px 0px; color: black; font: normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float: right; padding-right: 8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/ParetoWParameter/Paretowithparameter" target="_blank">Powered by Tableau</a></div>
+<p>I hope you have enjoyed these blogs and can apply this powerful visualisation to your business data with good effect. We would love to hear back with any comments or examples of further enhancements you have made!</p>
+</div>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/pareto-blog-4-flexible-reference-lines-and-parameters/">Pareto Graphs in Tableau Part 4 of 4 &#8211; Flexible Reference Lines and Parameters</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fpareto-blog-4-flexible-reference-lines-and-parameters%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/pareto-blog-4-flexible-reference-lines-and-parameters/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>Track Santa!</title>
+		<link>http://interworks.co.uk/blog/track-santa/</link>
+		<comments>http://interworks.co.uk/blog/track-santa/#comments</comments>
+		<pubDate>Wed, 22 Dec 2010 11:47:59 +0000</pubDate>
+		<dc:creator><![CDATA[Darren Evans]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Entertainment]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1954</guid>
+		<description><![CDATA[<p>Santa Claus was so impressed with the productivity gains in his workshop following his upgrade to Tableau version 6 this year that he has given the data studio exclusive access to the homing beacon located on Rudolf&#8217;s nose! This means that for the first time ever kids (and big kids!) all over the world will [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/track-santa/">Track Santa!</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Ftrack-santa%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Santa Claus was so impressed with the productivity gains in his workshop following his upgrade to Tableau version 6 this year that he has given the data studio exclusive access to the homing beacon located on Rudolf&#8217;s nose!</p>
+<p style="text-align: center;"><img class="aligncenter" title="Rudolf" src="http://www.clipartpal.com/_thumbs/pd/holiday/christmas/rudolph2.png" alt="" width="278" height="368" /></p>
+<p>This means that for the first time ever kids (and big kids!) all over the world will be able to find out Santa&#8217;s location during his Christmas Eve deliveries! He is due to set off at 14:00GMT on Christmas Eve</p>
+<p>So if you find yourself wondering ‘where is Santa right now?!’ just log on to www.interworks.co.uk and find out!</p>
+<p><script src="http://public.tableausoftware.com/javascripts/api/viz_v1.js" type="text/javascript"></script><object class="tableauViz" style="display: none;" width="500" height="516"><param name="name" value="SantablogTEST/SantaTracker" /><param name="toolbar" value="yes" /><param name="tabs" value="no" /></object><noscript>Santa Tracker<br />
+<a href="#"><img alt="Santa Tracker " src="http://public.tableausoftware.com/static/images/Sa/SantablogTEST/SantaTracker/1_rss.png" height="100%" /></a></noscript></p>
+<div style="width: 500px; height: 22px; padding: 0px 10px 0px 0px; color: black; font: normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float: right; padding-right: 8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/SantablogTEST/SantaTracker" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>Merry Christmas!</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/track-santa/">Track Santa!</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Ftrack-santa%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/track-santa/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+		<item>
+		<title>Pareto Graphs in Tableau Part 3 of 4 &#8211; Advanced Pareto Curve and Dual Axis</title>
+		<link>http://interworks.co.uk/blog/pareto-blog-3-advanced-pareto-curve-and-dual-axis/</link>
+		<comments>http://interworks.co.uk/blog/pareto-blog-3-advanced-pareto-curve-and-dual-axis/#comments</comments>
+		<pubDate>Mon, 20 Dec 2010 11:12:32 +0000</pubDate>
+		<dc:creator><![CDATA[Darren Evans]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Calculated Fields]]></category>
+		<category><![CDATA[pareto]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1853</guid>
+		<description><![CDATA[<p>This blog continues with the graph produced in part 2 where I started to create the curve aspect of the Pareto chart. Step 1 &#8211; Extract the data. This step is essential as it allows us to use the &#8216;Count Distinct&#8217; measure type. Click on the Data menu item and select &#8216;Extract Data&#8217;. Click OK [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/pareto-blog-3-advanced-pareto-curve-and-dual-axis/">Pareto Graphs in Tableau Part 3 of 4 &#8211; Advanced Pareto Curve and Dual Axis</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fpareto-blog-3-advanced-pareto-curve-and-dual-axis%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>This blog continues with the graph produced in part 2 where I started to create the curve aspect of the Pareto chart.</p>
+<p>Step 1 &#8211; Extract the data. This step is essential as it allows us to use the &#8216;Count Distinct&#8217; measure type. Click on the Data menu item and select &#8216;Extract Data&#8217;. Click OK on the pop up box. This creates an extract of the source data.</p>
+<p><img title="Extract Data" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/3-1.jpg" alt="Extract Data" width="607" height="321" /></p>
+<p>Step 2: Change the Customer Name Dimension into a Measure. Click on the Customer Name tablet on the column shelf. Enter the Measure sub menu and choose &#8216;Count (Distinct)&#8217;.</p>
+<p><img title="Extract Data" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/3-2.jpg" alt="Extract Data" width="607" height="321" /></p>
+<p>Step 3: Bring another copy of the Customer Name dimension into the level of detail so that graph will reflect all customers. Drag Customer Name from the dimensions window onto the level of detail window on the Marks shelf.</p>
+<p><img title="Extract Data" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/3-3.jpg" alt="Extract Data" width="607" height="321" /></p>
+<p>Step 4: Sort Customers by Sum(Profit). Click on the Customer Name tablet in the level of detail shelf and choose sort.</p>
+<p><img title="Extract Data" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/3-4.jpg" alt="Extract Data" width="607" height="321" /></p>
+<p>Step 5<em>: </em>Sort by Profit (Sum Aggregation) in descending order.</p>
+<p><img title="Extract Data" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/3-5.jpg" alt="Extract Data" width="391" height="321" /></p>
+<p>Step 6: Display the Customer Name count distinct as a running total Click on the CNTD(Customer Name) tab and choose &#8216;Quick Table Calculation&#8217; and &#8216;Running Total&#8217;</p>
+<p><img title="Extract Data" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/3-6.jpg" alt="Extract Data" width="607" height="321" /></p>
+<p>Step 7: Click on CNTD(Customer Name) again and this time select &#8216;Edit Table Calculation&#8217;.</p>
+<p><img title="Extract Data" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/3-7.jpg" alt="Extract Data" width="607" height="321" /></p>
+<p>Step 8: Display Customer Count as a % of total Customers. Click on the &#8216;Perform Secondary Calculation on Result&#8217; to expand the window. Choose Percentage of Total as the secondary type. In both the &#8216;Summarize Values&#8217; drop downs choose Customer Name.</p>
+<p><img title="Extract Data" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/3-8.jpg" alt="Extract Data" width="436" height="321" /></p>
+<p>Step 9: Ensure that the configuration matches the above and click Customise. This is a new feature in Tableau 6 that allows us to convert the Table Calculations into Calculated Fields. Call this field &#8216;% Customer Base&#8217; and Click OK. There will be one final pop up, click OK here. Notice how the new field &#8216;% Customer Base&#8217; appears now in the measures shelf.</p>
+<p><img title="Extract Data" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/3-9.jpg" alt="Extract Data" width="607" height="321" /></p>
+<p>Step 10: Repeat steps 6-8 on the Sum(Profit) Tablet. Call the Calculated Field &#8216;% Profit&#8217;</p>
+<p>Step 11: Change mark type to a line. At the moment the curve will be displaying as a series of circle marks on a scatter type graph. To change this to a line click on the marks shelf and change the drop down from &#8216;Automatic&#8217; to &#8216;Line&#8217;. This will complete the line graph element of chart.</p>
+<p><img title="Extract Data" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/3-17.jpg" alt="Extract Data" width="607" height="321" /></p>
+<p>Step 12: Dual Axis! Now the line graph element is in place it is time to take advantage of another brilliant Tableau 6 feature: Dual Axis. Drag profit from the measures shelf on to the rows shelf next to the existing table calculation. This will produce another line graph underneath the original graph.</p>
+<p><img title="Extract Data" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/3-18.jpg" alt="Extract Data" width="607" height="321" /></p>
+<p>Step 13: Click on the new Sum(Profit) tab and choose &#8216;Dual Axis&#8217; . This will compbine the two lines on the same graph.</p>
+<p><img title="Extract Data" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/3-19.jpg" alt="Extract Data" width="607" height="321" /></p>
+<p><img src="http://www.interworks.co.uk/wp-content/uploads/2010/12/3-20.jpg" alt="Line Graph" width="614" height="325" /></p>
+<p>Step 14: Change the Sum(Profit) mark type from line chart to bar chart. hover the mouse over the header on the Marks Shelf to reveal a drop down arrow. Click on the arrow and select &#8216;Multiple Mark Types&#8217;</p>
+<p><img title="Extract Data" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/3-21.jpg" alt="Extract Data" width="607" height="321" /></p>
+<p>Step 15: This gives an additional option in the marks pane. Click the right arrow then cycle through the rows on the graph. Stop on Sum(Profit) and change the mark type to bar by clicking on the drop down.</p>
+<p><img title="Extract Data" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/3-22.jpg" alt="Extract Data" width="607" height="321" /></p>
+<p>Step 16: Drag Sum(Profit) on the Rows shelf to the far left. This will make sure that the line appears over the top of the bar chart. Also drag the size bar in the marks shelf to the far left. This will stop the bars from overlapping.</p>
+<p><img title="Extract Data" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/3-23.jpg" alt="Extract Data" width="607" height="321" /></p>
+<p>Congratulations! This lengthy process has resulted in the finished Pareto Graph.</p>
+<p><script src="http://public.tableausoftware.com/javascripts/api/viz_v1.js" type="text/javascript"></script></p>
+<p><object style="display: none;" width="600" height="516" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"><param name="name" value="Pareto2/Pareto" /><param name="toolbar" value="yes" /><param name="tabs" value="no" /><embed style="display: none;" type="application/x-shockwave-flash" width="600" height="516" tabs="no" toolbar="yes" name="Pareto2/Pareto" /></object></p>
+<p><noscript>Pareto<br />
+<a href="#"><img alt="Pareto " src="http://public.tableausoftware.com/static/images/Pa/Pareto2/Pareto/1_rss.png" height="100%" /></a></noscript></p>
+<div style="width: 600px; height: 22px; padding: 0px 10px 0px 0px; color: black; font: normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float: right; padding-right: 8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/Pareto2/Pareto" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>In the <a href="http://www.interworks.co.uk/blog/the-data-studio-blog/darren-evans/pareto-blog-4-flexible-reference-lines-and-parameters">4th and final part of this blog</a> I will look at how parameters can be used to create a flexible reference line that will change with your data and allow you to gain even greater insight from your Pareto graph.</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/pareto-blog-3-advanced-pareto-curve-and-dual-axis/">Pareto Graphs in Tableau Part 3 of 4 &#8211; Advanced Pareto Curve and Dual Axis</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fpareto-blog-3-advanced-pareto-curve-and-dual-axis%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/pareto-blog-3-advanced-pareto-curve-and-dual-axis/feed/</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+		</item>
+		<item>
+		<title>Pareto Graphs in Tableau Part 2 of 4 &#8211; Creating a basic &#8216;pareto curve&#8217;</title>
+		<link>http://interworks.co.uk/blog/pareto-blog-2-creating-a-basic-pareto-curve/</link>
+		<comments>http://interworks.co.uk/blog/pareto-blog-2-creating-a-basic-pareto-curve/#comments</comments>
+		<pubDate>Fri, 17 Dec 2010 09:26:15 +0000</pubDate>
+		<dc:creator><![CDATA[Darren Evans]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Calculated Fields]]></category>
+		<category><![CDATA[pareto]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1812</guid>
+		<description><![CDATA[<p>In this blog I will run through the steps required to produce the Pareto Curve that forms part of the Pareto Graph that I published in the first blog. Before I begin it is important that if you intend to create this for yourself then you need to be using at least Tableau 6.0. At [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/pareto-blog-2-creating-a-basic-pareto-curve/">Pareto Graphs in Tableau Part 2 of 4 &#8211; Creating a basic &#8216;pareto curve&#8217;</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fpareto-blog-2-creating-a-basic-pareto-curve%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>In this blog I will run through the steps required to produce the Pareto Curve that forms part of the Pareto Graph that I published in the <a title="Blog 1" href="http://www.interworks.co.uk/blog/the-data-studio-blog/pareto-graphs-in-tableau">first blog</a>.</p>
+<p>Before I begin it is important that if you intend to create this for yourself then you need to be using at least Tableau 6.0. At the time of writing Tableau 6 is still a new release and you will not be able to create the same effect using 5.2 or lower.</p>
+<p>If you do not own the new release of Tableau software you can download a free trial copy of the software from this <a title="Tableau Software" href="http://www.tableausoftware.com/products/desktop">link</a>.</p>
+<p>Step 1: Open Tableau and connect to the Sample &#8211; Superstore (Excel) dataset.</p>
+<p><img title="Customer Profit Bar Chart" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/8.jpg" alt="Main Menu" width="625" height="341" /></p>
+<p>Step 2: Produce a simple bar chart looking at Customers by Profit. Drag &#8216;Customer Name&#8217; to the columns shelf and &#8216;Profit&#8217; to the rows shelf.</p>
+<p><img title="Customer Profit Bar Chart" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/1.jpg" alt="Customer Profit Bar Chart" width="625" height="341" /></p>
+<p>Step 3: There are a lot of customers so zoom out to view the whole graph. Use the display dropdown box and choose entire view to see the whole graph.</p>
+<p><img title="Expand View Menu" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/2.jpg" alt="Expand View Menu" width="625" height="341" /></p>
+<p><img title="Customer Profit Bar Chart" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/3.jpg" alt="Customer Profit Bar Chart" width="625" height="341" /></p>
+<p>Step 4: Sort the Customers by Profit in descending order. Click on the tablet that represents Customer Name on the column shelf and select &#8216;Sort&#8230;&#8217;. In the pop up window choose to sort by the field &#8216;Profit&#8217; and the sort order descending.</p>
+<p><img title="Sort Menu" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/4.jpg" alt="Sort Menu" width="412" height="440" /></p>
+<p><img title="Customer Profit Bar Chart" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/5.jpg" alt="Customer Profit Bar Chart" width="625" height="341" /></p>
+<p>Step 5: Add a Table Calculation to show a running total. Click on the Profit tablet in the Rows shelf and hover over the menu item &#8216;Quick Table Calculation&#8217;. Select &#8216;Running Total&#8217;.</p>
+<p><img title="Customer Profit Bar Chart" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/6.jpg" alt="Customer Profit Bar Chart" width="625" height="341" /></p>
+<p>This will create the chart shown below. This bar chart showing the running total of profit by customer is the same shape as the line chart curve in the original blog post. In the next post I shall talk through the steps required to convert this bar chart into a line chart plotting % running total profit against % Customer Base.</p>
+<p><img title="Customer Profit Bar Chart" src="http://www.interworks.co.uk/wp-content/uploads/2010/12/7.jpg" alt="Customer Profit Bar Chart" width="625" height="341" /></p>
+<p>Please save a copy of this and continue to <a href="http://www.interworks.co.uk/blog/the-data-studio-blog/darren-evans/pareto-blog-3-advanced-pareto-curve-and-dual-axis">part 3</a></p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/pareto-blog-2-creating-a-basic-pareto-curve/">Pareto Graphs in Tableau Part 2 of 4 &#8211; Creating a basic &#8216;pareto curve&#8217;</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fpareto-blog-2-creating-a-basic-pareto-curve%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/pareto-blog-2-creating-a-basic-pareto-curve/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Pareto Graphs In Tableau &#8211; Part 1 of 4</title>
+		<link>http://interworks.co.uk/blog/pareto-graphs-in-tableau/</link>
+		<comments>http://interworks.co.uk/blog/pareto-graphs-in-tableau/#comments</comments>
+		<pubDate>Tue, 07 Dec 2010 10:29:11 +0000</pubDate>
+		<dc:creator><![CDATA[Darren Evans]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Business Intelligence]]></category>
+		<category><![CDATA[Dual Axis]]></category>
+		<category><![CDATA[Parameters]]></category>
+		<category><![CDATA[pareto]]></category>
+		<category><![CDATA[Table Calculation]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1755</guid>
+		<description><![CDATA[<p>At InterWorks we love communicating information back to our clients using Pareto charts. Showing decision makers the results of 80/20 analysis in their organisation is a often a real eye-opener, helping to identify and resolve previously hidden problems leading to gains in both profitability and productivity. Using some of the new features found in the brilliant  [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/pareto-graphs-in-tableau/">Pareto Graphs In Tableau &#8211; Part 1 of 4</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fpareto-graphs-in-tableau%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>At InterWorks we love communicating information back to our clients using Pareto charts. Showing decision makers the results of 80/20 analysis in their organisation is a often a real eye-opener, helping to identify and resolve previously hidden problems leading to gains in both profitability and productivity.</p>
+<p>Using some of the new features found in the brilliant  Tableau 6 it is now possible to create fully functional Pareto Charts. Below is a Pareto Chart I created using the sample &#8216;Superstore&#8217; dataset that ships with Tableau desktop:</p>
+<p><script src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script><object class="tableauViz" style="display: none;" width="600" height="520"><param name="name" value="ParetoBlog/Pareto" /><param name="toolbar" value="yes" /><param name="tabs" value="yes" /></object><br />
+<noscript>Pareto<br />
+<a href="#"><img alt="Pareto " src="http://public.tableausoftware.com/static/images/Pa/ParetoBlog/Pareto/1_rss.png" height="100%" /></a></noscript></p>
+<div style="width: 600px; height: 22px; padding: 0px 10px 0px 0px; color: black; font: normal 8pt verdana,helvetica,arial,sans-serif;">
+<div style="float: right; padding-right: 8px;"><a href="http://www.tableausoftware.com/public?ref=http://public.tableausoftware.com/views/ParetoBlog/Pareto" target="_blank">Powered by Tableau</a></div>
+</div>
+<p>Represented in blue is the bar element of the chart. There are 795 customers in the superstore data and each bar represents that customer&#8217;s total profit. The Orange line represents the running total of the % contribution to the overall profit that the customer is making. I have highlighted an area in red to the top of the chart, this area represents losses &#8211; notice how the line peaks at 144.6% and then descends when it reaches the loss making customers until it finishes at 100%. If the superstore had not traded with these loss makers then total profits would have been 44.6% higher.</p>
+<p>The ‘cross hair’ style reference lines are set to show the percentage of the customer base that generates 80% of the profit. We can see that for the superstore 80% of the profit is being generated by just 7.55% of the customer base. Using the parameter control at the top of the graph the user can specify the % profit being displayed on the cross hair.</p>
+<p>In just a few seconds of viewing this chart has communicated that the superstore is reliant on a small % of their customer base to support their business whilst they are also carrying 34% of their customer base at a cost of $135m to the company in Gross Profit. This information would definitely be of interest to the owners, senior management and shareholders of the superstore company!</p>
+<p>Creating the Pareto graph is quite an advanced use of Tableau and is a great opportunity for me to demonstrate some of the powerful new features in Tableau version 6 including dual axis and parameters as well as the enhancements to both table calculations and calculated fields. Over the next week I shall be publishing a series of blogs building up to producing the main Pareto chart in this diagram.</p>
+<p>For Part 2 <a href="http://www.interworks.co.uk/blog/pareto-blog-2-creating-a-basic-pareto-curve">Click Here</a></p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/pareto-graphs-in-tableau/">Pareto Graphs In Tableau &#8211; Part 1 of 4</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fpareto-graphs-in-tableau%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/pareto-graphs-in-tableau/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+	</channel>
+</rss>

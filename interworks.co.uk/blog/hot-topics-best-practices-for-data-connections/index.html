@@ -1,0 +1,656 @@
+<!DOCTYPE HTML>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<head>
+        <meta charset="utf-8" />
+	<meta name="google-site-verification" content="o-LcfCT3_jYXrNT5Ov5EH8B62M8rrRVIi1OgdWHOyig" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+    <link rel="pingback" href="../../xmlrpc.php" />
+    <link rel="alternate" type="application/rss+xml" title="InterWorks &#8211; Tableau Software &amp; Business Intelligence Consulting" href="../../feed/index.html" />
+
+    
+<!-- This site is optimized with the Yoast WordPress SEO plugin v2.0.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<title>Hot Topics: Best Practices for Data Connections</title>
+
+<link rel="stylesheet" href="../../wp-content/plugins/sitepress-multilingual-cms/res/css/language-selector.css?v=3.1.9.3" type="text/css" media="all" />
+<link rel="canonical" href="index.html" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Hot Topics: Best Practices for Data Connections" />
+<meta property="og:description" content="Working on the InterWorks Expert Hotline I come into contact with many clients every day assisting them with all aspects of their Tableau deployment from data preparation to best practice dashboard design all the way through to complex table calculations and Tableau Server tuning. This new series of blogs will pick up hot topics that are commonly &hellip;" />
+<meta property="og:url" content="http://interworks.co.uk/blog/hot-topics-best-practices-for-data-connections/" />
+<meta property="og:site_name" content="InterWorks - Tableau Software &amp; Business Intelligence Consulting" />
+<meta property="article:tag" content="data connection,data preparation,Tableau,Tableau 9.0" />
+<meta property="article:section" content="Blog" />
+<meta property="article:published_time" content="2015-06-05T09:30:22+00:00" />
+<meta property="article:modified_time" content="2015-06-05T10:33:08+00:00" />
+<meta property="og:updated_time" content="2015-06-05T10:33:08+00:00" />
+<meta property="og:image" content="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.20-1024x934.png" />
+<meta property="og:image" content="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.06.22-1024x251.png" />
+<meta property="og:image" content="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.06.41-1024x458.png" />
+<meta property="og:image" content="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.06.52-300x294.png" />
+<meta property="og:image" content="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.04-292x300.png" />
+<meta property="og:image" content="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.20-300x274.png" />
+<meta property="og:image" content="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.31-265x300.png" />
+<meta property="og:image" content="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.46-120x300.png" />
+<meta property="og:image" content="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.56-300x69.png" />
+<meta property="og:image" content="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.08.02-1024x610.png" />
+<meta property="og:image" content="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.08.08-1024x260.png" />
+<meta property="og:image" content="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.08.23-300x212.png" />
+<meta property="og:image" content="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.08.34-300x206.png" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:description" content="Working on the InterWorks Expert Hotline I come into contact with many clients every day assisting them with all aspects of their Tableau deployment from data preparation to best practice dashboard design all the way through to complex table calculations and Tableau Server tuning. This new series of blogs will pick up hot topics that are commonly [&hellip;]"/>
+<meta name="twitter:title" content="Hot Topics: Best Practices for Data Connections"/>
+<meta name="twitter:site" content="@interworks"/>
+<meta name="twitter:domain" content="InterWorks - Tableau Software &amp; Business Intelligence Consulting"/>
+<meta name="twitter:image:src" content="http://interworks.co.uk/wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.20-1024x934.png"/>
+<meta name="twitter:creator" content="@interworks"/>
+<!-- / Yoast WordPress SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="InterWorks - Tableau Software &amp; Business Intelligence Consulting &raquo; Feed" href="../../feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="InterWorks - Tableau Software &amp; Business Intelligence Consulting &raquo; Comments Feed" href="../../comments/feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="InterWorks - Tableau Software &amp; Business Intelligence Consulting &raquo; Hot Topics: Best Practices for Data Connections Comments Feed" href="feed/index.html" />
+<link rel='stylesheet' id='sociablecss-css'  href='../../wp-content/plugins/sociable/css/sociable.css?ver=4.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='layerslider_css-css'  href='../../wp-content/plugins/LayerSlider/css/layerslider.css?ver=3.6.2' type='text/css' media='all' />
+<link rel='stylesheet' id='contact-form-7-css'  href='../../wp-content/plugins/contact-form-7/includes/css/styles.css?ver=4.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='se-link-styles-css'  href='../../wp-content/plugins/search-everything/static/css/se-styles.css?ver=4.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='leadin-subscribe-css-css'  href='../../wp-content/plugins/leadin/assets/css/build/leadin-subscribe.css?ver=4.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='evcal_cal_default-css'  href='../../wp-content/plugins/eventON/assets/css/eventon_styles.css?ver=4.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='evo_dynamic_css-css'  href='http://interworks.co.uk/wp-admin/admin-ajax.php?action=evo_dynamic_css&#038;ver=4.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='evcal_google_fonts-css'  href='http://fonts.googleapis.com/css?family=Oswald%3A400%2C300%7COpen+Sans%3A400%2C300&#038;ver=4.1.5' type='text/css' media='screen' />
+<link rel='stylesheet' id='evo_font_icons-css'  href='../../wp-content/plugins/eventON/assets/fonts/font-awesome.css?ver=4.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='fancybox-css'  href='../../wp-content/plugins/easy-fancybox/fancybox/jquery.fancybox-1.3.7.min.css?ver=1.5.7' type='text/css' media='screen' />
+<link rel='stylesheet' id='jetpack_css-css'  href='../../wp-content/plugins/jetpack/css/jetpack.css?ver=3.4.3' type='text/css' media='all' />
+<link rel='stylesheet' id='wp_dlmp_styles-css'  href='../../wp-content/plugins/download-monitor/page-addon/styles.css?ver=4.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='hubspot-css'  href='../../wp-content/plugins/hubspot/css/hubspot.css?ver=4.1.5' type='text/css' media='all' />
+<!-- This site uses the Google Analytics by Yoast plugin v5.3.3 - Universal disabled - https://yoast.com/wordpress/plugins/google-analytics/ -->
+<script type="text/javascript">
+
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-38237981-1']);
+	_gaq.push(['_gat._forceSSL']);
+	_gaq.push(['_trackPageview']);
+
+	(function () {
+		var ga = document.createElement('script');
+		ga.type = 'text/javascript';
+		ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(ga, s);
+	})();
+
+</script>
+<!-- / Google Analytics by Yoast -->
+<script type='text/javascript' src='../../wp-includes/js/jquery/jquery.js?ver=1.11.1'></script>
+<script type='text/javascript' src='../../wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<script type='text/javascript' src='../../wp-content/plugins/sociable/js/sociable.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/plugins/sociable/js/vuible.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/plugins/sociable/js/addtofavorites.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/plugins/LayerSlider/js/layerslider.kreaturamedia.jquery.js?ver=3.6.2'></script>
+<script type='text/javascript' src='../../wp-content/plugins/LayerSlider/js/jquery-easing-1.3.js?ver=1.3.0'></script>
+<script type='text/javascript' src='../../wp-content/plugins/sitepress-multilingual-cms/res/js/jquery.cookie.js?ver=3.1.9.3'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpml_browser_redirect_params = {"pageLanguage":"en","languageUrls":{"en_US":"http:\/\/interworks.co.uk\/blog\/hot-topics-best-practices-for-data-connections\/","en":"http:\/\/interworks.co.uk\/blog\/hot-topics-best-practices-for-data-connections\/","US":"http:\/\/interworks.co.uk\/blog\/hot-topics-best-practices-for-data-connections\/"},"cookie":{"name":"_icl_visitor_lang_js","domain":"interworks.co.uk","path":"\/","expiration":24}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/sitepress-multilingual-cms/res/js/browser-redirect.js?ver=3.1.9.3'></script>
+<link rel='shortlink' href='http://wp.me/p5CyOF-3e6' />
+	<style type='text/css'>
+	.download-info .download-button {
+		background-image: url(../../wp-content/plugins/download-monitor/page-addon/downloadbutton.gif);
+	}
+	.download-info .more-button {
+		background-image: url(../../wp-content/plugins/download-monitor/page-addon/morebutton.gif);
+	}
+	</style>
+<script type="text/javascript">
+	window._se_plugin_version = '8.1.3';
+</script>
+<meta name="generator" content="WPML ver:3.1.9.3 stt:1,39,4,3;0" />
+<script type='text/javascript'>var base_url_sociable = 'http://interworks.co.uk/wp-content/plugins/sociable/'</script><script type='text/javascript' src='http://apis.google.com/js/plusone.js'></script><link href="../../wp-content/themes/Sterling/style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="../../wp-content/themes/Sterling/css/primary-red.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="../../wp-content/themes/Sterling/css/_mobile.css" rel="stylesheet" type="text/css" media="screen" />
+<link rel="shortcut icon" href="../../wp-content/uploads/2014/03/favicon.png"/>
+
+
+<!-- EventON Version -->
+<meta name="generator" content="EventON 2.2.4" />
+
+<style type="text/css">.broken_link, a.broken_link {
+	text-decoration: line-through;
+}</style><link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600&amp;lang=en-SG" />
+
+<!--styles generated by site options-->
+<style type='text/css'>
+a, a:hover {color: #a41d21;font-weight:bold}
+
+*{font-family:"Open Sans",arial,sans-serif !important;}
+.top-aside .social_icons a {font-weight:600;padding-top:3px;}
+nav a {font-size:14.5px;padding:3px 4px;}
+header .sub-menu a, .sidebar li, input, textarea, select {font-size:12px;}
+div.breadcrumbs {font-size:10px;}
+.metadata, .small_banner .page-banner-description {font-size:12px;}
+.footer-callout-content p {font-size:16px;}
+.social_icons a {padding-bottom:8px;}
+.small_banner .page-banner-heading {font-weight:300;padding-bottom:3px;}
+h3 {font-size: 16px;font-weight: 600;}
+.business-hours .day, strong, .tabs_type_1 dt, .tabs_type_2 dt, .accordion dt, .tt-contentbox-title span, .tt-dropcap-round, .tt-dropcap-square, .tt-dropcap-text {font-weight: 600;}
+.preview h2, .preview h2 a {font-size:22px;}
+.widget-heading {font-size: 15px;font-weight: 600;}
+.tt-button, #content-container p, p.callout-heading, .footer-content p, .banner-slider p{font-family:arial,sans-serif !important;}
+p.callout-heading {letter-spacing:0px;}
+.banner-slider h1, .banner-slider h2, .banner-slider h3, .banner-slider h4, .banner-slider h5, .banner-slider h6 {font-weight: 300;}
+			
+
+body,html{background-image:url(../../wp-content/themes/Sterling/images/body-backgrounds/null.png) !important;background-position:left top !important;background-repeat:repeat !important;}
+#tt-boxed-layout {-moz-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);-webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);}
+footer{background:none !important;background-color:#ededed !important;}
+.top-aside{padding:4px 0;}
+.small_banner {padding:5px 0;}
+.footer-content {padding:0px 0;}
+header {padding:40px 0;}
+</style>
+			<!-- Easy Columns 2.1.1 by Pat Friedl http://www.patrickfriedl.com -->
+			<link rel="stylesheet" href="../../wp-content/plugins/easy-columns/css/easy-columns.css" type="text/css" media="screen, projection" />
+			
+<!-- Easy FancyBox 1.5.7 using FancyBox 1.3.7 - RavanH (http://status301.net/wordpress-plugins/easy-fancybox/) -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var fb_timeout = null;
+var fb_opts = { 'overlayShow' : true, 'hideOnOverlayClick' : true, 'showCloseButton' : true, 'centerOnScroll' : true, 'enableEscapeButton' : true, 'autoScale' : true };
+var easy_fancybox_handler = function(){
+	/* IMG */
+	var fb_IMG_select = 'a[href*=".jpg"]:not(.nofancybox,.pin-it-button), area[href*=".jpg"]:not(.nofancybox), a[href*=".jpeg"]:not(.nofancybox,.pin-it-button), area[href*=".jpeg"]:not(.nofancybox), a[href*=".png"]:not(.nofancybox,.pin-it-button), area[href*=".png"]:not(.nofancybox)';
+	jQuery(fb_IMG_select).addClass('fancybox image');
+	var fb_IMG_sections = jQuery('div.gallery ');
+	fb_IMG_sections.each(function() { jQuery(this).find(fb_IMG_select).attr('rel', 'gallery-' + fb_IMG_sections.index(this)); });
+	jQuery('a.fancybox, area.fancybox, li.fancybox a:not(li.nofancybox a)').fancybox( jQuery.extend({}, fb_opts, { 'transitionIn' : 'elastic', 'easingIn' : 'easeOutBack', 'transitionOut' : 'elastic', 'easingOut' : 'easeInBack', 'opacity' : false, 'hideOnContentClick' : false, 'titleShow' : true, 'titlePosition' : 'over', 'titleFromAlt' : true, 'showNavArrows' : true, 'enableKeyboardNav' : true, 'cyclic' : false }) );
+	/* Auto-click */ 
+	jQuery('#fancybox-auto').trigger('click');
+}
+/* ]]> */
+</script>
+
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" href="http://interworks.co.uk/wp-content/themes/Sterling/css/IE.css" />
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <script type="text/javascript" src="http://interworks.co.uk/wp-content/themes/Sterling/framework/js/IE.js"></script>
+        <script type="text/javascript" src="http://interworks.co.uk/wp-content/themes/Sterling/framework/js/respond.js"></script>
+    <![endif]-->
+
+    <link href="http://interworks.co.uk/wp-content/themes/Sterling/css/" rel="stylesheet" type="text/css" media="screen" />
+<link href="http://interworks.co.uk/wp-content/themes/Sterling/css/" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body class="single single-post postid-12406 single-format-standard wpb-js-composer js-comp-ver-3.6.7 vc_responsive">
+<div id="tt-wide-layout">    <aside class="top-aside clearfix">
+        <div class="center-wrap">
+            <div class="one_half">
+                <div class="sidebar-widget widget_text">			<div class="textwidget"></div>
+		</div>            </div><!-- end .top-toolbar-left -->
+
+            <div class="one_half">
+                <div class="sidebar-widget widget_search"><form method="get" class="searchform" action="../../index.html">
+    <fieldset>
+        <input type="text" name="s" class="s" value="Search..." onfocus="if(this.value=='Search...')this.value='';" onblur="if(this.value=='')this.value='Search...';" />
+    </fieldset>
+<input type='hidden' name='lang' value='en' /></form></div>            </div><!-- end .top-toolbar-right -->
+        </div><!-- end .center-wrap -->
+        <div class="top-aside-shadow"></div>
+    </aside>
+    <header>
+        <div class="center-wrap">
+            <div class="companyIdentity">
+                                                            <a href="../../index.html"><img src="../../wp-content/uploads/2014/03/interworks_external_logo.png" alt="InterWorks &#8211; Tableau Software &amp; Business Intelligence Consulting" /></a>
+                                                </div><!-- end .companyIdentity -->
+            <nav>
+                <ul>
+                    <li id="menu-item-142" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-142"><a href="../../business-intelligence/index.html">Business Intelligence</a>
+<ul class="sub-menu">
+	<li id="menu-item-3852" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3852"><a href="../../business-intelligence/why-use-bi/index.html">Why Use BI?</a></li>
+	<li id="menu-item-3851" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3851"><a href="../../business-intelligence/what-is-bi/index.html">What Is BI?</a></li>
+	<li id="menu-item-6611" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6611"><a href="../../business-intelligence/tableau-tools/index.html">Power Tools for Tableau</a></li>
+</ul>
+</li>
+<li id="menu-item-217" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-217"><a href="../../tableau-services/index.html">Tableau</a>
+<ul class="sub-menu">
+	<li id="menu-item-3850" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3850"><a href="../../business-intelligence/tableau-software/index.html">Tableau Software</a></li>
+	<li id="menu-item-9212" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9212"><a href="../../business-intelligence/why-tableau/index.html">Why Tableau?</a></li>
+	<li id="menu-item-3855" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3855"><a href="../../tableau-services/tableau-consulting/index.html">Tableau Consulting</a></li>
+	<li id="menu-item-3854" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3854"><a href="../../tableau-services/tableau-development/index.html">Tableau Development</a></li>
+	<li id="menu-item-3853" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3853"><a href="../../tableau-services/tableau-bi-infrastructure/index.html">Tableau BI Infrastructure</a></li>
+	<li id="menu-item-11003" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11003"><a href="../../tableau-services/tableau-training/index.html">Tableau Training</a></li>
+	<li id="menu-item-10582" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10582"><a href="../../business-intelligence/tableau-desktop/index.html">Tableau Desktop</a></li>
+	<li id="menu-item-10587" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10587"><a href="../../business-intelligence/tableau-server.1">Tableau Server</a></li>
+</ul>
+</li>
+<li id="menu-item-29" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-29"><a href="../index.html">Blog</a></li>
+<li id="menu-item-9810" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9810"><a href="../../event/index.html">Events</a></li>
+<li id="menu-item-412" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-412"><a href="../../resources/index.html">On Demand Help &#038; Resources</a>
+<ul class="sub-menu">
+	<li id="menu-item-3397" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3397"><a href="../../resources/data-exploration-tools/index.html">Data Exploration Tools</a></li>
+	<li id="menu-item-3400" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3400"><a href="../../resources/videos.1">Videos</a></li>
+	<li id="menu-item-3399" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3399"><a href="../../resources/social-links.1">Social Links</a></li>
+	<li id="menu-item-3395" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3395"><a href="../../resources/blogs.1">Blogs</a></li>
+	<li id="menu-item-11374" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11374"><a href="../../case-studies.1">Case Studies</a></li>
+	<li id="menu-item-3396" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3396"><a href="../../resources/books.1">Books</a></li>
+	<li id="menu-item-3398" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3398"><a href="../../resources/knowledge">Knowledge Base</a></li>
+	<li id="menu-item-11950" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11950"><a href="../../tableau-expert-hotline/index.html">On Demand Help</a></li>
+</ul>
+</li>
+                </ul>
+            </nav>
+            <a class="free-trial-link" target="_blank" href="http://www.tableau.com/partner-trial?id=13372#form">Free Tableau Trial</a>
+        </div><!-- end .center-wrap -->
+    </header>
+    <section class="small_banner">
+            <div class="center-wrap banner-no-crumbs">
+                    <h1>InterWorks EU Blog</h1>
+        
+        
+            </div><!-- end .center-wrap -->
+    <div class="shadow top"></div>
+    <div class="shadow bottom"></div>
+    <div class="tt-overlay"></div>
+    </section>
+
+<section id="content-container" class="clearfix">
+    <div id="main-wrap" class="clearfix">
+        <div class="page_content blog_page_content">
+            
+                    <div id="post-12406" class="post-12406 post type-post status-publish format-standard hentry category-blog tag-data-connection tag-data-preparation tag-tableau tag-tableau-9-0">
+                        <article class="preview blog-main-preview">
+                            <h2 ><a href="index.html" title="Hot Topics: Best Practices for Data Connections">Hot Topics: Best Practices for Data Connections</a></h2>
+
+                                                                <span class="metadata postinfo">
+                                        Posted by <a href="../../author/darren-evans/index.html" title="Posts by Darren Evans" rel="author">Darren Evans</a> on 5 June, 2015 &nbsp;                                     </span>
+                            <p>Working on the <a href="http://www.interworks.co.uk/hotline" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.interworks.co.uk/hotline', 'InterWorks Expert Hotline']);" >InterWorks Expert Hotline</a> I come into contact with many clients every day assisting them with all aspects of their Tableau deployment from data preparation to best practice dashboard design all the way through to complex table calculations and Tableau Server tuning. This new series of blogs will pick up hot topics that are commonly seen during hotline bookings and share that knowledge with our wider customer base. This blog will look at best practices for data connections.</p>
+<p>Having a strong foundation is instrumental to the success of any development project and developing BI solutions in Tableau is no exception to this.</p>
+<p>A common issue with Tableau deployments is performance degradation manifested in poor data connection design.</p>
+<p>This blog will take a look at a 12 step set of best practices that will ensure that all data connections are initially set up for optimum development speed and then configured for best possible performance when the report is ready for production use.</p>
+<p>To help look at the potential for performance issues I have created a ‘big’ view against the Microsoft SQL Server AdventureWorks2014 database. This view has 100 columns and 12.4 million rows. This is not enormous compared to some of the databases that we experience in the real world setting, however the performance gains that are demonstrated will scale against larger databases and deliver significant gain to both the Tableau developers and the audience.</p>
+<p>I have connected Tableau to this view without performing any data maintenance and then created an extract. I have then produced a straightforward dashboard showing some sales data.</p>
+<p><a href="https://public.tableau.com/profile/darren.evans#!/vizhome/BlogDatasets/AdventureWorksSalesDashboard" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'https://public.tableau.com/profile/darren.evans#!/vizhome/BlogDatasets/AdventureWorksSalesDashboard', '']);" ><img class="alignnone size-large wp-image-12416" src="../../wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.20-1024x934.png" alt="Screen Shot 2015-05-29 at 09.07.20" width="904" height="825" /></a></p>
+<p>Using the Workbook Tools Performance Monitoring I have then carried out a set of actions and filters against the dashboard and recorded the execution times in seconds for these which are shown below:</p>
+<p><a href="../../wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.06.22.png"><img class="alignnone size-large wp-image-12407" src="../../wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.06.22-1024x251.png" alt="Screen Shot 2015-05-29 at 09.06.22" width="904" height="222" /></a></p>
+<p>The Workbook tools are a component of the <a href="http://powertoolsfortableau.com/" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://powertoolsfortableau.com/', 'Power Tools for Tableau']);"  target="_blank">Power Tools for Tableau</a> suite of applications that allow for analysis and automated changes to be made to Tableau Workbooks and Server files. These tools can save you many hours on the administration of your Tableau environment. For more information see <a title="http://interworks.co.uk/business-intelligence/tableau-tools/" href="../../business-intelligence/tableau-tools/index.html">http://interworks.co.uk/business-intelligence/tableau-tools/</a></p>
+<p>The final test I carried out was the record the time taken to build the extract which came in at a 2508 seconds or a little over 41 minutes.</p>
+<p>I will now run through my 12 steps for best practice data connection development. During this I will produce two additional data connections; an optimised development data connection and a production data connection. I will then carry out the same benchmark tests as before and compare the timings.</p>
+<p><strong>12 Steps for Data Connection Development<br />
+</strong><br />
+These are the 12 steps that I follow each time I start out on a development project in Tableau.</p>
+<p>These steps ensure that at whatever stage the dashboards are at in terms of development they are as responsive as possible.</p>
+<p><em>1 Build the data connection</em></p>
+<p>The first stage is the initial connection to the underlying data source. In this case the data connection is a SQL Server view (see attached SQL File). The file is made up of 75 Dimensions and 25 measures and has 12.5 million rows of data.</p>
+<p><em>2 Review all fields</em></p>
+<p>Review all the fields in the data connection and ensure that they are set correctly to either Dimension or Measure and have the correct data types applied.</p>
+<p><a href="../../wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.06.41.png"><img class="alignnone size-large wp-image-12408" src="../../wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.06.41-1024x458.png" alt="Screen Shot 2015-05-29 at 09.06.41" width="904" height="404" /></a></p>
+<p><em>3 Hide all non applicable fields</em></p>
+<p>This is an important early step. You need to identify all the fields in your data connection that you will never use during analysis. There will be i) some fields that will definitely be required, and ii) a selection of fields which may be considered during the build but you are unsure about, and iii) the fields that will never be used. These are the fields that should be removed at this stage.</p>
+<p>For this step you can use the main data connection editor window or the meta data manager screen. However I find it is easier to go to a blank worksheet and multi select (ctrl click) all the fields not required from the dimensions and measures shelf, you can then right-click and hide these fields.</p>
+<p><a href="../../wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.06.52.png"><img class="alignnone size-medium wp-image-12418" src="../../wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.06.52-300x294.png" alt="Screen Shot 2015-05-29 at 09.06.52" width="300" height="294" /></a></p>
+<p>The time at which fields are hidden makes a big difference in Tableau. If you hide fields in a connection with an active data extract the field is only hidden from you in Tableau Desktop. If you hide them before you extract, Tableau will remove them from the query that it uses to pull the data and it will not be pulled in at all. This results in fewer columns in the query and the resulting extract meaning a faster extract speed and better performance as a result.</p>
+<p><em>4 Apply Long Term Filters</em></p>
+<p>When you click to generate the extract you can apply filters. This limits the data brought into the extract. Some filters will be long term (permanent) filters. For example if you are only producing this report for a rolling 2 years then a filter can be applied to remove all other data. The same is true if the report is only for specific locale or business division as the non applicable data can be removed permanently. All of these will limit the row count and provide performance benefit.</p>
+<p><a href="../../wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.04.png"><img class="alignnone size-medium wp-image-12417" src="../../wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.04-292x300.png" alt="Screen Shot 2015-05-29 at 09.07.04" width="292" height="300" /></a></p>
+<p><em>5 Apply Short Term Filters</em></p>
+<p>These are filters applied only for development. For example If I limit the development report to only two products or the top 100 products out of a possible xxx and also only include 2 months per year this will allow me to pull in a dramatically smaller dataset making extract creation quicker and giving the me maximum speed during development.</p>
+<p>I will quite often only produce reports on a small subset of data, 1 week for example, to give me this speed during development and also give me a subset of data to get signed off as accurate.</p>
+<p>In this example I am limiting the data to the first 2 days of each month only</p>
+<p><em>6 Build Development Extract</em></p>
+<p>I can now run the extract build. With reduced rows and columns I would expect this to be quicker.</p>
+<p>And it has &#8211; 89 seconds compared to 2508 seconds. This is considerable when scaled against larger datasets.</p>
+<p><em>7 Build The Dashboards</em></p>
+<p>Now I can go ahead and build my dashboards against this development set.</p>
+<p><a href="../../wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.20.png"><img class="alignnone size-medium wp-image-12416" src="../../wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.20-300x274.png" alt="Screen Shot 2015-05-29 at 09.07.20" width="300" height="274" /></a></p>
+<p>At this point I now have a signed off dashboard sitting on a development data connection and it is time to build a Production Data Connection.</p>
+<p><em>8 Remove the Extract</em></p>
+<p>I start by removing my development extract. Navigate to a blank sheet so that Tableau does not try to process live data, right click on the data connection and delete the extract.</p>
+<p><em>9 Hide all unused fields</em></p>
+<p>Next up I can use the hide unused fields option. Click on the menu on the dimensions shelf and choose the hide unused fields option.</p>
+<p><a href="../../wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.31.png"><img class="alignnone size-medium wp-image-12415" src="../../wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.31-265x300.png" alt="Screen Shot 2015-05-29 at 09.07.31" width="265" height="300" /></a></p>
+<p>As it says on the tin this option will look for all dimensions and measures not being used anywhere in the workbook and hide them. This will have a dramatic effect on the speed of the extract as it is reducing the column size considerably.</p>
+<p>Based on my dashboard design I would be left with just 8 fields from the underlying dataset. A massive reduction from the 100 columns in the initial view.</p>
+<p><a href="../../wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.46.png"><img class="alignnone size-medium wp-image-12414" src="../../wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.46-120x300.png" alt="Screen Shot 2015-05-29 at 09.07.46" width="120" height="300" /></a></p>
+<p><em>10 Remove development filters and apply new long term filters</em></p>
+<p>I now need to review my filters removing any filters applied only for development. I also may have determined new long term filters that can be applied.</p>
+<p><em>11 Extract Data</em></p>
+<p>I am now in the position to extract the data and build my production dataset.</p>
+<p>An extra step I would consider here is to aggregate visible dimensions. What this option does is truncate all date fields to a fixed level (for example year or month) and then sums up all measure fields grouping by the remaining dimensions. For example AdventureWorks has all dates at day level, in this dataset if a product was sold every day in January 2015 then there would be a row of data for this product on every day in January 2015 with a sales value. What aggregate visible dimensions would do is return a single line for the whole month (no days) along with the product ID and the total sales amount for all days. For a single product in a single month this would save 30 rows in our dataset. Spread out across the whole view this could be a considerable time saver for the end user. One thing to bear in mind is that using this will remove the dates from the dataset restricting the analysis that could take place which is why I suggest it as a final enhancement if your time series is all at a high date level (i.e month). The extract will also be slower to generate as the query required to fetch the data will be more complex.</p>
+<p>Using aggregate visible dimensions against my production dataset to return all dates at month level reduced the row count from 7,444,201 rows to 2,183,256. If all my time series analysis was only required at month level this would be an excellent design choice for end user experience.</p>
+<p>For the purpose of this blog I chose not to aggregate the dimensions as I wanted to compare the original dataset to an optimised dataset at day level.</p>
+<p>As I am now pulling all the rows of data into the extract but a significantly reduced column count. This resulted in a 321 second extract time, more than the development data source but a lot less than than the initial data connection.</p>
+<p><em>12 Optimize Extract</em></p>
+<p>Once the data has been extracted I can now run an optimisation by clicking on the option contained within the data menu and the extract sub menu. This will create a secondary structure inside the actual extract file materialising the results of some calculated fields and also creating views for the filters to query so that they do not have to run against the whole dataset.</p>
+<p><strong>The Results<br />
+</strong><br />
+To demonstrate the advantages of efficient data connections I carried out a set of benchmark tests on each workbook I created.</p>
+<p><strong>Extract Refresh times<br />
+</strong><br />
+Each workbook was uploaded to Server and the extract refresh time recorded.</p>
+<p><a href="../../wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.56.png"><img class="alignnone size-medium wp-image-12413" src="../../wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.07.56-300x69.png" alt="Screen Shot 2015-05-29 at 09.07.56" width="300" height="69" /></a></p>
+<p>This makes it pretty clear that amending the data connection reduced extract refresh time considerably. The best extract refresh time was for Development running at just under 1.5 minutes compared to the 42 minutes the original workbook took to refresh. This quick extract time would be of great benefit during a development cycle as changes can be made to the data connection without the need to wait for the extract to fully rebuild.</p>
+<p>The production connection extracting in 321 seconds saw an improvement of over 35 minutes when compared with the original despite containing the same number of rows. As I did not apply any additional data filters this is purely down to the removal of most of the columns during the production data set build.</p>
+<p><strong>Benchmark Testing<br />
+</strong><br />
+The Workbook Tools for Tableau have a tool called <a href="http://powertoolsfortableau.com/tools/workbook-tools-suite/#wc-section" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://powertoolsfortableau.com/tools/workbook-tools-suite/#wc-section', 'Performance Analyzer']);"  target="_blank">Performance Analyzer</a>. This tool opens a Tableau workbook and records timings for all processing carried out by Tableau including the load time for opening the workbook, all interactions and filter applications.</p>
+<p><a href="../../wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.08.02.png"><img class="alignnone size-large wp-image-12412" src="../../wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.08.02-1024x610.png" alt="Screen Shot 2015-05-29 at 09.08.02" width="904" height="539" /></a></p>
+<p>In order to assess the benefit of the data connection best pracrice steps I drew up a list of benchmark tests and carried out the same tests on the original, development and production workbooks.</p>
+<p>Here is a summary of the results.</p>
+<p><a href="../../wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.08.08.png"><img class="alignnone size-large wp-image-12411" src="../../wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.08.08-1024x260.png" alt="Screen Shot 2015-05-29 at 09.08.08" width="904" height="230" /></a></p>
+<p>The results show exactly what I anticipated. The best results are for the development dataset which contained a very small number of rows and a reduced column count. The Production dataset has significant performance improvement over the original data connection also.</p>
+<p>Here are two key benchmark areas in more detail:</p>
+<p><a href="../../wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.08.23.png"><img class="alignnone size-medium wp-image-12410" src="../../wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.08.23-300x212.png" alt="Screen Shot 2015-05-29 at 09.08.23" width="300" height="212" /></a></p>
+<p>The load time when opening the Tableau Workbook file is dramatically reduced for the Production workbook when compared to the original workbook loading an impressive 61% faster.</p>
+<p><a href="../../wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.08.34.png"><img class="alignnone size-medium wp-image-12409" src="../../wp-content/uploads/2015/05/Screen-Shot-2015-05-29-at-09.08.34-300x206.png" alt="Screen Shot 2015-05-29 at 09.08.34" width="300" height="206" /></a></p>
+<p>Grouping all the action filter benchmark tests and computing the average also shows that there is also a significant performance gain here -16% on execution time over the original workbook.</p>
+<p>I hope that this blog has been useful. Good data connection design has a positive impact on the developer as the time to execute tasks and make data-connection changes can be considerable. Taking the time to create a development data connection makes for fast intuitive data discovery. Once the report is finalised removing all non-required columns and rows will provide the audience with the best possible user experience.</p>
+<p>Here is a cheat list for the 12 Best Practice Steps:</p>
+<p><em><strong>Build Development Data Connection</strong></em></p>
+<p><em>1 Build the data connection</em><br />
+<em> 2 Review all fields</em><br />
+<em> 3 Hide all non applicable fields</em><br />
+<em> 4 Apply Long Term Filters</em><br />
+<em> 5 Apply Short Term Filters</em><br />
+<em> 6 Build the Development Extract</em><br />
+<em> 7 Build Dashboards</em></p>
+<p><em><strong>Build Production Data Connection</strong></em></p>
+<p><em>8 Remove the Extract</em><br />
+<em> 9 Hide all unused fields</em><br />
+<em> 10 Remove development filters and add any new long term filters</em><br />
+<em> 11 Extract Data</em><br />
+<em> 12 Optimise Extract</em></p>
+<p>All performance monitoring for this blog was carried out using Power Tools for Tableau. The tools can significantly improve maintaining your BI environment and are available on a full featured trial license. <a title="http://interworks.co.uk/business-intelligence/tableau-tools/" href="../../business-intelligence/tableau-tools/index.html">http://interworks.co.uk/business-intelligence/tableau-tools/</a><!-- Start Sociable -->
+<div class="sociable">
+<div class="sociable_tagline">Share this with your network&#8230;</div>
+<ul class='clearfix'>
+<li><a href="http://twitter.com/intent/tweet?text=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections%20-%20http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F%20  " onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://twitter.com/intent/tweet?text=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections%20-%20http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F%20  ', '']);" title="Twitter" class="option1_32" style="background-position:-288px -32px" rel="nofollow" target="_blank"></a></li>
+<li><a href="http://www.facebook.com/share.php?u=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&amp;t=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.facebook.com/share.php?u=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&amp;t=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections', '']);" title="Facebook" class="option1_32" style="background-position:-96px 0px" rel="nofollow" target="_blank"></a></li>
+<li><a href="https://mail.google.com/mail/?view=cm&#038;fs=1&#038;to&#038;su=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections&#038;body=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&#038;ui=2&#038;tf=1&#038;shva=1" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to&amp;su=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections&amp;body=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&amp;ui=2&amp;tf=1&amp;shva=1', '']);" title="email" class="option1_32" style="background-position:-160px 0px" rel="nofollow" target="_blank"></a></li>
+<li><a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&amp;title=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections&amp;source=InterWorks+-+Tableau+Software+%26amp%3B+Business+Intelligence+Consulting+InterWorks+-+Tableau+Software+%26amp%3B+Business+Intelligence+Consulting&amp;summary=Working%20on%20the%20InterWorks%20Expert%20Hotline%C2%A0I%20come%20into%20contact%20with%20many%20clients%20every%20day%C2%A0assisting%20them%20with%20all%20aspects%20of%20their%20Tableau%20deployment%20from%20data%20preparation%20to%20best%20practice%20dashboard%20design%20all%20the%20way%20through%20to%20complex%20table%20calcul" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&amp;title=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections&amp;source=InterWorks+-+Tableau+Software+%26amp%3B+Business+Intelligence+Consulting+InterWorks+-+Tableau+Software+%26amp%3B+Business+Intelligence+Consulting&amp;summary=Working%20on%20the%20InterWorks%20Expert%20Hotline%C2%A0I%20come%20into%20contact%20with%20many%20clients%20every%20day%C2%A0assisting%20them%20with%20all%20aspects%20of%20their%20Tableau%20deployment%20from%20data%20preparation%20to%20best%20practice%20dashboard%20design%20all%20the%20way%20through%20to%20complex%20table%20calcul', '']);" title="LinkedIn" class="option1_32" style="background-position:-288px 0px" rel="nofollow" target="_blank"></a></li>
+</ul>
+<div onMouseout="fixOnMouseOut(this,event,'post-12406')" id="sociable-post-12406" style="display:none;">
+<div style="top: auto; left: auto; display: block;" id="sociable">
+<div class="popup">
+<div class="content">
+<ul>
+<li style="heigth:32px;width:32px"><a href="http://www.myspace.com/Modules/PostTo/Pages/?u=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&amp;t=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.myspace.com/Modules/PostTo/Pages/?u=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&amp;t=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections', '']);" title="Myspace" class="option1_32" style="background-position:0px -32px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://delicious.com/post?url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&amp;title=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections&amp;notes=Working%20on%20the%20InterWorks%20Expert%20Hotline%C2%A0I%20come%20into%20contact%20with%20many%20clients%20every%20day%C2%A0assisting%20them%20with%20all%20aspects%20of%20their%20Tableau%20deployment%20from%20data%20preparation%20to%20best%20practice%20dashboard%20design%20all%20the%20way%20through%20to%20complex%20table%20calcul" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://delicious.com/post?url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&amp;title=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections&amp;notes=Working%20on%20the%20InterWorks%20Expert%20Hotline%C2%A0I%20come%20into%20contact%20with%20many%20clients%20every%20day%C2%A0assisting%20them%20with%20all%20aspects%20of%20their%20Tableau%20deployment%20from%20data%20preparation%20to%20best%20practice%20dashboard%20design%20all%20the%20way%20through%20to%20complex%20table%20calcul', '']);" title="Delicious" class="option1_32" style="background-position:-32px 0px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://digg.com/submit?phase=2&amp;url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&amp;title=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections&amp;bodytext=Working%20on%20the%20InterWorks%20Expert%20Hotline%C2%A0I%20come%20into%20contact%20with%20many%20clients%20every%20day%C2%A0assisting%20them%20with%20all%20aspects%20of%20their%20Tableau%20deployment%20from%20data%20preparation%20to%20best%20practice%20dashboard%20design%20all%20the%20way%20through%20to%20complex%20table%20calcul" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://digg.com/submit?phase=2&amp;url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&amp;title=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections&amp;bodytext=Working%20on%20the%20InterWorks%20Expert%20Hotline%C2%A0I%20come%20into%20contact%20with%20many%20clients%20every%20day%C2%A0assisting%20them%20with%20all%20aspects%20of%20their%20Tableau%20deployment%20from%20data%20preparation%20to%20best%20practice%20dashboard%20design%20all%20the%20way%20through%20to%20complex%20table%20calcul', '']);" title="Digg" class="option1_32" style="background-position:-64px 0px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://reddit.com/submit?url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&amp;title=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://reddit.com/submit?url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&amp;title=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections', '']);" title="Reddit" class="option1_32" style="background-position:-128px -32px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://www.stumbleupon.com/submit?url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&#038;title=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.stumbleupon.com/submit?url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&amp;title=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections', '']);" title="StumbleUpon" class="option1_32" style="background-position:-224px -32px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://www.google.com/bookmarks/mark?op=edit&amp;bkmk=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&amp;title=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections&amp;annotation=Working%20on%20the%20InterWorks%20Expert%20Hotline%C2%A0I%20come%20into%20contact%20with%20many%20clients%20every%20day%C2%A0assisting%20them%20with%20all%20aspects%20of%20their%20Tableau%20deployment%20from%20data%20preparation%20to%20best%20practice%20dashboard%20design%20all%20the%20way%20through%20to%20complex%20table%20calcul" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.google.com/bookmarks/mark?op=edit&amp;bkmk=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&amp;title=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections&amp;annotation=Working%20on%20the%20InterWorks%20Expert%20Hotline%C2%A0I%20come%20into%20contact%20with%20many%20clients%20every%20day%C2%A0assisting%20them%20with%20all%20aspects%20of%20their%20Tableau%20deployment%20from%20data%20preparation%20to%20best%20practice%20dashboard%20design%20all%20the%20way%20through%20to%20complex%20table%20calcul', '']);" title="Google Bookmarks" class="option1_32" style="background-position:-192px 0px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://news.ycombinator.com/submitlink?u=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&amp;t=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://news.ycombinator.com/submitlink?u=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&amp;t=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections', '']);" title="HackerNews" class="option1_32" style="background-position:-256px 0px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://reporter.es.msn.com/?fn=contribute&amp;Title=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections&amp;URL=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&amp;cat_id=6&amp;tag_id=31&amp;Remark=Working%20on%20the%20InterWorks%20Expert%20Hotline%C2%A0I%20come%20into%20contact%20with%20many%20clients%20every%20day%C2%A0assisting%20them%20with%20all%20aspects%20of%20their%20Tableau%20deployment%20from%20data%20preparation%20to%20best%20practice%20dashboard%20design%20all%20the%20way%20through%20to%20complex%20table%20calcul" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://reporter.es.msn.com/?fn=contribute&amp;Title=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections&amp;URL=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&amp;cat_id=6&amp;tag_id=31&amp;Remark=Working%20on%20the%20InterWorks%20Expert%20Hotline%C2%A0I%20come%20into%20contact%20with%20many%20clients%20every%20day%C2%A0assisting%20them%20with%20all%20aspects%20of%20their%20Tableau%20deployment%20from%20data%20preparation%20to%20best%20practice%20dashboard%20design%20all%20the%20way%20through%20to%20complex%20table%20calcul', '']);" title="MSNReporter" class="option1_32" style="background-position:-352px 0px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://www.blinklist.com/index.php?Action=Blink/addblink.php&amp;Url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&amp;Title=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.blinklist.com/index.php?Action=Blink/addblink.php&amp;Url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&amp;Title=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections', '']);" title="BlinkList" class="option1_32" style="background-position:0px 0px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://sphinn.com/index.php?c=post&amp;m=submit&amp;link=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://sphinn.com/index.php?c=post&amp;m=submit&amp;link=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F', '']);" title="Sphinn" class="option1_32" style="background-position:-192px -32px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://posterous.com/share?linkto=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&amp;title=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections&amp;selection=Working%20on%20the%20InterWorks%20Expert%20Hotline%C2%A0I%20come%20into%20contact%20with%20many%20clients%20every%20day%C2%A0assisting%20them%20with%20all%20aspects%20of%20their%20Tableau%20deployment%20from%20data%20preparation%20to%20best%20practice%20dashboard%20design%20all%20the%20way%20through%20to%20complex%20table%20calcul" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://posterous.com/share?linkto=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&amp;title=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections&amp;selection=Working%20on%20the%20InterWorks%20Expert%20Hotline%C2%A0I%20come%20into%20contact%20with%20many%20clients%20every%20day%C2%A0assisting%20them%20with%20all%20aspects%20of%20their%20Tableau%20deployment%20from%20data%20preparation%20to%20best%20practice%20dashboard%20design%20all%20the%20way%20through%20to%20complex%20table%20calcul', '']);" title="Posterous" class="option1_32" style="background-position:-64px -32px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://www.tumblr.com/share?v=3&amp;u=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&amp;t=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections&amp;s=Working%20on%20the%20InterWorks%20Expert%20Hotline%C2%A0I%20come%20into%20contact%20with%20many%20clients%20every%20day%C2%A0assisting%20them%20with%20all%20aspects%20of%20their%20Tableau%20deployment%20from%20data%20preparation%20to%20best%20practice%20dashboard%20design%20all%20the%20way%20through%20to%20complex%20table%20calcul" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.tumblr.com/share?v=3&amp;u=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&amp;t=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections&amp;s=Working%20on%20the%20InterWorks%20Expert%20Hotline%C2%A0I%20come%20into%20contact%20with%20many%20clients%20every%20day%C2%A0assisting%20them%20with%20all%20aspects%20of%20their%20Tableau%20deployment%20from%20data%20preparation%20to%20best%20practice%20dashboard%20design%20all%20the%20way%20through%20to%20complex%20table%20calcul', '']);" title="Tumblr" class="option1_32" style="background-position:-256px -32px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a href="http://www.google.com/reader/link?url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&amp;title=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections&amp;srcURL=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&amp;srcTitle=InterWorks+-+Tableau+Software+%26amp%3B+Business+Intelligence+Consulting+InterWorks+-+Tableau+Software+%26amp%3B+Business+Intelligence+Consulting" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.google.com/reader/link?url=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&amp;title=Hot%20Topics%3A%20Best%20Practices%20for%20Data%20Connections&amp;srcURL=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fhot-topics-best-practices-for-data-connections%2F&amp;srcTitle=InterWorks+-+Tableau+Software+%26amp%3B+Business+Intelligence+Consulting+InterWorks+-+Tableau+Software+%26amp%3B+Business+Intelligence+Consulting', '']);" title="Google Reader" class="option1_32" style="background-position:-224px 0px" rel="nofollow" target="_blank"></a></li>
+<li style="heigth:32px;width:32px"><a class="option1_32" style="cursor:pointer;background-position:-128px 0px" rel="nofollow" title="Add to favorites - doesn't work in Chrome"  onClick="javascript:AddToFavorites();"></a></li>
+<li style="heigth:32px;width:32px"><a style="cursor:poainter" rel="nofollow"   onMouseOver="more(this,'post-12406')"><img  src="../../wp-content/plugins/sociable/images/option1/32/more.png" title="LinkedIn" alt="LinkedIn" /></a></li>
+</ul></div>
+<p>		  <a style="cursor:pointer" onclick="hide_sociable('post-12406',true)" class="close"></p>
+<p>		  <img onclick="hide_sociable('post-12406',true)" title="close" src="../../wp-content/plugins/sociable/images/closelabel.png"></p>
+<p>		  </a></p></div>
+</p></div>
+</p></div>
+</div>
+<div class='sociable' style='float:none'>
+<ul class='clearfix'>
+<li id="Twitter_Counter"><a href="https://twitter.com/share" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'https://twitter.com/share', 'Tweet']);"  data-text="Hot Topics: Best Practices for Data Connections - http://interworks.co.uk/blog/hot-topics-best-practices-for-data-connections/" data-url="http://interworks.co.uk/blog/hot-topics-best-practices-for-data-connections/" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></li>
+<li id="Facebook_Counter"><iframe src="http://www.facebook.com/plugins/like.php?href=http://interworks.co.uk/blog/hot-topics-best-practices-for-data-connections/&#038;send=false&#038;layout=button_count&#038;show_faces=false&#038;action=like&#038;colorscheme=light&#038;font" scrolling="no" frameborder="0" style="border:none; overflow:hidden;height:32px;width:100px" allowTransparency="true"></iframe></li>
+<li id="Google_p"><g:plusone annotation="bubble" href="http://interworks.co.uk/blog/hot-topics-best-practices-for-data-connections/" size="medium"></g:plusone></li>
+<li id="LinkedIn_Counter"><script src="http://platform.linkedin.com/in.js" type="text/javascript"></script><script type="IN/Share" data-url="http://interworks.co.uk/blog/hot-topics-best-practices-for-data-connections/" data-counter="right"></script></li>
+</ul>
+</div>
+<p><!-- End Sociable --></p>
+<div class="tt-share clearfix">
+    </div><!-- end .tt-share -->
+                            <div class="post-details">
+                                <p class="post-tags">Tags: <a href="../../tag/data-connection/index.html" rel="tag">data connection</a>, <a href="../../tag/data-preparation/index.html" rel="tag">data preparation</a>, <a href="../../tag/tableau/index.html" rel="tag">Tableau</a>, <a href="../../tag/tableau-9-0/index.html" rel="tag">Tableau 9.0</a></p>
+                                <p class="post-categories"><strong>Posted in: </strong> <a href="../../category/blog/index.html" >Blog</a></p>
+                                <a class="post-leave-comment" href="index.html#respond">Leave a Comment (0) &rarr;</a>
+                            </div><!-- end .post-details -->
+                        </article><!-- end .blog-main-preview -->
+                    </div><!-- end #post-ID -->
+
+                    
+        <div id="blog-comment-outer-wrap">
+    
+    <div id="respond">
+        <h3 class="comment-title">
+            Leave a Comment        </h3>
+
+        <div class="comment-cancel"><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Click here to cancel reply.</a></div><!-- end .comment-cancel -->
+
+                            <form action="http://interworks.co.uk/wp-comments-post.php" method="post" id="commentform">
+                                            <p>
+                            <input type="text" name="author" id="author" value="" size="22" tabindex="1" />
+                            <label for="author">Name<span>&#42;</span></label>
+                        </p>
+                        <p>
+                            <input type="text" name="email" id="email" value="" size="22" tabindex="2" />
+                            <label for="email">Email<span>&#42;</span>(will not be published)<small> </small></label>
+                        </p>
+                        <p>
+                            <input type="text" name="url" id="url" value="" size="22" tabindex="3" />
+                            <label for="url">Website</label>
+                        </p>
+                    
+                    <p><textarea name="comment" id="comment" cols="58" rows="10" tabindex="4"></textarea></p>
+
+                    <!-- <p class="allowed-tags"><small><strong>XHTML:</strong> You can use these tags: <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </code></small></p> -->
+
+                    <p>
+                        <input name="submit" type="submit" id="submit-button" tabindex="5" value="Submit" />
+                        <input type='hidden' name='comment_post_ID' value='12406' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+                    </p>
+                    <p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="728497f4ae" /></p><!-- BEGIN: subscribe to comments reloaded --><p class='comment-form-subscriptions'><label for='subscribe-reloaded'><input style='width:30px' type='checkbox' name='subscribe-reloaded' id='subscribe-reloaded' value='yes' checked='checked' /> Notify me of comment replies via e-mail. You can also <a href='../../comment-subscriptions/index.html?srp=12406&amp;srk=&amp;sra=s'>subscribe</a> without commenting.</label></p><!-- END: subscribe to comments reloaded --><p class="comment-subscription-form"><input type="checkbox" name="subscribe_comments" id="subscribe_comments" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" /> <label class="subscribe-label" id="subscribe-label" for="subscribe_comments">Notify me of follow-up comments by email.</label></p><p class="comment-subscription-form"><input type="checkbox" name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" /> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog">Notify me of new posts by email.</label></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="149"/></p>        
+        <input type="hidden" name="icl_comment_language" value="en" />
+        
+          
+                        </form><!-- end #commentform -->
+                    </div><!-- end #respond -->
+    </div><!-- end #blog-comment-outer-wrap -->
+
+                    </div><!-- end .page_content -->
+
+        <aside class="sidebar">
+            <div class="sidebar-widget widget_icl_lang_sel_widget">
+            <div id="lang_sel_list" class="lang_sel_list_vertical">
+            <ul>
+                                <li class="icl-en">
+									<a href="index.html" class="lang_sel_sel">
+																					<img  class="iclflag" src="../../wp-content/plugins/sitepress-multilingual-cms/res/flags/en.png" alt="en"
+													 title="English"/>&nbsp;
+										English									</a>
+                </li>
+                            </ul>
+</div>
+</div><div class="sidebar-widget widget_search"><form method="get" class="searchform" action="../../index.html">
+    <fieldset>
+        <input type="text" name="s" class="s" value="Search..." onfocus="if(this.value=='Search...')this.value='';" onblur="if(this.value=='')this.value='Search...';" />
+    </fieldset>
+<input type='hidden' name='lang' value='en' /></form></div>
+        <style>
+            .JPV_list {
+                overflow: hidden;
+            }
+
+            .JPV_thumbnail {
+                width: 45%;
+            }
+
+            .JPV_thumbnail > .JPV_thumbnail_img {
+                max-width: 125px;
+                height: auto;
+            }
+
+            .JPV_thumbnail + .JPV_text {
+                width: 45%;
+                padding-bottom: 10px;
+                text-align: center;
+                margin-top: -5px;
+            }
+
+            .JPV_thumbnail_title {
+                float: left;
+                width: 21.276596%;
+            }
+
+            .JPV_thumbnail_title > .JPV_thumbnail_img {
+                max-width: 40px;
+                height: auto;
+            }
+
+            .JPV_thumbnail_title + .JPV_text {
+                float: right;
+                width: 73.404255%;
+                padding-bottom: 10px;
+            }
+        </style>
+
+        <div class="sidebar-widget jetpack-post-views"><p class="widget-heading">Most Popular</p><ul><li class="JPV_list"><a href="../comparing-performance-tableau-8-3-server-vs-tableau-9-0-server/index.html" title="Comparing Performance on Tableau 8.3 Server vs Tableau 9.0 Server" class="JPV_title">Comparing Performance on Tableau 8.3 Server vs Tableau 9.0 Server</a></li><li class="JPV_list"><a href="../data-reshaping-tableau-9-data-interpreter-data-pivot/index.html" title="Data Reshaping in Tableau 9 &#8211; data interpreter &#038; data pivot" class="JPV_title">Data Reshaping in Tableau 9 &#8211; data interpreter &#038; data pivot</a></li><li class="JPV_list"><a href="../../tableau/tableau-9-0-brings-us-connections/index.html" title="Tableau 9.0 Brings us more connections!" class="JPV_title">Tableau 9.0 Brings us more connections!</a></li><li class="JPV_list"><a href="../radial-bar-chart/index.html" title="It’s your round at the bar…" class="JPV_title">It’s your round at the bar…</a></li><li class="JPV_list"><a href="../whats-new-tableau-server-9-0/index.html" title="What&#8217;s new in Tableau Server 9.0" class="JPV_title">What&#8217;s new in Tableau Server 9.0</a></li></ul></div><div class="sidebar-widget social_widget"><p class="widget-heading">Subscribe to our Networks</p>
+
+
+
+<ul class="social_icons">
+<li><a href="../../feed/index.html" onclick="window.open(this.href);return false;" class="rss">RSS</a></li>
+<li><a href="https://twitter.com/InterWorksEU" class="twitter" onclick="window.open(this.href);return false;">Twitter</a></li>
+<li><a href="https://www.facebook.com/interworkseu" class="facebook" onclick="window.open(this.href);return false;">Facebook</a></li>
+<li><a href="https://www.linkedin.com/company/interworks-uk" class="linkedin" onclick="window.open(this.href);return false;">LinkedIn</a></li>
+<li><a href="https://plus.google.com/108975392261019832708/posts" class="google +" onclick="window.open(this.href);return false;">Google +</a></li>
+</ul>
+
+        </div><div class="sidebar-widget widget_text">			<div class="textwidget"><p><a href="http://www.tableausoftware.com/about/partners" onclick="_gaq.push(['_trackEvent', 'outbound-widget', 'http://www.tableausoftware.com/about/partners', '']);"  target="_blank" alt="Tableau Partners Page" title="Tableau Partners Page"><img class="alignright size-full wp-image-524" title="tableau-partner-logo-3" src="../../wp-content/uploads/2013/02/tableau-gold-partner-logo-1.png" alt="" width="310" height="165" /></a></p>
+</div>
+		</div>        </aside>
+    </div><!-- end #main-wrap -->
+</section><!-- END content-container -->
+
+
+<footer>
+    <div class="center-wrap tt-relative">
+        <div class="footer-content clearfix">
+                                <div class="one_fourth">
+                        <div class="sidebar-widget widget_nav_menu"><ul class="custom-menu"><li id="menu-item-108" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-108"><a href="../../about-interworks/index.html">About InterWorks</a></li>
+<li id="menu-item-11373" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11373"><a href="../../case-studies.1">Case Studies</a></li>
+<li id="menu-item-46" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-46"><a href="../getting-excited-about-tableau-9-0/www.interworks.co.uk/team">Our Team</a></li>
+<li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="../../careers/index.html">Careers</a></li>
+<li id="menu-item-9240" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9240"><a href="../../contact-us/index.html">Contact</a></li>
+</ul></div>                    </div>
+                                        <div class="one_fourth">
+                        <div class="sidebar-widget widget_nav_menu"><ul class="custom-menu"><li id="menu-item-9227" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9227"><a href="../../business-intelligence/download-tableau-desktop-free-trial.1">Free Tableau Desktop Trial</a></li>
+<li id="menu-item-9082" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9082"><a href="../../business-intelligence/tableau-server.1">Free Tableau Server Trial</a></li>
+<li id="menu-item-11272" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11272"><a href="../../business-intelligence/tableau-tools/index.html">Power Tools for Tableau</a></li>
+<li id="menu-item-10872" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10872"><a href="../../tableau-your-data/index.html">Get &#8220;Tableau Your Data&#8221; &#8211; The Ultimate Book on Using Tableau</a></li>
+</ul></div>                    </div>
+                                        <div class="one_fourth">
+                        <div class="sidebar-widget widget_text">			<div class="textwidget"><p><a href="http://www.tableausoftware.com/about/partners" onclick="_gaq.push(['_trackEvent', 'outbound-widget', 'http://www.tableausoftware.com/about/partners', '']);"  target="_blank"><img src="../../wp-content/uploads/2013/02/tableau-gold-partner-logo-1.png" /></a></p>
+</div>
+		</div><div class="sidebar-widget widget_text">			<div class="textwidget"><p><a href="http://www.alteryx.com/" onclick="_gaq.push(['_trackEvent', 'outbound-widget', 'http://www.alteryx.com/', '']);"  target="_blank"><img align="center" src="../../wp-content/uploads/2013/12/alteryx-small-logo.jpg" /></a></p>
+</div>
+		</div>                    </div>
+                                        <div class="one_fourth">
+                        <div class="sidebar-widget widget_nav_menu"><ul class="custom-menu"><li id="menu-item-491" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-491"><a href="../../contact-us/index.html">Email: hello@interworks.co.uk</a></li>
+<li id="menu-item-490" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-490"><a>Call: +44 (0)1202 37 33 33</a></li>
+<li id="menu-item-492" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-492"><a href="https://twitter.com/InterWorksEU" onclick="_gaq.push(['_trackEvent', 'outbound-widget', 'https://twitter.com/InterWorksEU', 'Twitter: @InterWorksEU']);" >Twitter: @InterWorksEU</a></li>
+<li id="menu-item-10377" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10377"><a href="https://www.facebook.com/interworkseu" onclick="_gaq.push(['_trackEvent', 'outbound-widget', 'https://www.facebook.com/interworkseu', 'Facebook: interworkseu']);" >Facebook: interworkseu</a></li>
+</ul></div>                    </div>
+                            </div><!-- end .footer-content -->
+    </div><!-- end .center-wrap -->
+
+    <div class="footer-copyright clearfix">
+        <div class="center-wrap clearfix">
+    	    <div class="foot-copy">
+    	        <p>Copyright © 2015 InterWorks Europe | All Rights Reserved.</p>
+    	    </div><!-- end .foot-copy -->
+
+    	    
+                            <ul class="footer-nav">
+                    <li id="menu-item-385" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-385"><a href="../../cookies/index.html">Cookies</a></li>
+<li id="menu-item-458" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-458"><a href="http://interworks.com" onclick="_gaq.push(['_trackEvent', 'outbound-widget', 'http://interworks.com', 'InterWorks USA']);" >InterWorks USA</a></li>
+                </ul>
+                    </div><!-- end .center-wrap -->
+    </div><!-- end .footer-copyright -->
+
+    <div class="shadow top"></div>
+    <div class="tt-overlay"></div>
+</footer>
+
+</div><!-- end .tt-wide-layout -->
+
+<!-- Start of Async HubSpot Analytics Code for WordPress v1.9.4 -->
+<script type="text/javascript">
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "blog-post"]);
+(function(d,s,i,r) {
+  if (d.getElementById(i)){return;}
+  var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+  n.id=i;n.src = '//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/502772.js';
+  e.parentNode.insertBefore(n, e);
+})(document, "script", "hs-analytics", 300000);
+</script>
+<!-- End of Async HubSpot Analytics Code -->
+<input id="leadin-subscribe-vex-class" value="vex-theme-bottom-right-corner" type="hidden"/><input id="leadin-subscribe-heading" value="Sign up for email updates" type="hidden"/><input id="leadin-subscribe-text" value="" type="hidden"/><input id="leadin-subscribe-btn-label" value="SUBSCRIBE" type="hidden"/><input id="leadin-subscribe-btn-color" value="leadin-popup-color-blue" type="hidden"/><input id="leadin-subscribe-name-fields" value="0" type="hidden"/><input id="leadin-subscribe-phone-field" value="0" type="hidden"/><input id="leadin-subscribe-confirmation" value="0" type="hidden"/><input id="leadin-subscribe-mobile-popup" value="1" type="hidden"/>	<div style="display:none">
+	</div>
+<script type='text/javascript' src='../../wp-content/plugins/akismet/_inc/form.js?ver=3.1.1'></script>
+
+							<div id="lang_sel_footer">
+									<ul>
+									    <li><a href="index.html" class="lang_sel_sel"><img src="../../wp-content/plugins/sitepress-multilingual-cms/res/flags/en.png" alt="English" class="iclflag" title="English"  />&nbsp;English</a></li>
+									</ul>
+							</div><script type='text/javascript' src='../../wp-includes/js/comment-reply.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/themes/Sterling/framework/js/custom-main.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/themes/Sterling/framework/js/jquery.prettyPhoto.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/themes/Sterling/framework/js/jquery.superfish.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/themes/Sterling/framework/js/jquery.cycle.all.min.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/plugins/easy-fancybox/jquery.easing.pack.js?ver=1.3'></script>
+<script type='text/javascript' src='../../wp-content/themes/Sterling/framework/js/jquery.isotope.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.51.0-2014.06.20'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _wpcf7 = {"loaderUrl":"http:\/\/interworks.co.uk\/wp-content\/plugins\/contact-form-7\/images\/ajax-loader.gif","sending":"Sending ..."};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.1.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var li_ajax = {"ajax_url":"http:\/\/interworks.co.uk\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/leadin/assets/js/build/leadin-tracking.min.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/plugins/leadin/assets/js/build/leadin-subscribe.min.js?ver=4.1.5'></script>
+<script type='text/javascript' src='http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201526'></script>
+<script type='text/javascript' src='http://s.gravatar.com/js/gprofiles.js?ver=2015Junaa'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/jetpack/modules/wpgroho.js?ver=4.1.5'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var icl_vars = {"current_language":"en","icl_home":"http:\/\/interworks.co.uk\/"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/sitepress-multilingual-cms/res/js/sitepress.js?ver=4.1.5'></script>
+<script type='text/javascript' src='../../wp-content/plugins/easy-fancybox/fancybox/jquery.fancybox-1.3.7.min.js?ver=1.5.7'></script>
+<script type='text/javascript' src='../../wp-content/plugins/easy-fancybox/jquery.mousewheel.min.js?ver=3.1.12'></script>
+<script type='text/javascript' src='http://stats.wp.com/e-201526.js' async defer></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:3.4.3',blog:'83071981',post:'12406',tz:'1'} ]);
+	_stq.push([ 'clickTrackerInit', '83071981', '12406' ]);
+</script>
+
+<script type="text/javascript">
+jQuery(document).on('ready post-load', easy_fancybox_handler );
+</script>
+
+
+</body>
+</html>

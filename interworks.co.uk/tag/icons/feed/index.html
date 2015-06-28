@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>InterWorks - Tableau Software &#38; Business Intelligence Consulting &#187; Icons</title>
+	<atom:link href="http://interworks.co.uk/tag/icons/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 26 Jun 2015 08:09:24 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>Using Tableau Bookmarks to assign Custom Shapes more easily</title>
+		<link>http://interworks.co.uk/blog/using-tableau-bookmarks-to-assign-custom-shapes-more-easily/</link>
+		<comments>http://interworks.co.uk/blog/using-tableau-bookmarks-to-assign-custom-shapes-more-easily/#comments</comments>
+		<pubDate>Thu, 19 Dec 2013 12:58:35 +0000</pubDate>
+		<dc:creator><![CDATA[Dave Hart]]></dc:creator>
+				<category><![CDATA[Blog]]></category>
+		<category><![CDATA[Bookmarks]]></category>
+		<category><![CDATA[Design]]></category>
+		<category><![CDATA[Flags]]></category>
+		<category><![CDATA[Icons]]></category>
+		<category><![CDATA[Shapes]]></category>
+		<category><![CDATA[Tableau]]></category>
+
+		<guid isPermaLink="false">http://interworks.co.uk/?p=9379</guid>
+		<description><![CDATA[<p>Tableau allows you to create sets of custom shapes but assigning these can sometimes be painful, especially if you have a large list of icons to choose from. Wouldn&#8217;t it be good if you could get Tableau to look up an icon based on the contents of your data? That&#8217;s what I thought, and this [&#8230;]</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/using-tableau-bookmarks-to-assign-custom-shapes-more-easily/">Using Tableau Bookmarks to assign Custom Shapes more easily</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></description>
+				<content:encoded><![CDATA[<p>Tableau allows you to create sets of custom shapes but assigning these can sometimes be painful, especially if you have a large list of icons to choose from. Wouldn&#8217;t it be good if you could get Tableau to look up an icon based on the contents of your data? That&#8217;s what I thought, and this morning I note that tableau <a href="http://www.tableausoftware.com/about/blog/2014/1/icon-encoding-research-acm-sigchi">think that too</a> . Admittedly in their case they are discussing a completely automated solution, but I couldn&#8217;t wait so I&#8217;ve put together an example showing you how something similar to this can be done using a bit of careful planning and tableau bookmarks. You&#8217;ll end up with a quick way to load in a complete resource of icons and then use the correct shapes by linking that resource to your primary dataset.</p>
+<p><span id="more-9379"></span></p>
+<p><strong>Why would you do this?<br />
+</strong></p>
+<p>Bookmarks are really good for reusing assets, so if there&#8217;s a set of icons that you like using but you don&#8217;t always need all of them, then this is a good fit for you. The examples I&#8217;m going to use are social network icons and flags. In these cases I can download a large or complete set of resources from somewhere, but in all likelihood my data is going to only access a smaller subset of this data which means the &#8220;Assign Shapes&#8221; option isn&#8217;t going to work and picking through to get the right shapes would be time consuming (or even impossible if you didn&#8217;t know what the icon you needed looked like – could you recognise the flag of Burundi from a 16&#215;16 icon preview?)</p>
+<p><strong>How to do it</strong></p>
+<p>The key here is that just adding your custom icon set to Tableaus Shapes repository isn&#8217;t enough, we need a dataset to go with it. We are going to utilise two features/behaviours of tableau:</p>
+<ul>
+<li>When you load custom shapes into tableau, they are listed alphabetically AND they are assigned alphabetically too.</li>
+<li>When a piece of data has been assigned a shape/colour once, if you re-use that field elsewhere in the workbook tableau will try to use the same shape/colour.</li>
+</ul>
+<p>&nbsp;</p>
+<p>The first thing we need to do is get a set of icons and prepare a dataset that tells us the filename and any other information about the data row that we might need. I&#8217;m going to use two examples showing social network icons and country flags.</p>
+<ul>
+<li>Put all the icons in a folder in the Shapes subfolder of your Tableau repository. (Tableau does a case sensitive sort whereas windows explorer may not, so I&#8217;d advise you to make sure that all your files are consistently cased. I wrote a command line batch script to do this)</li>
+<li>Create a spreadsheet or text file that lists all of the file names. (One way you can do this is by doing a directory listing to a text file from the command line e.g. dir *.* &gt; list.txt and then editing that file in excel)</li>
+<li>Now create a workbook that connects to this data source and create a view by taking the name of the file and positioning it on the Rows shelf. Change the Marks type to &#8220;Shape&#8221;. I personally think it&#8217;s probably better to create a calculated field called &#8220;Image&#8221; and just return the underlying field that you want to use to match to the shapes – in this case the filename.</li>
+<li>On the card that shows all the shapes next to the name double click one item to edit the shapes. Navigate to your folder and click assign palette. As the order of the names matches the order of the filenames then they should match up perfectly. If they don&#8217;t check the case of your filename as tableau does a case-sensitive sort when loading the icons, but doesn&#8217;t when creating the view.</li>
+<li>Now save this view as a bookmark called &#8220;Social Icons&#8221;. Click Window &gt; Bookmarks &gt; Create Bookmark…</li>
+</ul>
+<p>&nbsp;</p>
+<p><img class="aligncenter" src="http://interworks.co.uk/wp-content/uploads/2013/12/121913_1258_UsingTablea2.png" alt="" /></p>
+<p>Now that we&#8217;ve saved it as a bookmark, whenever we have data that contains a column for social network, we can import this sheet quickly and assign the correct icons automatically (via a data relationship) rather than hunting through the lists and assigning them manually. I&#8217;ve created a simple table of data that shows users donating money based on a referral from a social network.</p>
+<div style="text-align: center;">
+<table style="border-collapse: collapse;" border="0">
+<tbody valign="top">
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border: solid 0.5pt;">Name</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: solid 0.5pt; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Network</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: solid 0.5pt; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Donation</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: solid 0.5pt; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Date</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: solid 0.5pt; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Country</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Dave</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Twitter</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">5</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">01/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">GB</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Rich</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Twitter</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">8</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">05/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">GB</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Andrew</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Facebook</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">2</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">13/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">US</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Katherine</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Aol</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">1</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">02/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">GB</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Martha</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Youtube</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">19</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">01/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">FR</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Pete</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Facebook</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">2</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">02/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">US</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Mary</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Facebook</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">3</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">07/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">GB</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">David</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">linkedin</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">8</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">13/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">US</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Arthur</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Youtube</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">24</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">15/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">ES</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Chris</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Twitter</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">2</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">18/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">GB</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Andy</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Twitter</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">10</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">14/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">DE</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Stuart</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Facebook</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">7</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">04/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">GB</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Natasha</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Twitter</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">3</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">02/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">US</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Wendy</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Tumblr</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">20</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">06/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">DE</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Simon</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">linkedin</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">13</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">16/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">US</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Alan</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Twitter</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">10</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">09/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">GB</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Dmitri</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Google</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">5</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">10/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">GR</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Juan</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Facebook</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">12</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">01/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">ES</td>
+</tr>
+<tr style="height: 20px;">
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: solid 0.5pt; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Martha</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">Twitter</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">15</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">11/12/2013</td>
+<td style="padding-left: 7px; padding-right: 7px; border-top: none; border-left: none; border-bottom: solid 0.5pt; border-right: solid 0.5pt;">CH</td>
+</tr>
+</tbody>
+</table>
+<p style="text-align: left;">
+</div>
+<ul>
+<li>Create a new tableau workbook by connecting to the data</li>
+<li>Create a view that shows a bar and a shape summing money spent by network</li>
+<li>Import your social icons bookmark. Window &gt; Bookmarks &gt; Social Icons</li>
+<li>Click Data &gt; Edit Relationships and link the Network column to the Name column</li>
+<li>On your view drag Image from your secondary datasource onto Shape</li>
+<li>Note that the correct icons are assigned to the social network and that the Shape key has an orange tick by it indicating it is from the sheet you imported as a bookmark.</li>
+</ul>
+<p>&nbsp;</p>
+<p><img class="aligncenter" src="http://interworks.co.uk/wp-content/uploads/2013/12/121913_1258_UsingTablea3.png" alt="" /></p>
+<p>&nbsp;</p>
+<p>In the case of the flags dataset I&#8217;ve also created extra columns for name and ISO code. Note that if you are having problems with case and wording etc. and you can&#8217;t edit the data at source, you can use Aliases or calculated fields that correct the errors and join using those. When I did the It&#8217;s also worth noting that the bookmark only contains a reference to the icons path, so you need to have the bookmarks and the shapes installed on the computer you&#8217;re using, you can&#8217;t just copy the bookmark to another computer and get the correct icons. (although when you package the workbook up you&#8217;ll be OK because it will embed the shapes).</p>
+<p><img class="aligncenter" src="http://interworks.co.uk/wp-content/uploads/2013/12/screenshot1.png" alt="" /></p>
+<p>Hope you like the post! Leave me a comment if you&#8217;ve got any questions or just general praise (it&#8217;s one of my first posts and I need the love). And if you want some homework, I&#8217;ve also done this for colours by generating a list of hexadecimal colour values into excel and the tableau preferences file so see if you can do that too, you can use <a href="http://interworks.co.uk/tableau/using-custom-colour-palettes/">Darren Evans post on this blog</a> to help you with custom colour palettes.</p>
+<p>&nbsp;</p>
+<p>Resources:</p>
+<p>Lots of places provide social network icons, but be kind and check the licensing. When writing this article I got some nice icons from social shift <a href="http://www.instantshift.com/2010/12/07/socialshift-icon-set-246-free-social-networking-icons/">http://www.instantshift.com/2010/12/07/socialshift-icon-set-246-free-social-networking-icons/</a></p>
+<p>The flag Icons I used were from the rather magnificent <a href="http://famfamfam.com/lab/icons/flags/">http://famfamfam.com/lab/icons/flags/</a> (they are listed by ISO, but you need to do some editing as Tunisia&#8217;s filename is wrongly marked as <em>rn.png</em> and not <em>tn.png</em> and the Dutch Antilles <em>an.png </em>is included which wasn&#8217;t in my list of ISO Codes which can be found here <a href="http://en.wikipedia.org/wiki/ISO_3166-1">http://en.wikipedia.org/wiki/ISO_3166-1</a>)</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="http://interworks.co.uk/blog/using-tableau-bookmarks-to-assign-custom-shapes-more-easily/">Using Tableau Bookmarks to assign Custom Shapes more easily</a> appeared first on <a rel="nofollow" href="http://interworks.co.uk/">InterWorks - Tableau Software &amp; Business Intelligence Consulting</a>.</p>
+<img src="http://track.hubspot.com/__ptq.gif?a=502772&k=14&bu=http%3A%2F%2Finterworks.co.uk%2Fblog%2F&r=http%3A%2F%2Finterworks.co.uk%2Fblog%2Fusing-tableau-bookmarks-to-assign-custom-shapes-more-easily%2F&bvt=rss&p=wordpress" style="float:left;" xml:base="http://interworks.co.uk/feed/" width="1" height="1" border="0" align="right"/>]]></content:encoded>
+			<wfw:commentRss>http://interworks.co.uk/blog/using-tableau-bookmarks-to-assign-custom-shapes-more-easily/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

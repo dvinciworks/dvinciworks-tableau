@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Pareto Graphs in Tableau Part 4 of 4 &#8211; Flexible Reference Lines and Parameters</title>
+	<atom:link href="http://interworks.co.uk/blog/pareto-blog-4-flexible-reference-lines-and-parameters/feed/" rel="self" type="application/rss+xml" />
+	<link>http://interworks.co.uk/blog/pareto-blog-4-flexible-reference-lines-and-parameters/</link>
+	<description>InterWorks - Tableau Software &#38; Business Intelligence Consulting</description>
+	<lastBuildDate>Fri, 05 Jun 2015 09:45:31 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	
+	<item>
+		<title>By: Phil Spurgeon</title>
+		<link>http://interworks.co.uk/blog/pareto-blog-4-flexible-reference-lines-and-parameters/#comment-82540</link>
+		<dc:creator><![CDATA[Phil Spurgeon]]></dc:creator>
+		<pubDate>Fri, 29 Aug 2014 09:42:54 +0000</pubDate>
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1927#comment-82540</guid>
+		<description><![CDATA[What a great question!
+
+The Pareto chart here requires all data points to be in the visual in order to run a series of tableau calculations to return the 80% intersection. To render a line chart in Tableau you would need all the data points for each week. This would be a major drain on Tableaus processing and would likely be very slow. 
+
+The way I have displayed this before is to have a number of Paretos on the same page, in your scenario maybe 4 for four weeks ago, three weeks ago, last week and current week. Allowing you to see the changes. With a little coding you should be able to just get the numbers and put these above your Pareto Chart. I will take a look at this myself and see if I can product an example. 
+
+The most efficient way to get this data however would be to duplicate the calculation in the source database at week level and then load the results into a table containing only date and the intersect number. This would allow you to plot your line chart and be fast for the end user.]]></description>
+		<content:encoded><![CDATA[<p>What a great question!</p>
+<p>The Pareto chart here requires all data points to be in the visual in order to run a series of tableau calculations to return the 80% intersection. To render a line chart in Tableau you would need all the data points for each week. This would be a major drain on Tableaus processing and would likely be very slow. </p>
+<p>The way I have displayed this before is to have a number of Paretos on the same page, in your scenario maybe 4 for four weeks ago, three weeks ago, last week and current week. Allowing you to see the changes. With a little coding you should be able to just get the numbers and put these above your Pareto Chart. I will take a look at this myself and see if I can product an example. </p>
+<p>The most efficient way to get this data however would be to duplicate the calculation in the source database at week level and then load the results into a table containing only date and the intersect number. This would allow you to plot your line chart and be fast for the end user.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Santiago</title>
+		<link>http://interworks.co.uk/blog/pareto-blog-4-flexible-reference-lines-and-parameters/#comment-75590</link>
+		<dc:creator><![CDATA[Santiago]]></dc:creator>
+		<pubDate>Tue, 05 Aug 2014 20:41:48 +0000</pubDate>
+		<guid isPermaLink="false">http://www.interworks.co.uk/?p=1927#comment-75590</guid>
+		<description><![CDATA[Great Post! Very helpful!
+
+Am I able to add a Line Chart with the temporal serie of the Intersection; i.e., the weekly progress of my pareto number?]]></description>
+		<content:encoded><![CDATA[<p>Great Post! Very helpful!</p>
+<p>Am I able to add a Line Chart with the temporal serie of the Intersection; i.e., the weekly progress of my pareto number?</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>
